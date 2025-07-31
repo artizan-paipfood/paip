@@ -1,0 +1,72 @@
+name: manager
+description: A new Flutter project.
+publish_to: none
+
+version: 0.0.25+8
+
+environment:
+  sdk: "^3.6.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  web: ^1.1.0
+  paipfood_package:
+    path: ../../packages/paipfood_package
+  ui:
+    path: ../../packages/ui
+  core:
+    path: ../../packages/core
+  core_flutter:
+    path: ../../packages/core_flutter
+  i18n:
+    path: ../../features/i18n
+
+  #Unit
+  artizan_ui:
+    path: ../../../artizan_ui
+  multiavatar: ^0.1.5
+  url_launcher_windows: ^3.1.1
+  realtime_client: ^2.2.1
+  audioplayers: ^6.1.0
+  image: ^4.5.4
+  archive: ^4.0.7
+  path: ^1.9.0
+  socket_io_client: ^3.0.2
+  flutter_image_compress: ^2.2.0
+  hugeicons: ^0.0.7
+  pluto_grid: ^8.0.0
+  window_manager: ^0.4.3
+  wakelock_plus: ^1.2.7
+  thermal_printer_flutter: ^0.0.1+6
+  flutter_staggered_grid_view: ^0.7.0
+  talker_flutter: ^4.7.1
+  qr_flutter: ^4.1.0
+  evolution_api:
+    git: https://github.com/eduardohr-muniz/evolution_api
+
+    # path: ../../../../evolution_api
+
+dev_dependencies:
+  sentry_dart_plugin: ^2.4.1
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.2
+  flutter_lints: ^5.0.0
+  mocktail: ^1.0.4
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/sounds/
+    - lib/l10n/
+
+generate:
+  flutter_gen:
+    synthetic-package: false

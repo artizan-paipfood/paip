@@ -1,0 +1,28 @@
+name: paipfood_workspace
+environment:
+  sdk: ^3.6.0
+
+# workspace:
+# - packages/paipfood_package
+# - packages/ui
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+dependency_overrides:
+  go_router_modular:
+    git:
+      url: https://github.com/eduardohr-muniz/go_router_modular.git
+      ref: binds_redirect
+
+scripts:
+  analyze:
+    exec: dart analyze .
+
+dev_dependencies:
+  melos: ^6.3.2
+# dev_dependencies:mel
+

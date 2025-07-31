@@ -1,0 +1,191 @@
+name: Deploy PR Preview on Vercel
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Extract task alias from branch name
+        id: extract
+        run: |
+          echo "branch_ref=${GITHUB_HEAD_REF}" >> $GITHUB_OUTPUT
+          task_id=$(echo "${GITHUB_HEAD_REF}" | grep -oEi '(scrum|viva)-[0-9]+' | head -n1 | tr '[:upper:]' '[:lower:]')
+          echo "alias=${task_id}-vivahcare-app.vercel.app" >> $GITHUB_OUTPUT
+          echo "task_id=${task_id}" >> $GITHUB_OUTPUT
+          echo "🔧 Branch: ${{ github.head_ref }}"
+          echo "🌐 Alias: $task_id-vivahcare-app.vercel.app"
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.2'
+
+      - name: Enable Flutter Web
+        run: |
+          flutter config --enable-web
+          flutter doctor
+
+      - name: Ensure pub_get.sh is executable
+        run: chmod +x pub_get.sh
+
+      - name: Run pub_get.sh
+        run: ./pub_get.sh
+
+      - name: Get dependencies
+        run: flutter pub get
+        working-directory: ./vivahcare_portal
+
+      - name: Build Flutter Web
+        run: flutter build web --release
+        working-directory: ./vivahcare_portal
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Link Vercel Project
+        run: |
+          rm -rf .vercel
+          vercel link --yes --token=${{ secrets.VERCEL_TOKEN }} --project vivahcare-app --cwd vivahcare_portal/build/web
+
+      - name: Deploy to Vercel (get deployment URL)
+        id: deploy
+        run: |
+          url=$(vercel deploy --yes --token=${{ secrets.VERCEL_TOKEN }} --cwd vivahcare_portal/build/web)
+          echo "deployment_url=$url" >> $GITHUB_OUTPUT
+          echo "🚀 URL: $url"
+
+      - name: Apply alias to deployment
+        run: |
+          vercel alias set ${{ steps.deploy.outputs.deployment_url }} \
+            ${{ steps.extract.outputs.alias }} \
+            --token=${{ secrets.VERCEL_TOKEN }}
+            
+      - name: Send Discord message using curl and jq
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -d "$(jq -n \
+              --arg title "${{ github.event.pull_request.title }}" \
+              --arg url "<${{ github.event.pull_request.html_url }}>" \
+              --arg repo "<${{ github.event.repository.html_url }}>" \
+              --arg preview "<https://${{ steps.extract.outputs.alias }}>" \
+              --arg jira "<https://vivahcare.atlassian.net/browse/${{ steps.extract.outputs.task_id }}>" \
+              '{
+                username: "Github Actions",
+                content: "🎉 **Pull Request aberto! @everyone**\n\n**Título:** \($title)\n\n**📁 Repositório:** \($repo)\n**🔗 PR:** \($url)\n**🌐 Preview:** \($preview)\n**📝 Tarefa Jira:** \($jira)",
+                flags: 4096 
+              }')" \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
+            
+      - name: Comment on Jira issue with preview link
+        env:
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: |
+          sudo apt-get install -y jq
+
+          ISSUE_KEY=$(echo "${{ steps.extract.outputs.task_id }}" | tr '[:lower:]' '[:upper:]')
+          PREVIEW_LINK="https://${{ steps.extract.outputs.alias }}/"
+
+          VIVAHCARE_ID="712020:f6c3bceb-36eb-4621-a0fc-1d04a0906f43"
+          VIVAHCARE_NAME="@Vivahcare"
+
+          ASSIGNEE_RES=$(curl -s -u "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
+            "https://vivahcare.atlassian.net/rest/api/3/issue/${ISSUE_KEY}?fields=assignee")
+
+          ASSIGNEE_ID=$(echo "$ASSIGNEE_RES" | jq -r '.fields.assignee.accountId // empty')
+          ASSIGNEE_NAME=$(echo "$ASSIGNEE_RES" | jq -r '.fields.assignee.displayName // empty')
+
+          if [[ -n "$ASSIGNEE_ID" ]]; then
+            ASSIGNEE_MENTION="{
+              \"type\": \"paragraph\",
+              \"content\": [
+                {
+                  \"type\": \"mention\",
+                  \"attrs\": {
+                    \"id\": \"${ASSIGNEE_ID}\",
+                    \"text\": \"@${ASSIGNEE_NAME}\"
+                  }
+                },
+                {
+                  \"type\": \"text\",
+                  \"text\": \", validar se sua tarefa subiu corretamente.\"
+                }
+              ]
+            }"
+          else
+            ASSIGNEE_MENTION="{
+              \"type\": \"paragraph\",
+              \"content\": [
+                {
+                  \"type\": \"text\",
+                  \"text\": \"⚠️ Nenhum responsável está atribuído para essa tarefa.\"
+                }
+              ]
+            }"
+          fi
+
+          COMMENT_BODY="{
+            \"body\": {
+              \"type\": \"doc\",
+              \"version\": 1,
+              \"content\": [
+                {
+                  \"type\": \"paragraph\",
+                  \"content\": [
+                    {
+                      \"type\": \"text\",
+                      \"text\": \"✅ Uma nova versão foi gerada, acesse o link abaixo:\"
+                    }
+                  ]
+                },
+                {
+                  \"type\": \"paragraph\",
+                  \"content\": [
+                    {
+                      \"type\": \"text\",
+                      \"text\": \"${PREVIEW_LINK}\",
+                      \"marks\": [
+                        {
+                          \"type\": \"link\",
+                          \"attrs\": {
+                            \"href\": \"${PREVIEW_LINK}\"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  \"type\": \"paragraph\",
+                  \"content\": [
+                    {
+                      \"type\": \"mention\",
+                      \"attrs\": {
+                        \"id\": \"${VIVAHCARE_ID}\",
+                        \"text\": \"${VIVAHCARE_NAME}\"
+                      }
+                    },
+                    {
+                      \"type\": \"text\",
+                      \"text\": \", por favor validar a nova versão.\"
+                    }
+                  ]
+                },
+                $ASSIGNEE_MENTION
+              ]
+            }
+          }"
+
+          curl -X POST \
+            --url "https://vivahcare.atlassian.net/rest/api/3/issue/${ISSUE_KEY}/comment" \
+            --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
+            --header 'Content-Type: application/json' \
+            --data "${COMMENT_BODY}"

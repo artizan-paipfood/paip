@@ -1,0 +1,76 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "🌎 Back Attach",
+            "type": "dart",
+            "request": "attach",
+            "program": "./apps/back/.dart_frog/server.dart",
+        },
+        {
+            "name": "🚀 Gestor",
+            "cwd": "apps/manager",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define-from-file",
+                "../../prod.env"
+            ]
+        },
+        {
+            "name": "🐞 Gestor",
+            "cwd": "apps/manager",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define-from-file",
+                "../../dev.env"
+            ]
+        },
+        {
+            "name": "🚀 App",
+            "cwd": "apps/app",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define-from-file",
+                "../../prod.env"
+            ]
+        },
+        {
+            "name": "🐞 App",
+            "cwd": "apps/app",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define-from-file",
+                "../../dev.env"
+            ]
+        },
+        {
+            "name": "🚀 Portal",
+            "cwd": "apps/paipfood_portal",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define-from-file",
+                "../../prod.env"
+            ]
+        },
+        {
+            "name": "📖 Widgetbook",
+            "cwd": "features/book",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "🧩 auth example",
+            "cwd": "features/auth/example",
+            "request": "launch",
+            "type": "dart"
+        },
+    ]
+}

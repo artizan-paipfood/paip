@@ -1,0 +1,8 @@
+{
+  "welcome": "Welcome to Auth feature",
+  "title_name_page": "What is your name?",
+  "placeholder_input_name": "Enter your name",
+  "title_phone_page": "What is your phone number?",
+  "title_phone_confirm_page": "Confirm your phone number",
+  "subtitle_phone_confirm_page": "We sent a verification code to your number"
+}

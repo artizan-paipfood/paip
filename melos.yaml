@@ -1,0 +1,150 @@
+name: paipfood_workspace
+packages:
+  - packages/**
+  - apps/**
+  - back/**
+  - features/**
+
+ignore:
+  - "**/example"
+  - "**/examples"
+
+dev_dependencies:
+  melos: ^6.3.2
+
+  clean:
+    # Limpar todos os packages
+    hooks:
+      pre: melos exec -- "flutter clean"
+
+scripts:
+  # Comandos de desenvolvimento
+  analyze:
+    description: Executar análise de código em todos os packages
+    run: melos exec -- "dart analyze ."
+
+  format:
+    description: Formatar código em todos os packages
+    run: melos exec -- "dart format . --fix"
+
+  format:check:
+    description: Verificar formatação do código
+    run: melos exec -- "dart format . --set-exit-if-changed"
+
+  test:
+    description: Executar testes em todos os packages
+    run: melos exec --fail-fast -- "flutter test"
+    packageFilters:
+      flutter: true
+
+  test:dart:
+    description: Executar testes Dart em packages core
+    run: melos exec --fail-fast -- "dart test"
+    packageFilters:
+      flutter: false
+
+  # Comandos específicos do Flutter
+  flutter:packages:get:
+    description: Executar flutter pub get em todos os packages Flutter
+    run: melos exec --fail-fast -- "flutter pub get"
+    packageFilters:
+      flutter: true
+
+  flutter:build:android:
+    description: Build Android para os apps
+    run: melos exec --fail-fast -- "flutter build apk"
+    packageFilters:
+      scope: "app*"
+      flutter: true
+
+  flutter:build:ios:
+    description: Build iOS para os apps
+    run: melos exec --fail-fast -- "flutter build ios"
+    packageFilters:
+      scope: "app*"
+      flutter: true
+
+  # Comandos de linting
+  lint:
+    description: Executar linting em todos os packages
+    run: melos exec --fail-fast -- "flutter analyze"
+    packageFilters:
+      flutter: true
+
+  lint:dart:
+    description: Executar linting em packages Dart
+    run: melos exec --fail-fast -- "dart analyze"
+    packageFilters:
+      flutter: false
+
+  # Comandos para Features
+  feature:test:auth:
+    description: Executar testes do módulo de autenticação
+    run: melos exec --scope="auth" -- "flutter test"
+
+  feature:test:checkout:
+    description: Executar testes do módulo de checkout
+    run: melos exec --scope="checkout" -- "flutter test"
+
+  # Comandos para packages
+  package:test:core:
+    description: Executar testes do package core
+    run: melos exec --scope="core" -- "dart test"
+
+  # Comandos de CI/CD
+  ci:
+    description: Executar pipeline de CI completo
+    run: |
+      melos clean &&
+      melos bootstrap &&
+      melos format:check &&
+      melos analyze &&
+      melos test &&
+      melos test:dart
+
+  # Comandos úteis para desenvolvimento
+  dev:setup:
+    description: Configurar ambiente de desenvolvimento
+    run: |
+      melos clean &&
+      melos bootstrap &&
+      melos flutter:packages:get
+
+  check:
+    description: Verificar qualidade do código
+    run: |
+      melos format:check &&
+      melos analyze &&
+      melos test
+
+  fix:
+    description: Corrigir problemas de formatação
+    run: melos format
+
+  upgrade:
+    description: Atualizar dependências
+    run: melos exec -- "flutter pub upgrade"
+    packageFilters:
+      flutter: true
+
+  reset:
+    description: Remove o pubspec.lock, executa flutter clean e flutter pub get em todos os projetos Flutter
+    run: |
+      melos exec --fail-fast --flutter -- "rm -f pubspec.lock"
+      melos exec --fail-fast --flutter -- "flutter clean"
+      melos exec --fail-fast --flutter -- "flutter pub get"
+    packageFilters:
+      flutter: true
+
+ide:
+  intellij:
+    enabled: true
+    modulesExcludeGlob:
+      - "**/build/**"
+      - "**/.dart_tool/**"
+      - "**/android/**"
+      - "**/ios/**"
+      - "**/web/**"
+      - "**/linux/**"
+      - "**/macos/**"
+      - "**/windows/**"

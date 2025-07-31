@@ -1,0 +1,4 @@
+{
+    "testI18n": "Hi {name}, good night! \n How are you? \n I hope you are well.",
+    "yourVerificationCodeIs": "Your verification code is {code}"
+}

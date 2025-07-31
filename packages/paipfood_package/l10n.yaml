@@ -1,0 +1,5 @@
+arb-dir: lib/l10n # Diretório onde estão os arquivos ARB.
+template-arb-file: app_en.arb # Arquivo ARB base (template).
+output-localization-file: app_localizations.dart # Arquivo Dart gerado.
+synthetic-package: false # Indica que não é um pacote sintético.
+untranslated-messages-file: desiredFileName.txt # Arquivo com mensagens não traduzidas.

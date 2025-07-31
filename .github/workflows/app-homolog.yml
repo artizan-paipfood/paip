@@ -1,0 +1,53 @@
+name: Deploy Homolog on Tag
+
+on:
+  push:
+    tags:
+      - "homolog"
+
+jobs:
+  deploy-homolog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.32.5"
+
+      - name: Enable Flutter Web
+        run: |
+          flutter config --enable-web
+          flutter doctor
+
+      - name: install melos
+        run: dart pub global activate melos
+
+      - name: Run melos bootstrap
+        run: melos bootstrap
+
+      - name: Get dependencies
+        run: flutter clean && flutter pub get
+        working-directory: ./apps/app
+
+      - name: Install sh
+        run: chmod +x build_web.sh
+        working-directory: ./apps/app
+
+      - name: Build Flutter Web
+        run: ./build_web.sh
+        working-directory: ./apps/app
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Link Vercel Project
+        run: |
+          rm -rf .vercel
+          vercel link --yes --token=${{ secrets.VERCEL_TOKEN }} --project vivahcare-app --cwd apps/app/build/web
+
+      - name: Deploy to Vercel
+        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/app/build/web

@@ -1,0 +1,10 @@
+# melos_managed_dependency_overrides: core,paipfood_package
+dependency_overrides:
+  core:
+    path: ../core
+  paipfood_package:
+    path: ../paipfood_package
+  go_router_modular:
+    git:
+      url: https://github.com/eduardohr-muniz/go_router_modular.git
+      ref: binds_redirect

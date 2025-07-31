@@ -1,0 +1,8 @@
+{
+  "welcome": "Bem-vindo à feature Auth",
+  "title_name_page": "Qual é o seu nome?",
+  "placeholder_input_name": "Digite seu nome",
+  "title_phone_page": "Qual é o seu número de telefone?",
+  "title_phone_confirm_page": "Confirme seu número de telefone",
+  "subtitle_phone_confirm_page": "Enviamos um código de verificação para o número"
+}

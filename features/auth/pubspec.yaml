@@ -1,0 +1,40 @@
+name: auth
+description: "Feature auth do projeto PaipFood."
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  core:
+    path: ../../packages/core
+  artizan_ui:
+    path: ../../../artizan_ui
+  ui:
+    path: ../../packages/ui
+  i18n:
+    path: ../i18n
+  shared_preferences: ^2.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  slang_build_runner: ^4.7.0
+  build_runner: ^2.5.2
+  flutter_lints: ^5.0.0
+  mocktail: ^1.0.4
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/

@@ -1,0 +1,45 @@
+name: portal
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: "^3.6.0"
+
+dependencies:
+  cupertino_icons:
+
+  # - core
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  paipfood_package:
+    path: ../../packages/paipfood_package
+  core:
+    path: ../../packages/core
+  ui:
+    path: ../../packages/ui
+
+  #Unit
+  markdown_editor_plus: ^0.2.15
+
+  intl: any
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+    - lib/l10n/
+    - assets/changelog/gest/
