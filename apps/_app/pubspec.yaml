@@ -1,0 +1,47 @@
+name: _app
+description: "A new Flutter project."
+
+publish_to: "none"
+
+version: 1.0.0-pre.1
+
+environment:
+  sdk: "^3.6.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  core:
+    path: ../../packages/core
+  core_flutter:
+    path: ../../packages/core_flutter
+  ui:
+    path: ../../packages/ui
+  paipfood_package:
+    path: ../../packages/paipfood_package
+  artizan_ui:
+    path: ../../../artizan_ui
+  #Unit
+  universal_html: ^2.2.4
+  meta_seo: ^3.0.9
+  webview_flutter: ^4.10.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - lib/l10n/
+
+generate:
+  flutter_gen:
+    synthetic-package: false

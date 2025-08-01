@@ -1,0 +1,23 @@
+services:
+  paipfood_api:
+    container_name: paipfood_api
+    image: eduardohrmuniz/paipfood_api:latest
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    environment:
+      PORT: "8090"
+      SECRETE_KEY: "_hx349pY3o.eZC4£`&b<4Wrtj]vY!?P?Ywy_]2Sin.`q:|s*z"
+      TOKEN_EXPIRATION: "3600"
+      REFRESH_TOKEN_EXPIRATION: "2592000"
+      GOOGLE_MAPS_APIKEY: "AIzaSyB3T1JnWE2573y4I-dF6ETo2b_asdd0Eog"
+      GEOAPIFY_APIKEY: "3eb8e9ca55d94b9b8d9fff0c0f690ad0"
+      SUPABASE_APIKEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpcHdiYnV5aHN6bXhkanNjbHpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEyNDQzMjcsImV4cCI6MTk5NjgyMDMyN30.C2KTvY-NHI5M6DXu6jiJusr3xl7iVbuUHiT1_sQCSko"
+      SUPABASE_BASEURL: "https://vipwbbuyhszmxdjsclzg.supabase.co/"
+      BR_STRIPE_SCRET_KEY: "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"
+      GB_STRIPE_SCRET_KEY: "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"
+      CORS_ORIGIN: "paipfood.com"
+      EVOLUTION_APIKEY: "f548f7c6-7098-45e3-8e4e-e2f0094269fc"
+      HIPAY_APIKEY: "sk_jI7E1vMkeUmXN8a0UyGx1tLjxS6oq0izZX+VOzKm7g"
+      MAPBOX_ACCESSTOKEN: "pk.eyJ1IjoiZWR1YXJkb2hybXVuaXoiLCJhIjoiY2xrN2ZlbnY0MDdscTNmcWg2c21wZ2pxYyJ9.q0ok-L2PWjc58k-XgOL_fQ"
+      AWESOME_API_TOKEN: "56c48ca94701bdc3fd06686a57f865e58e6b56cecf56579a824b277b4f3b22fd"
