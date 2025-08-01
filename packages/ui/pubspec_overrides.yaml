@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: core,paipfood_package
+# melos_managed_dependency_overrides: core,paipfood_package,core_flutter
 dependency_overrides:
   core:
     path: ../core
@@ -8,3 +8,5 @@ dependency_overrides:
     git:
       url: https://github.com/eduardohr-muniz/go_router_modular.git
       ref: binds_redirect
+  core_flutter:
+    path: ../core_flutter

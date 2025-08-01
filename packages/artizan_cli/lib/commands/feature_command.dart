@@ -360,7 +360,9 @@ linter:
   }
 
   void _createModuleFile(Directory featureDir, String featureName) {
-    final moduleContent = '''import 'package:core_flutter/core_flutter.dart';
+    final moduleContent = '''
+import 'dart:async';
+import 'package:core_flutter/core_flutter.dart';
 
 class ${_toPascalCase(featureName)}Module extends Module {
   @override

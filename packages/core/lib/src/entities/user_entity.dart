@@ -116,7 +116,7 @@ class UserMetadata {
   factory UserMetadata.fromMap(Map<String, dynamic> map) {
     return UserMetadata(
       sub: map['sub'],
-      fullName: map['full_name'],
+      fullName: map['full_name'] ?? '',
       email: map['email'],
       emailVerified: map['email_verified'],
       phone: map['phone'],

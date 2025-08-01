@@ -39,6 +39,7 @@ dependencies:
   sentry_flutter: ^9.1.0
   artizan_ui:
     path: ../../../artizan_ui
+  iconify_flutter: ^0.0.7
   #
 
 dev_dependencies:
@@ -50,6 +51,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/images/
   fonts:
     - family: Geist
       fonts:

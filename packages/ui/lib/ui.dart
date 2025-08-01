@@ -28,4 +28,4 @@ export 'package:talker_flutter/talker_flutter.dart';
 export 'package:artizan_ui/artizan_ui.dart';
 export 'package:sentry_flutter/sentry_flutter.dart' show SentryFlutter, SentryEvent, SentryWidget;
 export 'package:ui/src/utils/events/export.dart';
-export 'package:ui/src/utils/helpers/export.dart';
+export 'package:ui/src/icons/icon.dart';

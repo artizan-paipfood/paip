@@ -1,5 +1,5 @@
-name: app
-description: "A new Flutter project."
+name: address
+description: "Feature adress do projeto PaipFood."
 
 publish_to: "none"
 
@@ -13,24 +13,18 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_web_plugins:
-    sdk: flutter
+  cupertino_icons: ^1.0.8
+
   core:
     path: ../../packages/core
   core_flutter:
     path: ../../packages/core_flutter
+  artizan_ui:
+    path: ../../../artizan_ui
   ui:
     path: ../../packages/ui
   i18n:
-    path: ../../features/i18n
-  artizan_ui:
-    path: ../../../artizan_ui
-  auth:
-    path: ../../features/auth
-  address:
-    path: ../../features/address
-
-  cupertino_icons: ^1.0.8
+    path: ../i18n
 
 dev_dependencies:
   flutter_test:
@@ -43,4 +37,4 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
+    - assets/

@@ -46,4 +46,3 @@ export 'src/ui/icons/p_icons.dart';
 export 'src/core/dto/zz_dtos_export.dart';
 export 'src/core/enums/zz_enums_export.dart';
 export 'src/core/views/views_export.dart';
-export 'src/paip_icons.dart';

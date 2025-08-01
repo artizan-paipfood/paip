@@ -1,6 +1,7 @@
 import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:i18n/src/domain/models/countries.dart';
+import 'package:ui/ui.dart';
 
 class PhoneDialCodeSelector extends StatefulWidget {
   final List<Countries>? countries;
@@ -181,14 +182,10 @@ class _PhoneDialCodeSelectorState extends State<PhoneDialCodeSelector> {
   }
 
   Widget _buildSearchField() {
-    return TextFormField(
+    return ArtTextFormField(
       autofocus: true,
-      decoration: const InputDecoration(
-        suffixIcon: Icon(Icons.search),
-        border: OutlineInputBorder(),
-        contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      ),
       onChanged: _onSearchChanged,
+      trailing: PaipIcon(PaipIcons.searchLinear, size: 18, color: context.artColorScheme.primary),
     );
   }
 

@@ -11,4 +11,11 @@ class Routes {
   static const String authModule = '/auth';
 
   static const String authUserName = authModule;
+
+  // ADDRESS
+  static const String addressModule = '/address';
+
+  static const String myAddresses = addressModule;
+  static const String addressAutoComplete = '$addressModule/auto-complete';
+  static const String addressManually = '$addressModule/manually';
 }

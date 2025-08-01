@@ -10,7 +10,8 @@ import 'package:core_flutter/core_flutter.dart';
 
 class AuthPhoneModule extends Module {
   @override
-  FutureOr<List<Module>> imports() {
+  FutureOr<List<Module>> imports() async {
+    await SharedPreferences.getInstance().then((value) => value.clear());
     return [AuthSharedModule()];
   }
 

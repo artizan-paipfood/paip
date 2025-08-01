@@ -49,10 +49,7 @@ class _DropButtonLocaleState extends State<DropButtonLocale> {
                           children: [
                             ClipRRect(
                               borderRadius: 0.4.borderRadiusAll,
-                              child: Image.asset(contry.pathFlage,
-                                  package: "paipfood_package",
-                                  width: widget.size,
-                                  height: widget.size),
+                              child: Image.asset(contry.pathFlage, package: "paipfood_package", width: widget.size, height: widget.size),
                             ),
                             PSize.i.sizedBoxW,
                             Text(contry.label),
@@ -68,12 +65,9 @@ class _DropButtonLocaleState extends State<DropButtonLocale> {
               children: [
                 ClipRRect(
                   borderRadius: 0.4.borderRadiusAll,
-                  child: Image.asset(currentLocale.value!.pathFlage,
-                      package: "paipfood_package",
-                      width: widget.size,
-                      height: widget.size),
+                  child: Image.asset(currentLocale.value!.pathFlage, package: "paipfood_package", width: widget.size, height: widget.size),
                 ),
-                Icon(PaipIcons.chevronDown),
+                // Icon(PaipIcons.chevronDown),
               ],
             ),
           );
