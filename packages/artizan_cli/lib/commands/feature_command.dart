@@ -39,17 +39,17 @@ feature_name/
 │       ├── feature_name_module.dart    # Módulo de injeção de dependência
 │       ├── data/
 │       │   ├── repositories/           # Implementações dos repositórios
+│       │   ├── services/               # Serviços específicos
+│       │   ├── events/                 # Eventos do EventBus
 │       │   └── memory/                 # Singleton com ValueNotifier para dados em memória
 │       ├── domain/
 │       │   ├── models/
 │       │   │   └── enums/              # Enumerações
 │       │   └── usecases/               # Casos de uso
-│       ├── presentation/
-│       │   ├── pages/                  # Telas/páginas
-│       │   ├── components/             # Widgets reutilizáveis
-│       │   └── viewmodels/             # ViewModels/Controllers
-│       ├── services/                   # Serviços específicos
-│       └── events/                     # Eventos do EventBus
+│       └── presentation/
+│           ├── pages/                  # Telas/páginas
+│           ├── components/             # Widgets reutilizáveis
+│           └── viewmodels/             # ViewModels/Controllers
 ├── test/
 │   └── feature_name_test.dart          # Teste principal
 └── .dart_tool/                         # Cache do Dart (gerado automaticamente)
@@ -145,6 +145,8 @@ feature_name/                           # Pasta raiz da feature
 │       ├── 📄 feature_name_module.dart    # Módulo de injeção de dependência
 │       ├── 📁 data/                       # Camada de dados (Clean Architecture)
 │       │   ├── 📁 repositories/           # Implementações dos repositórios
+│       │   ├── 📁 services/               # Serviços específicos da feature
+│       │   ├── 📁 events/                 # Eventos do EventBus
 │       │   └── 📁 memory/                 # Singleton com ValueNotifier para dados em memória
 │       ├── 📁 domain/                     # Camada de domínio (Clean Architecture)
 │       │   ├── 📁 models/                 # Modelos de dados
@@ -154,8 +156,6 @@ feature_name/                           # Pasta raiz da feature
 │       │   ├── 📁 pages/                  # Telas/páginas da feature
 │       │   ├── 📁 components/             # Widgets reutilizáveis
 │       │   └── 📁 viewmodels/             # ViewModels/Controllers
-│       ├── 📁 services/                   # Serviços específicos da feature
-│       └── 📁 events/                     # Eventos do EventBus
 ├── 📁 test/                               # Testes da feature
 │   └── 📄 feature_name_test.dart          # Arquivo de teste principal
 └── 📁 .dart_tool/                         # Cache do Dart (gerado automaticamente)
@@ -189,7 +189,7 @@ feature_name/                           # Pasta raiz da feature
 - data/memory/: Singleton com ValueNotifier para manipular dados em memória
 
 🚀 Events:
-- events/: Eventos do EventBus para comunicação entre componentes
+- data/events/: Eventos do EventBus para comunicação entre componentes
 ''');
   }
 
@@ -253,6 +253,8 @@ dependencies:
 
   core:
     path: ../../packages/core
+  core_flutter:
+    path: ../../packages/core_flutter
   artizan_ui:
     path: ../../../artizan_ui
   ui:
@@ -358,7 +360,7 @@ linter:
   }
 
   void _createModuleFile(Directory featureDir, String featureName) {
-    final moduleContent = '''import 'package:ui/ui.dart';
+    final moduleContent = '''import 'package:core_flutter/core_flutter.dart';
 
 class ${_toPascalCase(featureName)}Module extends Module {
   @override
@@ -381,6 +383,8 @@ class ${_toPascalCase(featureName)}Module extends Module {
       // Data layer
       path.join(srcDir.path, 'data', 'repositories'),
       path.join(srcDir.path, 'data', 'memory'),
+      path.join(srcDir.path, 'data', 'services'),
+      path.join(srcDir.path, 'data', 'events'),
 
       // Domain layer
       path.join(srcDir.path, 'domain', 'models', 'enums'),
@@ -390,10 +394,6 @@ class ${_toPascalCase(featureName)}Module extends Module {
       path.join(srcDir.path, 'presentation', 'pages'),
       path.join(srcDir.path, 'presentation', 'components'),
       path.join(srcDir.path, 'presentation', 'viewmodels'),
-
-      // Services and Events
-      path.join(srcDir.path, 'services'),
-      path.join(srcDir.path, 'events'),
     ];
 
     for (final dir in directories) {
