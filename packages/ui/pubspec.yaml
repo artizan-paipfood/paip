@@ -20,9 +20,6 @@ dependencies:
   talker_flutter: ^4.9.1
   # export
   flutter_breakpoints: ^1.0.0
-  # go_router_modular: ^2.0.2+1
-  go_router_modular:
-    path: ../../../../go_router_modular
   core:
     path: ../core
   core_flutter:

@@ -3,10 +3,10 @@ description: "A new Flutter project."
 
 publish_to: "none"
 
-version: 1.0.0-pre.1
+version: 1.0.0+1
 
 environment:
-  sdk: "^3.6.0"
+  sdk: ^3.6.0
 
 dependencies:
   flutter:
@@ -21,18 +21,20 @@ dependencies:
     path: ../../packages/core_flutter
   ui:
     path: ../../packages/ui
-  paipfood_package:
-    path: ../../packages/paipfood_package
+  i18n:
+    path: ../../features/i18n
   artizan_ui:
     path: ../../../artizan_ui
-  #Unit
-  universal_html: ^2.2.4
-  meta_seo: ^3.0.9
-  webview_flutter: ^4.10.0
+  auth:
+    path: ../../features/auth
+
+  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  slang_build_runner: ^4.7.0
+  build_runner: ^2.5.2
   flutter_lints: ^5.0.0
 
 flutter:
@@ -40,8 +42,3 @@ flutter:
 
   assets:
     - assets/images/
-    - lib/l10n/
-
-generate:
-  flutter_gen:
-    synthetic-package: false

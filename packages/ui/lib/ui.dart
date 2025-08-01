@@ -6,7 +6,6 @@ export 'src/routes/go.dart';
 export 'src/routes/normalize_path.dart';
 export 'src/validators/zz_validators_export.dart';
 export 'src/extensions/z_extensions.dart';
-export 'src/services/z_services_export.dart';
 
 // Templates
 export 'templates/login_phone/login_phone_export.dart';
@@ -19,7 +18,6 @@ export './p_linear_progess_indicator.dart';
 // External libraries
 export 'package:flutter_animate/flutter_animate.dart' hide Effect;
 export 'package:flutter_svg/flutter_svg.dart';
-export 'package:go_router_modular/go_router_modular.dart';
 export 'package:intl/intl.dart' hide TextDirection;
 export 'package:lucide_icons_flutter/lucide_icons.dart';
 export 'package:two_dimensional_scrollables/two_dimensional_scrollables.dart';

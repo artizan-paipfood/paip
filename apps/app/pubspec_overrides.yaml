@@ -1,8 +1,0 @@
-# melos_managed_dependency_overrides: core,paipfood_package,ui
-dependency_overrides:
-  core:
-    path: ../../packages/core
-  paipfood_package:
-    path: ../../packages/paipfood_package
-  ui:
-    path: ../../packages/ui

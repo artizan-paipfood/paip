@@ -1,7 +1,9 @@
 import 'package:auth/i18n/gen/strings.g.dart';
-import 'package:auth/src/domain/models/user_phone_model.dart';
+import 'package:auth/src/core/domain/models/user_phone_model.dart';
 import 'package:auth/src/modules/auth_phone/presentation/viewmodels/auth_phone_viewmodel.dart';
+import 'package:auth/src/modules/auth_phone/utils/routes.dart';
 import 'package:core/core.dart';
+import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:i18n/i18n.dart';
 import 'package:ui/ui.dart';
@@ -17,7 +19,6 @@ class AuthPhonePage extends StatefulWidget {
 
 class _NameState extends State<AuthPhonePage> {
   final formKey = GlobalKey<FormState>();
-
   late final AuthPhoneViewmodel _viewmodel = context.read<AuthPhoneViewmodel>();
   final numberEC = TextEditingController();
   final numberFN = FocusNode();
@@ -30,7 +31,9 @@ class _NameState extends State<AuthPhonePage> {
 
   @override
   void initState() {
-    final country = Countries.countries.firstWhere((element) => element.locale.toUpperCase() == LocaleNotifier.instance.locale.name.toUpperCase());
+    final country = Countries.countries.firstWhere(
+      (element) => element.locale.toUpperCase() == LocaleNotifier.instance.locale.name.toUpperCase(),
+    );
     _selectedCountry = country;
     super.initState();
   }
@@ -45,7 +48,7 @@ class _NameState extends State<AuthPhonePage> {
   void _onSubmit() {
     if (formKey.currentState!.validate()) {
       _viewmodel.setUserData(_model.copyWith(phoneNumber: _phone, phoneDialCode: _selectedCountry!.dialCode));
-      Go.of(context).pushNeglect('/phone-confirm');
+      Go.of(context).pushNamedNeglect(Routes.phoneConfirmNamed);
     }
   }
 

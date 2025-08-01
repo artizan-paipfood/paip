@@ -8,7 +8,7 @@
 PRODUCT_NAME = app
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.paipfood.paipfoodApp
+PRODUCT_BUNDLE_IDENTIFIER = com.paipfood.app
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2024 com.paipfood. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2025 com.paipfood. All rights reserved.

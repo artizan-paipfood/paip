@@ -1,6 +1,8 @@
 import 'package:auth/i18n/gen/strings.g.dart';
-import 'package:auth/src/domain/models/user_phone_model.dart';
+import 'package:auth/src/core/domain/models/user_phone_model.dart';
 import 'package:auth/src/modules/auth_phone/presentation/viewmodels/auth_phone_viewmodel.dart';
+import 'package:auth/src/modules/auth_phone/utils/routes.dart';
+import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
 
@@ -25,7 +27,7 @@ class _NameState extends State<AuthUserNamePage> {
   void _onSubmit(String value) {
     if (formKey.currentState!.validate()) {
       _viewmodel.setUserData(_model.copyWith(name: value));
-      Go.of(context).pushNeglect('/phone');
+      Go.of(context).pushNamedNeglect(Routes.phoneNamed);
     }
   }
 

@@ -1,11 +1,11 @@
 {
-    "name": "Paip food",
-    "short_name": "Paip food",
+    "name": "app",
+    "short_name": "app",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#000000",
-    "theme_color": "#000000",
-    "description": "Delivery app",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "A new Flutter project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
@@ -31,8 +31,5 @@
             "type": "image/png",
             "purpose": "maskable"
         }
-    ],
-    "categories": [
-        "food"
     ]
 }

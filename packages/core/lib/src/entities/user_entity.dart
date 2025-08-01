@@ -28,11 +28,7 @@ class UserEntity {
 
   Map<String, dynamic> toMap() {
     return {
-      'recovery_sent_at': recoverySentAt?.toPaipDB(),
-      'last_sign_in_at': lastSignInAt?.toPaipDB(),
-      'created_at': createdAt.toPaipDB(),
-      'updated_at': updatedAt.toPaipDB(),
-      'user_metadata': userMetadata.toMap(),
+      'data': userMetadata.toMap(),
     };
   }
 

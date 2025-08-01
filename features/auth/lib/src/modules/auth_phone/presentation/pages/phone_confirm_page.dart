@@ -1,9 +1,9 @@
 import 'package:auth/i18n/gen/strings.g.dart';
-import 'package:auth/src/domain/models/user_phone_model.dart';
+import 'package:auth/src/core/domain/models/user_phone_model.dart';
 
-import 'package:auth/src/events/events.dart';
+import 'package:auth/src/core/domain/events/events.dart';
 import 'package:auth/src/modules/auth_phone/presentation/viewmodels/auth_phone_viewmodel.dart';
-import 'package:core/core.dart';
+import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
 
@@ -71,9 +71,7 @@ class _NameState extends State<AuthPhoneConfirmPage> {
                   padding: EdgeInsets.zero,
                   foregroundColor: context.artColorScheme.foreground,
                   child: Text(_model.phoneNumber),
-                  onPressed: () {
-                    context.pop();
-                  },
+                  onPressed: () => context.pop(),
                 )
               ],
             ),
@@ -84,9 +82,7 @@ class _NameState extends State<AuthPhoneConfirmPage> {
                 ArtInputOtp(
                   maxLength: 4,
                   onChanged: (value) {
-                    setState(() {
-                      _verificationCode = value;
-                    });
+                    setState(() => _verificationCode = value);
                     if (value.trim().length == 4) _onSubmit();
                   },
                   children: [
