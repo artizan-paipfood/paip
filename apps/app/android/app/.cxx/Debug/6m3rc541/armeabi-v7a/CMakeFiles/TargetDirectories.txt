@@ -1,2 +1,0 @@
-/Volumes/External/projects/artizan/paipfood/apps/app/android/app/.cxx/Debug/6m3rc541/armeabi-v7a/CMakeFiles/edit_cache.dir
-/Volumes/External/projects/artizan/paipfood/apps/app/android/app/.cxx/Debug/6m3rc541/armeabi-v7a/CMakeFiles/rebuild_cache.dir

@@ -8,7 +8,7 @@
             "name": "🌎 Back Attach",
             "type": "dart",
             "request": "attach",
-            "program": "./apps/back/.dart_frog/server.dart",
+            "program": "./back/api/.dart_frog/server.dart",
         },
         {
             "name": "🚀 Gestor",
