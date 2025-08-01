@@ -24,7 +24,7 @@ class AutoCompleteRequest {
     this.lat,
     this.lon,
   }) {
-    if ((lat != null || lon == null || lon != null && lat == null)) {
+    if ((lat != null && lon == null) || (lon != null && lat == null)) {
       throw ArgumentError('If lat, lon or radius are provided, all must be provided together');
     }
   }

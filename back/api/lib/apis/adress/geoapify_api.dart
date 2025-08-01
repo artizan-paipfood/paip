@@ -36,7 +36,7 @@ class GeoApifyApi {
     return DistanceDto(distance: distance, straightDistance: straightDistance.toDouble());
   }
 
-  double _parseDistance(double distance) {
+  double _parseDistance(num distance) {
     int percent = distance.toInt();
 
     if (percent < 5) percent = 5;

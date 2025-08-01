@@ -40,7 +40,7 @@ class LoginPage extends StatelessWidget {
                             child: PButton(
                               label: context.i18n.entrar.toUpperCase(),
                               onPressed: () {
-                                Go.of(context).go(Routes.company(slug: 'paipfood'));
+                                Go.of(context).go(Routes.company(slug: 'mrtsushi'));
                               },
                             ),
                           ),

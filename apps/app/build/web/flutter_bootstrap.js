@@ -9,8 +9,8 @@ if (!window._flutter) {
 _flutter.buildConfig = {"engineRevision":"cf56914b326edb0ccb123ffdc60f00060bd513fa","builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"}]};
 
 
-const appVersion = '20250731.003442.495527' || '1.0.0'; 
-const serviceWorkerVersion = 'c8fa354' || 'default-sw-version';
+const appVersion = '20250801.161911.fab626' || '1.0.0'; 
+const serviceWorkerVersion = '0527b86' || 'default-sw-version';
 
 // Função para verificar e limpar cache se versão mudou
 async function checkVersionAndClearCache() {

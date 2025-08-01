@@ -1,6 +1,7 @@
 // ignore_for_file: cascade_invocations
 
 import 'package:api/apis/adress/cep_awesome_api.dart';
+import 'package:api/apis/adress/geoapify_api.dart';
 import 'package:api/apis/adress/google_places_api.dart';
 import 'package:api/apis/adress/postcodes_api.dart';
 import 'package:api/apis/adress/radar_api.dart';
@@ -42,6 +43,7 @@ class BackInjector {
     injector.add<CepAwesomeApi>(() => CepAwesomeApi(client: injector.get()));
     injector.add<GooglePlacesApi>(() => GooglePlacesApi(client: injector.get()));
     injector.add<RadarApi>(() => RadarApi(client: injector.get()));
+    injector.add<GeoApifyApi>(() => GeoApifyApi(client: injector.get()));
     injector.add<ISearchAddressRepository>(() => GbSearchAddressRepository(postCodesApi: injector.get(), googlePlacesApi: injector.get()), key: 'gb-address-api');
     injector.add<ISearchAddressRepository>(() => BrSearchAddressRepository(cepAwesomeApi: injector.get(), radarApi: injector.get()), key: 'br-address-api');
     injector.add<DistanceDeliveryUsecase>(DistanceDeliveryUsecase.new);
