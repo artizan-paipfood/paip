@@ -23,7 +23,7 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
   @override
   void initState() {
     super.initState();
-    _viewmodel.initialize();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _viewmodel.initialize());
   }
 
   @override

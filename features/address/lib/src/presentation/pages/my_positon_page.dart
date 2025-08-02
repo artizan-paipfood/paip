@@ -20,10 +20,10 @@ class _MyPositonPageState extends State<MyPositonPage> {
   void _onConfirm() {
     context.pushNamed(
       Routes.manuallyNamed,
-      // queryParameters: {
-      //   'lat': _viewModel.latLng.latitude.toDouble(),
-      //   'lng': _viewModel.latLng.longitude.toDouble(),
-      // },
+      queryParameters: {
+        'lat': _viewModel.latLng.latitude.toDouble(),
+        'lng': _viewModel.latLng.longitude.toDouble(),
+      },
     );
   }
 
