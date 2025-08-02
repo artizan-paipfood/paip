@@ -1,3 +1,7 @@
+import 'package:address/src/presentation/components/use_mylocation_button.dart';
+import 'package:address/src/presentation/viewmodels/my_addresses_viewmodel.dart';
+import 'package:address/src/utils/routes.dart';
+import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
 import '../components/my_adress_card.dart';
@@ -10,8 +14,16 @@ class MyAddressesPage extends StatefulWidget {
 }
 
 class _MyAddressesPageState extends State<MyAddressesPage> {
-  void _onPressedSearch() {
-    // TODO: Implementar a busca de endereços
+  late final _viewmodel = context.read<MyAddressesViewmodel>();
+  void _onPressedSearch() {}
+
+  bool get _isLoading => _viewmodel.loading.value;
+  bool get _isNotLoading => !_isLoading;
+
+  @override
+  void initState() {
+    super.initState();
+    _viewmodel.initialize();
   }
 
   @override
@@ -30,6 +42,7 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
             child: ArtTextFormField(
               placeholder: Text('Endereço e número'),
               readOnly: true,
+              enabled: _isNotLoading,
               onPressed: () => _onPressedSearch(),
               decoration: ArtDecoration(
                 color: context.artColorScheme.muted,
@@ -44,44 +57,46 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ColoredBox(
-              color: context.artColorScheme.background,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12) + EdgeInsets.symmetric(horizontal: 22),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.radar,
-                      size: 24,
-                      color: context.artColorScheme.mutedForeground,
-                    ),
-                    SizedBox(width: 22),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Usar localização atual', style: context.artTextTheme.h2.copyWith(fontSize: 16)),
-                        SizedBox(height: 4),
-                        Text('R. Maria José Tramonte Borguetti, 540'),
-                        Text('Res. Torre, Poços de Caldas - MG', style: context.artTextTheme.muted),
-                      ],
-                    )
-                  ],
-                ),
-              ),
+      body: ValueListenableBuilder(
+        valueListenable: _viewmodel.loading,
+        builder: (context, value, child) {
+          switch (value) {
+            case true:
+              return const Center(child: PaipLoader());
+            case false:
+              return _buildBody();
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _buildBody() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          if (_viewmodel.locationPermission && _viewmodel.myCurrentAddress != null)
+            UseMylocationButton(
+              address: _viewmodel.myCurrentAddress!,
+              onTap: () {
+                context.pushNamed(
+                  Routes.myPositionNamed,
+                  queryParameters: {
+                    'lat': _viewmodel.myCurrentAddress!.lat.toString(),
+                    'lng': _viewmodel.myCurrentAddress!.long.toString(),
+                  },
+                );
+              },
             ),
-            Padding(
-              padding: PSize.i.paddingAll + EdgeInsets.only(top: 12),
-              child: Column(
-                children: [
-                  MyAdressCard(isSelected: true),
-                ],
-              ),
+          Padding(
+            padding: PSize.i.paddingAll + EdgeInsets.only(top: 12),
+            child: Column(
+              children: [
+                MyAdressCard(isSelected: true),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

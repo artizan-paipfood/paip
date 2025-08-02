@@ -29,3 +29,4 @@ export 'package:artizan_ui/artizan_ui.dart';
 export 'package:sentry_flutter/sentry_flutter.dart' show SentryFlutter, SentryEvent, SentryWidget;
 export 'package:ui/src/utils/events/export.dart';
 export 'package:ui/src/icons/icon.dart';
+export 'package:ui/src/components/z_export.dart';

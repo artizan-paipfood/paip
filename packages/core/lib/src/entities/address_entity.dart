@@ -182,17 +182,17 @@ class AddressEntity {
 
   String mainText(DbLocale locale) {
     if (street.isEmpty) return address;
-    final pNumber = number.isNotEmpty ? '$number, ' : '';
+    final pNumber = number.isNotEmpty ? '$number ' : '';
     final pComplement = complement.isNotEmpty ? '$complement, ' : '';
     final pNeighborhood = neighborhood.isNotEmpty ? '- $neighborhood' : '';
     return switch (locale) {
-      DbLocale.br => '$street, $pNumber$pComplement $pNeighborhood',
+      DbLocale.br => '$street $pNumber$pComplement $pNeighborhood',
       DbLocale.gb => '$zipCode, Nº$number, $street $pComplement',
     };
   }
 
   String secondaryText(DbLocale locale) => switch (locale) {
-        DbLocale.br => '$zipCode, $city, $state, $country',
+        DbLocale.br => '$zipCode - $state - $country',
         DbLocale.gb => '$city, $state, $country',
       };
 

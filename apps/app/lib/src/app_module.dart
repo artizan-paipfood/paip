@@ -25,7 +25,7 @@ class AppModule extends EventModule {
   @override
   void listen() {
     on<AuthLoggedInEvent>((event, context) {
-      Go.of(context).goNeglect(Routes.myAddresses);
+      if (context != null) Go.of(context).goNeglect(Routes.myAddresses);
     });
   }
 }

@@ -3,5 +3,8 @@
   "endereco_e_numero": "Endereço e número",
   "usar_localizacao_atual": "Usar localização atual",
   "editar": "Editar",
-  "excluir": "Excluir"
+  "excluir": "Excluir",
+  "servicos_de_localizacao_desativados": "Serviços de localização desativados",
+  "permissao_de_localizacao_negada": "Permissão de localização negada",
+  "permissao_de_localizacao_negada_permanentemente": "Permissão de localização negada permanentemente"
 }

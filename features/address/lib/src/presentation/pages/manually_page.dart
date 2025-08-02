@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ManuallyPage extends StatelessWidget {
-  const ManuallyPage({super.key});
+  final double lat;
+  final double lng;
+  const ManuallyPage({required this.lat, required this.lng, super.key});
 
   @override
   Widget build(BuildContext context) {

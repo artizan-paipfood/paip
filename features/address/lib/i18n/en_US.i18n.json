@@ -3,5 +3,8 @@
   "endereco_e_numero": "Address and number",
   "usar_localizacao_atual": "Use current location",
   "editar": "Edit",
-  "excluir": "Delete"
+  "excluir": "Delete",
+  "servicos_de_localizacao_desativados": "Location services disabled",
+  "permissao_de_localizacao_negada": "Location permission denied",
+  "permissao_de_localizacao_negada_permanentemente": "Location permission permanently denied"
 }

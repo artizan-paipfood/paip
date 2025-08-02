@@ -9,7 +9,7 @@ Future<void> main() async {
   await InitializeWebService.initialize();
   await Modular.configure(
     appModule: AppModule(),
-    initialRoute: '/',
+    initialRoute: '/address',
     debugLogDiagnostics: true,
     debugLogDiagnosticsGoRouter: true,
     debugLogEventBus: true,

@@ -38,7 +38,14 @@ class TranslationsPtBr extends Translations {
 	TranslationsPtBr $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsPtBr(meta: meta ?? this.$meta);
 
 	// Translations
-	@override String get welcome => 'Bem-vindo à feature Adress';
+	@override String get enderecos_de_entrega => 'Endereços de entrega';
+	@override String get endereco_e_numero => 'Endereço e número';
+	@override String get usar_localizacao_atual => 'Usar localização atual';
+	@override String get editar => 'Editar';
+	@override String get excluir => 'Excluir';
+	@override String get servicos_de_localizacao_desativados => 'Serviços de localização desativados';
+	@override String get permissao_de_localizacao_negada => 'Permissão de localização negada';
+	@override String get permissao_de_localizacao_negada_permanentemente => 'Permissão de localização negada permanentemente';
 }
 
 /// Flat map(s) containing all translations.
@@ -46,7 +53,14 @@ class TranslationsPtBr extends Translations {
 extension on TranslationsPtBr {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'welcome': return 'Bem-vindo à feature Adress';
+			case 'enderecos_de_entrega': return 'Endereços de entrega';
+			case 'endereco_e_numero': return 'Endereço e número';
+			case 'usar_localizacao_atual': return 'Usar localização atual';
+			case 'editar': return 'Editar';
+			case 'excluir': return 'Excluir';
+			case 'servicos_de_localizacao_desativados': return 'Serviços de localização desativados';
+			case 'permissao_de_localizacao_negada': return 'Permissão de localização negada';
+			case 'permissao_de_localizacao_negada_permanentemente': return 'Permissão de localização negada permanentemente';
 			default: return null;
 		}
 	}

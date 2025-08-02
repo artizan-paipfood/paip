@@ -1,4 +1,3 @@
-import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:i18n/src/domain/models/countries.dart';
 import 'package:ui/ui.dart';

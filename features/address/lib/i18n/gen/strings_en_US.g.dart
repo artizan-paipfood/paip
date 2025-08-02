@@ -39,7 +39,14 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
 
 	// Translations
-	String get welcome => 'Welcome to Adress feature';
+	String get enderecos_de_entrega => 'Delivery addresses';
+	String get endereco_e_numero => 'Address and number';
+	String get usar_localizacao_atual => 'Use current location';
+	String get editar => 'Edit';
+	String get excluir => 'Delete';
+	String get servicos_de_localizacao_desativados => 'Location services disabled';
+	String get permissao_de_localizacao_negada => 'Location permission denied';
+	String get permissao_de_localizacao_negada_permanentemente => 'Location permission permanently denied';
 }
 
 /// Flat map(s) containing all translations.
@@ -47,7 +54,14 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'welcome': return 'Welcome to Adress feature';
+			case 'enderecos_de_entrega': return 'Delivery addresses';
+			case 'endereco_e_numero': return 'Address and number';
+			case 'usar_localizacao_atual': return 'Use current location';
+			case 'editar': return 'Edit';
+			case 'excluir': return 'Delete';
+			case 'servicos_de_localizacao_desativados': return 'Location services disabled';
+			case 'permissao_de_localizacao_negada': return 'Location permission denied';
+			case 'permissao_de_localizacao_negada_permanentemente': return 'Location permission permanently denied';
 			default: return null;
 		}
 	}

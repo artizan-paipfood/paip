@@ -17,7 +17,7 @@ class _AppWidgetState extends State<AppWidget> {
       builder: (context, child) => ModularLoader.builder(context, child),
       theme: ArtThemeData(colorScheme: ArtGreenColorScheme.light(), brightness: Brightness.light),
       darkTheme: ArtThemeData(colorScheme: ArtPaipColorScheme.dark(), brightness: Brightness.dark),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
     );
   }
 }
