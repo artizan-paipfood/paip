@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:address/src/presentation/pages/auto_complete_page.dart';
-import 'package:address/src/presentation/pages/manually_page.dart';
+import 'package:address/src/presentation/pages/address_manually_page.dart';
 import 'package:address/src/presentation/pages/my_addresses_page.dart';
 import 'package:address/src/presentation/pages/my_positon_page.dart';
 import 'package:address/src/presentation/viewmodels/my_addresses_viewmodel.dart';
@@ -40,7 +40,7 @@ class AddressModule extends Module {
           redirect: (context, state) => _redirectLatLongNullable(context, state),
           child: (context, state) {
             final pathParams = state.uri.queryParameters;
-            return ManuallyPage(lat: double.parse(pathParams['lat']!), lng: double.parse(pathParams['lng']!));
+            return AddressManuallyPage(lat: double.parse(pathParams['lat']!), lng: double.parse(pathParams['lng']!));
           },
         ),
       ];

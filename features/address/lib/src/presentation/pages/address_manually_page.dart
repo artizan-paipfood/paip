@@ -1,0 +1,138 @@
+import 'package:address/src/domain/models/address_manually_model.dart';
+import 'package:address/src/presentation/components/address_manually_form.dart';
+import 'package:address/src/presentation/viewmodels/address_manually_viewmodel.dart';
+import 'package:core/core.dart';
+import 'package:core_flutter/core_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:ui/ui.dart';
+
+class AddressManuallyPage extends StatefulWidget {
+  final double lat;
+  final double lng;
+  const AddressManuallyPage({required this.lat, required this.lng, super.key});
+
+  @override
+  State<AddressManuallyPage> createState() => _AddressManuallyPageState();
+}
+
+class _AddressManuallyPageState extends State<AddressManuallyPage> {
+  final _viewModel = AddressManuallyViewmodel();
+  AddressManuallyModel get _addressManuallyModel => _viewModel.addressManuallyModel;
+  AddressEntity get _address => _addressManuallyModel.address;
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _viewModel.initialize(widget.lat, widget.lng));
+  }
+
+  Future<void> _saveAddress() async {
+    if (_formKey.currentState!.validate()) {
+      FocusScope.of(context).unfocus();
+      await Command0.executeWithLoader(context, () async => await Future.delayed(2.seconds));
+      // await _viewModel.saveAddress();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PaipAppBar(
+        title: Text('COMPLETE SEU ENDEREÇO'),
+      ),
+      body: ListenableBuilder(
+          listenable: Listenable.merge([_viewModel.loading, _viewModel]),
+          builder: (context, child) {
+            if (_viewModel.loading.value) {
+              return Center(child: const PaipLoader());
+            }
+            return Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //* Mapa
+                        IgnorePointer(
+                          child: SizedBox(
+                            height: 200,
+                            child: FlutterMap(
+                              options: MapOptions(
+                                initialCenter: LatLng(widget.lat, widget.lng),
+                                initialZoom: 18,
+                                minZoom: 18,
+                              ),
+                              children: [
+                                TileLayer(
+                                  urlTemplate: Env.mapboxlight,
+                                ),
+                                MarkerLayer(markers: [
+                                  Marker(
+                                    point: LatLng(widget.lat, widget.lng),
+                                    height: 45,
+                                    width: 45,
+                                    child: Stack(
+                                      children: [
+                                        PaipIcon(
+                                          PaipIcons.mapPointBold,
+                                          size: 45,
+                                          color: context.artColorScheme.primary,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ]),
+                              ],
+                            ),
+                          ),
+                        ),
+                        //* Resumo do endereço
+                        Padding(
+                          padding: EdgeInsets.only(left: PSize.spacer.value, right: PSize.spacer.value, top: 16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(_address.mainText(DbLocale.br), style: context.artTextTheme.large),
+                              Text(_address.secondaryText(DbLocale.br), style: context.artTextTheme.muted),
+                            ],
+                          ),
+                        ),
+                        //* Formulário
+                        Form(
+                          key: _formKey,
+                          child: Padding(
+                            padding: PSize.spacer.paddingAll,
+                            child: AddressManuallyForm(
+                              viewmodel: _viewModel,
+                              onChanged: (addressManuallyModel) => _viewModel.changeAddressManually(addressManuallyModel),
+                              onAddressWithoutNumberChanged: (value) => _viewModel.changeAddressWithoutNumber(value),
+                              onAddressWithoutComplementChanged: (value) => _viewModel.changeAddressWithoutComplement(value),
+                            ),
+                          ),
+                        ),
+                        //* Espaçamento final
+                        PSize.v.sizedBoxH,
+                      ],
+                    ),
+                  ),
+                ),
+                //* Botão de salvar endereço
+                Padding(
+                  padding: PSize.spacer.paddingAll,
+                  child: ArtButton(
+                    onPressed: () => _saveAddress(),
+                    expands: true,
+                    // onPressed: () => _viewModel.saveAddress(),
+                    child: Text('Salvar endereço'),
+                  ),
+                ),
+              ],
+            );
+          }),
+    );
+  }
+}

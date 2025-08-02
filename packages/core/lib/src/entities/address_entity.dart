@@ -29,7 +29,7 @@ class AddressEntity {
     this.long,
     this.createdAt,
     this.updatedAt,
-    this.street = "",
+    String street = "",
     this.number = "",
     this.neighborhood = "",
     this.complement = "",
@@ -42,7 +42,7 @@ class AddressEntity {
     this.nickName = "",
     this.establishmentId,
     this.isDeleted = false,
-  });
+  }) : street = _cleanStreetName(street);
 
   static const String box = "address";
 
@@ -158,6 +158,24 @@ class AddressEntity {
   //***************************************************** */
   //custom
   //***************************************************** */
+
+  static String _cleanStreetName(String street) {
+    // Remove numbers from the end of street name until the first space
+    final trimmedStreet = street.trim();
+    final regex = RegExp(r'\d+$');
+    if (regex.hasMatch(trimmedStreet)) {
+      // Find the last space before the numbers at the end
+      final lastSpaceIndex = trimmedStreet.lastIndexOf(' ');
+      if (lastSpaceIndex != -1) {
+        // Remove everything from the last space (including numbers)
+        return trimmedStreet.substring(0, lastSpaceIndex).trim();
+      } else {
+        // If there's no space, remove all numbers from the end
+        return trimmedStreet.replaceAll(regex, '');
+      }
+    }
+    return street;
+  }
 
   factory AddressEntity.fromAddressModel(AddressModel addressModel) {
     return AddressEntity(

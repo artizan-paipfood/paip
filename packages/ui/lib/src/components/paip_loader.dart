@@ -5,16 +5,16 @@ import 'package:ui/ui.dart';
 class PaipLoader extends StatelessWidget {
   final double? size;
   final Color? color;
-  const PaipLoader({super.key, this.size = 200, this.color});
+  const PaipLoader({super.key, this.size = 70, this.color});
 
   @override
   Widget build(BuildContext context) {
-    final targetColor = color ?? context.artColorScheme.mutedForeground;
+    final targetColor = color ?? context.artColorScheme.primary;
 
     return ColorFiltered(
       colorFilter: ColorFilter.mode(targetColor, BlendMode.srcIn),
       child: Lottie.asset(
-        'assets/lotties/cards-loader.json',
+        'assets/lotties/loader-bar.json',
         width: size,
         height: size,
         fit: BoxFit.cover,

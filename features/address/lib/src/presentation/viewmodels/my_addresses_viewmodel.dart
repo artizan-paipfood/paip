@@ -1,10 +1,9 @@
 import 'package:address/src/data/services/my_position_service.dart';
 import 'package:core/core.dart';
 import 'package:flutter/widgets.dart';
-import 'package:geocoding/geocoding.dart';
 
 class MyAddressesViewmodel {
-  final ValueNotifier<bool> _isLoading = ValueNotifier(false);
+  final ValueNotifier<bool> _isLoading = ValueNotifier(true);
   ValueNotifier<bool> get loading => _isLoading;
 
   bool _locationPermission = false;
@@ -27,22 +26,6 @@ class MyAddressesViewmodel {
   Future<void> getMyPosition() async {
     final myPosition = await MyPositionService.myPosition();
 
-    final places = await placemarkFromCoordinates(myPosition.latitude, myPosition.longitude);
-    if (places.isNotEmpty) {
-      final place = places.first;
-      _myCurrentAddress = AddressEntity(
-        id: Uuid().v4(),
-        country: place.country ?? '',
-        state: place.administrativeArea ?? '',
-        city: place.locality ?? '',
-        neighborhood: place.subLocality ?? '',
-        street: place.street ?? '',
-        number: place.subThoroughfare ?? '',
-        address: place.thoroughfare ?? '',
-        zipCode: place.postalCode ?? '',
-        lat: myPosition.latitude,
-        long: myPosition.longitude,
-      );
-    }
+    _myCurrentAddress = await MyPositionService.getAddressByLatLng(myPosition.latitude, myPosition.longitude);
   }
 }

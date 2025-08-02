@@ -30,13 +30,10 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.artColorScheme.muted,
-      appBar: AppBar(
-        title: Text(
-          'ENDEREÇOS DE ENTREGA',
-          style: context.artTextTheme.h4.copyWith(fontSize: 16, color: context.artColorScheme.foreground),
-        ),
+      appBar: PaipAppBar(
+        title: Text('ENDEREÇOS DE ENTREGA'),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(55),
+          preferredSize: Size.fromHeight(40),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0) + EdgeInsets.only(bottom: 12.0),
             child: ArtTextFormField(

@@ -78,7 +78,7 @@ class PaipIcon extends StatelessWidget {
     this.icon, {
     super.key,
     this.color,
-    this.size = 24,
+    this.size,
   });
 
   @override

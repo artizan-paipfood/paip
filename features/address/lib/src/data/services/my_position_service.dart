@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:address/i18n/gen/strings.g.dart';
 import 'package:address/src/utils/exceptions/location_permission_exception.dart';
+import 'package:core/core.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class MyPositionService {
@@ -36,5 +38,26 @@ class MyPositionService {
       default:
     }
     return true;
+  }
+
+  static Future<AddressEntity?> getAddressByLatLng(double lat, double lng) async {
+    final places = await placemarkFromCoordinates(lat, lng);
+    if (places.isNotEmpty) {
+      final place = places.first;
+      return AddressEntity(
+        id: Uuid().v4(),
+        country: place.country ?? '',
+        state: place.administrativeArea ?? '',
+        city: place.locality ?? '',
+        neighborhood: place.subLocality ?? '',
+        street: place.street ?? '',
+        number: place.subThoroughfare ?? '',
+        address: place.thoroughfare ?? '',
+        zipCode: place.postalCode ?? '',
+        lat: lat,
+        long: lng,
+      );
+    }
+    return null;
   }
 }

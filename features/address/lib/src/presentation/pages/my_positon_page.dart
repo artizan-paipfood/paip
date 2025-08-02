@@ -21,8 +21,8 @@ class _MyPositonPageState extends State<MyPositonPage> {
     context.pushNamed(
       Routes.manuallyNamed,
       queryParameters: {
-        'lat': _viewModel.latLng.latitude.toDouble(),
-        'lng': _viewModel.latLng.longitude.toDouble(),
+        'lat': _viewModel.latLng.latitude.toString(),
+        'lng': _viewModel.latLng.longitude.toString(),
       },
     );
   }
@@ -30,6 +30,7 @@ class _MyPositonPageState extends State<MyPositonPage> {
   @override
   void initState() {
     super.initState();
+    // _viewModel = MyPositionViewmodel(lat: -21.790350, lng: -46.537315);
     _viewModel = MyPositionViewmodel(lat: widget.lat, lng: widget.lng);
     WidgetsBinding.instance.addPostFrameCallback((_) => _viewModel.updatePoint(context));
   }
@@ -43,12 +44,8 @@ class _MyPositonPageState extends State<MyPositonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'SELECIONE A SUA POSIÇÃO',
-          style: context.artTextTheme.h4.copyWith(fontSize: 16, color: context.artColorScheme.foreground),
-        ),
-        centerTitle: true,
+      appBar: PaipAppBar(
+        title: Text('SELECIONE A SUA POSIÇÃO'),
       ),
       body: ListenableBuilder(
         listenable: _viewModel,
@@ -109,7 +106,7 @@ class _MyPositonPageState extends State<MyPositonPage> {
                 left: 0,
                 right: 0,
                 child: Padding(
-                  padding: EdgeInsets.all(16),
+                  padding: EdgeInsets.all(16) + EdgeInsets.only(bottom: 12),
                   child: ArtButton(
                     enabled: _viewModel.isEnabledButton,
                     onPressed: () => _onConfirm(),

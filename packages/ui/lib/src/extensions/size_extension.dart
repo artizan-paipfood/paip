@@ -2,37 +2,36 @@
 
 import 'package:flutter/widgets.dart';
 
-/// Variables has multiplicator:
+/// Variables Fibonacci:
 /// [none] = 0;
-/// [i] = 1;
-/// [ii] = 2;
-/// [iii] = 3;
-/// [iv] = 4;
-/// [v] = 5;
-/// [vi] = 6;
-/// [vii] = 7;
-/// [viii] = 8;
-///
-/// This multiplicator is multi with [spacerValue], and this [spacerValue] is:
-/// [spacerValue] = 8
+/// [spacer] = 21;
+/// [i] = 3;
+/// [ii] = 8;
+/// [iii] = 13;
+/// [iv] = 21;
+/// [v] = 34;
+/// [vi] = 55;
+/// [vii] = 89;
+/// [viii] = 144;
+
 class PSize {
   PSize._();
   static double none = 0;
-  static double i = 1;
-  static double spacer = 1.5;
-  static double ii = 2;
-  static double iii = 3;
-  static double iv = 4;
-  static double v = 5;
-  static double vi = 6;
-  static double vii = 7;
-  static double viii = 8;
+  static double i = 3;
+  static double ii = 8;
+  static double iii = 13;
+  static double iv = 21;
+  static double spacer = 21;
+  static double v = 34;
+  static double vi = 55;
+  static double vii = 89;
+  static double viii = 144;
 }
 
-const double _spacerValue = 8;
+const double _spacerValue = 1;
 
 extension ExtensionFromDouble on double {
-  double get value => _spacerValue * this;
+  double get value => this * _spacerValue;
 
   SizedBox get sizedBoxH => SizedBox(height: _spacerValue * this);
   SizedBox get sizedBoxW => SizedBox(width: _spacerValue * this);

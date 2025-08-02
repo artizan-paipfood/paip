@@ -9,7 +9,7 @@ class MyPositionViewmodel extends ChangeNotifier {
   late LatLng _latLng;
   LatLng get latLng => _latLng;
 
-  static const double pointY = 250;
+  static const double pointY = 400;
 
   Timer? _timerEnableButton;
   bool _isEnabledButton = true;
@@ -22,7 +22,7 @@ class MyPositionViewmodel extends ChangeNotifier {
 
   void enableButton() {
     _timerEnableButton?.cancel();
-    _timerEnableButton = Timer(const Duration(milliseconds: 1200), () {
+    _timerEnableButton = Timer(const Duration(milliseconds: 250), () {
       _isEnabledButton = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
         notifyListeners();
