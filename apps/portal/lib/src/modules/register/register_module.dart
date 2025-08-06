@@ -11,7 +11,7 @@ class RegisterModule extends Module {
   @override
   FutureOr<List<Bind<Object>>> binds() => [
         Bind.singleton((i) => RegisterStore()),
-        Bind.factory((i) => AddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
+        Bind.factory((i) => SearchAddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
         Bind.factory((i) => AddressRepository(http: i.get())),
         Bind.factory((i) => AuthRepository(http: i.get())),
         Bind.factory((i) => EstablishmentRepository(http: i.get())),

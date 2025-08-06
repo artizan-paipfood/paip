@@ -43,7 +43,7 @@ class _NameState extends State<AuthUserNamePage> {
       body: Form(
         key: formKey,
         child: Padding(
-          padding: PSize.ii.paddingHorizontal,
+          padding: PSize.spacer.paddingHorizontal,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

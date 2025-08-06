@@ -1,8 +1,10 @@
 import 'dart:io';
-import 'package:dart_frog/dart_frog.dart';
 import 'package:api/services/_back_initializer.dart';
+import 'package:core/core.dart';
+import 'package:dart_frog/dart_frog.dart';
 
 Future<void> init(InternetAddress ip, int port) async {
+  await SlangDartCore.initalize();
   BackInitializer.init();
 }
 

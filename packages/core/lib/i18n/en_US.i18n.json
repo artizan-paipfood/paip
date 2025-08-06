@@ -1,0 +1,41 @@
+{
+  "erros_de_endereco": {
+    "1401": "Address out of delivery radius",
+    "1402": "Address not found",
+    "1403": "Invalid ZIP/Postal code"
+  },
+  "erros_de_autenticacao": {
+    "1001": "Invalid credentials",
+    "1002": "Token expired",
+    "1003": "Invalid token",
+    "1004": "Unauthorized user",
+    "1005": "Session expired",
+    "1006": "Refresh token not found",
+    "1007": "Refresh token expired",
+    "1008": "Device authentication ID expired"
+  },
+  "erros_de_validacao": {
+    "2001": "Invalid data"
+  },
+  "erros_de_rede": {
+    "3001": "No connection",
+    "3002": "Timeout",
+    "3003": "Connection refused"
+  },
+  "erros_de_servidor": {
+    "4001": "Internal server error"
+  },
+  "erros_de_banco_de_dados": {
+    "5001": "Database error"
+  },
+  "erros_de_arquivo": {
+    "6001": "File not found",
+    "6002": "File read error",
+    "6003": "File write error",
+    "6004": "Corrupted file",
+    "6005": "Permission denied"
+  },
+  "erros_de_generico": {
+    "9001": "Generic error"
+  }
+}

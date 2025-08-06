@@ -29,7 +29,7 @@ class ConfigModule extends Module {
         Bind.factory((i) => SaveInformationEstablishmentUsecase(addressRepo: i.get(), dataSource: i.get(), establishmentRepo: i.get())),
         Bind.factory((i) => UpdateEstablishmentUsecase(establishmentRepo: i.get(), dataSource: i.get())),
         Bind.factory((i) => OpeningHoursRepository(http: i.get())),
-        Bind.factory((i) => AddressApi(client: ClientDio(baseOptions: HttpUtils.api(), talker: Logs.client.talker))),
+        Bind.factory((i) => SearchAddressApi(client: ClientDio(baseOptions: HttpUtils.api(), talker: Logs.client.talker))),
         Bind.singleton((i) => AparenceStore(bucketRepo: i.get(), dataSource: i.get(), establishmentRepo: i.get(), saveInformationEstablishmentUsecase: i.get())),
         Bind.singleton((i) => InformationStore(dataSource: i.get(), saveInformationEstablishmentUsecase: i.get())),
         Bind.singleton((i) => OpeningStore(dataSource: i.get(), openingHoursRepo: i.get(), updateEstablishmentUsecase: i.get())),

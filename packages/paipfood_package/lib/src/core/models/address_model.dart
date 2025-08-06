@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:core_flutter/core_flutter.dart';
 import 'package:paipfood_package/paipfood_package.dart';
 
 class AddressModelOld {
@@ -181,7 +182,7 @@ class AddressModelOld {
   bool get isNotValid => !isValid;
 
   String get factoryCountryAddressToString {
-    if (isGb) return "${complement.isNotEmpty ? "$complement - " : ""}${_startsWithNumber(address) ? "" : "$number "}$address";
+    if (PaipAppLocale.locale.isGb) return "${complement.isNotEmpty ? "$complement - " : ""}${_startsWithNumber(address) ? "" : "$number "}$address";
     return "$street $number,${complement.isNotEmpty ? " $complement," : ""} $neighborhood";
   }
 
@@ -203,7 +204,7 @@ class AddressModelOld {
   }
 
   bool get countryFactoryIsValid {
-    if (isGb) {
+    if (PaipAppLocale.locale.isGb) {
       return address.isNotEmpty && lat != 0.0 && long != 0.0;
     }
     return street.isNotEmpty && lat != 0.0 && long != 0.0;

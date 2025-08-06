@@ -46,7 +46,7 @@ class PdvCoreModule extends Module {
         Bind.factory((i) => EstablishmentRepository(http: i.get())),
         Bind.factory((i) => GetMenuHttpUsecase(establishmentRepo: i.get())),
         Bind.factory((i) => GetMenuLocalUsecase(localStorage: i.get())),
-        Bind.factory((i) => AddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
+        Bind.factory((i) => SearchAddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
         Bind.factory((i) => AddressCustomerStore(addressApi: i.get(), dataSource: i.get())),
         Bind.factory((i) => RebaseMenuLocalStorageUsecase(localStorage: i.get())),
         Bind.factory((i) => UpsertBillUsecase(billRepo: i.get(), updateQueusRepo: i.get())),

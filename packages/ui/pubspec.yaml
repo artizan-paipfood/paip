@@ -24,6 +24,10 @@ dependencies:
     path: ../core
   core_flutter:
     path: ../core_flutter
+  i18n:
+    path: ../../features/i18n
+  artizan_ui:
+    path: ../../../artizan_ui
 
   # export
   google_fonts: ^6.2.1
@@ -37,8 +41,8 @@ dependencies:
   intl: ^0.19.0
   flutter_svg: ^2.0.17
   sentry_flutter: ^9.1.0
-  artizan_ui:
-    path: ../../../artizan_ui
+  # artizan_ui:
+  #   path: ../../../artizan_ui
   iconify_flutter: ^0.0.7
   lottie: ^3.3.1
   #
@@ -55,44 +59,44 @@ flutter:
   assets:
     - assets/images/
     - assets/lotties/
-  fonts:
-    - family: Geist
-      fonts:
-        - asset: fonts/Geist-Thin.otf
-          weight: 100
-        - asset: fonts/Geist-UltraLight.otf
-          weight: 200
-        - asset: fonts/Geist-Light.otf
-          weight: 300
-        - asset: fonts/Geist-Regular.otf
-          weight: 400
-        - asset: fonts/Geist-Medium.otf
-          weight: 500
-        - asset: fonts/Geist-SemiBold.otf
-          weight: 600
-        - asset: fonts/Geist-Bold.otf
-          weight: 700
-        - asset: fonts/Geist-Black.otf
-          weight: 800
-        - asset: fonts/Geist-UltraBlack.otf
-          weight: 900
-    - family: GeistMono
-      fonts:
-        - asset: fonts/GeistMono-Thin.otf
-          weight: 100
-        - asset: fonts/GeistMono-UltraLight.otf
-          weight: 200
-        - asset: fonts/GeistMono-Light.otf
-          weight: 300
-        - asset: fonts/GeistMono-Regular.otf
-          weight: 400
-        - asset: fonts/GeistMono-Medium.otf
-          weight: 500
-        - asset: fonts/GeistMono-SemiBold.otf
-          weight: 600
-        - asset: fonts/GeistMono-Bold.otf
-          weight: 700
-        - asset: fonts/GeistMono-Black.otf
-          weight: 800
-        - asset: fonts/GeistMono-UltraBlack.otf
-          weight: 900
+  # fonts:
+  #   - family: Geist
+  #     fonts:
+  #       - asset: fonts/Geist-Thin.otf
+  #         weight: 100
+  #       - asset: fonts/Geist-UltraLight.otf
+  #         weight: 200
+  #       - asset: fonts/Geist-Light.otf
+  #         weight: 300
+  #       - asset: fonts/Geist-Regular.otf
+  #         weight: 400
+  #       - asset: fonts/Geist-Medium.otf
+  #         weight: 500
+  #       - asset: fonts/Geist-SemiBold.otf
+  #         weight: 600
+  #       - asset: fonts/Geist-Bold.otf
+  #         weight: 700
+  #       - asset: fonts/Geist-Black.otf
+  #         weight: 800
+  #       - asset: fonts/Geist-UltraBlack.otf
+  #         weight: 900
+  #   - family: GeistMono
+  #     fonts:
+  #       - asset: fonts/GeistMono-Thin.otf
+  #         weight: 100
+  #       - asset: fonts/GeistMono-UltraLight.otf
+  #         weight: 200
+  #       - asset: fonts/GeistMono-Light.otf
+  #         weight: 300
+  #       - asset: fonts/GeistMono-Regular.otf
+  #         weight: 400
+  #       - asset: fonts/GeistMono-Medium.otf
+  #         weight: 500
+  #       - asset: fonts/GeistMono-SemiBold.otf
+  #         weight: 600
+  #       - asset: fonts/GeistMono-Bold.otf
+  #         weight: 700
+  #       - asset: fonts/GeistMono-Black.otf
+  #         weight: 800
+  #       - asset: fonts/GeistMono-UltraBlack.otf
+  #         weight: 900

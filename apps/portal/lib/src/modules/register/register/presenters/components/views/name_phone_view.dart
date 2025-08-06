@@ -70,7 +70,7 @@ class _NamePhoneViewState extends State<NamePhoneView> {
                 onCountryChanged: (country) {
                   setState(() {
                     phoneCountryCode = country.dialCode;
-                    LocaleNotifier.instance.setLocale(DbLocale.fromMap(country.locale));
+                    LocaleNotifier.instance.setLocale(AppLocaleCode.fromMap(country.locale));
                     phoneValidator = PhoneByCountryValidator(masks: country.masks, isRequired: true, minLenght: country.minLength);
                     phoneEC.clear();
                   });

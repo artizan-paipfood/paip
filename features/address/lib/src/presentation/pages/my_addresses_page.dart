@@ -1,6 +1,7 @@
+import 'package:address/i18n/gen/strings.g.dart';
+import 'package:address/src/data/events/route_events.dart';
 import 'package:address/src/presentation/components/use_mylocation_button.dart';
 import 'package:address/src/presentation/viewmodels/my_addresses_viewmodel.dart';
-import 'package:address/src/utils/routes.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
@@ -15,7 +16,13 @@ class MyAddressesPage extends StatefulWidget {
 
 class _MyAddressesPageState extends State<MyAddressesPage> {
   late final _viewmodel = context.read<MyAddressesViewmodel>();
-  void _onPressedSearch() {}
+
+  void _onPressedSearch() => ModularEvent.fire(GoAutoCompleteEvent());
+
+  void _onUseMyLocation() => ModularEvent.fire(GoMyPositionEvent(
+        lat: _viewmodel.myCurrentAddress!.lat!,
+        lng: _viewmodel.myCurrentAddress!.long!,
+      ));
 
   bool get _isLoading => _viewmodel.loading.value;
   bool get _isNotLoading => !_isLoading;
@@ -31,28 +38,7 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
     return Scaffold(
       backgroundColor: context.artColorScheme.muted,
       appBar: PaipAppBar(
-        title: Text('ENDEREÇOS DE ENTREGA'),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(40),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0) + EdgeInsets.only(bottom: 12.0),
-            child: ArtTextFormField(
-              placeholder: Text('Endereço e número'),
-              readOnly: true,
-              enabled: _isNotLoading,
-              onPressed: () => _onPressedSearch(),
-              decoration: ArtDecoration(
-                color: context.artColorScheme.muted,
-              ),
-              trailing: PaipIcon(
-                PaipIcons.searchLinear,
-                color: context.artColorScheme.ring,
-                size: 18,
-              ),
-              // prefixIcon: Icon(PaipIcons.searchLinear)
-            ),
-          ),
-        ),
+        title: Text(t.enderecos_de_entrega.toUpperCase()),
       ),
       body: ValueListenableBuilder(
         valueListenable: _viewmodel.loading,
@@ -72,21 +58,34 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
+          ColoredBox(
+            color: context.artColorScheme.background,
+            child: Padding(
+              padding: PSize.spacer.paddingHorizontal + PSize.ii.paddingBottom,
+              child: ArtTextFormField(
+                placeholder: Text(t.buscar_endereco_placeholder),
+                readOnly: true,
+                enabled: _isNotLoading,
+                onPressed: () => _onPressedSearch(),
+                decoration: ArtDecoration(
+                  color: context.artColorScheme.muted,
+                ),
+                trailing: PaipIcon(
+                  PaipIcons.searchLinear,
+                  color: context.artColorScheme.ring,
+                  size: 18,
+                ),
+              ),
+            ),
+          ),
           if (_viewmodel.locationPermission && _viewmodel.myCurrentAddress != null)
             UseMylocationButton(
               address: _viewmodel.myCurrentAddress!,
-              onTap: () {
-                context.pushNamed(
-                  Routes.myPositionNamed,
-                  queryParameters: {
-                    'lat': _viewmodel.myCurrentAddress!.lat.toString(),
-                    'lng': _viewmodel.myCurrentAddress!.long.toString(),
-                  },
-                );
-              },
+              padding: PSize.spacer.paddingHorizontal + PSize.ii.paddingVertical,
+              onTap: () => _onUseMyLocation(),
             ),
           Padding(
-            padding: PSize.i.paddingAll + EdgeInsets.only(top: 12),
+            padding: PSize.iii.paddingHorizontal + PSize.iii.paddingTop,
             child: Column(
               children: [
                 MyAdressCard(isSelected: true),

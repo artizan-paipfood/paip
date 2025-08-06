@@ -10,7 +10,7 @@ class GeoApifyApi {
   GeoApifyApi({required this.client});
   static String _baseUrl = BaseUrl.mapbox;
 
-  Future<List<AddressModel>> autoComplete({required String query, required DbLocale locale, String? sessionToken, double? lat, double? lon, int? radius}) async {
+  Future<List<AddressModel>> autoComplete({required String query, required AppLocaleCode locale, String? sessionToken, double? lat, double? lon, int? radius}) async {
     final Map<String, dynamic> params = {
       "q": query,
       "session_token": sessionToken!,

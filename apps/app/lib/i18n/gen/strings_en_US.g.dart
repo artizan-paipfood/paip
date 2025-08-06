@@ -39,6 +39,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
 
 	// Translations
+
+	/// en-US: 'Sign in'
 	String get entrar => 'Sign in';
 }
 

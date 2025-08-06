@@ -11,7 +11,7 @@ class PlanEntity {
   final int? promotionDurationInDays;
   final bool enable;
   final Plan plan;
-  final DbLocale locale;
+  final AppLocaleCode locale;
   PlanEntity({
     required this.id,
     required this.createdAt,
@@ -35,7 +35,7 @@ class PlanEntity {
     int? promotionDurationInDays,
     bool? enable,
     Plan? plan,
-    DbLocale? locale,
+    AppLocaleCode? locale,
   }) {
     return PlanEntity(
       id: id ?? this.id,
@@ -79,7 +79,7 @@ class PlanEntity {
       plan: Plan.values.byName(
         map['plan'],
       ),
-      locale: DbLocale.values.byName(
+      locale: AppLocaleCode.values.byName(
         map['locale'],
       ),
     );

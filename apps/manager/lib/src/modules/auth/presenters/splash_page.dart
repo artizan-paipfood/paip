@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> load() async {
-    if (I18nService.instance.userHasSetLanguage == false && context.mounted) return context.go(Routes.selectLanguage);
+    if (AppI18n.instance.userHasSetLanguage == false && context.mounted) return context.go(Routes.selectLanguage);
     await AuthProcessUsecase(context: context, authService: context.read<AuthService>()).call();
   }
 

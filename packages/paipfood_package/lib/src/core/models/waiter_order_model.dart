@@ -149,7 +149,7 @@ class WaiterOrderModel {
       orderNumber: order.id,
       customerId: order.customer.userId!,
       customerName: order.customer.name,
-      customerAddress: order.customer.address!.formattedAddress(LocaleNotifier.instance.locale),
+      customerAddress: order.customer.address!.address,
       customerPhoneNumber: order.customer.phone,
       deliveryLatitude: order.customer.address!.lat!,
       deliveryLongitude: order.customer.address!.long!,

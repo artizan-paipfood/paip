@@ -55,7 +55,7 @@ class _NameState extends State<AuthPhoneConfirmPage> {
       ),
       appBar: AppBar(),
       body: Padding(
-        padding: PSize.ii.paddingHorizontal,
+        padding: PSize.spacer.paddingHorizontal,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

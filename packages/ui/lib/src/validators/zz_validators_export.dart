@@ -5,3 +5,5 @@ export './cpf_validator.dart';
 export './cnpj_validator.dart';
 export './cpf_cnpj_validator.dart';
 export './phone_by_country_validator.dart';
+export './cep_validator.dart';
+export './postcode_validator.dart';

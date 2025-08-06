@@ -1,0 +1,41 @@
+{
+  "erros_de_endereco": {
+    "1401": "Endereço fora do raio de entrega",
+    "1402": "Endereço não encontrado",
+    "1403": "CEP inválido"
+  },
+  "erros_de_autenticacao": {
+    "1001": "Credenciais inválidas",
+    "1002": "Token expirado",
+    "1003": "Token inválido",
+    "1004": "Usuário não autorizado",
+    "1005": "Sessão expirada",
+    "1006": "Refresh token não encontrado",
+    "1007": "Refresh token expirado",
+    "1008": "ID de dispositivo de autenticação expirado"
+  },
+  "erros_de_validacao": {
+    "2001": "Dados inválidos"
+  },
+  "erros_de_rede": {
+    "3001": "Sem conexão",
+    "3002": "Timeout",
+    "3003": "Conexão recusada"
+  },
+  "erros_de_servidor": {
+    "4001": "Erro interno do servidor"
+  },
+  "erros_de_banco_de_dados": {
+    "5001": "Erro de banco de dados"
+  },
+  "erros_de_arquivo": {
+    "6001": "Arquivo não encontrado",
+    "6002": "Erro de leitura do arquivo",
+    "6003": "Erro de escrita do arquivo",
+    "6004": "Arquivo corrompido",
+    "6005": "Permissão negada"
+  },
+  "erros_de_generico": {
+    "9001": "Erro genérico"
+  }
+}

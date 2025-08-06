@@ -1,15 +1,14 @@
 import 'package:api/apis/adress/cep_awesome_api.dart';
-import 'package:api/apis/adress/google_places_api.dart';
 import 'package:api/apis/adress/postcodes_api.dart';
 import 'package:api/apis/adress/radar_api.dart';
 import 'package:core/core.dart';
 
 abstract class ISearchAddressRepository {
-  Future<AddressModel> geocode({required String query, required DbLocale locale, required AddressModel address, double? lat, double? lon, int? radius});
+  Future<AddressModel> geocode({required String query, required AppLocaleCode locale, required AddressModel address, required int radius, double? lat, double? lon});
 
-  Future<List<AddressModel>> autoComplete({required String query, required DbLocale locale, String? sessionToken, double? lat, double? lon, int? radius});
+  Future<List<AddressModel>> autoComplete({required String query, required AppLocaleCode locale, required int radius, String? sessionToken, double? lat, double? lon});
 
-  Future<AddressModel> searchByPostalcode({required String postalCode, required DbLocale locale, String? sessionToken, double? lat, double? lon, int? radius});
+  Future<AddressModel> searchByPostalcode({required String postalCode, required AppLocaleCode locale, required int radius, String? sessionToken, double? lat, double? lon});
 }
 
 class BrSearchAddressRepository extends ISearchAddressRepository {
@@ -21,7 +20,7 @@ class BrSearchAddressRepository extends ISearchAddressRepository {
   });
 
   @override
-  Future<List<AddressModel>> autoComplete({required String query, required DbLocale locale, String? sessionToken, double? lat, double? lon, int? radius}) async {
+  Future<List<AddressModel>> autoComplete({required String query, required AppLocaleCode locale, required int radius, String? sessionToken, double? lat, double? lon}) async {
     return await radarApi.autoComplete(
       query: query,
       locale: locale,
@@ -33,24 +32,33 @@ class BrSearchAddressRepository extends ISearchAddressRepository {
   }
 
   @override
-  Future<AddressModel> geocode({required String query, required DbLocale locale, required AddressModel address, double? lat, double? lon, int? radius}) {
+  Future<AddressModel> geocode({required String query, required AppLocaleCode locale, required AddressModel address, required int radius, double? lat, double? lon}) {
     throw UnimplementedError();
   }
 
   @override
-  Future<AddressModel> searchByPostalcode({required String postalCode, required DbLocale locale, String? sessionToken, double? lat, double? lon, int? radius}) async {
-    return await cepAwesomeApi.getAddressByCep(cep: postalCode);
+  Future<AddressModel> searchByPostalcode({required String postalCode, required AppLocaleCode locale, required int radius, String? sessionToken, double? lat, double? lon}) async {
+    final cep = await cepAwesomeApi.getAddressByCep(cep: postalCode);
+    final List<AddressModel> result = await radarApi.autoComplete(
+      query: cep.mainText,
+      locale: locale,
+      sessionToken: sessionToken,
+      lat: lat,
+      lon: lon,
+      radius: radius,
+    );
+    return result.firstWhere((r) => (r.street?.contains(cep.street ?? '') ?? false) && (r.city?.contains(cep.city ?? '') ?? false), orElse: () => result.first);
   }
 }
 
 class GbSearchAddressRepository extends ISearchAddressRepository {
   final PostCodesApi postCodesApi;
-  final GooglePlacesApi googlePlacesApi;
-  GbSearchAddressRepository({required this.postCodesApi, required this.googlePlacesApi});
+  final RadarApi radarApi;
+  GbSearchAddressRepository({required this.postCodesApi, required this.radarApi});
 
   @override
-  Future<List<AddressModel>> autoComplete({required String query, required DbLocale locale, String? sessionToken, double? lat, double? lon, int? radius}) async {
-    return await googlePlacesApi.autoComplete(
+  Future<List<AddressModel>> autoComplete({required String query, required AppLocaleCode locale, required int radius, String? sessionToken, double? lat, double? lon}) async {
+    return await radarApi.autoComplete(
       query: query,
       locale: locale,
       sessionToken: sessionToken,
@@ -61,12 +69,12 @@ class GbSearchAddressRepository extends ISearchAddressRepository {
   }
 
   @override
-  Future<AddressModel> geocode({required String query, required DbLocale locale, required AddressModel address, double? lat, double? lon, int? radius}) {
-    return googlePlacesApi.geocode(query: query, locale: locale, address: address, lat: lat, lon: lon, radius: radius);
+  Future<AddressModel> geocode({required String query, required AppLocaleCode locale, required AddressModel address, required int radius, double? lat, double? lon}) {
+    throw UnimplementedError();
   }
 
   @override
-  Future<AddressModel> searchByPostalcode({required String postalCode, required DbLocale locale, String? sessionToken, double? lat, double? lon, int? radius}) async {
+  Future<AddressModel> searchByPostalcode({required String postalCode, required AppLocaleCode locale, required int radius, String? sessionToken, double? lat, double? lon}) async {
     return await postCodesApi.getAddressByPostalCode(postalCode: postalCode);
   }
 }

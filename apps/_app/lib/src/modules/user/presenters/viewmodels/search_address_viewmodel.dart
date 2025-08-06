@@ -79,7 +79,7 @@ class SearchAddressViewmodel extends ChangeNotifier {
 
   Future<AddressEntity> postalCode({required String postalCode, required double? latReference, required double? lonReference}) async {
     final address = await addressApi.postalcodeGeocode(
-      request: PostalcodeGeocodeRequest(
+      request: PostcodeGeocodeRequest(
         postalCode: postalCode,
         provider: SearchAddressConstants.autoCompleteProvider,
         locale: LocaleNotifier.instance.locale,

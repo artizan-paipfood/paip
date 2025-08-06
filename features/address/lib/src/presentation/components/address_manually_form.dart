@@ -1,3 +1,4 @@
+import 'package:address/i18n/gen/strings.g.dart';
 import 'package:address/src/domain/models/address_manually_model.dart';
 import 'package:address/src/presentation/components/address_nickname_suggestion_button.dart';
 import 'package:address/src/presentation/viewmodels/address_manually_viewmodel.dart';
@@ -34,7 +35,7 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
   late final _nickNameEC = TextEditingController(text: _address.nickName);
   final _nickNameFN = FocusNode();
 
-  final _validateMode = AutovalidateMode.onUnfocus;
+  final _validateMode = AutovalidateMode.disabled;
 
   @override
   void dispose() {
@@ -52,7 +53,7 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ArtTextFormField(
-          label: Text('Rua *'),
+          label: Text('${t.rua} *'),
           initialValue: _address.street,
           autovalidateMode: _validateMode,
           readOnly: true,
@@ -60,27 +61,27 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
             ArtToaster.show(
               context,
               ArtToast(
-                title: Text('A Rua não pode ser alterada'),
-                description: Text('Tente reajustar sua posição no mapa.'),
+                title: Text(t.a_rua_nao_pode_ser_alterada),
+                description: Text(t.a_rua_nao_pode_ser_alterada_descricao),
               ),
             );
           },
         ),
         ArtTextFormField(
-          label: Text('CEP'),
+          label: Text(t.cep),
           initialValue: _address.zipCode,
           autovalidateMode: _validateMode,
           onChanged: (value) => widget.onChanged(_model.copyWith(address: _address.copyWith(zipCode: value))),
         ),
         ArtTextFormField(
-          label: Text('Bairro *'),
+          label: Text('${t.bairro} *'),
           initialValue: _address.neighborhood,
           formController: ObrigatoryValidator(),
           autovalidateMode: _validateMode,
           onChanged: (value) => widget.onChanged(_model.copyWith(address: _address.copyWith(neighborhood: value))),
         ),
         ArtTextFormField(
-          label: Text('Numero ${_addressWithoutNumber ? '' : '*'}'),
+          label: Text('${t.numero} ${_addressWithoutNumber ? '' : '*'}'),
           controller: _numberEC,
           enabled: !_addressWithoutNumber,
           formController: _addressWithoutNumber ? null : ObrigatoryValidator(),
@@ -89,7 +90,7 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
         ),
         ArtCheckBox(
           initialValue: false,
-          inputLabel: Text('Endereço sem número.'),
+          inputLabel: Text('${t.endereco_sem_numero}.'),
           onChanged: (value) {
             widget.onAddressWithoutNumberChanged(value);
             if (value) {
@@ -99,7 +100,7 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
           },
         ),
         ArtTextFormField(
-          label: Text('Complemento ${_addressWithoutComplement ? '' : '*'}'),
+          label: Text('${t.complemento} ${_addressWithoutComplement ? '' : '*'}'),
           controller: _complementEC,
           enabled: !_addressWithoutComplement,
           formController: _addressWithoutComplement ? null : ObrigatoryValidator(),
@@ -108,7 +109,7 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
         ),
         ArtCheckBox(
           initialValue: false,
-          inputLabel: Text('Endereço sem complemento.'),
+          inputLabel: Text('${t.endereco_sem_complemento}.'),
           onChanged: (value) {
             widget.onAddressWithoutComplementChanged(value);
             if (value) {
@@ -122,7 +123,7 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
           children: [
             AddressNicknameSuggestionButton(
               icon: PaipIcon(PaipIcons.homeDuotone),
-              nickname: 'Casa',
+              nickname: t.casa,
               onTap: (nickname) {
                 _nickNameEC.text = nickname;
                 _nickNameFN.requestFocus();
@@ -131,7 +132,7 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
             ),
             AddressNicknameSuggestionButton(
               icon: PaipIcon(PaipIcons.cityDuotone),
-              nickname: 'Trabalho',
+              nickname: t.trabalho,
               onTap: (nickname) {
                 _nickNameEC.text = nickname;
                 _nickNameFN.requestFocus();
@@ -141,8 +142,8 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
           ],
         ),
         ArtTextFormField(
-          label: Text('Apelido *'),
-          placeholder: Text('Ex: Casa, Trabalho...'),
+          label: Text('${t.apelido} *'),
+          placeholder: Text(t.apelido_placeholder),
           controller: _nickNameEC,
           focusNode: _nickNameFN,
           autovalidateMode: _validateMode,

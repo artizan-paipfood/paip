@@ -41,7 +41,7 @@ class EstablishmentEntity {
   final int? deliveryRadius;
   final String deliveryMethod;
   final String? facebookPixel;
-  final DbLocale? locale;
+  final AppLocaleCode? locale;
   final String? paymentProviderId;
   final double? maxDistance;
 
@@ -124,7 +124,7 @@ class EstablishmentEntity {
     int? deliveryRadius,
     String? deliveryMethod,
     String? facebookPixel,
-    DbLocale? locale,
+    AppLocaleCode? locale,
     String? paymentProviderId,
     double? maxDistance,
   }) {
@@ -253,7 +253,7 @@ class EstablishmentEntity {
       deliveryRadius: map['delivery_radius']?.toInt(),
       deliveryMethod: map['delivery_method'] ?? 'polygon',
       facebookPixel: map['facebook_pixel'],
-      locale: map['locale'] != null ? DbLocale.fromMap(map['locale']) : null,
+      locale: map['locale'] != null ? AppLocaleCode.fromMap(map['locale']) : null,
       paymentProviderId: map['payment_provider_id'],
       maxDistance: map['max_distance']?.toDouble(),
     );

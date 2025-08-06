@@ -8,7 +8,7 @@ class PlanRepository implements IPlansRepository {
   static const String _table = "plans";
 
   @override
-  Future<List<PlansModel>> getEnablesByCountry(DbLocale locale) async {
+  Future<List<PlansModel>> getEnablesByCountry(AppLocaleCode locale) async {
     final req = await http.get('/rest/v1/$_table?locale=eq.${locale.name}&enable=eq.true&select=*');
     final List list = req.data;
     return list.map<PlansModel>((plan) {

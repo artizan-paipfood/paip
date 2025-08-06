@@ -21,7 +21,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await I18nService.instance.initialize();
+  await AppI18n.instance.initialize();
 
   if (kIsWeb) setUrlStrategy(PathUrlStrategy());
   if (isWindows) {

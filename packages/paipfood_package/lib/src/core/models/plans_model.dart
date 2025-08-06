@@ -15,7 +15,7 @@ class PlansModel {
   final double price;
   final double? promotionalPrice;
   final int? promotionDurationInDays;
-  final DbLocale locale;
+  final AppLocaleCode locale;
   final bool enable;
   final Plans plan;
   final int? usageLimit;
@@ -39,7 +39,7 @@ class PlansModel {
     double? price,
     double? promotionalPrice,
     int? promotionDurationInDays,
-    DbLocale? locale,
+    AppLocaleCode? locale,
     bool? enable,
     Plans? plan,
     int? usageLimit,
@@ -78,7 +78,7 @@ class PlansModel {
       price: map['price']?.toDouble() ?? 0.0,
       promotionalPrice: map['promotional_price']?.toDouble(),
       promotionDurationInDays: map['promotion_duration_in_days']?.toInt(),
-      locale: map['locale'] != null ? DbLocale.fromMap(map['locale']) : DbLocale.br,
+      locale: map['locale'] != null ? AppLocaleCode.fromMap(map['locale']) : AppLocaleCode.br,
       enable: map['enable'] ?? false,
       plan: Plans.fromMap(map['plan']),
       usageLimit: map['usage_limit']?.toInt(),

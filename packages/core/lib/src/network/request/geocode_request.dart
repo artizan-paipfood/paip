@@ -6,8 +6,6 @@ class GeocodeRequest {
   /// Representa uma requisição de geocodificação com uma consulta, país e limites opcionais.
   ///
   /// O `query` é o termo de busca para a requisição de geocodificação.
-  /// O `country` especifica o país para limitar a busca.
-  /// O `provider` especifica o provedor de serviço de geocodificação (Google ou Mapbox).
   /// O `locale` define o idioma e região para os resultados.
   /// O `address` é o modelo de endereço base para complementar com os dados de geocodificação.
   /// O `lat` é a latitude opcional do ponto central para limitar a busca.
@@ -16,9 +14,7 @@ class GeocodeRequest {
   ///
   /// Se `lat`, `lon` ou `radius` forem fornecidos, todos devem ser não-nulos.
   final String query;
-
-  final AutoCompleteProvider provider;
-  final DbLocale locale;
+  final AppLocaleCode locale;
   final AddressModel address;
   final double? lat;
   final double? lon;
@@ -26,7 +22,6 @@ class GeocodeRequest {
 
   GeocodeRequest({
     required this.query,
-    required this.provider,
     required this.locale,
     required this.address,
     this.lat,
@@ -37,7 +32,6 @@ class GeocodeRequest {
   Map<String, dynamic> toMap() {
     return {
       'query': query,
-      'provider': provider.name,
       'locale': locale.name,
       'address': address.toMap(),
       'lat': lat,
@@ -49,8 +43,7 @@ class GeocodeRequest {
   factory GeocodeRequest.fromMap(Map<String, dynamic> map) {
     return GeocodeRequest(
       query: map['query'] ?? '',
-      provider: AutoCompleteProvider.values.byName(map['provider']),
-      locale: DbLocale.fromMap(map['locale']),
+      locale: AppLocaleCode.fromMap(map['locale']),
       address: AddressModel.fromMap(map['address']),
       lat: map['lat']?.toDouble(),
       lon: map['lon']?.toDouble(),

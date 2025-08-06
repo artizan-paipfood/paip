@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
-import 'package:core/src/helpers/base_options.dart';
-import 'package:core/src/helpers/env.dart';
+import 'package:core/src/helpers/test_base_options.dart';
+import 'package:core/src/helpers/env_test.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
@@ -10,8 +10,8 @@ void main() {
   late ChargesRepository api;
 
   setUp(() async {
-    await Env.initializeForTest(envFilePath: 'test.env');
-    client = ClientDio(baseOptions: PaipBaseOptions.supabase);
+    await EnvTest.initializeForTest(envFilePath: 'test.env');
+    client = ClientDio(baseOptions: TestBaseOptions.supabase);
     api = ChargesRepository(client: client);
   });
 
@@ -20,7 +20,7 @@ void main() {
     () {
       final charge = ChargeEntity(
         id: Uuid().v4(),
-        locale: DbLocale.br,
+        locale: AppLocaleCode.br,
         amount: 100,
         orderId: '279a8522-db56-4073-988e-b4adbb16750e',
         status: ChargeStatus.pending,

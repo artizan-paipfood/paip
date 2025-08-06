@@ -2,7 +2,7 @@ import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
 
 class DeviceIdService {
-  final ICacheService<Map<String, dynamic>> cache;
+  final ICacheService cache;
 
   DeviceIdService({required this.cache});
 

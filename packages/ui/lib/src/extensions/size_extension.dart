@@ -17,7 +17,7 @@ import 'package:flutter/widgets.dart';
 class PSize {
   PSize._();
   static double none = 0;
-  static double i = 3;
+  static double i = 5;
   static double ii = 8;
   static double iii = 13;
   static double iv = 21;

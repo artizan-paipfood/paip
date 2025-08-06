@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:core_flutter/core_flutter.dart';
 
-abstract class ICacheService<T> {
+abstract class ICacheService {
   Future<void> save({required String box, required Map<String, dynamic> data, DateTime? expiresAt});
-  Future<T?> get({required String box});
+  Future<Map<String, dynamic>?> get({required String box});
   Future<void> delete({required String box});
   Future<void> clear();
 }
 
-class CacheService implements ICacheService<Map<String, dynamic>> {
+class CacheService implements ICacheService {
   final SharedPreferences sharedPreferences;
 
   CacheService({required this.sharedPreferences});

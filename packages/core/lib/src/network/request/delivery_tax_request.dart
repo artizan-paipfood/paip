@@ -19,7 +19,7 @@ class DeliveryTaxRequest {
   final String establishmentId;
   final String? userAddessId;
   final String establishmentAddressId;
-  final DbLocale locale;
+  final AppLocaleCode locale;
 
   DeliveryTaxRequest({required this.lat, required this.long, required this.establishmentLat, required this.establishmentLong, required this.deliveryMethod, required this.establishmentId, this.userAddessId, required this.establishmentAddressId, required this.locale}) {
     if (establishmentId.isEmpty) {
@@ -55,7 +55,7 @@ class DeliveryTaxRequest {
       establishmentAddressId: map['establishment_address_id'] ?? '',
       deliveryMethod: DeliveryMethod.fromMap(map['delivery_method']),
       establishmentId: map['establishment_id'],
-      locale: DbLocale.fromMap(map['locale']),
+      locale: AppLocaleCode.fromMap(map['locale']),
     );
   }
 }

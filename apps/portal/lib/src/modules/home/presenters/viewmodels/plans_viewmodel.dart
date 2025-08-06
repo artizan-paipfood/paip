@@ -7,7 +7,7 @@ class PlansViewmodel {
   PlansViewmodel({required this.planRepo});
 
   Future<List<PlansModel>> getEnablesByCountry() async {
-    final plans = await planRepo.getEnablesByCountry(DbLocale.br);
+    final plans = await planRepo.getEnablesByCountry(AppLocaleCode.br);
     plans.sort((a, b) => a.price.compareTo(b.price));
     return plans;
   }

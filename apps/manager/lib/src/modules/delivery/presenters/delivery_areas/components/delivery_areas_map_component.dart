@@ -35,7 +35,7 @@ class _DeliveryAreasMapComponentState extends State<DeliveryAreasMapComponent> {
         },
       ),
       nonRotatedChildren: [
-        TileLayer(urlTemplate: context.isDarkTheme ? Env.mapboxDark : Env.mapboxlight),
+        TileLayer(urlTemplate: context.isDarkTheme ? Env.googleMapsDark : Env.googleMapsLight),
         if (widget.viewmodel.deliveryMethod == DeliveryMethod.miles)
           CircleLayer(circles: [
             ...widget.viewmodel.deliveryAreaPerMileViewmodel.areas.map(

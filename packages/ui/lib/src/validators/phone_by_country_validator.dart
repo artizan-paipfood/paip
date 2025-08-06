@@ -48,6 +48,7 @@ static MaskInputController phone({
 
 import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:ui/i18n/gen/strings.g.dart';
 
 class PhoneByCountryValidator extends FormController {
   final List<String> masks;
@@ -64,13 +65,13 @@ class PhoneByCountryValidator extends FormController {
   @override
   String? Function(String? value)? get validator => (value) {
         if (FormController.isEmpty(value) && isRequired) {
-          return 'Telefone obrigatório.';
+          return t.campo_obrigatorio;
         }
         if (FormController.isEmpty(value) && isRequired == false) {
           return null;
         }
         if ((value!.length > 1) && (value.length < minLenght)) {
-          return 'Telefone incompleto';
+          return t.telefone_invalido;
         }
         return null;
       };

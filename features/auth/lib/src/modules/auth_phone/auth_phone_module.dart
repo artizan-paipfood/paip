@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:auth/auth.dart';
 import 'package:auth/src/core/auth_shared_module.dart';
+import 'package:auth/src/modules/auth_phone/presentation/pages/user_name_page.dart';
 import 'package:auth/src/modules/auth_phone/presentation/viewmodels/auth_phone_viewmodel.dart';
 import 'package:auth/src/modules/auth_phone/presentation/pages/phone_confirm_page.dart';
 import 'package:auth/src/modules/auth_phone/presentation/pages/phone_page.dart';

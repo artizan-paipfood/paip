@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:core/core.dart';
 
-class CacheServiceEncrypted implements ICacheService<Map<String, dynamic>> {
+class CacheServiceEncrypted implements ICacheService {
   final SharedPreferences sharedPreferences;
   final String encryptKey;
   CacheServiceEncrypted({required this.sharedPreferences, required this.encryptKey});

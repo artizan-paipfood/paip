@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:artizan_ui/artizan_ui.dart';
+import 'package:ui/i18n/gen/strings.g.dart';
 
 class CpfValidator extends FormController {
   final bool isRequired;
@@ -10,10 +11,10 @@ class CpfValidator extends FormController {
   @override
   String? Function(String? value)? get validator => (value) {
         if (isRequired && FormController.isEmpty(value)) {
-          return 'Campo obrigatório';
+          return t.campo_obrigatorio;
         }
         if (!isValidCpf(value!)) {
-          return 'CPF inválido';
+          return t.cpf_invalido;
         }
         return null;
       };

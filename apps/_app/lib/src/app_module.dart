@@ -22,7 +22,7 @@ class AppModule extends Module {
         Bind.singleton((i) => AuthRepository(http: i.get())),
         Bind.singleton((i) => DataSource()),
         Bind.factory((i) => DeliveryAreasRepository(http: i.get())),
-        Bind.factory((i) => AddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
+        Bind.factory((i) => SearchAddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
         Bind.singleton((i) => DeliveryAreaNotifier(searchAddressRepository: i.get())),
       ];
 

@@ -1,0 +1,9 @@
+{
+  "campo_obrigatorio": "Campo obrigatório",
+  "cnpj_invalido": "CNPJ inválido",
+  "cpf_invalido": "CPF inválido",
+  "email_invalido": "E-mail inválido",
+  "senha_invalida_minimo_caracteres": "Senha inválida, mínimo de 8 caracteres",
+  "telefone_invalido": "Telefone inválido",
+  "cep_invalido": "CEP inválido"
+}

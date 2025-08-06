@@ -18,7 +18,7 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
-      listenable: Listenable.merge([core.ConfigNotifier.instance.listenable, I18nService.instance.observer]),
+      listenable: Listenable.merge([core.ConfigNotifier.instance.listenable, AppI18n.instance.observer]),
       builder: (context, _) {
         return Builder(
           builder: (context) {
@@ -27,7 +27,7 @@ class _AppWidgetState extends State<AppWidget> {
               title: 'Paip Food Gestor',
               themeMode: core.ThemeNotifier.instance.themeMode,
               builder: (context, child) => core.ToastProvider.builder(context, core.FlutterBreakpointProvider.builder(context: context, breakpoints: PaipBreakpoint.breakpoints, child: RenderImageProvider.builder(context, L10nProvider.builder(context, child)))),
-              locale: I18nService.instance.locale,
+              locale: AppI18n.instance.locale,
               theme: ArtThemeData(colorScheme: ArtPaipColorScheme.light(), brightness: Brightness.light),
               darkTheme: ArtThemeData(colorScheme: ArtPaipColorScheme.dark(), brightness: Brightness.dark),
               localizationsDelegates: const [...AppLocalizations.localizationsDelegates, ...core.AppLocalizations.localizationsDelegates],

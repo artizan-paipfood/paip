@@ -58,7 +58,7 @@ class StripeApi {
   Future<StripeCheckoutCreateSessionResponse> checkoutCreateSession({
     required String description,
     required double amount,
-    required DbLocale locale,
+    required AppLocaleCode locale,
     required String chargeId,
     required String successUrl,
     required String cancelUrl,

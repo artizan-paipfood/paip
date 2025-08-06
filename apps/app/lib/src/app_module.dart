@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:address/address.dart';
+import 'package:app/i18n/gen/strings.g.dart';
 import 'package:app/src/core/utils/routes.dart';
 import 'package:app/src/modules/onboarding/onboarding_module.dart';
 import 'package:auth/auth.dart';
@@ -11,6 +12,7 @@ class AppModule extends EventModule {
   @override
   FutureOr<List<Bind<Object>>> binds() async {
     return [
+      Bind.singleton((i) => ClientDio(baseOptions: PaipBaseOptions.paipApi), key: PaipBindKey.paipApi),
       Bind.singleton((i) => ClientDio(baseOptions: PaipBaseOptions.supabase)),
     ];
   }
@@ -27,5 +29,11 @@ class AppModule extends EventModule {
     on<AuthLoggedInEvent>((event, context) {
       if (context != null) Go.of(context).goNeglect(Routes.myAddresses);
     });
+  }
+
+  @override
+  void initState(Injector i) {
+    // TODO: implement initState
+    super.initState(i);
   }
 }

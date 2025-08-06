@@ -15,7 +15,7 @@ Future<Response> onRequest(RequestContext context) async {
       _ => Future.value(Response(statusCode: HttpStatus.methodNotAllowed)),
     };
   } catch (e) {
-    if (e is InternalException) return Response.json(statusCode: HttpStatus.forbidden, body: e.castAsInternalException().toJson());
+    if (e is AppError) return Response.json(statusCode: e.statusCode, body: e.toMap());
     return Response(statusCode: HttpStatus.badRequest, body: e.toString());
   }
 }

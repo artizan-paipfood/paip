@@ -15,7 +15,11 @@ dependencies:
     path: ../core
   ui:
     path: ../ui
-  go_router_modular: ^4.0.0+8
+  i18n:
+    path: ../../features/i18n
+  go_router_modular:
+    #  ^4.0.0+8
+    path: ../../../../go_router_modular
   shared_preferences: ^2.5.3
 
 dev_dependencies:

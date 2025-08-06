@@ -1,3 +1,5 @@
 export 'generic.dart';
-export 'internal/exception_codes.dart';
-export 'internal/base.dart';
+export 'app_error_codes.dart';
+export 'app_error.dart';
+export 'app_errors/autentication_erros.dart';
+export 'app_errors/address_errors.dart';

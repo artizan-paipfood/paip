@@ -63,9 +63,7 @@ class ClientDio implements IClient {
         response,
       );
     } on DioException catch (e) {
-      _trowRestClientException(
-        e,
-      );
+      throw _trowRestClientException(e);
     }
   }
 
@@ -110,9 +108,7 @@ class ClientDio implements IClient {
         response,
       );
     } on DioException catch (e) {
-      _trowRestClientException(
-        e,
-      );
+      throw _trowRestClientException(e);
     }
   }
 
@@ -140,9 +136,7 @@ class ClientDio implements IClient {
         response,
       );
     } on DioException catch (e) {
-      _trowRestClientException(
-        e,
-      );
+      throw _trowRestClientException(e);
     }
   }
 
@@ -167,9 +161,7 @@ class ClientDio implements IClient {
         response,
       );
     } on DioException catch (e) {
-      _trowRestClientException(
-        e,
-      );
+      throw _trowRestClientException(e);
     }
   }
 
@@ -197,9 +189,7 @@ class ClientDio implements IClient {
         response,
       );
     } on DioException catch (e) {
-      _trowRestClientException(
-        e,
-      );
+      throw _trowRestClientException(e);
     }
   }
 
@@ -224,9 +214,7 @@ class ClientDio implements IClient {
         response,
       );
     } on DioException catch (e) {
-      _trowRestClientException(
-        e,
-      );
+      throw _trowRestClientException(e);
     }
   }
 
@@ -251,9 +239,7 @@ class ClientDio implements IClient {
         response,
       );
     } on DioException catch (e) {
-      return _trowRestClientException(
-        e,
-      );
+      throw _trowRestClientException(e);
     }
   }
 
@@ -289,36 +275,21 @@ class ClientDio implements IClient {
     return dioError.toString();
   }
 
-  Never _trowRestClientException(
+  DioException _trowRestClientException(
     DioException dioError,
   ) {
     _parseInternalException(dioError);
-    print(dioError.response?.statusCode);
-    final exception = ClientException(
-      error: dioError.error,
-      message: getErrorMessage(
-        dioError,
-      ),
-      response: dioError.response,
-      requestOptions: dioError.requestOptions,
-      stackTrace: dioError.stackTrace,
-      type: dioError.type,
-    );
-
-    throw exception;
+    throw dioError;
   }
 
   void _parseInternalException(DioException dioError) {
     if (dioError.response?.data != null && dioError.response!.data is Map) {
-      final internalException = (dioError.response!.data['message'] as String?)?.parseInternalException();
-      if (internalException != null) throw internalException;
-    }
-
-    if (dioError.response?.data != null && dioError.response!.data is Map) {
-      final internalCode = dioError.response!.data['internal_exception_code'];
-      if (internalCode != null) {
-        throw InternalException(code: internalCode, description: dioError.response!.data['message'], messages: {'en_US': dioError.response!.data['message']});
-      }
+      final appErrorCode = (dioError.response!.data['paip_error_code'] as int?);
+      if (appErrorCode != null) throw DioAppError(code: appErrorCode);
     }
   }
+}
+
+class DioAppError extends AppError {
+  DioAppError({required super.code});
 }

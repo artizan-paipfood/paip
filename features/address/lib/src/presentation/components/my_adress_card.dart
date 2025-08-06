@@ -18,7 +18,7 @@ class _MyAdressCardState extends State<MyAdressCard> {
       child: Stack(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 16) + EdgeInsets.only(left: 16),
+            padding: PSize.spacer.paddingHorizontal + PSize.ii.paddingVertical,
             child: Row(
               children: [
                 PaipIcon(PaipIcons.homeBold, color: context.artColorScheme.mutedForeground),

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:paipfood_package/paipfood_package.dart';
 
@@ -41,7 +42,7 @@ extension MapExtension on Map {
 }
 
 extension NumExtension on num {
-  String get toStringCurrency => "${LocaleNotifier.instance.currency} ${Utils.maskUltisToString(toStringAsFixed(2), MaskUtils.currency())}";
+  String get toStringCurrency => "${PaipAppLocale.locale.currencySymbol} ${Utils.maskUltisToString(toStringAsFixed(2), MaskUtils.currency())}";
   double netTotalMinusTaxPercent(double taxPercent) {
     final result = this - (this / 100) * taxPercent;
     return result;
@@ -68,31 +69,7 @@ extension StringExtension on String {
       return this;
     }
 
-    final replacementMap = {
-      'á': 'a',
-      'à': 'a',
-      'ã': 'a',
-      'â': 'a',
-      'ä': 'a',
-      'é': 'e',
-      'è': 'e',
-      'ê': 'e',
-      'ë': 'e',
-      'í': 'i',
-      'ì': 'i',
-      'î': 'i',
-      'ï': 'i',
-      'ó': 'o',
-      'ò': 'o',
-      'õ': 'o',
-      'ô': 'o',
-      'ö': 'o',
-      'ú': 'u',
-      'ù': 'u',
-      'û': 'u',
-      'ü': 'u',
-      'ç': 'c'
-    };
+    final replacementMap = {'á': 'a', 'à': 'a', 'ã': 'a', 'â': 'a', 'ä': 'a', 'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e', 'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i', 'ó': 'o', 'ò': 'o', 'õ': 'o', 'ô': 'o', 'ö': 'o', 'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u', 'ç': 'c'};
 
     return replaceAllMapped(RegExp(r'[áàãâäéèêëíìîïóòõôöúùûüç]'), (match) {
       return replacementMap[match.group(0)] ?? match.group(0)!;

@@ -17,7 +17,7 @@ class DistanceDeliveryUsecase {
     required double establishmentLat,
     required double establishmentLong,
     required DeliveryMethod deliveryMethod,
-    required DbLocale locale,
+    required AppLocaleCode locale,
     required String establishmentAddressId,
     String? userAddressId,
   }) async {

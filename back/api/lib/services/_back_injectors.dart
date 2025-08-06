@@ -44,7 +44,7 @@ class BackInjector {
     injector.add<GooglePlacesApi>(() => GooglePlacesApi(client: injector.get()));
     injector.add<RadarApi>(() => RadarApi(client: injector.get()));
     injector.add<GeoApifyApi>(() => GeoApifyApi(client: injector.get()));
-    injector.add<ISearchAddressRepository>(() => GbSearchAddressRepository(postCodesApi: injector.get(), googlePlacesApi: injector.get()), key: 'gb-address-api');
+    injector.add<ISearchAddressRepository>(() => GbSearchAddressRepository(postCodesApi: injector.get(), radarApi: injector.get()), key: 'gb-address-api');
     injector.add<ISearchAddressRepository>(() => BrSearchAddressRepository(cepAwesomeApi: injector.get(), radarApi: injector.get()), key: 'br-address-api');
     injector.add<DistanceDeliveryUsecase>(DistanceDeliveryUsecase.new);
     injector.add<IDeliveryRepository>(AddressRepository.new);

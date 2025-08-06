@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:artizan_ui/artizan_ui.dart';
+import 'package:ui/i18n/gen/strings.g.dart';
 
 class EmailValidator extends FormController {
   final bool isRequired;
@@ -13,9 +14,9 @@ class EmailValidator extends FormController {
   @override
   String? Function(String? value)? get validator => (value) {
         if (isRequired && FormController.isEmpty(value)) {
-          return "E-mail obrigatório.";
+          return t.campo_obrigatorio;
         }
-        if (FormController.isEmpty(value) == false && _isValid(value!) == false) return 'E-mail inválido';
+        if (FormController.isEmpty(value) == false && _isValid(value!) == false) return t.email_invalido;
         if (customValidator != null) {
           final String? text = customValidator!(value!);
           if (text != null) {

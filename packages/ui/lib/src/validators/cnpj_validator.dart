@@ -1,5 +1,6 @@
 import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:ui/i18n/gen/strings.g.dart';
 
 class CnpjValidator extends FormController {
   final bool isRequired;
@@ -10,10 +11,10 @@ class CnpjValidator extends FormController {
   @override
   String? Function(String? value)? get validator => (value) {
         if (isRequired && FormController.isEmpty(value)) {
-          return 'Campo obrigatório';
+          return t.campo_obrigatorio;
         }
         if (!isValidCnpj(value!)) {
-          return 'CNPJ inválido';
+          return t.cnpj_invalido;
         }
         return null;
       };

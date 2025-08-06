@@ -35,7 +35,7 @@ class _PdvCustomerAddressFormState extends State<PdvCustomerAddressForm> {
       key: formKey,
       child: Column(
         children: [
-          if (LocaleNotifier.instance.locale == DbLocale.gb)
+          if (LocaleNotifier.instance.locale == AppLocaleCode.gb)
             CwSearchAddress(
               country: LocaleNotifier.instance.locale.name,
               establishmentAddress: establishmentProvider.value.address,
@@ -48,7 +48,7 @@ class _PdvCustomerAddressFormState extends State<PdvCustomerAddressForm> {
               },
               neighborhoodEC: neighborhoodEC,
             ),
-          if (LocaleNotifier.instance.locale == DbLocale.br) ...[
+          if (LocaleNotifier.instance.locale == AppLocaleCode.br) ...[
             Row(
               children: [
                 SizedBox(

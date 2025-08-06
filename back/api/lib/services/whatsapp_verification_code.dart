@@ -15,9 +15,9 @@ class WhatsappVerificationCode {
 
   final IEvolutionApi _evolutionApi = EvolutionApiV1(client: ClientDio(baseOptions: DioBaseOptions.evolutionApi));
 
-  Map<String, WppNumber> _wppNumbers = {DbLocale.br.name: WppNumber(id: 'paip_br', notificationSent: false), DbLocale.gb.name: WppNumber(id: 'paip_gb', notificationSent: false)};
+  Map<String, WppNumber> _wppNumbers = {AppLocaleCode.br.name: WppNumber(id: 'paip_br', notificationSent: false), AppLocaleCode.gb.name: WppNumber(id: 'paip_gb', notificationSent: false)};
 
-  WppNumber getNumberAvaliable(DbLocale locale) {
+  WppNumber getNumberAvaliable(AppLocaleCode locale) {
     final wpp = _wppNumbers[locale.name]!;
     if (wpp.enable) return wpp;
     final result = _wppNumbers.values.firstWhereOrNull((element) => element.enable);
@@ -25,7 +25,7 @@ class WhatsappVerificationCode {
     return result;
   }
 
-  Future<String> sendCode({required DbLocale locale, required String phone}) async {
+  Future<String> sendCode({required AppLocaleCode locale, required String phone}) async {
     final wppNumber = getNumberAvaliable(locale);
     final code = _generateCode();
     try {
@@ -39,7 +39,7 @@ class WhatsappVerificationCode {
     return code;
   }
 
-  Future<void> _onErrorSendCode({required DbLocale locale, required String phone}) async {
+  Future<void> _onErrorSendCode({required AppLocaleCode locale, required String phone}) async {
     final wppNumber = getNumberAvaliable(locale);
     final hasOtherAvaliable = _wppNumbers.values.any((element) => element.enable);
     if (!hasOtherAvaliable) throw Exception('No wpp number enabled');

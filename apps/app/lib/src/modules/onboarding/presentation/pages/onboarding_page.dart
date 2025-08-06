@@ -12,7 +12,14 @@ class OnboardingPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage(Images.loginOnboarding), fit: BoxFit.cover))),
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(Images.loginOnboarding),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           Container(
             height: 220,
             width: double.infinity,
@@ -39,7 +46,13 @@ class OnboardingPage extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Container(
               height: 300,
-              decoration: const BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black, Colors.transparent])),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [Colors.black, Colors.transparent],
+                ),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

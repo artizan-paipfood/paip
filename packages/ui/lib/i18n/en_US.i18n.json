@@ -1,0 +1,9 @@
+{
+  "campo_obrigatorio": "Required field",
+  "cnpj_invalido": "Invalid CNPJ",
+  "cpf_invalido": "Invalid CPF",
+  "email_invalido": "Invalid email",
+  "senha_invalida_minimo_caracteres": "Invalid password, minimum 8 characters",
+  "telefone_invalido": "Invalid phone number",
+  "cep_invalido": "Invalid ZIP/Postal Code"
+}

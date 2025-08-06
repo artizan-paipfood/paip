@@ -8,7 +8,7 @@ import 'main.directories.g.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await I18nService.instance.initialize();
+  await AppI18n.initialize();
   runApp(TranslationProvider(child: const WidgetbookApp()));
 }
 

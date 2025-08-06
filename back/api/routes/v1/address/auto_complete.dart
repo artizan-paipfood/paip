@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
-import 'package:api/services/mapbox_session_token.dart';
 import 'package:api/services/_back_injectors.dart';
 import 'package:api/repositories/address/search_address/search_address_repository.dart';
 import 'package:core/core.dart';
@@ -25,9 +24,13 @@ Future<Response> onRequest(RequestContext context) async {
 Future<Response> _onPost(RequestContext context, AutoCompleteRequest body) async {
   final autocompleteRepository = injector.get<ISearchAddressRepository>(key: "${body.locale.name}-address-api");
 
-  final sessionToken = body.provider == AutoCompleteProvider.mapbox ? await MapboxSessionToken.instance.generate() : null;
-
-  final result = await autocompleteRepository.autoComplete(query: body.query, locale: body.locale, sessionToken: sessionToken, lat: body.lat, lon: body.lon, radius: 30);
+  final result = await autocompleteRepository.autoComplete(
+    query: body.query,
+    locale: body.locale,
+    lat: body.lat,
+    lon: body.lon,
+    radius: body.radius ?? 30,
+  );
 
   return Response.json(body: result.map((e) => e.toMap()).toList());
 }

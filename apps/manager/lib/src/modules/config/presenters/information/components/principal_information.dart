@@ -96,7 +96,7 @@ class _PrincipalInformationState extends State<PrincipalInformation> {
                       setState(() {
                         controller.establishment = controller.establishment.copyWith(phoneCountryCode: country.dialCode);
                         _locale = country.locale;
-                        LocaleNotifier.instance.setLocale(DbLocale.fromMap(country.locale));
+                        LocaleNotifier.instance.setLocale(AppLocaleCode.fromMap(country.locale));
                         phoneCountryCodeEC.text = country.dialCode;
                         phoneEC.clear();
                       });

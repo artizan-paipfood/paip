@@ -85,21 +85,9 @@ class UserMetadata {
   final String? gender;
   final PhoneNumber? phoneNumber;
   final String? dispositiveAuthId;
+  final String? selectedAddressId;
   //* END CUSTOM FIELDS
-  UserMetadata({
-    required this.sub,
-    required this.fullName,
-    this.email,
-    this.emailVerified,
-    this.phone,
-    this.phoneVerified,
-    this.document,
-    this.documentType,
-    this.birthDate,
-    this.gender,
-    this.phoneNumber,
-    this.dispositiveAuthId,
-  });
+  UserMetadata({required this.sub, required this.fullName, this.email, this.emailVerified, this.phone, this.phoneVerified, this.document, this.documentType, this.birthDate, this.gender, this.phoneNumber, this.dispositiveAuthId, this.selectedAddressId});
 
   Map<String, dynamic> toMap() {
     return {
@@ -110,6 +98,7 @@ class UserMetadata {
       'gender': gender,
       'phone_number': phoneNumber?.toMap(),
       'dispositive_auth_id': dispositiveAuthId,
+      'selected_address_id': selectedAddressId,
     };
   }
 
@@ -127,6 +116,7 @@ class UserMetadata {
       gender: map['gender'],
       phoneNumber: map['phone_number'] != null ? PhoneNumber.fromMap(map['phone_number']) : null,
       dispositiveAuthId: map['dispositive_auth_id'],
+      selectedAddressId: map['selected_address_id'],
     );
   }
 
@@ -135,27 +125,34 @@ class UserMetadata {
   factory UserMetadata.fromJson(String source) => UserMetadata.fromMap(json.decode(source));
 
   UserMetadata copyWith({
+    String? sub,
     String? fullName,
+    String? email,
+    bool? emailVerified,
+    String? phone,
+    bool? phoneVerified,
     String? document,
     String? documentType,
     DateTime? birthDate,
     String? gender,
     PhoneNumber? phoneNumber,
     String? dispositiveAuthId,
+    String? selectedAddressId,
   }) {
     return UserMetadata(
-      sub: sub,
+      sub: sub ?? this.sub,
       fullName: fullName ?? this.fullName,
-      email: email,
-      emailVerified: emailVerified,
-      phone: phone,
-      phoneVerified: phoneVerified,
+      email: email ?? this.email,
+      emailVerified: emailVerified ?? this.emailVerified,
+      phone: phone ?? this.phone,
+      phoneVerified: phoneVerified ?? this.phoneVerified,
       document: document ?? this.document,
       documentType: documentType ?? this.documentType,
       birthDate: birthDate ?? this.birthDate,
       gender: gender ?? this.gender,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       dispositiveAuthId: dispositiveAuthId ?? this.dispositiveAuthId,
+      selectedAddressId: selectedAddressId ?? this.selectedAddressId,
     );
   }
 }

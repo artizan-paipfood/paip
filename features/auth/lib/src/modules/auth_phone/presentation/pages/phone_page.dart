@@ -32,7 +32,7 @@ class _NameState extends State<AuthPhonePage> {
   @override
   void initState() {
     final country = Countries.countries.firstWhere(
-      (element) => element.locale.toUpperCase() == LocaleNotifier.instance.locale.name.toUpperCase(),
+      (element) => element.locale.toUpperCase() == PaipAppLocale.locale.name.toUpperCase(),
     );
     _selectedCountry = country;
     super.initState();
@@ -64,7 +64,7 @@ class _NameState extends State<AuthPhonePage> {
       body: Form(
         key: formKey,
         child: Padding(
-          padding: PSize.ii.paddingHorizontal,
+          padding: PSize.spacer.paddingHorizontal,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

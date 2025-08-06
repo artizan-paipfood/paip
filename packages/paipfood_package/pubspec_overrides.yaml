@@ -1,8 +1,10 @@
-# melos_managed_dependency_overrides: core,ui,core_flutter
+# melos_managed_dependency_overrides: core,ui,core_flutter,i18n
 dependency_overrides:
   core:
     path: ../core
   core_flutter:
     path: ../core_flutter
+  i18n:
+    path: ../../features/i18n
   ui:
     path: ../ui

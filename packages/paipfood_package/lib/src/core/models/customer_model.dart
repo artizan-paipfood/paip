@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:core/core.dart';
+import 'package:core_flutter/core_flutter.dart';
 import 'package:paipfood_package/paipfood_package.dart';
 
 class CustomerModel {
@@ -127,7 +128,7 @@ class CustomerModel {
 
   factory CustomerModel.fromJson(String source) => CustomerModel.fromMap(json.decode(source));
   String get getPhoneOnlyNumber {
-    if (isGb && phone.startsWith("0")) {
+    if (PaipAppLocale.locale.isGb && phone.startsWith("0")) {
       phone = phone.substring(1, phone.length);
     }
     return Utils.onlyNumbersRgx("$phoneCountryCode$phone");

@@ -27,12 +27,12 @@ Future<Response> _onPost(RequestContext context, VerificationCodeRequest body) a
 }
 
 class VerificationCodeRequest {
-  final DbLocale locale;
+  final AppLocaleCode locale;
   final String phone;
 
   VerificationCodeRequest({required this.locale, required this.phone});
 
   factory VerificationCodeRequest.fromMap(Map<String, dynamic> map) {
-    return VerificationCodeRequest(phone: map['phone'], locale: DbLocale.fromMap(map['locale']));
+    return VerificationCodeRequest(phone: map['phone'], locale: AppLocaleCode.fromMap(map['locale']));
   }
 }

@@ -19,7 +19,7 @@ class UserModule extends Module {
   FutureOr<List<Bind<Object>>> binds() => [
         Bind.singleton((i) => SearchAddressViewmodel(addressApi: i.get())),
         Bind.factory((i) => DeliveryAreasRepository(http: i.get())),
-        Bind.factory((i) => AddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
+        Bind.factory((i) => SearchAddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
         Bind.factory((i) => AuthRepository(http: i.get())),
         Bind.factory((i) => AddressRepository(http: i.get())),
         Bind.factory((i) => AddressUserUsecase(addressApi: i.get(), addressRepo: i.get(), authRepo: i.get(), userUsecase: i.get())),

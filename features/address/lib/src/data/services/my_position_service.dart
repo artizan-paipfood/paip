@@ -1,17 +1,34 @@
 import 'dart:async';
-
 import 'package:address/i18n/gen/strings.g.dart';
+import 'package:address/src/data/events/position_events.dart';
 import 'package:address/src/utils/exceptions/location_permission_exception.dart';
 import 'package:core/core.dart';
+import 'package:core_flutter/core_flutter.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class MyPositionService {
   MyPositionService._();
 
+  static late final IIpApi ipApi;
+
+  static Position? _position;
+
   static Future<Position> myPosition() async {
-    await verifyPermission();
-    return await Geolocator.getCurrentPosition();
+    if (_position != null) {
+      return _position!;
+    }
+    try {
+      await verifyPermission();
+    } on LocationPermissionException catch (_) {
+      final ipApiResponse = await ipApi.get();
+      _position = Position(latitude: ipApiResponse.lat, longitude: ipApiResponse.lon, timestamp: DateTime.now(), accuracy: 10, altitude: 0, altitudeAccuracy: 0, heading: 0, headingAccuracy: 0, speed: 0, speedAccuracy: 0);
+      ModularEvent.fire(MyPositionEvent(lat: _position!.latitude, lng: _position!.longitude));
+      return _position!;
+    }
+    _position = await Geolocator.getCurrentPosition();
+    ModularEvent.fire(MyPositionEvent(lat: _position!.latitude, lng: _position!.longitude));
+    return _position!;
   }
 
   static Future<Stream<Position>> myPositionStream({int distanceFilter = 50}) async {
@@ -56,6 +73,9 @@ class MyPositionService {
         zipCode: place.postalCode ?? '',
         lat: lat,
         long: lng,
+        countryCode: place.isoCountryCode ?? '',
+        mainText: '${place.name ?? ''}|${place.subLocality ?? ''}'.split('|').where((e) => e.trim().isNotEmpty).toList().join(' - '),
+        secondaryText: '${place.postalCode ?? ''}|${place.subAdministrativeArea ?? ''}'.split('|').where((e) => e.trim().isNotEmpty).toList().join(' - '),
       );
     }
     return null;

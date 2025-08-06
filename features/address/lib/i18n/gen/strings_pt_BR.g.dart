@@ -46,6 +46,28 @@ class TranslationsPtBr extends Translations {
 	@override String get servicos_de_localizacao_desativados => 'Serviços de localização desativados';
 	@override String get permissao_de_localizacao_negada => 'Permissão de localização negada';
 	@override String get permissao_de_localizacao_negada_permanentemente => 'Permissão de localização negada permanentemente';
+	@override String get rua => 'Rua';
+	@override String get numero => 'Número';
+	@override String get endereco_sem_numero => 'Endereço sem número';
+	@override String get complemento => 'Complemento';
+	@override String get endereco_sem_complemento => 'Endereço sem complemento';
+	@override String get bairro => 'Bairro';
+	@override String get cep => 'CEP';
+	@override String get apelido => 'Apelido';
+	@override String get apelido_placeholder => 'Ex: Casa, Trabalho...';
+	@override String get casa => 'Casa';
+	@override String get trabalho => 'Trabalho';
+	@override String get complete_seu_endereco => 'Complete seu endereço';
+	@override String get salvar_endereco => 'Salvar endereço';
+	@override String get confirmar_posicao => 'Confirmar posição';
+	@override String get selecione_sua_posicao => 'Selecione sua posição';
+	@override String get a_rua_nao_pode_ser_alterada => 'A rua não pode ser alterada';
+	@override String get a_rua_nao_pode_ser_alterada_descricao => 'Tente reajustar sua posição no mapa.';
+	@override String get buscar_endereco_placeholder => 'Endereço e número';
+	@override String get buscar_por_cep => 'Buscar por CEP';
+	@override String get buscar_endereco => 'Buscar endereço';
+	@override String get insira_seu_endereco_no_campo_acima => 'Insira seu endereço no campo acima';
+	@override String get nenhum_endereco_encontrado => 'Nenhum endereço encontrado';
 }
 
 /// Flat map(s) containing all translations.
@@ -61,6 +83,28 @@ extension on TranslationsPtBr {
 			case 'servicos_de_localizacao_desativados': return 'Serviços de localização desativados';
 			case 'permissao_de_localizacao_negada': return 'Permissão de localização negada';
 			case 'permissao_de_localizacao_negada_permanentemente': return 'Permissão de localização negada permanentemente';
+			case 'rua': return 'Rua';
+			case 'numero': return 'Número';
+			case 'endereco_sem_numero': return 'Endereço sem número';
+			case 'complemento': return 'Complemento';
+			case 'endereco_sem_complemento': return 'Endereço sem complemento';
+			case 'bairro': return 'Bairro';
+			case 'cep': return 'CEP';
+			case 'apelido': return 'Apelido';
+			case 'apelido_placeholder': return 'Ex: Casa, Trabalho...';
+			case 'casa': return 'Casa';
+			case 'trabalho': return 'Trabalho';
+			case 'complete_seu_endereco': return 'Complete seu endereço';
+			case 'salvar_endereco': return 'Salvar endereço';
+			case 'confirmar_posicao': return 'Confirmar posição';
+			case 'selecione_sua_posicao': return 'Selecione sua posição';
+			case 'a_rua_nao_pode_ser_alterada': return 'A rua não pode ser alterada';
+			case 'a_rua_nao_pode_ser_alterada_descricao': return 'Tente reajustar sua posição no mapa.';
+			case 'buscar_endereco_placeholder': return 'Endereço e número';
+			case 'buscar_por_cep': return 'Buscar por CEP';
+			case 'buscar_endereco': return 'Buscar endereço';
+			case 'insira_seu_endereco_no_campo_acima': return 'Insira seu endereço no campo acima';
+			case 'nenhum_endereco_encontrado': return 'Nenhum endereço encontrado';
 			default: return null;
 		}
 	}

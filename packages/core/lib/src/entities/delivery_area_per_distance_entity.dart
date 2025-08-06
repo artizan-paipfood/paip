@@ -93,7 +93,7 @@ class DeliveryAreaPerMileEntity {
 
   factory DeliveryAreaPerMileEntity.fromJson(String source) => DeliveryAreaPerMileEntity.fromMap(json.decode(source));
 
-  double pricePerDistance({required double distance, required DbLocale locale}) {
+  double pricePerDistance({required double distance, required AppLocaleCode locale}) {
     if (distance < minDistance) return minPrice;
 
     final kms = distance / 1000;
@@ -101,7 +101,7 @@ class DeliveryAreaPerMileEntity {
 
     double calculatedPrice;
 
-    if (locale == DbLocale.gb) {
+    if (locale == AppLocaleCode.gb) {
       calculatedPrice = miles * pricePerMile;
     } else {
       calculatedPrice = kms * pricePerMile;

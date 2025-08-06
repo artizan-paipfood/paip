@@ -18,7 +18,7 @@ class AddressUserUsecase {
   }
 
   Future<AddressEntity> searchByPostalCode({required UserDto userVm, required String value}) async {
-    final result = await addressApi.postalcodeGeocode(request: PostalcodeGeocodeRequest(postalCode: value, provider: AutoCompleteProvider.mapbox, locale: LocaleNotifier.instance.locale));
+    final result = await addressApi.postalcodeGeocode(request: PostcodeGeocodeRequest(postalCode: value, provider: AutoCompleteProvider.mapbox, locale: LocaleNotifier.instance.locale));
     return AddressEntity.fromAddressModel(result).copyWith(
       number: userVm.address?.number,
       complement: userVm.address?.complement,

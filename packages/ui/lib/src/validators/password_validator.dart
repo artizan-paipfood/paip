@@ -1,4 +1,5 @@
 import 'package:artizan_ui/artizan_ui.dart';
+import 'package:ui/i18n/gen/strings.g.dart';
 
 class PasswordValidator extends FormController {
   final String? Function(String value)? customValidator;
@@ -8,10 +9,10 @@ class PasswordValidator extends FormController {
   @override
   String? Function(String? value)? get validator => (value) {
         if (FormController.isEmpty(value)) {
-          return 'Senha obrigatória';
+          return t.campo_obrigatorio;
         }
         if (value!.length < 8) {
-          return 'Senha deve ter no mínimo 8 caracteres';
+          return t.senha_invalida_minimo_caracteres;
         }
         if (customValidator != null) {
           final String? text = customValidator!(value);

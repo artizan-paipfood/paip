@@ -16,12 +16,12 @@ enum StripeCheckoutStatus {
   static StripeCheckoutStatus fromMap(String value) => StripeCheckoutStatus.values.firstWhere((e) => e.name == value, orElse: () => StripeCheckoutStatus.undefined);
 }
 
-extension StripeDbLocaleExtension on DbLocale {
-  DbLocale getByCurrency(String currency) {
+extension StripeDbLocaleExtension on AppLocaleCode {
+  AppLocaleCode getByCurrency(String currency) {
     return switch (currency.toUpperCase()) {
-      'GPB' => DbLocale.gb,
-      'BRL' => DbLocale.br,
-      _ => DbLocale.br,
+      'GPB' => AppLocaleCode.gb,
+      'BRL' => AppLocaleCode.br,
+      _ => AppLocaleCode.br,
     };
   }
 }
@@ -52,5 +52,5 @@ class StripeCheckoutWebhook {
     );
   }
 
-  DbLocale get locale => DbLocale.br.getByCurrency(currency);
+  AppLocaleCode get locale => AppLocaleCode.br.getByCurrency(currency);
 }

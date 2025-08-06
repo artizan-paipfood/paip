@@ -20,7 +20,7 @@ Future<Response> _onPost(RequestContext context) async {
   final data = await context.request.json() as Map<String, dynamic>;
   final body = I18nRequest.fromMap(data);
 
-  final locale = DbLocale.fromMap(body.locale);
+  final locale = AppLocaleCode.fromMap(body.locale);
 
   return Response.json(body: {'result': I18n.testI18n(locale.language, name: body.name)});
 }

@@ -16,4 +16,8 @@ class Routes {
   static const String manuallyRelative = '/manually';
   static const String manually = '/manually';
   static const String manuallyNamed = 'manually';
+
+  static const String postcodeRelative = '/postcode';
+  static const String postcode = '/postcode';
+  static const String postcodeNamed = 'postcode';
 }

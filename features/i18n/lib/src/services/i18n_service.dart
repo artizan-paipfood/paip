@@ -2,44 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:i18n/i18n/gen/strings.g.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class I18nService {
-  static I18nService? _instance;
+class AppI18n {
+  AppI18n._();
 
-  I18nService._() {
+  static SharedPreferences? _prefs;
+
+  static bool userHasSetLanguage = false;
+
+  static final ValueNotifier<Locale> _locale = ValueNotifier(LocaleSettings.currentLocale.flutterLocale);
+
+  static ValueNotifier<Locale> get observer => _locale;
+
+  static Locale get locale => _locale.value;
+
+  static bool _isInitialized = false;
+
+  static void _listenSlang() {
     LocaleSettings.getLocaleStream().listen((event) {
-      _locale.value = event.flutterLocale;
+      _prefs?.setString('language', event.underscoreTag);
     });
   }
-  static I18nService get instance => _instance ??= I18nService._();
 
-  SharedPreferences? _prefs;
+  static Future<String> initialize() async {
+    if (_isInitialized) return _locale.value.languageCode;
+    _isInitialized = true;
 
-  bool userHasSetLanguage = false;
-
-  final ValueNotifier<Locale> _locale = ValueNotifier(LocaleSettings.currentLocale.flutterLocale);
-
-  ValueNotifier<Locale> get observer => _locale;
-
-  Locale get locale => _locale.value;
-
-  Future<void> setLanguage(String language) async {
-    await _prefs?.setString('language', language);
-    LocaleSettings.setLocaleRaw(language);
-  }
-
-  Future<void> initialize() async {
     _prefs = await SharedPreferences.getInstance();
     String? language = _prefs?.getString('language');
+    _listenSlang();
     if (language == null) {
       language = 'en_US';
       userHasSetLanguage = false;
     } else {
       userHasSetLanguage = true;
     }
-    LocaleSettings.setLocaleRaw(language);
+    return language;
   }
 
-  Future<void> clearLanguage() async {
+  static Future<void> clearLanguage() async {
     await _prefs?.remove('language');
     userHasSetLanguage = false;
   }

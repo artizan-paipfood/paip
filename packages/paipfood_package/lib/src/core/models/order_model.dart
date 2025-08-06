@@ -290,7 +290,8 @@ class OrderModel {
 
   String buildScheduleTimeIntervalFormated(BuildContext context) {
     if (scheduleDiferenceInDays() > 1) return buildScheduleTimeFormated(context);
-    return "${buildScheduleTimeFormated(context)} - ${scheduleDate?.add(10.minutes).pFactoryCountryFormatHHmm()}";
+    // return "${buildScheduleTimeFormated(context)} - ${scheduleDate?.add(10.minutes).pFactoryCountryFormatHHmm()}";
+    return "";
   }
 
   int scheduleDiferenceInDays() {
@@ -303,11 +304,12 @@ class OrderModel {
     if (isNotScheduling) return "";
     final DateTime schedule = scheduleDate!.pNormalizeToCondition();
     final int daysDifference = scheduleDiferenceInDays();
-    final hourSufix = " ${scheduleDate!.pFactoryCountryFormatHHmm()}";
-    if (daysDifference == -1) return context.i18nCore.ontem + hourSufix;
-    if (daysDifference == 0) return context.i18nCore.hoje + hourSufix;
-    if (daysDifference == 1) return context.i18nCore.amanha + hourSufix;
-    return schedule.pFactoryCountryFormatDDMMYYHHmm();
+    // final hourSufix = " ${scheduleDate!.pFactoryCountryFormatHHmm()}";
+    // if (daysDifference == -1) return context.i18nCore.ontem + hourSufix;
+    // if (daysDifference == 0) return context.i18nCore.hoje + hourSufix;
+    // if (daysDifference == 1) return context.i18nCore.amanha + hourSufix;
+    // return schedule.pFactoryCountryFormatDDMMYYHHmm();
+    return "";
   }
 
   bool get isScheduling => scheduleDate != null;

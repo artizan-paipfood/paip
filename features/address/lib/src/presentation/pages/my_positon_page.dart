@@ -1,9 +1,17 @@
-import 'package:address/src/utils/routes.dart';
+import 'package:address/i18n/gen/strings.g.dart';
+import 'package:address/src/data/events/route_events.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:ui/ui.dart';
 import '../viewmodels/my_position_viewmodel.dart';
+
+void showMyPositionDialog(BuildContext context, {required double lat, required double lng}) {
+  showDialog(
+    context: context,
+    builder: (context) => MyPositonPage(lat: lat, lng: lng),
+  );
+}
 
 class MyPositonPage extends StatefulWidget {
   final double lat;
@@ -18,13 +26,10 @@ class _MyPositonPageState extends State<MyPositonPage> {
   late MyPositionViewmodel _viewModel;
 
   void _onConfirm() {
-    context.pushNamed(
-      Routes.manuallyNamed,
-      queryParameters: {
-        'lat': _viewModel.latLng.latitude.toString(),
-        'lng': _viewModel.latLng.longitude.toString(),
-      },
-    );
+    ModularEvent.fire(GoManuallyEvent(
+      lat: _viewModel.latLng.latitude,
+      lng: _viewModel.latLng.longitude,
+    ));
   }
 
   @override
@@ -43,9 +48,13 @@ class _MyPositonPageState extends State<MyPositonPage> {
 
   @override
   Widget build(BuildContext context) {
+    return _body();
+  }
+
+  Widget _body() {
     return Scaffold(
       appBar: PaipAppBar(
-        title: Text('SELECIONE A SUA POSIÇÃO'),
+        title: Text(t.selecione_sua_posicao.toUpperCase()),
       ),
       body: ListenableBuilder(
         listenable: _viewModel,
@@ -62,7 +71,7 @@ class _MyPositonPageState extends State<MyPositonPage> {
                 ),
                 children: [
                   TileLayer(
-                    urlTemplate: Env.mapboxlight,
+                    urlTemplate: Env.googleMapsLight,
                   ),
                   MarkerLayer(markers: [
                     Marker(
@@ -106,11 +115,11 @@ class _MyPositonPageState extends State<MyPositonPage> {
                 left: 0,
                 right: 0,
                 child: Padding(
-                  padding: EdgeInsets.all(16) + EdgeInsets.only(bottom: 12),
+                  padding: PSize.spacer.paddingHorizontal + PSize.spacer.paddingBottom,
                   child: ArtButton(
                     enabled: _viewModel.isEnabledButton,
                     onPressed: () => _onConfirm(),
-                    child: Text('Confirmar'),
+                    child: Text(t.confirmar_posicao),
                   ),
                 ),
               ),

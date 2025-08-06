@@ -35,7 +35,7 @@ class _CardLocationEstablishmentState extends State<CardLocationEstablishment> {
           ),
           nonRotatedChildren: [
             TileLayer(
-              urlTemplate: context.isDarkTheme ? Env.mapboxDark : Env.mapboxlight,
+              urlTemplate: context.isDarkTheme ? Env.googleMapsDark : Env.googleMapsLight,
             ),
             CircleLayer(
               circles: [CircleMarker(point: widget.establishment.latLng, radius: 100, color: PColors.primaryColor_.withOpacity(0.3), useRadiusInMeter: true, borderColor: PColors.primaryColor_, borderStrokeWidth: 2)],

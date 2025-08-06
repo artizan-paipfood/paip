@@ -22,7 +22,7 @@ class _SelectLanguageComponentState extends State<SelectLanguageComponent> {
   @override
   void initState() {
     super.initState();
-    if (widget.preSelected) _selectedLanguage = PaipLanguage.values.firstWhere((element) => element.languageCode == I18nService.instance.locale.toString());
+    if (widget.preSelected) _selectedLanguage = PaipLanguage.values.firstWhere((element) => element.languageCode == AppI18n.locale.toString());
   }
 
   @override
@@ -58,7 +58,7 @@ class _SelectLanguageComponentState extends State<SelectLanguageComponent> {
                   child: ArtButton(
                     enabled: _selectedLanguage != null,
                     onPressed: () {
-                      I18nService.instance.setLanguage(_selectedLanguage?.languageCode ?? 'en_US');
+                      // AppI18n.setLanguage(_selectedLanguage?.languageCode ?? 'en_US');
                       widget.onSaveLanguage(_selectedLanguage!);
                     },
                     child: Text(t.salvar),

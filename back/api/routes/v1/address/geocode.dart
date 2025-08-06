@@ -3,7 +3,6 @@ import 'package:dart_frog/dart_frog.dart';
 import 'package:api/services/_back_injectors.dart';
 import 'package:api/repositories/address/search_address/search_address_repository.dart';
 import 'package:core/core.dart';
-import 'package:postgrest/postgrest.dart' as pg;
 
 Future<Response> onRequest(RequestContext context) async {
   final data = await context.request.json() as Map<String, dynamic>;
@@ -25,7 +24,7 @@ Future<Response> onRequest(RequestContext context) async {
 Future<Response> _onPost(RequestContext context, GeocodeRequest body) async {
   final autocompleteRepository = injector.get<ISearchAddressRepository>(key: "${body.locale.name}-address-api");
 
-  final result = await autocompleteRepository.geocode(query: body.query, address: body.address, locale: body.locale, lat: body.lat, lon: body.lon, radius: body.radius);
+  final result = await autocompleteRepository.geocode(query: body.query, address: body.address, locale: body.locale, lat: body.lat, lon: body.lon, radius: body.radius ?? 30);
 
   return Response.json(body: result.toMap());
 }

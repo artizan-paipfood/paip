@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:core/core.dart';
 
 class AddressEntity {
@@ -20,6 +21,9 @@ class AddressEntity {
   final String? userId;
   final String? establishmentId;
   final bool isDeleted;
+  final String mainText;
+  final String secondaryText;
+  final String countryCode;
 
   static const String table = 'address';
 
@@ -42,6 +46,9 @@ class AddressEntity {
     this.nickName = "",
     this.establishmentId,
     this.isDeleted = false,
+    this.mainText = "",
+    this.secondaryText = "",
+    this.countryCode = "",
   }) : street = _cleanStreetName(street);
 
   static const String box = "address";
@@ -65,6 +72,9 @@ class AddressEntity {
     String? userId,
     String? establishmentId,
     bool? isDeleted,
+    String? mainText,
+    String? secondaryText,
+    String? countryCode,
   }) {
     return AddressEntity(
       id: id ?? this.id,
@@ -85,6 +95,9 @@ class AddressEntity {
       userId: userId ?? this.userId,
       establishmentId: establishmentId ?? this.establishmentId,
       isDeleted: isDeleted ?? this.isDeleted,
+      mainText: mainText ?? this.mainText,
+      secondaryText: secondaryText ?? this.secondaryText,
+      countryCode: countryCode ?? this.countryCode,
     );
   }
 
@@ -108,6 +121,9 @@ class AddressEntity {
       'user_id': userId,
       'establishment_id': establishmentId,
       'is_deleted': isDeleted,
+      'main_text': mainText,
+      'secondary_text': secondaryText,
+      'country_code': countryCode.toUpperCase(),
     };
   }
 
@@ -149,6 +165,9 @@ class AddressEntity {
       userId: map['user_id'],
       establishmentId: map['establishment_id'],
       isDeleted: map['is_deleted'] ?? false,
+      mainText: map['main_text'] ?? '',
+      secondaryText: map['secondary_text'] ?? '',
+      countryCode: map['country_code'] ?? '',
     );
   }
 
@@ -160,21 +179,27 @@ class AddressEntity {
   //***************************************************** */
 
   static String _cleanStreetName(String street) {
-    // Remove numbers from the end of street name until the first space
+    // Remove numbers from the beginning and end of street name
     final trimmedStreet = street.trim();
-    final regex = RegExp(r'\d+$');
-    if (regex.hasMatch(trimmedStreet)) {
+
+    // Remove numbers from the beginning
+    String cleanedStreet = trimmedStreet.replaceAll(RegExp(r'^\d+\s*'), '');
+
+    // Remove numbers from the end of street name until the first space
+    final endRegex = RegExp(r'\d+$');
+    if (endRegex.hasMatch(cleanedStreet)) {
       // Find the last space before the numbers at the end
-      final lastSpaceIndex = trimmedStreet.lastIndexOf(' ');
+      final lastSpaceIndex = cleanedStreet.lastIndexOf(' ');
       if (lastSpaceIndex != -1) {
         // Remove everything from the last space (including numbers)
-        return trimmedStreet.substring(0, lastSpaceIndex).trim();
+        cleanedStreet = cleanedStreet.substring(0, lastSpaceIndex).trim();
       } else {
         // If there's no space, remove all numbers from the end
-        return trimmedStreet.replaceAll(regex, '');
+        cleanedStreet = cleanedStreet.replaceAll(endRegex, '');
       }
     }
-    return street;
+
+    return cleanedStreet.trim();
   }
 
   factory AddressEntity.fromAddressModel(AddressModel addressModel) {
@@ -197,24 +222,6 @@ class AddressEntity {
       isDeleted: false,
     );
   }
-
-  String mainText(DbLocale locale) {
-    if (street.isEmpty) return address;
-    final pNumber = number.isNotEmpty ? '$number ' : '';
-    final pComplement = complement.isNotEmpty ? '$complement, ' : '';
-    final pNeighborhood = neighborhood.isNotEmpty ? '- $neighborhood' : '';
-    return switch (locale) {
-      DbLocale.br => '$street $pNumber$pComplement $pNeighborhood',
-      DbLocale.gb => '$zipCode, Nº$number, $street $pComplement',
-    };
-  }
-
-  String secondaryText(DbLocale locale) => switch (locale) {
-        DbLocale.br => '$zipCode - $state - $country',
-        DbLocale.gb => '$city, $state, $country',
-      };
-
-  String formattedAddress(DbLocale locale) => '${mainText(locale)} - ${secondaryText(locale)}';
 
   bool isValid() => lat != null && long != null;
 

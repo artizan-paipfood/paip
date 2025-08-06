@@ -2,11 +2,10 @@ import 'dart:convert';
 
 import 'package:core/core.dart';
 
-class PostalcodeGeocodeRequest {
+class PostcodeGeocodeRequest {
   /// Representa uma requisição de geocodificação com uma consulta, país e limites opcionais.
   ///
   /// O `postalCode` é o termo de busca para a requisição de geocodificação.
-  /// O `provider` especifica o provedor de serviço de geocodificação (Google ou Mapbox).
   /// O `locale` define o idioma e região para os resultados.
   /// O `address` é o modelo de endereço base para complementar com os dados de geocodificação.
   /// O `lat` é a latitude opcional do ponto central para limitar a busca.
@@ -16,12 +15,12 @@ class PostalcodeGeocodeRequest {
   /// Se `lat`, `lon` ou `radius` forem fornecidos, todos devem ser não-nulos.
   final String postalCode;
   final AutoCompleteProvider provider;
-  final DbLocale locale;
+  final AppLocaleCode locale;
   final double? lat;
   final double? lon;
   final int? radius;
 
-  PostalcodeGeocodeRequest({
+  PostcodeGeocodeRequest({
     required this.postalCode,
     required this.provider,
     required this.locale,
@@ -41,11 +40,11 @@ class PostalcodeGeocodeRequest {
     };
   }
 
-  factory PostalcodeGeocodeRequest.fromMap(Map<String, dynamic> map) {
-    return PostalcodeGeocodeRequest(
+  factory PostcodeGeocodeRequest.fromMap(Map<String, dynamic> map) {
+    return PostcodeGeocodeRequest(
       postalCode: map['postal_code'] ?? '',
       provider: AutoCompleteProvider.values.byName(map['provider']),
-      locale: DbLocale.fromMap(map['locale']),
+      locale: AppLocaleCode.fromMap(map['locale']),
       lat: map['lat']?.toDouble(),
       lon: map['lon']?.toDouble(),
       radius: map['radius']?.toInt(),
@@ -54,5 +53,5 @@ class PostalcodeGeocodeRequest {
 
   String toJson() => json.encode(toMap());
 
-  factory PostalcodeGeocodeRequest.fromJson(String source) => PostalcodeGeocodeRequest.fromMap(json.decode(source));
+  factory PostcodeGeocodeRequest.fromJson(String source) => PostcodeGeocodeRequest.fromMap(json.decode(source));
 }

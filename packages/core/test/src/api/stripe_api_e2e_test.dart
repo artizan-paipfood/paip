@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
-import 'package:core/src/helpers/base_options.dart';
-import 'package:core/src/helpers/env.dart';
+import 'package:core/src/helpers/test_base_options.dart';
+import 'package:core/src/helpers/env_test.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -12,8 +12,8 @@ void main() {
   const String country = 'br';
 
   setUp(() async {
-    await Env.initializeForTest(envFilePath: 'test.env');
-    client = ClientDio(baseOptions: PaipBaseOptions.supabase);
+    await EnvTest.initializeForTest(envFilePath: 'test.env');
+    client = ClientDio(baseOptions: TestBaseOptions.supabase);
     api = StripeApi(client: client);
   });
 
@@ -76,7 +76,7 @@ void main() {
             amount: 20,
             cancelUrl: 'https://example.com/cancel',
             description: 'Order-1',
-            locale: DbLocale.br,
+            locale: AppLocaleCode.br,
             chargeId: 'abcd-1234',
             successUrl: 'https://example.com/success',
           );

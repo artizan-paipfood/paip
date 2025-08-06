@@ -1093,7 +1093,7 @@ class Countries {
       locale: 'BR',
       dialCode: '55',
       minLength: 11,
-      maskMin: '(##) #####-####',
+      maskMin: '(##) ####-####',
       maskMax: '(##) # ####-####',
       language: 'pt_BR',
     ),

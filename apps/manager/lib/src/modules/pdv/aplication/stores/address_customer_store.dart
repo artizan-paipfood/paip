@@ -54,7 +54,7 @@ class AddressCustomerStore {
     final number = address.number;
     final complement = address.complement;
     final result = await addressApi.postalcodeGeocode(
-        request: PostalcodeGeocodeRequest(
+        request: PostcodeGeocodeRequest(
       postalCode: value,
       provider: AutoCompleteProvider.mapbox,
       locale: LocaleNotifier.instance.locale,

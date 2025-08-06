@@ -1,17 +1,29 @@
 import 'dart:async';
+import 'package:address/src/data/events/position_events.dart';
+import 'package:address/src/data/events/route_events.dart';
+import 'package:address/src/data/services/my_position_service.dart';
 import 'package:address/src/presentation/pages/auto_complete_page.dart';
 import 'package:address/src/presentation/pages/address_manually_page.dart';
 import 'package:address/src/presentation/pages/my_addresses_page.dart';
 import 'package:address/src/presentation/pages/my_positon_page.dart';
+import 'package:address/src/presentation/pages/postcode_page.dart';
+import 'package:address/src/presentation/viewmodels/auto_complete_viewmodel.dart';
 import 'package:address/src/presentation/viewmodels/my_addresses_viewmodel.dart';
+import 'package:address/src/presentation/viewmodels/post_code_viewmodel.dart';
 import 'package:address/src/utils/routes.dart';
+import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:i18n/i18n.dart';
 
-class AddressModule extends Module {
+class AddressModule extends EventModule {
   @override
   FutureOr<List<Bind<Object>>> binds() => [
+        Bind.factory((i) => IpApi(client: ClientDio())),
         Bind.singleton((i) => MyAddressesViewmodel()),
+        Bind.singleton((i) => SearchAddressApi(client: i.get(key: PaipBindKey.paipApi))),
+        Bind.singleton((i) => AutoCompleteViewmodel(searchAddressApi: i.get())),
+        Bind.singleton((i) => PostCodeViewmodel(searchAddressApi: i.get())),
       ];
   @override
   List<ModularRoute> get routes => [
@@ -32,7 +44,7 @@ class AddressModule extends Module {
         ChildRoute(
           Routes.autoCompleteRelative,
           name: Routes.autoCompleteNamed,
-          child: (context, args) => AutoCompletePage(),
+          child: (context, args) => AutoCompletePage(viewmodel: Modular.get<AutoCompleteViewmodel>()),
         ),
         ChildRoute(
           Routes.manuallyRelative,
@@ -43,6 +55,11 @@ class AddressModule extends Module {
             return AddressManuallyPage(lat: double.parse(pathParams['lat']!), lng: double.parse(pathParams['lng']!));
           },
         ),
+        ChildRoute(
+          Routes.postcodeRelative,
+          name: Routes.postcodeNamed,
+          child: (context, state) => PostcodePage(viewmodel: Modular.get()),
+        ),
       ];
 
   String? _redirectLatLongNullable(BuildContext context, GoRouterState state) {
@@ -51,5 +68,42 @@ class AddressModule extends Module {
     final lng = pathParams['lng'];
     if (lat == null || lng == null) return state.namedLocation(Routes.myAddressesNamed);
     return null;
+  }
+
+  @override
+  void listen() {
+    //ROUTES
+    on<GoAutoCompleteEvent>((event, context) {
+      if (context == null) return;
+      context.pushNamed(Routes.autoCompleteNamed);
+    });
+    on<GoPostcodeEvent>((event, context) {
+      if (context == null) return;
+      context.pushNamed(Routes.postcodeNamed);
+    });
+    on<GoMyAddressesEvent>((event, context) {
+      if (context == null) return;
+      context.pushNamed(Routes.myAddressesNamed);
+    });
+    on<GoMyPositionEvent>((event, context) {
+      if (context == null) return;
+      context.pushNamed(
+        Routes.myPositionNamed,
+        queryParameters: {
+          'lat': event.lat.toString(),
+          'lng': event.lng.toString(),
+        },
+      );
+    });
+    on<GoManuallyEvent>((event, context) {
+      if (context == null) return;
+      context.pushNamed(
+        Routes.manuallyNamed,
+        queryParameters: {
+          'lat': event.lat.toString(),
+          'lng': event.lng.toString(),
+        },
+      );
+    });
   }
 }

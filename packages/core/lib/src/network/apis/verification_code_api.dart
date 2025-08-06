@@ -10,7 +10,7 @@ class VerificationCodeApi {
   static final String _v1 = '/v1/verification_code';
 
   Future<String> sendWhatsapp({
-    required DbLocale locale,
+    required AppLocaleCode locale,
     required String phone,
   }) async {
     final response = await client.post(

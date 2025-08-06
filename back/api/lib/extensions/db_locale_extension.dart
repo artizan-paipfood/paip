@@ -1,10 +1,10 @@
 import 'package:core/core.dart';
 
-extension DBLocaleExtensionI18n on DbLocale {
+extension DBLocaleExtensionI18n on AppLocaleCode {
   String get language {
     return switch (this) {
-      DbLocale.br => 'pt_BR',
-      DbLocale.gb => 'en',
+      AppLocaleCode.br => 'pt_BR',
+      AppLocaleCode.gb => 'en',
     };
   }
 }

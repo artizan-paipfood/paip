@@ -1,3 +1,4 @@
+import 'package:address/i18n/gen/strings.g.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
@@ -35,10 +36,10 @@ class UseMylocationButton extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Usar localização atual', style: context.artTextTheme.h2.copyWith(fontSize: 16)),
+                    Text(t.usar_localizacao_atual, style: context.artTextTheme.h2.copyWith(fontSize: 16)),
                     SizedBox(height: 4),
-                    Text(address.mainText(DbLocale.br)),
-                    Text(address.secondaryText(DbLocale.br), style: context.artTextTheme.muted),
+                    Text(address.mainText),
+                    Text(address.secondaryText, style: context.artTextTheme.muted),
                   ],
                 ),
               )

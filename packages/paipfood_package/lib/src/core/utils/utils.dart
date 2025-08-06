@@ -21,8 +21,8 @@ class Utils {
     return 'https://waze.com/ul?q=$encodedAddress';
   }
 
-  static double converMetersInMilesOrKm({required DbLocale locale, required double distance}) {
-    if (locale == DbLocale.br) {
+  static double converMetersInMilesOrKm({required AppLocaleCode locale, required double distance}) {
+    if (locale == AppLocaleCode.br) {
       return distance / 1000;
     }
     return distance / 1609.34;

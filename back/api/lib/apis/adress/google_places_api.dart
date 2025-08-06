@@ -8,7 +8,7 @@ class GooglePlacesApi {
   final IClient client;
   GooglePlacesApi({required this.client});
 
-  Future<AddressModel> geocode({required String query, required DbLocale locale, required AddressModel address, double? lat, double? lon, int? radius}) async {
+  Future<AddressModel> geocode({required String query, required AppLocaleCode locale, required AddressModel address, double? lat, double? lon, int? radius}) async {
     final String _bounds = (radius != null && lat != null && lon != null) ? '&bounds=${BackUtils.calculateBoundingBox(latitude: lat, longitude: lon, radiusInKm: radius).bounds}' : '';
     final request = await client.get('${BaseUrl.googleGeocode}/json?key=${ProcessEnv.googleMapsApikey}&components=country:${locale.name.toUpperCase()}$_bounds&address=$query');
 
@@ -17,7 +17,7 @@ class GooglePlacesApi {
     return AddressModel.fromGoogleMaps(address: address, geocode: geocode);
   }
 
-  Future<List<AddressModel>> autoComplete({required String query, required DbLocale locale, String? sessionToken, double? lat, double? lon, int? radius}) async {
+  Future<List<AddressModel>> autoComplete({required String query, required AppLocaleCode locale, String? sessionToken, double? lat, double? lon, int? radius}) async {
     final String location = (radius != null && lat != null && lon != null) ? '&location=$lat,$lon&radius=$radius' : '';
     final request = await client.get('${BaseUrl.googleAutocomplete}/json?input=$query&types=geocode&key=${ProcessEnv.googleMapsApikey}&components=country:${locale.name.toUpperCase()}$location');
 

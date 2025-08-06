@@ -1,5 +1,5 @@
-import 'package:artizan_ui/artizan_ui.dart';
 import 'package:ui/ui.dart';
+import 'package:ui/i18n/gen/strings.g.dart';
 
 class CpfCnpjValidator extends FormController {
   @override
@@ -8,13 +8,13 @@ class CpfCnpjValidator extends FormController {
   @override
   String? Function(String? value)? get validator => (value) {
         if (value == null || value.isEmpty) {
-          return 'Campo obrigatório';
+          return t.campo_obrigatorio;
         }
         if (value.length > 15 && CnpjValidator.isValidCnpj(value)) {
-          return 'CNPJ inválido';
+          return t.cnpj_invalido;
         }
         if (value.length < 15 && CpfValidator.isValidCpf(value)) {
-          return 'CPF inválido';
+          return t.cpf_invalido;
         }
         return null;
       };

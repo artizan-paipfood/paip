@@ -1,3 +1,4 @@
+import 'package:address/i18n/gen/strings.g.dart';
 import 'package:address/src/domain/models/address_manually_model.dart';
 import 'package:address/src/presentation/components/address_manually_form.dart';
 import 'package:address/src/presentation/viewmodels/address_manually_viewmodel.dart';
@@ -11,7 +12,8 @@ import 'package:ui/ui.dart';
 class AddressManuallyPage extends StatefulWidget {
   final double lat;
   final double lng;
-  const AddressManuallyPage({required this.lat, required this.lng, super.key});
+  final EdgeInsetsGeometry? padding;
+  const AddressManuallyPage({required this.lat, required this.lng, this.padding, super.key});
 
   @override
   State<AddressManuallyPage> createState() => _AddressManuallyPageState();
@@ -22,6 +24,8 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
   AddressManuallyModel get _addressManuallyModel => _viewModel.addressManuallyModel;
   AddressEntity get _address => _addressManuallyModel.address;
   final _formKey = GlobalKey<FormState>();
+
+  EdgeInsetsGeometry get _effectivePadding => widget.padding ?? PSize.spacer.paddingAll;
 
   @override
   void initState() {
@@ -41,7 +45,7 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PaipAppBar(
-        title: Text('COMPLETE SEU ENDEREÇO'),
+        title: Text(t.complete_seu_endereco.toUpperCase()),
       ),
       body: ListenableBuilder(
           listenable: Listenable.merge([_viewModel.loading, _viewModel]),
@@ -68,7 +72,7 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
                               ),
                               children: [
                                 TileLayer(
-                                  urlTemplate: Env.mapboxlight,
+                                  urlTemplate: Env.googleMapsLight,
                                 ),
                                 MarkerLayer(markers: [
                                   Marker(
@@ -92,12 +96,12 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
                         ),
                         //* Resumo do endereço
                         Padding(
-                          padding: EdgeInsets.only(left: PSize.spacer.value, right: PSize.spacer.value, top: 16.0),
+                          padding: _effectivePadding,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(_address.mainText(DbLocale.br), style: context.artTextTheme.large),
-                              Text(_address.secondaryText(DbLocale.br), style: context.artTextTheme.muted),
+                              Text(_address.mainText, style: context.artTextTheme.large),
+                              Text(_address.secondaryText, style: context.artTextTheme.muted),
                             ],
                           ),
                         ),
@@ -105,7 +109,7 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
                         Form(
                           key: _formKey,
                           child: Padding(
-                            padding: PSize.spacer.paddingAll,
+                            padding: _effectivePadding,
                             child: AddressManuallyForm(
                               viewmodel: _viewModel,
                               onChanged: (addressManuallyModel) => _viewModel.changeAddressManually(addressManuallyModel),
@@ -121,13 +125,18 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
                   ),
                 ),
                 //* Botão de salvar endereço
-                Padding(
-                  padding: PSize.spacer.paddingAll,
-                  child: ArtButton(
-                    onPressed: () => _saveAddress(),
-                    expands: true,
-                    // onPressed: () => _viewModel.saveAddress(),
-                    child: Text('Salvar endereço'),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                      border: Border(
+                    top: BorderSide(color: context.artColorScheme.border),
+                  )),
+                  child: Padding(
+                    padding: PSize.spacer.paddingAll,
+                    child: ArtButton(
+                      onPressed: () => _saveAddress(),
+                      expands: true,
+                      child: Text(t.salvar_endereco),
+                    ),
                   ),
                 ),
               ],

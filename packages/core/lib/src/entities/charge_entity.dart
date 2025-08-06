@@ -14,7 +14,7 @@ class ChargeEntity {
   final Map<String, dynamic> metadata;
   final double? netAmount;
   final double? driverFee;
-  final DbLocale locale;
+  final AppLocaleCode locale;
   ChargeEntity({
     required this.id,
     required this.locale,
@@ -42,7 +42,7 @@ class ChargeEntity {
     Map<String, dynamic>? metadata,
     double? netAmount,
     double? driverFee,
-    DbLocale? locale,
+    AppLocaleCode? locale,
   }) {
     return ChargeEntity(
       id: id ?? this.id,
@@ -108,7 +108,7 @@ class ChargeEntity {
       ),
       netAmount: map['net_amount']?.toDouble(),
       driverFee: map['driver_fee']?.toDouble(),
-      locale: DbLocale.fromMap(
+      locale: AppLocaleCode.fromMap(
         map['locale'],
       ),
     );

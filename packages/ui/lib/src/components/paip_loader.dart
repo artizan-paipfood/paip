@@ -5,7 +5,7 @@ import 'package:ui/ui.dart';
 class PaipLoader extends StatelessWidget {
   final double? size;
   final Color? color;
-  const PaipLoader({super.key, this.size = 70, this.color});
+  const PaipLoader({super.key, this.size = 60, this.color});
 
   @override
   Widget build(BuildContext context) {

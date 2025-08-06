@@ -90,7 +90,7 @@ class _AddressEstablishmentState extends State<AddressEstablishment> {
                 mapController: mapController,
                 options: MapOptions(enableScrollWheel: false, minZoom: 10, maxZoom: 18, zoom: 15, screenSize: const Size(double.infinity, 200), center: latLon),
                 nonRotatedChildren: [
-                  TileLayer(urlTemplate: context.isDarkTheme ? Env.mapboxDark : Env.mapboxlight),
+                  TileLayer(urlTemplate: context.isDarkTheme ? Env.googleMapsDark : Env.googleMapsLight),
                   CircleLayer(circles: [CircleMarker(point: latLon, radius: 100, color: PColors.primaryColor_.withOpacity(0.3), useRadiusInMeter: true, borderColor: PColors.primaryColor_, borderStrokeWidth: 2)]),
                   MarkerLayer(markers: [Marker(point: latLon, builder: (context) => Image.asset(PImages.shop3d, height: 25, width: 25))]),
                 ],

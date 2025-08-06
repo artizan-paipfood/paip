@@ -50,7 +50,7 @@ class EstablishmentModel {
   PaymentMethodModel? paymentMethod;
   final int deliveryRadius;
   final DeliveryMethod deliveryMethod;
-  final DbLocale locale;
+  final AppLocaleCode locale;
   final String? paymentProviderId;
   final double maxDistance;
 
@@ -93,7 +93,7 @@ class EstablishmentModel {
     this.deliveryMethod = DeliveryMethod.polygon,
     this.paymentMethod,
     this.deliveryRadius = 10,
-    this.locale = DbLocale.br,
+    this.locale = AppLocaleCode.br,
     this.paymentProviderId,
     this.maxDistance = 10,
   });
@@ -137,7 +137,7 @@ class EstablishmentModel {
     PaymentMethodModel? paymentMethod,
     int? deliveryRadius,
     DeliveryMethod? deliveryMethod,
-    DbLocale? locale,
+    AppLocaleCode? locale,
     String? paymentProviderId,
     double? maxDistance,
     ResetOrderNumberPeriod? resetOrderNumberPeriod,
@@ -268,7 +268,7 @@ class EstablishmentModel {
       paymentMethod: map['payment_methods'] != null ? PaymentMethodModel.fromMap(map['payment_methods']) : null,
       address: map['address'] != null ? AddressEntity.fromMap(map['address']) : null,
       deliveryRadius: map['delivery_radius']?.toInt() ?? 10,
-      locale: map['locale'] != null ? DbLocale.fromMap(map['locale']) : DbLocale.br,
+      locale: map['locale'] != null ? AppLocaleCode.fromMap(map['locale']) : AppLocaleCode.br,
       paymentProviderId: map['payment_provider_id'],
       maxDistance: map['max_distance']?.toDouble() ?? 10,
     );
@@ -283,7 +283,7 @@ class EstablishmentModel {
   String get cacheKeybanner => "${imageCacheId}banner.png";
 
   Locale get getLocale {
-    if (locale == DbLocale.br) return Locale('pt', 'BR');
+    if (locale == AppLocaleCode.br) return Locale('pt', 'BR');
     return Locale('en');
   }
 

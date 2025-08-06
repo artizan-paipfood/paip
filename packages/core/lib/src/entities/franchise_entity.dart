@@ -7,7 +7,7 @@ class FranchiseEntity {
   final DateTime? updatedAt;
   final double profitPercent;
   final String userId;
-  final DbLocale locale;
+  final AppLocaleCode locale;
   final String displayName;
   final String? paymentProviderId;
   FranchiseEntity({
@@ -52,7 +52,7 @@ class FranchiseEntity {
           : null,
       profitPercent: map['profitPercent']?.toDouble() ?? 0.0,
       userId: map['userId'] ?? '',
-      locale: DbLocale.fromMap(
+      locale: AppLocaleCode.fromMap(
         map['locale'],
       ),
       displayName: map['displayName'] ?? '',

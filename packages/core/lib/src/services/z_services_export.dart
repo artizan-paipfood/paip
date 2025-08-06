@@ -1,2 +1,2 @@
-export './env_reader.dart';
+export '../helpers/env_reader.dart';
 export './jwt_service.dart';

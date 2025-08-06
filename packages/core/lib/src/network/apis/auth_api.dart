@@ -15,7 +15,7 @@ abstract class IAuthApi {
   Future<void> updatePasswordPhone({required PhoneNumber phoneNumber, required String encryptKey, required String accessToken});
   Future<bool> userExistsByPhone({required PhoneNumber phoneNumber});
   Future<bool> userExistsByEmail({required String email});
-  Future<UserEntity> getUser({required String accessToken});
+  Future<UserMe> me({required String userId, required String accessToken});
 }
 
 class AuthApi implements IAuthApi {
@@ -147,5 +147,14 @@ class AuthApi implements IAuthApi {
       },
       headers: {"Authorization": "Bearer $accessToken"},
     );
+  }
+
+  @override
+  Future<UserMe> me({required String userId, required String accessToken}) async {
+    final response = await client.get(
+      '/view_user_me?id=eq.$userId&select=*',
+      headers: {'Authorization': 'Bearer $accessToken'},
+    );
+    return UserMe.fromMap(response.data);
   }
 }
