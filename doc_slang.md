@@ -1,6 +1,28 @@
+
+
+Sign in
+Help
+
+slang 4.8.1 copy "slang: ^4.8.1" to clipboard
+Published 5 days ago • verified publishertienisto.comDart 3 compatible
+SDKDARTFLUTTERPLATFORMANDROIDIOSLINUXMACOSWEBWINDOWS
+liked status: inactive
+665
+Readme
+Changelog
+Example
+Installing
+Versions
+Scores
+featured
+
+logo
+
+pub package ci License: MIT
+
 Type-safe i18n solution using JSON, YAML, CSV, or ARB files.
 
-About this library
+About this library 
 
 🚀 Minimal setup, create JSON files and get started! No configuration needed.
 🐞 Bug-resistant, no typos or missing arguments possible due to compile-time checking.
@@ -35,7 +57,7 @@ dart run slang normalize                     # sort translations according to ba
 dart run slang configure                     # automatically update CFBundleLocalizations
 dart run slang edit move loginPage authPage  # move or rename translations
 dart run slang migrate arb src.arb dest.json # migrate arb to json
-Table of Contents
+Table of Contents 
 
 Getting Started
 Configuration
@@ -98,7 +120,7 @@ Further Reading
 Ecosystem
 Slang in production
 Slang ports
-Getting Started
+Getting Started 
 
 Coming from ARB? There is a tool for that.
 
@@ -224,7 +246,7 @@ Step 5: Use your translations
 import 'package:my_app/i18n/strings.g.dart'; // (1) import
 
 String a = t.login.success; // (2) get translation
-Configuration
+Configuration 
 
 This is optional. This library works without any configuration (in most cases).
 
@@ -274,9 +296,9 @@ autodoc/enabled	Boolean	enable autodoc (i)	true
 autodoc/locales	List<String>	list of locales to generate (i)	$BASE$
 imports	List<String>	generate import statements	[]
 generate_enum	Boolean	global generate_enum (i)	true
-Main Features
+Main Features 
 
-➤ File Types
+➤ File Types 
 
 Supported file types: JSON (default), YAML, CSV, and ARB.
 
@@ -329,7 +351,7 @@ ARB is the default format for Flutter projects. However, it doesn't support list
     }
   }
 }
-➤ String Interpolation
+➤ String Interpolation 
 
 Translations often have a dynamic parameter.
 
@@ -345,7 +367,7 @@ Mode	Example
 dart (default)	Hello $name. I am ${height}m.
 braces	Hello {name}
 double_braces	Hello {{name}}
-➤ RichText
+➤ RichText 
 
 You can add multiple styles to one translation.
 
@@ -374,7 +396,7 @@ Widget a = Text.rich(t.myText(
     },
   ),
 ));
-➤ Lists
+➤ Lists 
 
 Lists are fully supported. No configuration needed. You can also put lists or maps inside lists!
 
@@ -400,7 +422,7 @@ String a = t.niceList[1]; // "nice"
 String b = t.niceList[2][0]; // "first item in nested list"
 String c = t.niceList[3].ok; // "OK!"
 String d = t.niceList[4]['a map entry']; // "access via key"
-➤ Maps
+➤ Maps 
 
 You can access each translation via string keys.
 
@@ -429,7 +451,7 @@ Now you can access the translations via keys:
 String a = t.a['hello world']; // "hello"
 String b = t.b.b0; // "hey"
 String c = t.b.b1['hi there']; // "hi"
-➤ Dynamic Keys / Flat Map
+➤ Dynamic Keys / Flat Map 
 
 A more general solution to Maps. ALL translations are accessible via an one-dimensional map.
 
@@ -440,7 +462,7 @@ This can be disabled globally by setting flat_map: false.
 String a = t['myPath.anotherPath'];
 String b = t['myPath.anotherPath.3']; // with index for arrays
 String c = t['myPath.anotherPath'](name: 'Tom'); // with arguments
-➤ Changing Locale
+➤ Changing Locale 
 
 If you use the built-in LocaleSettings solution, then it is quite easy to change the locale.
 
@@ -454,9 +476,9 @@ LocaleSettings.useDeviceLocale will enable the listener.
 LocaleSettings.setLocale and LocaleSettings.setLocaleRaw will disable the listener by default.
 Widgets rebuild only if you use final t = Translations.of(context) or context.t.
 
-Complex Features
+Complex Features 
 
-➤ Linked Translations
+➤ Linked Translations 
 
 You can link one translation to another. Add the prefix @: followed by the absolute path of the desired translation.
 
@@ -480,7 +502,7 @@ Optionally, you can escape linked translations by surrounding the path with {}:
   },
   "introduce": "Hello, @:{fields.name}inator"
 }
-➤ Pluralization
+➤ Pluralization 
 
 This library uses the concept defined here.
 
@@ -565,7 +587,7 @@ By default, the parameter name is n. You can change that by adding the param mod
 String a = t.someKey.apple(appleCount: 2); // notice 'appleCount' instead of 'n'
 You can set the default parameter globally via pluralization/default_parameter.
 
-➤ Custom Contexts / Enums
+➤ Custom Contexts / Enums 
 
 You can utilize custom contexts to differentiate between male and female forms (or other enums).
 
@@ -621,7 +643,7 @@ There is also a global generate_enum option that applies to all contexts.
 imports:
   - 'package:my_package/path_to_enum.dart' # define where your enum is
 generate_enum: false # turn off enum generation for all contexts
-➤ Typed Parameters
+➤ Typed Parameters 
 
 Parameters are typed as Object by default. This is handy because it offers maximum flexibility.
 
@@ -630,7 +652,7 @@ You can specify the type using the name: type syntax to increase type safety.
 {
   "greet": "Hello {name: String}, you are {age: int} years old"
 }
-➤ L10n
+➤ L10n 
 
 To properly display numbers and dates, Slang extends the Typed Parameters feature to support additional types like currency, decimalPattern, or jm.
 
@@ -685,7 +707,7 @@ To avoid repetition, you can define custom types via @@types. Please note that t
 String a = t.account(amount: 1234.56); // You have $1,234.56 in your account
 String b = t.today(today: DateTime(2023, 3, 2)); // Today is 03/02/2023
 String c = t.tomorrow(tomorrow: DateTime(2023, 3, 5)); // Tomorrow is 03/05/2023
-➤ Interfaces
+➤ Interfaces 
 
 Often, multiple objects have the same attributes. You can create a common super class for that.
 
@@ -741,7 +763,7 @@ You can customize the attributes and use different node selectors.
 
 Checkout the full article.
 
-➤ Modifiers
+➤ Modifiers 
 
 There are several modifiers for further adjustments.
 
@@ -772,7 +794,7 @@ Modifier	Meaning	Applicable for
 (ignoreMissing)	Ignore missing translations during analysis	All nodes
 (ignoreUnused)	Ignore unused translations during analysis	All nodes
 (OUTDATED)	Flagged as outdated for secondary locales	All nodes
-➤ Locale Enum
+➤ Locale Enum 
 
 Typesafety is one of the main advantages of this library. No typos. Enjoy exhausted switch-cases!
 
@@ -786,14 +808,14 @@ enum AppLocale {
 Locale locale = AppLocale.en.flutterLocale; // to native flutter locale
 String tag = AppLocale.en.languageTag; // to string tag (e.g. en-US)
 final t = AppLocale.en.translations; // get translations of one locale
-➤ Locale Stream
+➤ Locale Stream 
 
 You may want to track locale changes. Please use LocaleSettings.getLocaleStream.
 
 LocaleSettings.getLocaleStream().listen((event) {
   print('locale changed: $event');
 });
-➤ Translation Overrides
+➤ Translation Overrides 
 
 You may want to update translations dynamically (e.g. via backend server over network).
 
@@ -833,7 +855,7 @@ onboarding
 );
 
 String a = t2.onboarding.title(name: 'Tom'); // "Welcome Tom"
-➤ Dependency Injection
+➤ Dependency Injection 
 
 You don't like the included LocaleSettings solution?
 
@@ -858,9 +880,9 @@ String a = t.welcome.title; // get translation
 AppLocale locale = t.$meta.locale; // get locale
 Checkout the full article.
 
-Structuring Features
+Structuring Features 
 
-➤ Namespaces
+➤ Namespaces 
 
 You can split the translations into multiple files. Each file represents a namespace.
 
@@ -901,7 +923,7 @@ Now access the translations:
 // t.<namespace>.<path>
 String a = t.widgets.welcomeCard.title;
 String b = t.errorDialogs.login.wrongPassword;
-➤ Compact CSV
+➤ Compact CSV 
 
 Normally, you would create a new csv file for each locale: strings.i18n.csv, strings_fr.i18n.csv, etc.
 
@@ -922,9 +944,9 @@ welcome.button,Start,Start
 assets/
  └── i18n/
       └── strings.i18n.csv <-- contains all locales
-Other Features
+Other Features 
 
-➤ Fallback
+➤ Fallback 
 
 By default, you must provide all translations for all locales. Otherwise, you cannot compile it.
 
@@ -957,7 +979,7 @@ By default, entries inside (map) are not affected by the fallback strategy. This
     // missing keys will fallback to the base locale
   }
 }
-➤ Lazy Loading
+➤ Lazy Loading 
 
 By default, translations for secondary locales are loaded lazily if Deferred loading is supported (Web).
 
@@ -967,7 +989,7 @@ Disable this feature by setting lazy: false. In this case, all locales are avail
 
 # Config
 lazy: false
-➤ Comments
+➤ Comments 
 
 You can add comments in your translation files.
 
@@ -1011,11 +1033,11 @@ Generated File
 
 /// The submit button shown at the bottom
 String get button => 'Submit';
-➤ Auto Generated Comments
+➤ Auto Generated Comments 
 
 Besides the custom comments you provide, Slang will also generate comments (documentation) for you.
 
-By default, the translation of the base locale is added.
+By default, it will only generate comments for the base locale.
 
 /// en: 'An English Title'
 String get title => 'An English Title';
@@ -1024,10 +1046,10 @@ You can configure this feature under autodoc.
 # Config
 autodoc:
   enabled: true # enable this feature
-  locales: # only generate these locales
+  locales: # only generate comments for these locales
     - en 
     - de
-➤ Recasing
+➤ Recasing 
 
 By default, no transformations will be applied.
 
@@ -1053,7 +1075,7 @@ If you specify paths in the config, please case them correctly:
 key_case: camel
 maps:
    - myMap # all paths must be cased accordingly
-➤ Sanitization
+➤ Sanitization 
 
 All keys must be valid Dart identifiers. Slang will automatically sanitize them.
 
@@ -1076,7 +1098,7 @@ will be sanitized to:
 String get kContinue => 'Continue';
 Note: Sanitization is happening before resolving Linked Translations. Therefore, you need to use the sanitized key (e.g. @:kContinue).
 
-➤ Obfuscation
+➤ Obfuscation 
 
 Obfuscate the translation strings to make reverse engineering harder.
 
@@ -1102,7 +1124,7 @@ Keep in mind that this only prevents simple string searches of the binary.
 
 An experienced reverse engineer can still find the strings given enough time.
 
-➤ Formatting
+➤ Formatting 
 
 The generated code is not formatted by default to keep the algorithm fast and efficient.
 
@@ -1112,7 +1134,7 @@ You can enable it:
 format:
   enabled: true
   width: 150 # optional
-➤ Dart Only
+➤ Dart Only 
 
 You can use this library without flutter.
 
@@ -1121,14 +1143,14 @@ dependencies:
   slang: <version>
 # Config
 flutter_integration: false # set this
-Tools
+Tools 
 
-➤ Main Command
+➤ Main Command 
 
 The main command to generate dart files from translation resources.
 
 dart run slang
-➤ Update configuration
+➤ Update configuration 
 
 If you have many locales, it might be frustrating to keep CFBundleLocalizations (for iOS and macOS) up to date.
 
@@ -1140,7 +1162,7 @@ Argument	Usage
 You can also specify additional arguments, for example to set the source directories:
 
 dart run slang configure --source-dirs=dir1,dir2
-➤ Analyze Translations
+➤ Analyze Translations 
 
 You can use the slang analyzer to find missing and unused translations.
 
@@ -1167,7 +1189,7 @@ Result file:
 }
 You can ignore a specific node by adding an (ignoreMissing) or (ignoreUnused) modifier.
 
-➤ Clean Translations
+➤ Clean Translations 
 
 The follow-up command for analyze. It requires analyze to be run first.
 
@@ -1176,7 +1198,7 @@ This command essentially removes all unused translations specified in _unused_tr
 dart run slang clean [--outdir=assets/i18n]
 Argument	Usage
 --outdir=<dir>	Path of analysis output (input_directory by default)
-➤ Apply Translations
+➤ Apply Translations 
 
 The follow-up command for analyze.
 
@@ -1188,7 +1210,7 @@ dart run slang apply [--locale=fr-FR] [--outdir=assets/i18n]
 Argument	Usage
 --locale=<locale>	Apply only one specific locale
 --outdir=<dir>	Path of analysis output (input_directory by default)
-➤ Edit Translations
+➤ Edit Translations 
 
 You can use this command to rename, remove, or add translation keys. This is useful when you have many locales, or if you just want to use the command line.
 
@@ -1203,14 +1225,14 @@ outdated**	Add outdated flag	dart run slang edit outdated loginPage.title
 
 ** See Outdated Translations
 
-➤ Normalize Translations
+➤ Normalize Translations 
 
 To keep the order of the keys consistent, you can normalize the translations. They will follow the same order as the base locale.
 
 dart run slang normalize [--locale=fr-FR]
 Argument	Usage
 --locale=<locale>	Normalize only one specific locale
-➤ Outdated Translations
+➤ Outdated Translations 
 
 You want to update an existing string, but you want to keep the old translations for other locales?
 
@@ -1231,7 +1253,7 @@ This will add an (OUTDATED) modifier to all secondary locales.
 }
 You can also add these flags manually!
 
-➤ Translate with GPT
+➤ Translate with GPT 
 
 Take advantage of GPT to internationalize your app with context-aware translations.
 
@@ -1252,7 +1274,7 @@ gpt:
   description: |
     "River Adventure" is a game where you need to cross a river by jumping on stones.
     The game is over when you either fall into the water or reach the other side.
-➤ Migration
+➤ Migration 
 
 There are some tools to make migration from other i18n solutions easier.
 
@@ -1307,7 +1329,7 @@ JSON Result
     }
   }
 }
-➤ Statistics
+➤ Statistics 
 
 There is a command to quickly get the number of words, characters, etc.
 
@@ -1319,14 +1341,14 @@ Example console output:
  - 6 translations (leaves only)
  - 15 words
  - 82 characters (ex. [,.?!'¿¡])
-➤ Auto Rebuild
+➤ Auto Rebuild 
 
 You can let the library rebuild automatically for you. The watch function from build_runner is NOT maintained.
 
 dart run slang watch
-More Usages
+More Usages 
 
-➤ Assets
+➤ Assets 
 
 You can write the i18n files wherever you want.
 
@@ -1345,7 +1367,7 @@ targets:
 
 input_directory: assets/i18n
 output_directory: lib/i18n # defaulting to lib/gen if input is outside of lib/
-➤ Unit Tests
+➤ Unit Tests 
 
 It is recommended to add at least one test that accesses the translations to make sure that they are compiled correctly.
 
@@ -1373,7 +1395,7 @@ void main() {
     });
   });
 }
-➤ Multiple packages
+➤ Multiple packages 
 
 You can have multiple slang instances spread across multiple packages.
 
@@ -1432,9 +1454,9 @@ void main() {
   
   runApp(widget);
 }
-Integrations
+Integrations 
 
-➤ slang x riverpod
+➤ slang x riverpod 
 
 Method A: Use static getter
 
@@ -1447,7 +1469,7 @@ Method B: Use dependency injection
 
 Checkout Dependency Injection.
 
-➤ slang x Weblate
+➤ slang x Weblate 
 
 Weblate is a web-based translation tool with tight Git integration.
 
@@ -1457,7 +1479,7 @@ settings
 
 addons
 
-FAQ
+FAQ 
 
 Translations don't update when device locale changes
 
@@ -1535,13 +1557,13 @@ When you call AppLocale.<locale>.build(), there are no side effects.
 
 Furthermore, the first method returns the instance managed by this library. The second one always returns a new instance.
 
-Further Reading
+Further Reading 
 
-In Depth
+In Depth 
 
 Interfaces
 Dependency Injection
-Tutorials
+Tutorials 
 
 Blogs
 
@@ -1561,12 +1583,12 @@ Youtube (Spanish)
 Zhihu (Chinese)
 Feel free to extend this list :)
 
-Ecosystem
+Ecosystem 
 
 slang_gpt - Use GPT to internationalize your app with context-aware translations.
 SlangMate - IntelliJ IDEA / Android Studio plugin for Slang.
 Apparencekit - Boilerplate solution
-Slang in production
+Slang in production 
 
 Open source:
 
@@ -1585,12 +1607,12 @@ Closed source:
 Notan (grade calculator)
 Feel free to extend this list :)
 
-Slang ports
+Slang ports 
 
 Slang is also available for other platforms:
 
 Slang for .NET
-License
+License 
 
 MIT License
 
@@ -1601,3 +1623,43 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+665
+LIKES
+160
+POINTS
+83.8k
+DOWNLOADS
+screenshot
+
+Publisher
+verified publishertienisto.com
+
+Weekly Downloads
+2024.09.08 - 2025.08.03
+Metadata
+Localization / Internationalization (i18n) solution. Use JSON, YAML, CSV, or ARB files to create typesafe translations via source generation.
+
+Repository (GitHub)
+Contributing
+
+Topics
+#i18n #l10n #localization #translation
+
+Documentation
+API reference
+
+Funding
+Consider supporting this project:
+
+github.com
+
+License
+MIT (license)
+
+Dependencies
+collection, csv, intl, watcher, yaml
+
+More
+Packages that depend on slang
+
+Dart languageReport packagePolicyTermsAPI TermsSecurityPrivacyHelpRSSbug report

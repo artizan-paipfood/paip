@@ -13,6 +13,6 @@ targets:
           locale_handling: false
           flutter_integration: false
           generate_enum: false
-          AdressLanguage:
-            default_parameter: language
-            generate_enum: false
+          enum_name: AppLocale
+          class_name: Translations
+          translate_var: t

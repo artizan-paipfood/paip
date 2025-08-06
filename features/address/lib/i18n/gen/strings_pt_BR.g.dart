@@ -68,6 +68,8 @@ class TranslationsPtBr extends Translations {
 	@override String get buscar_endereco => 'Buscar endereço';
 	@override String get insira_seu_endereco_no_campo_acima => 'Insira seu endereço no campo acima';
 	@override String get nenhum_endereco_encontrado => 'Nenhum endereço encontrado';
+	@override String get insira_o_cep_no_campo_acima => 'Insira o CEP no campo acima';
+	@override String get insira_seu_cep => 'Insira seu CEP';
 }
 
 /// Flat map(s) containing all translations.
@@ -105,6 +107,8 @@ extension on TranslationsPtBr {
 			case 'buscar_endereco': return 'Buscar endereço';
 			case 'insira_seu_endereco_no_campo_acima': return 'Insira seu endereço no campo acima';
 			case 'nenhum_endereco_encontrado': return 'Nenhum endereço encontrado';
+			case 'insira_o_cep_no_campo_acima': return 'Insira o CEP no campo acima';
+			case 'insira_seu_cep': return 'Insira seu CEP';
 			default: return null;
 		}
 	}

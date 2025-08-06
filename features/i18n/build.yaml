@@ -13,6 +13,6 @@ targets:
           locale_handling: true
           flutter_integration: true
           generate_enum: false
-          PaipLanguage:
-            default_parameter: language
-            generate_enum: false
+          enum_name: AppLocale
+          class_name: Translations
+          translate_var: t

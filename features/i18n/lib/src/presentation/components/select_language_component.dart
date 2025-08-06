@@ -58,7 +58,7 @@ class _SelectLanguageComponentState extends State<SelectLanguageComponent> {
                   child: ArtButton(
                     enabled: _selectedLanguage != null,
                     onPressed: () {
-                      // AppI18n.setLanguage(_selectedLanguage?.languageCode ?? 'en_US');
+                      // AppI18n.setLanguage( _selectedLanguage?.languageCode ?? 'en_US');
                       widget.onSaveLanguage(_selectedLanguage!);
                     },
                     child: Text(t.salvar),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:address/i18n/gen/strings.g.dart';
 import 'package:address/src/data/events/position_events.dart';
 import 'package:address/src/data/events/route_events.dart';
 import 'package:address/src/data/services/my_position_service.dart';
@@ -73,6 +74,7 @@ class AddressModule extends EventModule {
   @override
   void listen() {
     //ROUTES
+
     on<GoAutoCompleteEvent>((event, context) {
       if (context == null) return;
       context.pushNamed(Routes.autoCompleteNamed);

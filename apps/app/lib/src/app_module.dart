@@ -30,10 +30,4 @@ class AppModule extends EventModule {
       if (context != null) Go.of(context).goNeglect(Routes.myAddresses);
     });
   }
-
-  @override
-  void initState(Injector i) {
-    // TODO: implement initState
-    super.initState(i);
-  }
 }

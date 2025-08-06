@@ -42,9 +42,17 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
 
   // Translations
+
+  /// en-US: 'Select a language'
   String get selecione_uma_linguagem => 'Select a language';
+
+  /// en-US: 'Save'
   String get salvar => 'Save';
+
+  /// en-US: 'Back'
   String get voltar => 'Back';
+
+  /// en-US: '(en_US) {English} (pt_BR) {Português Brazil}'
   String paip_language({required PaipLanguage language}) {
     switch (language) {
       case PaipLanguage.en_US:

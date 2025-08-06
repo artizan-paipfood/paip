@@ -59,10 +59,10 @@ class Env {
   }
 
   static String _loadString(String key) {
-    return EnvReader.loadString(key) ?? String.fromEnvironment(key);
+    return String.fromEnvironment(key);
   }
 
   static bool _loadBool(String key) {
-    return EnvReader.loadBool(key) ?? bool.fromEnvironment(key);
+    return bool.fromEnvironment(key);
   }
 }

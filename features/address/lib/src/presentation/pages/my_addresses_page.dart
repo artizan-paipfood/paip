@@ -35,6 +35,9 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(LocaleSettings.currentLocale.underscoreTag);
+    print(t.enderecos_de_entrega);
+    print(LocaleSettings.currentLocale.underscoreTag);
     return Scaffold(
       backgroundColor: context.artColorScheme.muted,
       appBar: PaipAppBar(
