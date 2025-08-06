@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Paip Food Gestor"
-#define MyAppVersion "0.0.25+6"
+#define MyAppVersion "0.0.25+8"
 #define MyAppPublisher "manager"
 #define MyAppURL "https://portal.paipfood.com"
 #define MyAppExeName "manager.exe"
@@ -34,18 +34,20 @@ Name: "portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\data\*"; DestDir: "{app}\data"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\audioplayers_windows_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\thermal_printer_flutter_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\flutter_window_close_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\flutter_windows.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\screen_retriever_windows_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\url_launcher_windows_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\share_plus_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\window_manager_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\sentry.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\projects\artizan\paipfood\apps\manager\build\windows\x64\runner\Release\native_assets.yaml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\data\*"; DestDir: "{app}\data"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\audioplayers_windows_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\thermal_printer_flutter_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\crashpad_wer.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\crashpad_handler.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\dartjni.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\flutter_windows.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\screen_retriever_windows_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\url_launcher_windows_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\share_plus_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\window_manager_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\sentry.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\projects\artizan\paip\apps\manager\build\windows\x64\runner\Release\native_assets.json"; DestDir: "{app}"; Flags: ignoreversion
 
 
 [Files]

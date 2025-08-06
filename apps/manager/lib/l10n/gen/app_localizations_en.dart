@@ -9,28 +9,36 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get wppGreetingsMessage => '🤖 Hello! I am the Virtual Attendant of [establishment_name]. \n\nTo place an order conveniently, click the link below: \n\n👇🏼 Tap to order 👇🏼 \n[link_company]';
+  String get wppGreetingsMessage =>
+      '🤖 Hello! I am the Virtual Attendant of [establishment_name]. \n\nTo place an order conveniently, click the link below: \n\n👇🏼 Tap to order 👇🏼 \n[link_company]';
 
   @override
-  String get wppPending => 'Hello [name]👋, \nGreat to see you here! \n> We have received your order, please wait for confirmation. \n\n> Here is the link if you want to track it:\n[link_order_status]';
+  String get wppPending =>
+      'Hello [name]👋, \nGreat to see you here! \n> We have received your order, please wait for confirmation. \n\n> Here is the link if you want to track it:\n[link_order_status]';
 
   @override
-  String get wppAccepted => '[name]\nYour order has been accepted!\n\nHere is the link if you want to track it:\n[link_order_status]';
+  String get wppAccepted =>
+      '[name]\nYour order has been accepted!\n\nHere is the link if you want to track it:\n[link_order_status]';
 
   @override
-  String get wppAwaitingDelivery => '[name]\n> Your order is ready. \nThe delivery man is on his way to collect your order here in [establishment_name]!';
+  String get wppAwaitingDelivery =>
+      '[name]\n> Your order is ready. \nThe delivery man is on his way to collect your order here in [establishment_name]!';
 
   @override
-  String get wppAwaitingPickup => 'The wait is over! 😍\n> Your order is ready and waiting for you!';
+  String get wppAwaitingPickup =>
+      'The wait is over! 😍\n> Your order is ready and waiting for you!';
 
   @override
-  String get wppDelivered => 'Your order has been delivered\nthank you very much for your trust! 😊';
+  String get wppDelivered =>
+      'Your order has been delivered\nthank you very much for your trust! 😊';
 
   @override
-  String get wppInDelivery => 'We have great news for you!😀\n> Your order is out for delivery and will arrive soon. If you have any questions, we are here to help.';
+  String get wppInDelivery =>
+      'We have great news for you!😀\n> Your order is out for delivery and will arrive soon. If you have any questions, we are here to help.';
 
   @override
-  String get wppLocalOrderMessage => 'Hello [name] 👋\nGreat to see you here!\n\nYour order has been placed and is already being prepared.✅\n\n> I will be back soon with updates on its status.\n\nHere is the link if you want to track it:\n[link_order_status]';
+  String get wppLocalOrderMessage =>
+      'Hello [name] 👋\nGreat to see you here!\n\nYour order has been placed and is already being prepared.✅\n\n> I will be back soon with updates on its status.\n\nHere is the link if you want to track it:\n[link_order_status]';
 
   @override
   String get credit => 'Credit';
@@ -102,7 +110,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get corPrimaria => 'Primary color';
 
   @override
-  String get descCorPrimaria => 'Choose a color to be the primary color of your app.';
+  String get descCorPrimaria =>
+      'Choose a color to be the primary color of your app.';
 
   @override
   String get imagens => 'Images';
@@ -123,7 +132,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adicioneEnderecoEntrega => 'Add a delivery address';
 
   @override
-  String get selecioneEnderecoPadraoCliente => 'Select the customer\'s default delivery address';
+  String get selecioneEnderecoPadraoCliente =>
+      'Select the customer\'s default delivery address';
 
   @override
   String get enderecoCliente => 'Customer address';
@@ -135,7 +145,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selecionarCliente => 'Select customer';
 
   @override
-  String get pesquiseClienteNomeTelefone => 'Search your customer by name or phone';
+  String get pesquiseClienteNomeTelefone =>
+      'Search your customer by name or phone';
 
   @override
   String get adicionarCliente => 'Add customer';
@@ -162,7 +173,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get informacoesPrincipais => 'Main Information';
 
   @override
-  String get descInformacoesPrincipais => 'Set a name, minimum order value, and contact information';
+  String get descInformacoesPrincipais =>
+      'Set a name, minimum order value, and contact information';
 
   @override
   String get nomeLoja => 'Store Name';
@@ -183,19 +195,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loja => 'Store';
 
   @override
-  String get descLoja => 'Store link and service modes (Delivery, Pickup, Table, Kiosk)';
+  String get descLoja =>
+      'Store link and service modes (Delivery, Pickup, Table, Kiosk)';
 
   @override
   String get linkLoja => 'Store link';
 
   @override
-  String get descLinkLoja => 'Copy your store link and send it to your customers (Cannot be changed).';
+  String get descLinkLoja =>
+      'Copy your store link and send it to your customers (Cannot be changed).';
 
   @override
   String get redesSociais => 'Social Media';
 
   @override
-  String get descredesSociais => 'Fill in the social media links of your business, if any';
+  String get descredesSociais =>
+      'Fill in the social media links of your business, if any';
 
   @override
   String get adicionar => 'Add';
@@ -243,7 +258,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bordas => 'Edges';
 
   @override
-  String get descPageTamnhosQuantidadePizza => 'Define the sizes and number of flavors for your pizzas.';
+  String get descPageTamnhosQuantidadePizza =>
+      'Define the sizes and number of flavors for your pizzas.';
 
   @override
   String get tamanhos => 'Sizes';
@@ -374,13 +390,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saborMussarela => 'Mozzarella';
 
   @override
-  String get descMussarela => 'Homemade tomato sauce, mozzarella, catupiry, olives, and oregano.';
+  String get descMussarela =>
+      'Homemade tomato sauce, mozzarella, catupiry, olives, and oregano.';
 
   @override
   String get saborCalabresa => 'Calabrese';
 
   @override
-  String get descCalabresa => 'Homemade tomato sauce, calabrese sausage, catupiry, onion, olives, and oregano.';
+  String get descCalabresa =>
+      'Homemade tomato sauce, calabrese sausage, catupiry, onion, olives, and oregano.';
 
   @override
   String get pizzaGrandeDefault => 'Large Pizza - 8 slices';
@@ -422,7 +440,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get precoPromocionalDeveSerMenorQuePreco => 'The promotional price must be less than the price';
+  String get precoPromocionalDeveSerMenorQuePreco =>
+      'The promotional price must be less than the price';
 
   @override
   String get imagemExcluidaSucesso => 'Image successfully deleted!';
@@ -449,7 +468,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categorias => 'Categories';
 
   @override
-  String get addCategoria => 'To add a new category just click the button next to it';
+  String get addCategoria =>
+      'To add a new category just click the button next to it';
 
   @override
   String get descMenu => 'Manage your products';
@@ -473,7 +493,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get produtos => 'Products';
 
   @override
-  String get descCategoriaProdutos => 'General products, e.g., snacks, sweets, meals, etc.';
+  String get descCategoriaProdutos =>
+      'General products, e.g., snacks, sweets, meals, etc.';
 
   @override
   String get descCategoriaPizza => 'Exclusive category for pizzas';
@@ -488,10 +509,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get extras => 'Extras';
 
   @override
-  String get tooltipNomeComplemento => 'This field appears for the customer\nin the menu';
+  String get tooltipNomeComplemento =>
+      'This field appears for the customer\nin the menu';
 
   @override
-  String get tooltipIdentificador => 'This field appears only for you\nto help identify the add-on';
+  String get tooltipIdentificador =>
+      'This field appears only for you\nto help identify the add-on';
 
   @override
   String get identifier => 'Identifier';
@@ -512,7 +535,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hintQuantidadeMaxima => 'e.g., 5';
 
   @override
-  String get validatorQuantidadeMaxima => 'Maximum quantity must be greater than the minimum quantity.';
+  String get validatorQuantidadeMaxima =>
+      'Maximum quantity must be greater than the minimum quantity.';
 
   @override
   String get tipoDoSeletor => 'Selector type';
@@ -527,7 +551,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get seletorMultiplo => 'Multiple selector';
 
   @override
-  String get descSeletorMultiplo => 'Allows selecting the same item multiple times.';
+  String get descSeletorMultiplo =>
+      'Allows selecting the same item multiple times.';
 
   @override
   String get obrigatorio => 'Required';
@@ -539,7 +564,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bordasEMassas => 'Edges & Doughs';
 
   @override
-  String get tituloBordasEMassas => 'Define the options for edges and doughs for your pizzas';
+  String get tituloBordasEMassas =>
+      'Define the options for edges and doughs for your pizzas';
 
   @override
   String get descSelecionarImage => 'Select a new image for your item';
@@ -594,7 +620,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get descComplementLivreIlimitado => 'Choose as many options as you want';
+  String get descComplementLivreIlimitado =>
+      'Choose as many options as you want';
 
   @override
   String descComplementPizza(Object qty) {
@@ -790,13 +817,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get faturaDeMaisUmDia => 'Give me one more day';
 
   @override
-  String get useWhatsappAutomatizarSistema => 'Use WhatsApp to automate your system';
+  String get useWhatsappAutomatizarSistema =>
+      'Use WhatsApp to automate your system';
 
   @override
-  String get atualizeSeusClientesSobreOsStatusDosPedidos => 'Update your customers on order statuses, automate your WhatsApp and keep your customers informed.';
+  String get atualizeSeusClientesSobreOsStatusDosPedidos =>
+      'Update your customers on order statuses, automate your WhatsApp and keep your customers informed.';
 
   @override
-  String get abrirSeuWhatsappNoSeuCelularNaJanelaConversas => 'Open your WhatsApp on your phone, in the chats window.';
+  String get abrirSeuWhatsappNoSeuCelularNaJanelaConversas =>
+      'Open your WhatsApp on your phone, in the chats window.';
 
   @override
   String get toqueEm => 'Tap on';
@@ -823,7 +853,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get conectarDispositivo => 'Link a device.';
 
   @override
-  String get aponteSeuCelularParaEstaTelaParaEscanear => 'Point your phone at this screen to scan the QR code.';
+  String get aponteSeuCelularParaEstaTelaParaEscanear =>
+      'Point your phone at this screen to scan the QR code.';
 
   @override
   String get conectado => 'Connected';
@@ -965,10 +996,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get salvo => 'Saved';
 
   @override
-  String get opsModuloPermitidoApenasTermianlPrincipal => 'Ops! \nThis module can only be accessed from the main terminal';
+  String get opsModuloPermitidoApenasTermianlPrincipal =>
+      'Ops! \nThis module can only be accessed from the main terminal';
 
   @override
-  String get servidorWppIniciando => 'The WhatsApp server is being initialized... \nTry again in a minute.\n if it persists, restart the system and try again.';
+  String get servidorWppIniciando =>
+      'The WhatsApp server is being initialized... \nTry again in a minute.\n if it persists, restart the system and try again.';
 
   @override
   String get tentarNovamente => 'Try again';
@@ -1003,7 +1036,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get iniciandoDownload => 'Starting download...';
 
   @override
-  String get downloadDriverImpressoraConcluido => 'Download completed, starting printer driver...';
+  String get downloadDriverImpressoraConcluido =>
+      'Download completed, starting printer driver...';
 
   @override
   String get idioma => 'Language';
@@ -1021,16 +1055,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fechamento => 'Closing';
 
   @override
-  String get horarioAberturaDeveSerMenorQueHorarioFechamento => 'The opening time must be less than the closing time';
+  String get horarioAberturaDeveSerMenorQueHorarioFechamento =>
+      'The opening time must be less than the closing time';
 
   @override
-  String get horarioFechamentoDeveSerMaiorQueHorarioAbertura => 'The closing time must be greater than the opening time';
+  String get horarioFechamentoDeveSerMaiorQueHorarioAbertura =>
+      'The closing time must be greater than the opening time';
 
   @override
-  String get necessarioDefinirHorarios => 'You must define opening and closing hours before saving.';
+  String get necessarioDefinirHorarios =>
+      'You must define opening and closing hours before saving.';
 
   @override
-  String get descDefinirHorarios => 'Define working hours and days of the week that apply to the same rule.';
+  String get descDefinirHorarios =>
+      'Define working hours and days of the week that apply to the same rule.';
 
   @override
   String get horariosFuncionamento => 'Working hours';
@@ -1045,7 +1083,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get conectarStripe => 'Connect to Stripe';
 
   @override
-  String get descConectarStripe => 'To receive online payments with credit card and debit card.';
+  String get descConectarStripe =>
+      'To receive online payments with credit card and debit card.';
 
   @override
   String get quantidade => 'Quantity';
@@ -1093,7 +1132,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adicionarArea => 'Add Area';
 
   @override
-  String get descAreasEntrega => 'Define your delivery areas by drawing on the map or by km driven.';
+  String get descAreasEntrega =>
+      'Define your delivery areas by drawing on the map or by km driven.';
 
   @override
   String get solicitarParceria => 'Request partnership';
@@ -1125,10 +1165,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get descDialogLogout => 'Are you sure you want to log out?';
 
   @override
-  String get descDialogEncerrarSistema => 'Are you sure you want to close the system?';
+  String get descDialogEncerrarSistema =>
+      'Are you sure you want to close the system?';
 
   @override
-  String get descDialogBackupCustomer => 'Are you sure you want to back up the customer?';
+  String get descDialogBackupCustomer =>
+      'Are you sure you want to back up the customer?';
 
   @override
   String get backupRealizado => 'Backup performed.';
@@ -1140,13 +1182,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pedidoCancelado => 'Order canceled';
 
   @override
-  String get mensagemAbrirEstabelecimento => 'It\'s time to open the establishment';
+  String get mensagemAbrirEstabelecimento =>
+      'It\'s time to open the establishment';
 
   @override
-  String get mensagemFecharEstabelecimento => 'It\'s time to close the establishment';
+  String get mensagemFecharEstabelecimento =>
+      'It\'s time to close the establishment';
 
   @override
-  String get infoPedidoForaPeriodoAgendamento => 'The order is out of the scheduled period';
+  String get infoPedidoForaPeriodoAgendamento =>
+      'The order is out of the scheduled period';
 
   @override
   String get selecionarEntregador => 'Select driver';
@@ -1161,7 +1206,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get imprimir => 'Print';
 
   @override
-  String get descrevaMotivoCancelamento => 'Describe the reason for cancellation';
+  String get descrevaMotivoCancelamento =>
+      'Describe the reason for cancellation';
 
   @override
   String acabouProdutoX(Object product) {
@@ -1169,7 +1215,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get voceNaoPossuiEntregadores => 'You don\'t have any drivers available';
+  String get voceNaoPossuiEntregadores =>
+      'You don\'t have any drivers available';
 
   @override
   String get mesas => 'Tables';
@@ -1235,7 +1282,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get retirada_consumo => 'Pickup / Consumption';
 
   @override
-  String get infoSelecioneOuAdicioneEndereco => 'Select or add an address to continue';
+  String get infoSelecioneOuAdicioneEndereco =>
+      'Select or add an address to continue';
 
   @override
   String get item => 'Item';
@@ -1262,7 +1310,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get campoObrigatorio => 'Required field.';
 
   @override
-  String get valorPagamentoMaiorQueConta => 'Payment amount greater than the bill.';
+  String get valorPagamentoMaiorQueConta =>
+      'Payment amount greater than the bill.';
 
   @override
   String get relatorioPedidos => 'Order report';
@@ -1295,7 +1344,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get numeroMesa => 'Table number';
 
   @override
-  String get desejaAbrirMesaParaVenda => 'Do you want to open the table for sale?';
+  String get desejaAbrirMesaParaVenda =>
+      'Do you want to open the table for sale?';
 
   @override
   String get descartar => 'Discard';
@@ -1381,10 +1431,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get inativo => 'Inactive';
 
   @override
-  String get erroIniciarWpp => 'Error starting WhatsApp, try restarting the system. If the problem persists, contact support.';
+  String get erroIniciarWpp =>
+      'Error starting WhatsApp, try restarting the system. If the problem persists, contact support.';
 
   @override
-  String get erroEnviarMensagem => 'Error sending message, try restarting the system. If the problem persists, contact support.';
+  String get erroEnviarMensagem =>
+      'Error sending message, try restarting the system. If the problem persists, contact support.';
 
   @override
   String get bomDia => 'Good morning';
@@ -1399,7 +1451,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get raioEntrega => 'Delivery radius';
 
   @override
-  String get infoselecioneAreaEntregaAntesAddPonto => 'Select the delivery area before adding a point';
+  String get infoselecioneAreaEntregaAntesAddPonto =>
+      'Select the delivery area before adding a point';
 
   @override
   String get layoutImpresssao => 'Print layout';
@@ -1447,16 +1500,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get espelharHorizontalmente => 'Mirror horizontally';
 
   @override
-  String get erroAoVerificarPagamento => 'Error checking payment. Please try again.';
+  String get erroAoVerificarPagamento =>
+      'Error checking payment. Please try again.';
 
   @override
-  String get erroAoGerarPagamento => 'Error generating payment. Please try again.';
+  String get erroAoGerarPagamento =>
+      'Error generating payment. Please try again.';
 
   @override
-  String get chatbotStatesDisableTitle => 'Enable WhatsApp integration to start using the Chatbot';
+  String get chatbotStatesDisableTitle =>
+      'Enable WhatsApp integration to start using the Chatbot';
 
   @override
-  String get chatbotStatesDisableSubtitle => 'You need to enable WhatsApp integration to start using the Chatbot';
+  String get chatbotStatesDisableSubtitle =>
+      'You need to enable WhatsApp integration to start using the Chatbot';
 
   @override
   String get chatbotStatesDisableAction => 'Enable';
@@ -1474,7 +1531,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chatbotStatesConnectedTitle => 'Connected';
 
   @override
-  String get chatbotStatesConnectedSubtitle => 'Customize your status messages below.';
+  String get chatbotStatesConnectedSubtitle =>
+      'Customize your status messages below.';
 
   @override
   String get chatbotStatesConnectedAction => 'Disconnect';
@@ -1483,7 +1541,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chatbotStatesDisconnectedTitle => 'Disconnected';
 
   @override
-  String get chatbotStatesDisconnectedSubtitle => 'You need to scan the QR code to connect WhatsApp';
+  String get chatbotStatesDisconnectedSubtitle =>
+      'You need to scan the QR code to connect WhatsApp';
 
   @override
   String get chatbotStatesDisconnectedAction => 'Connect';

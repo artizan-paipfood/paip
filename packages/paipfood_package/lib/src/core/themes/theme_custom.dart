@@ -12,7 +12,7 @@ class ThemeCustom {
       selectionHandleColor: paipThemeLight.primaryColor,
     ),
     appBarTheme: AppBarTheme(backgroundColor: paipThemeLight.primaryBG, surfaceTintColor: paipThemeLight.primaryBG),
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       backgroundColor: paipThemeLight.primaryBG,
       surfaceTintColor: paipThemeLight.primaryBG,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -44,7 +44,7 @@ class ThemeCustom {
       selectionHandleColor: paipThemeLight.primaryColor,
     ),
     appBarTheme: AppBarTheme(backgroundColor: paipThemeDark.primaryBG, surfaceTintColor: paipThemeDark.primaryBG),
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       backgroundColor: paipThemeDark.primaryBG,
       surfaceTintColor: paipThemeDark.primaryBG,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),

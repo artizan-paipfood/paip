@@ -53,6 +53,7 @@ class AuthModule extends EventModule {
   @override
   void listen() {
     on<SaveLanguage>((event, context) async {
+      if (context == null) return;
       context.go(Routes.splash);
       await AuthProcessUsecase(context: context, authService: context.read<AuthService>()).call();
     });

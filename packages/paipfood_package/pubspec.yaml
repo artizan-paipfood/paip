@@ -19,7 +19,7 @@ dependencies:
     path: ../ui
   flutter_svg: ^2.0.9
   hive: ^2.2.3
-  intl: ^0.19.0
+  intl: ^0.20.2
   mask_text_input_formatter: ^2.4.0
   toastification: ^2.3.0
   logger: ^2.5.0

@@ -9,28 +9,36 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get wppGreetingsMessage => '🤖 Olá! Eu sou o Atendente Virtual do(a) [establishment_name]. \n\nPara fazer um pedido com praticidade, clique no link abaixo: \n\n👇🏼 Toque para pedir 👇🏼 \n[link_company]';
+  String get wppGreetingsMessage =>
+      '🤖 Olá! Eu sou o Atendente Virtual do(a) [establishment_name]. \n\nPara fazer um pedido com praticidade, clique no link abaixo: \n\n👇🏼 Toque para pedir 👇🏼 \n[link_company]';
 
   @override
-  String get wppPending => 'Olá [name]👋, \nQue bom te ver por aqui! \n> Recebemos seu pedido, por favor, aguarde a confirmação. \n\n> Aqui está o link se quiser acompanhar:\n[link_order_status]';
+  String get wppPending =>
+      'Olá [name]👋, \nQue bom te ver por aqui! \n> Recebemos seu pedido, por favor, aguarde a confirmação. \n\n> Aqui está o link se quiser acompanhar:\n[link_order_status]';
 
   @override
-  String get wppAccepted => '[name]\nSeu pedido foi aceito!\n\nAqui está o link se quiser acompanhar:\n[link_order_status]';
+  String get wppAccepted =>
+      '[name]\nSeu pedido foi aceito!\n\nAqui está o link se quiser acompanhar:\n[link_order_status]';
 
   @override
-  String get wppAwaitingDelivery => '[name]\n> Seu pedido já está pronto. \nO entregador já está a caminho para coletar seu pedido aqui na loja!';
+  String get wppAwaitingDelivery =>
+      '[name]\n> Seu pedido já está pronto. \nO entregador já está a caminho para coletar seu pedido aqui na loja!';
 
   @override
-  String get wppAwaitingPickup => 'Acabou a espera! 😍\n> Seu pedido já está pronto e esperando por você!';
+  String get wppAwaitingPickup =>
+      'Acabou a espera! 😍\n> Seu pedido já está pronto e esperando por você!';
 
   @override
-  String get wppDelivered => 'Seu pedido foi entregue\nmuito obrigado pela confiança! 😊';
+  String get wppDelivered =>
+      'Seu pedido foi entregue\nmuito obrigado pela confiança! 😊';
 
   @override
-  String get wppInDelivery => 'Temos uma ótima notícia para você!😀\n> Seu pedido saiu para entrega e logo chegará por aí, Qualquer dúvida, estamos à disposição.';
+  String get wppInDelivery =>
+      'Temos uma ótima notícia para você!😀\n> Seu pedido saiu para entrega e logo chegará por aí, Qualquer dúvida, estamos à disposição.';
 
   @override
-  String get wppLocalOrderMessage => 'Olá [name] 👋\nQue bom te ver por aqui!\n\nSeu pedido foi realizado e já está sendo preparado.✅\n\n> Logo volto com novidades, sobre o status do mesmo.\n\nAqui está o link, se quiser acompanhar:\n[link_order_status]';
+  String get wppLocalOrderMessage =>
+      'Olá [name] 👋\nQue bom te ver por aqui!\n\nSeu pedido foi realizado e já está sendo preparado.✅\n\n> Logo volto com novidades, sobre o status do mesmo.\n\nAqui está o link, se quiser acompanhar:\n[link_order_status]';
 
   @override
   String get credit => 'Crédito';
@@ -102,13 +110,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get corPrimaria => 'Cor primária';
 
   @override
-  String get descCorPrimaria => 'Escolha uma cor para ser a cor principal do seu app.';
+  String get descCorPrimaria =>
+      'Escolha uma cor para ser a cor principal do seu app.';
 
   @override
   String get imagens => 'Imagens';
 
   @override
-  String get descImagens => 'Escolha uma imagem de capa e um logótipo para a sua loja.';
+  String get descImagens =>
+      'Escolha uma imagem de capa e um logótipo para a sua loja.';
 
   @override
   String get endereco => 'Endereço';
@@ -123,19 +133,22 @@ class AppLocalizationsPt extends AppLocalizations {
   String get adicioneEnderecoEntrega => 'Adicone um endereço de entrega';
 
   @override
-  String get selecioneEnderecoPadraoCliente => 'Selecione o endereço de entrega padrão do cliente';
+  String get selecioneEnderecoPadraoCliente =>
+      'Selecione o endereço de entrega padrão do cliente';
 
   @override
   String get enderecoCliente => 'Endereço do cliente';
 
   @override
-  String get selecioneClientePedido => 'Selecione um cliente para efetuar o pedido';
+  String get selecioneClientePedido =>
+      'Selecione um cliente para efetuar o pedido';
 
   @override
   String get selecionarCliente => 'Selecionar cliente';
 
   @override
-  String get pesquiseClienteNomeTelefone => 'Pesquise seu cliente por nome ou telefone';
+  String get pesquiseClienteNomeTelefone =>
+      'Pesquise seu cliente por nome ou telefone';
 
   @override
   String get adicionarCliente => 'Adicionar cliente';
@@ -162,7 +175,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get informacoesPrincipais => 'Informações Principais';
 
   @override
-  String get descInformacoesPrincipais => 'Defina um nome, valor mínimo de pedidos e as informações de contacto';
+  String get descInformacoesPrincipais =>
+      'Defina um nome, valor mínimo de pedidos e as informações de contacto';
 
   @override
   String get nomeLoja => 'Nome da Loja';
@@ -183,19 +197,22 @@ class AppLocalizationsPt extends AppLocalizations {
   String get loja => 'Loja';
 
   @override
-  String get descLoja => 'Link da loja e modos de atendimento (Entrega, Recolha, Mesa, Quiosque)';
+  String get descLoja =>
+      'Link da loja e modos de atendimento (Entrega, Recolha, Mesa, Quiosque)';
 
   @override
   String get linkLoja => 'Link da loja';
 
   @override
-  String get descLinkLoja => 'Copie o link da sua loja e envie para seus clientes (Não é permitido alterar).';
+  String get descLinkLoja =>
+      'Copie o link da sua loja e envie para seus clientes (Não é permitido alterar).';
 
   @override
   String get redesSociais => 'Redes Sociais';
 
   @override
-  String get descredesSociais => 'Complete com o link das redes sociais do seu negócio, caso tenha';
+  String get descredesSociais =>
+      'Complete com o link das redes sociais do seu negócio, caso tenha';
 
   @override
   String get adicionar => 'Adicionar';
@@ -243,7 +260,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get bordas => 'Bordas';
 
   @override
-  String get descPageTamnhosQuantidadePizza => 'Defina os tamanhos e quantidade de sabores das suas pizzas.';
+  String get descPageTamnhosQuantidadePizza =>
+      'Defina os tamanhos e quantidade de sabores das suas pizzas.';
 
   @override
   String get tamanhos => 'Tamanhos';
@@ -374,13 +392,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get saborMussarela => 'Mussarela';
 
   @override
-  String get descMussarela => 'Molho de tomate caseiro, mussarela, catupiry, azeitonas e orégano.';
+  String get descMussarela =>
+      'Molho de tomate caseiro, mussarela, catupiry, azeitonas e orégano.';
 
   @override
   String get saborCalabresa => 'Calabresa';
 
   @override
-  String get descCalabresa => 'Molho de tomate caseiro, calabresa, catupiry, cebola, azeitonas e orégano.';
+  String get descCalabresa =>
+      'Molho de tomate caseiro, calabresa, catupiry, cebola, azeitonas e orégano.';
 
   @override
   String get pizzaGrandeDefault => 'Pizza Grande - 8 fátias';
@@ -395,10 +415,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get emptySateteProdutos => 'Voce ainda não adicionou nenhum produto.';
 
   @override
-  String get emptySateteCategorias => 'Voce ainda não adicionou nenhuma categoria.';
+  String get emptySateteCategorias =>
+      'Voce ainda não adicionou nenhuma categoria.';
 
   @override
-  String get emptySateteComplementos => 'Voce ainda não adicionou nenhum complemento.';
+  String get emptySateteComplementos =>
+      'Voce ainda não adicionou nenhum complemento.';
 
   @override
   String get emptySateteSaborPizza => 'Voce ainda não adicionou nenhum sabor.';
@@ -422,7 +444,8 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get precoPromocionalDeveSerMenorQuePreco => 'O preço promocional deve ser menor que o preço';
+  String get precoPromocionalDeveSerMenorQuePreco =>
+      'O preço promocional deve ser menor que o preço';
 
   @override
   String get imagemExcluidaSucesso => 'Imagem excluida com sucesso!';
@@ -434,13 +457,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get uploadImagem => 'Selecionar imagem';
 
   @override
-  String get descZoomImagem => 'Utilize o scroll do seu mouse para dar zoom +- na sua imagem';
+  String get descZoomImagem =>
+      'Utilize o scroll do seu mouse para dar zoom +- na sua imagem';
 
   @override
   String get imagemSalvaComSucesso => 'Imagem salva com sucesso!';
 
   @override
-  String get vocePrecisaSelecionarUmaImagem => 'Você precisa selecionar uma imagem';
+  String get vocePrecisaSelecionarUmaImagem =>
+      'Você precisa selecionar uma imagem';
 
   @override
   String get adicionarTamanho => 'Adicionar tamanho';
@@ -449,7 +474,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get categorias => 'Categorias';
 
   @override
-  String get addCategoria => 'Para adicionar uma nova categoria basta clicar no botão ao lado';
+  String get addCategoria =>
+      'Para adicionar uma nova categoria basta clicar no botão ao lado';
 
   @override
   String get descMenu => 'Faça a gestão dos seus produtos';
@@ -464,7 +490,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get tituloEditarComplemento => 'Edite seu complemento.';
 
   @override
-  String get tituloComplemento => 'Cadastre e defina as regras do seu complemento';
+  String get tituloComplemento =>
+      'Cadastre e defina as regras do seu complemento';
 
   @override
   String get tituloCategoria => 'Escolha uma opção de categoria.';
@@ -473,7 +500,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get produtos => 'Produtos';
 
   @override
-  String get descCategoriaProdutos => 'Produtos no geral ex: lanches, doces, marmitas, etc...';
+  String get descCategoriaProdutos =>
+      'Produtos no geral ex: lanches, doces, marmitas, etc...';
 
   @override
   String get descCategoriaPizza => 'Categoria exclusiva para pizzas';
@@ -488,10 +516,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get extras => 'Extras';
 
   @override
-  String get tooltipNomeComplemento => 'Este campo aparece para o cliente\nno cardapio';
+  String get tooltipNomeComplemento =>
+      'Este campo aparece para o cliente\nno cardapio';
 
   @override
-  String get tooltipIdentificador => 'Este campo aparece somente para você \npara ajudar a identificar o complemento';
+  String get tooltipIdentificador =>
+      'Este campo aparece somente para você \npara ajudar a identificar o complemento';
 
   @override
   String get identifier => 'Identificador';
@@ -512,7 +542,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get hintQuantidadeMaxima => 'Ex: 5';
 
   @override
-  String get validatorQuantidadeMaxima => 'Quantidade maxima deve ser maior que a quantidade minima.';
+  String get validatorQuantidadeMaxima =>
+      'Quantidade maxima deve ser maior que a quantidade minima.';
 
   @override
   String get tipoDoSeletor => 'Tipo do seletor';
@@ -521,13 +552,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get seletorUnico => 'Seletor unico';
 
   @override
-  String get descSeletorUnico => 'Permite selecionar apenas uma vez o mesmo item.';
+  String get descSeletorUnico =>
+      'Permite selecionar apenas uma vez o mesmo item.';
 
   @override
   String get seletorMultiplo => 'Seletor multiplo';
 
   @override
-  String get descSeletorMultiplo => 'Permite selecionar varias vezes o mesmo item.';
+  String get descSeletorMultiplo =>
+      'Permite selecionar varias vezes o mesmo item.';
 
   @override
   String get obrigatorio => 'Obrigatório';
@@ -539,7 +572,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get bordasEMassas => 'Bordas & Massas';
 
   @override
-  String get tituloBordasEMassas => 'Definas as opções de bordas e massa da suas pizzas';
+  String get tituloBordasEMassas =>
+      'Definas as opções de bordas e massa da suas pizzas';
 
   @override
   String get descSelecionarImage => 'Selecione uma nova imagem para o seu item';
@@ -790,13 +824,16 @@ class AppLocalizationsPt extends AppLocalizations {
   String get faturaDeMaisUmDia => 'Me de mais um dia';
 
   @override
-  String get useWhatsappAutomatizarSistema => 'Use o WhatsApp para automatizar o seu sistema';
+  String get useWhatsappAutomatizarSistema =>
+      'Use o WhatsApp para automatizar o seu sistema';
 
   @override
-  String get atualizeSeusClientesSobreOsStatusDosPedidos => 'Atualize os seus clientes sobre os estados das encomendas, automatize o seu WhatsApp e não deixe os seus clientes à espera.';
+  String get atualizeSeusClientesSobreOsStatusDosPedidos =>
+      'Atualize os seus clientes sobre os estados das encomendas, automatize o seu WhatsApp e não deixe os seus clientes à espera.';
 
   @override
-  String get abrirSeuWhatsappNoSeuCelularNaJanelaConversas => 'Abra o seu WhatsApp no seu telemóvel, na janela de conversas.';
+  String get abrirSeuWhatsappNoSeuCelularNaJanelaConversas =>
+      'Abra o seu WhatsApp no seu telemóvel, na janela de conversas.';
 
   @override
   String get toqueEm => 'Toque em';
@@ -823,7 +860,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get conectarDispositivo => 'Ligar dispositivo.';
 
   @override
-  String get aponteSeuCelularParaEstaTelaParaEscanear => 'Aponte o seu telemóvel para esta tela para digitalizar o código QR.';
+  String get aponteSeuCelularParaEstaTelaParaEscanear =>
+      'Aponte o seu telemóvel para esta tela para digitalizar o código QR.';
 
   @override
   String get conectado => 'Conectado';
@@ -899,7 +937,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get habilitarAgendamentos => 'Habilitar agendamentos';
 
   @override
-  String get habilitarAgendamentosAmanha => 'Habilitar agendamentos para amanha';
+  String get habilitarAgendamentosAmanha =>
+      'Habilitar agendamentos para amanha';
 
   @override
   String get vendasDoDia => 'Vendas do dia';
@@ -965,10 +1004,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get salvo => 'Salvo';
 
   @override
-  String get opsModuloPermitidoApenasTermianlPrincipal => 'Ops! \nEste modulo so pode ser acessado pelo terminal principal';
+  String get opsModuloPermitidoApenasTermianlPrincipal =>
+      'Ops! \nEste modulo so pode ser acessado pelo terminal principal';
 
   @override
-  String get servidorWppIniciando => '\'O Servidor do whatsapp está sendo inicializado... \nTente novamente daqui um minuto.\n se persistir reinicie o sistema e tente novamente.';
+  String get servidorWppIniciando =>
+      '\'O Servidor do whatsapp está sendo inicializado... \nTente novamente daqui um minuto.\n se persistir reinicie o sistema e tente novamente.';
 
   @override
   String get tentarNovamente => 'Tentar novamente';
@@ -983,7 +1024,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get descDestro => 'Opera com a mão direita ou esquerda';
 
   @override
-  String get telefoneClienteAvulsoObrigatorio => 'Telefone do cliente avulso obrigatório';
+  String get telefoneClienteAvulsoObrigatorio =>
+      'Telefone do cliente avulso obrigatório';
 
   @override
   String get terminalPrincipal => 'Terminal Principal';
@@ -1003,13 +1045,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get iniciandoDownload => 'Iniciando download...';
 
   @override
-  String get downloadDriverImpressoraConcluido => 'Download concluído, iniciando driver...';
+  String get downloadDriverImpressoraConcluido =>
+      'Download concluído, iniciando driver...';
 
   @override
   String get idioma => 'Idioma';
 
   @override
-  String get copiadoParaAreaTransferencia => 'Copiado para area de transferência';
+  String get copiadoParaAreaTransferencia =>
+      'Copiado para area de transferência';
 
   @override
   String get editarHorarioFuncionamento => 'Editar horario de funcionamento';
@@ -1021,22 +1065,27 @@ class AppLocalizationsPt extends AppLocalizations {
   String get fechamento => 'Fechamento';
 
   @override
-  String get horarioAberturaDeveSerMenorQueHorarioFechamento => 'O horário de abertura deve ser menor que o de fechamento';
+  String get horarioAberturaDeveSerMenorQueHorarioFechamento =>
+      'O horário de abertura deve ser menor que o de fechamento';
 
   @override
-  String get horarioFechamentoDeveSerMaiorQueHorarioAbertura => 'O horário de fechamneto deve ser maior que o de abertura';
+  String get horarioFechamentoDeveSerMaiorQueHorarioAbertura =>
+      'O horário de fechamneto deve ser maior que o de abertura';
 
   @override
-  String get necessarioDefinirHorarios => 'Você precisa definir horario de abertura,horario de fechamento e dias da semana, antes de salvar.';
+  String get necessarioDefinirHorarios =>
+      'Você precisa definir horario de abertura,horario de fechamento e dias da semana, antes de salvar.';
 
   @override
-  String get descDefinirHorarios => 'Defina seus horários de funcionamento e dias da semana que se aplica a mesma regra.';
+  String get descDefinirHorarios =>
+      'Defina seus horários de funcionamento e dias da semana que se aplica a mesma regra.';
 
   @override
   String get horariosFuncionamento => 'Horários de funcionamento';
 
   @override
-  String get descHorariosFuncionamento => 'Defina seus horários de funcionamento aqui';
+  String get descHorariosFuncionamento =>
+      'Defina seus horários de funcionamento aqui';
 
   @override
   String get adicionarHorario => 'Adicionar horário';
@@ -1045,7 +1094,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get conectarStripe => 'Conecte-se ao Stripe';
 
   @override
-  String get descConectarStripe => 'Para receber pagamentos online com cartão de crédito e débito.';
+  String get descConectarStripe =>
+      'Para receber pagamentos online com cartão de crédito e débito.';
 
   @override
   String get quantidade => 'Quantidade';
@@ -1093,7 +1143,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get adicionarArea => 'Adicionar area';
 
   @override
-  String get descAreasEntrega => 'Defina suas áreas de entrega por bairro desenhando no mapa ou por km rodado.';
+  String get descAreasEntrega =>
+      'Defina suas áreas de entrega por bairro desenhando no mapa ou por km rodado.';
 
   @override
   String get solicitarParceria => 'Solicitar parceria';
@@ -1125,10 +1176,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get descDialogLogout => 'Tem certeza que deseja sair?';
 
   @override
-  String get descDialogEncerrarSistema => 'Tem certeza que deseja encerrar o sistema?';
+  String get descDialogEncerrarSistema =>
+      'Tem certeza que deseja encerrar o sistema?';
 
   @override
-  String get descDialogBackupCustomer => 'Deseja fazer backup dos seus clientes?';
+  String get descDialogBackupCustomer =>
+      'Deseja fazer backup dos seus clientes?';
 
   @override
   String get backupRealizado => 'Backup realizado com sucesso.';
@@ -1140,13 +1193,16 @@ class AppLocalizationsPt extends AppLocalizations {
   String get pedidoCancelado => 'Pedido cancelado';
 
   @override
-  String get mensagemAbrirEstabelecimento => 'Já está na hora de abrir o estabelecimento';
+  String get mensagemAbrirEstabelecimento =>
+      'Já está na hora de abrir o estabelecimento';
 
   @override
-  String get mensagemFecharEstabelecimento => 'Já está na hora de fechar o estabelecimento';
+  String get mensagemFecharEstabelecimento =>
+      'Já está na hora de fechar o estabelecimento';
 
   @override
-  String get infoPedidoForaPeriodoAgendamento => 'Pedido fora do periodo de agendamento, tente novamente mais próximo do horário.';
+  String get infoPedidoForaPeriodoAgendamento =>
+      'Pedido fora do periodo de agendamento, tente novamente mais próximo do horário.';
 
   @override
   String get selecionarEntregador => 'Selecionar entregador';
@@ -1169,7 +1225,8 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get voceNaoPossuiEntregadores => 'Você não possui entregadores disponíveis';
+  String get voceNaoPossuiEntregadores =>
+      'Você não possui entregadores disponíveis';
 
   @override
   String get mesas => 'Mesas';
@@ -1235,7 +1292,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get retirada_consumo => 'Retirada / Consumo';
 
   @override
-  String get infoSelecioneOuAdicioneEndereco => 'Selecione ou adicione um endereço para continuar';
+  String get infoSelecioneOuAdicioneEndereco =>
+      'Selecione ou adicione um endereço para continuar';
 
   @override
   String get item => 'Item';
@@ -1262,7 +1320,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get campoObrigatorio => 'Campo obrigatório.';
 
   @override
-  String get valorPagamentoMaiorQueConta => 'Valor do pagamento maior que a conta.';
+  String get valorPagamentoMaiorQueConta =>
+      'Valor do pagamento maior que a conta.';
 
   @override
   String get relatorioPedidos => 'Relatório de pedidos';
@@ -1381,10 +1440,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get inativo => 'Inativo';
 
   @override
-  String get erroIniciarWpp => 'Erro ao iniciar o whatsapp, tente reiniciar o sistema, se o problema persistir entre em contato com o suporte.';
+  String get erroIniciarWpp =>
+      'Erro ao iniciar o whatsapp, tente reiniciar o sistema, se o problema persistir entre em contato com o suporte.';
 
   @override
-  String get erroEnviarMensagem => 'Erro ao enviar mensagem, tente reiniciar o sistema, se o problema persistir entre em contato com o suporte.';
+  String get erroEnviarMensagem =>
+      'Erro ao enviar mensagem, tente reiniciar o sistema, se o problema persistir entre em contato com o suporte.';
 
   @override
   String get bomDia => 'Bom dia';
@@ -1399,7 +1460,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get raioEntrega => 'Raio de entrega';
 
   @override
-  String get infoselecioneAreaEntregaAntesAddPonto => 'Selecione uma área de entrega antes de adicionar um ponto';
+  String get infoselecioneAreaEntregaAntesAddPonto =>
+      'Selecione uma área de entrega antes de adicionar um ponto';
 
   @override
   String get layoutImpresssao => 'Layout de impressão';
@@ -1411,7 +1473,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get trafegoPago => 'Anúncios pagos';
 
   @override
-  String get trafegoPagoHandleErrorCode => 'Por favor adicione somente o codigo';
+  String get trafegoPagoHandleErrorCode =>
+      'Por favor adicione somente o codigo';
 
   @override
   String get preferenciasDoUsuario => 'Preferências do usuário';
@@ -1447,16 +1510,20 @@ class AppLocalizationsPt extends AppLocalizations {
   String get espelharHorizontalmente => 'Espelhar horizontalmente';
 
   @override
-  String get erroAoVerificarPagamento => 'Erro ao verificar o pagamento. Tente novamente.';
+  String get erroAoVerificarPagamento =>
+      'Erro ao verificar o pagamento. Tente novamente.';
 
   @override
-  String get erroAoGerarPagamento => 'Erro ao gerar o pagamento. Tente novamente.';
+  String get erroAoGerarPagamento =>
+      'Erro ao gerar o pagamento. Tente novamente.';
 
   @override
-  String get chatbotStatesDisableTitle => 'Habilite a integração com o WhatsApp para começar a usar o Chatbot';
+  String get chatbotStatesDisableTitle =>
+      'Habilite a integração com o WhatsApp para começar a usar o Chatbot';
 
   @override
-  String get chatbotStatesDisableSubtitle => 'Você precisa habilitar a integração com o WhatsApp para começar a usar o Chatbot';
+  String get chatbotStatesDisableSubtitle =>
+      'Você precisa habilitar a integração com o WhatsApp para começar a usar o Chatbot';
 
   @override
   String get chatbotStatesDisableAction => 'Habilitar';
@@ -1474,7 +1541,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get chatbotStatesConnectedTitle => 'Conectado';
 
   @override
-  String get chatbotStatesConnectedSubtitle => 'Personalize suas mensagens de status a baixo.';
+  String get chatbotStatesConnectedSubtitle =>
+      'Personalize suas mensagens de status a baixo.';
 
   @override
   String get chatbotStatesConnectedAction => 'Desconectar';
@@ -1483,7 +1551,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get chatbotStatesDisconnectedTitle => 'Desconectado';
 
   @override
-  String get chatbotStatesDisconnectedSubtitle => 'Você precisa escanear o QRCode para conectar o WhatsApp';
+  String get chatbotStatesDisconnectedSubtitle =>
+      'Você precisa escanear o QRCode para conectar o WhatsApp';
 
   @override
   String get chatbotStatesDisconnectedAction => 'Conectar';
@@ -1497,31 +1566,39 @@ class AppLocalizationsPt extends AppLocalizations {
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
 class AppLocalizationsPtBr extends AppLocalizationsPt {
-  AppLocalizationsPtBr(): super('pt_BR');
+  AppLocalizationsPtBr() : super('pt_BR');
 
   @override
-  String get wppGreetingsMessage => '🤖 Olá! Eu sou o Atendente Virtual do(a) [establishment_name]. \n\nPara fazer um pedido com praticidade, clique no link abaixo: \n\n👇🏼 Toque para pedir 👇🏼 \n[link_company]';
+  String get wppGreetingsMessage =>
+      '🤖 Olá! Eu sou o Atendente Virtual do(a) [establishment_name]. \n\nPara fazer um pedido com praticidade, clique no link abaixo: \n\n👇🏼 Toque para pedir 👇🏼 \n[link_company]';
 
   @override
-  String get wppPending => 'Olá [name]👋, \nQue bom te ver por aqui! \n> Recebemos seu pedido, por favor, aguarde a confirmação. \n\n> Aqui está o link se quiser acompanhar:\n[link_order_status]';
+  String get wppPending =>
+      'Olá [name]👋, \nQue bom te ver por aqui! \n> Recebemos seu pedido, por favor, aguarde a confirmação. \n\n> Aqui está o link se quiser acompanhar:\n[link_order_status]';
 
   @override
-  String get wppAccepted => '[name]\nSeu pedido foi aceito!\n\nAqui está o link se quiser acompanhar:\n[link_order_status]';
+  String get wppAccepted =>
+      '[name]\nSeu pedido foi aceito!\n\nAqui está o link se quiser acompanhar:\n[link_order_status]';
 
   @override
-  String get wppAwaitingDelivery => '[name]\n> Seu pedido já está pronto. \nO entregador já está a caminho para coletar seu pedido aqui na loja!';
+  String get wppAwaitingDelivery =>
+      '[name]\n> Seu pedido já está pronto. \nO entregador já está a caminho para coletar seu pedido aqui na loja!';
 
   @override
-  String get wppAwaitingPickup => 'Acabou a espera! 😍\n> Seu pedido já está pronto e esperando por você!';
+  String get wppAwaitingPickup =>
+      'Acabou a espera! 😍\n> Seu pedido já está pronto e esperando por você!';
 
   @override
-  String get wppDelivered => 'Seu pedido foi entregue\nmuito obrigado pela confiança! 😊';
+  String get wppDelivered =>
+      'Seu pedido foi entregue\nmuito obrigado pela confiança! 😊';
 
   @override
-  String get wppInDelivery => 'Temos uma ótima notícia para você!😀\n> Seu pedido saiu para entrega e logo chegará por aí, Qualquer dúvida, estamos à disposição.';
+  String get wppInDelivery =>
+      'Temos uma ótima notícia para você!😀\n> Seu pedido saiu para entrega e logo chegará por aí, Qualquer dúvida, estamos à disposição.';
 
   @override
-  String get wppLocalOrderMessage => 'Olá [name] 👋\nQue bom te ver por aqui!\n\nSeu pedido foi realizado e já está sendo preparado.✅\n\n> Logo volto com novidades, sobre o status do mesmo.\n\nAqui está o link, se quiser acompanhar:\n[link_order_status]';
+  String get wppLocalOrderMessage =>
+      'Olá [name] 👋\nQue bom te ver por aqui!\n\nSeu pedido foi realizado e já está sendo preparado.✅\n\n> Logo volto com novidades, sobre o status do mesmo.\n\nAqui está o link, se quiser acompanhar:\n[link_order_status]';
 
   @override
   String get credit => 'Crédito';
@@ -1593,13 +1670,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get corPrimaria => 'Cor primária';
 
   @override
-  String get descCorPrimaria => 'Escolha uma cor para ser a cor principal do seu app.';
+  String get descCorPrimaria =>
+      'Escolha uma cor para ser a cor principal do seu app.';
 
   @override
   String get imagens => 'Imagens';
 
   @override
-  String get descImagens => 'Escolha uma imagem de capa e um logótipo para a sua loja.';
+  String get descImagens =>
+      'Escolha uma imagem de capa e um logótipo para a sua loja.';
 
   @override
   String get endereco => 'Endereço';
@@ -1614,19 +1693,22 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get adicioneEnderecoEntrega => 'Adicone um endereço de entrega';
 
   @override
-  String get selecioneEnderecoPadraoCliente => 'Selecione o endereço de entrega padrão do cliente';
+  String get selecioneEnderecoPadraoCliente =>
+      'Selecione o endereço de entrega padrão do cliente';
 
   @override
   String get enderecoCliente => 'Endereço do cliente';
 
   @override
-  String get selecioneClientePedido => 'Selecione um cliente para efetuar o pedido';
+  String get selecioneClientePedido =>
+      'Selecione um cliente para efetuar o pedido';
 
   @override
   String get selecionarCliente => 'Selecionar cliente';
 
   @override
-  String get pesquiseClienteNomeTelefone => 'Pesquise seu cliente por nome ou telefone';
+  String get pesquiseClienteNomeTelefone =>
+      'Pesquise seu cliente por nome ou telefone';
 
   @override
   String get adicionarCliente => 'Adicionar cliente';
@@ -1653,7 +1735,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get informacoesPrincipais => 'Informações Principais';
 
   @override
-  String get descInformacoesPrincipais => 'Defina um nome, valor mínimo de pedidos e as informações de contacto';
+  String get descInformacoesPrincipais =>
+      'Defina um nome, valor mínimo de pedidos e as informações de contacto';
 
   @override
   String get nomeLoja => 'Nome da Loja';
@@ -1674,19 +1757,22 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get loja => 'Loja';
 
   @override
-  String get descLoja => 'Link da loja e modos de atendimento (Entrega, Recolha, Mesa, Quiosque)';
+  String get descLoja =>
+      'Link da loja e modos de atendimento (Entrega, Recolha, Mesa, Quiosque)';
 
   @override
   String get linkLoja => 'Link da loja';
 
   @override
-  String get descLinkLoja => 'Copie o link da sua loja e envie para seus clientes (Não é permitido alterar).';
+  String get descLinkLoja =>
+      'Copie o link da sua loja e envie para seus clientes (Não é permitido alterar).';
 
   @override
   String get redesSociais => 'Redes Sociais';
 
   @override
-  String get descredesSociais => 'Complete com o link das redes sociais do seu negócio, caso tenha';
+  String get descredesSociais =>
+      'Complete com o link das redes sociais do seu negócio, caso tenha';
 
   @override
   String get adicionar => 'Adicionar';
@@ -1734,7 +1820,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get bordas => 'Bordas';
 
   @override
-  String get descPageTamnhosQuantidadePizza => 'Defina os tamanhos e quantidade de sabores das suas pizzas.';
+  String get descPageTamnhosQuantidadePizza =>
+      'Defina os tamanhos e quantidade de sabores das suas pizzas.';
 
   @override
   String get tamanhos => 'Tamanhos';
@@ -1865,13 +1952,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get saborMussarela => 'Mussarela';
 
   @override
-  String get descMussarela => 'Molho de tomate caseiro, mussarela, catupiry, azeitonas e orégano.';
+  String get descMussarela =>
+      'Molho de tomate caseiro, mussarela, catupiry, azeitonas e orégano.';
 
   @override
   String get saborCalabresa => 'Calabresa';
 
   @override
-  String get descCalabresa => 'Molho de tomate caseiro, calabresa, catupiry, cebola, azeitonas e orégano.';
+  String get descCalabresa =>
+      'Molho de tomate caseiro, calabresa, catupiry, cebola, azeitonas e orégano.';
 
   @override
   String get pizzaGrandeDefault => 'Pizza Grande - 8 fátias';
@@ -1886,10 +1975,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get emptySateteProdutos => 'Voce ainda não adicionou nenhum produto.';
 
   @override
-  String get emptySateteCategorias => 'Voce ainda não adicionou nenhuma categoria.';
+  String get emptySateteCategorias =>
+      'Voce ainda não adicionou nenhuma categoria.';
 
   @override
-  String get emptySateteComplementos => 'Voce ainda não adicionou nenhum complemento.';
+  String get emptySateteComplementos =>
+      'Voce ainda não adicionou nenhum complemento.';
 
   @override
   String get emptySateteSaborPizza => 'Voce ainda não adicionou nenhum sabor.';
@@ -1913,7 +2004,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   }
 
   @override
-  String get precoPromocionalDeveSerMenorQuePreco => 'O preço promocional deve ser menor que o preço';
+  String get precoPromocionalDeveSerMenorQuePreco =>
+      'O preço promocional deve ser menor que o preço';
 
   @override
   String get imagemExcluidaSucesso => 'Imagem excluida com sucesso!';
@@ -1925,13 +2017,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get uploadImagem => 'Selecionar imagem';
 
   @override
-  String get descZoomImagem => 'Utilize o scroll do seu mouse para dar zoom +- na sua imagem';
+  String get descZoomImagem =>
+      'Utilize o scroll do seu mouse para dar zoom +- na sua imagem';
 
   @override
   String get imagemSalvaComSucesso => 'Imagem salva com sucesso!';
 
   @override
-  String get vocePrecisaSelecionarUmaImagem => 'Você precisa selecionar uma imagem';
+  String get vocePrecisaSelecionarUmaImagem =>
+      'Você precisa selecionar uma imagem';
 
   @override
   String get adicionarTamanho => 'Adicionar tamanho';
@@ -1940,7 +2034,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get categorias => 'Categorias';
 
   @override
-  String get addCategoria => 'Para adicionar uma nova categoria basta clicar no botão ao lado';
+  String get addCategoria =>
+      'Para adicionar uma nova categoria basta clicar no botão ao lado';
 
   @override
   String get descMenu => 'Faça a gestão dos seus produtos';
@@ -1955,7 +2050,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get tituloEditarComplemento => 'Edite seu complemento.';
 
   @override
-  String get tituloComplemento => 'Cadastre e defina as regras do seu complemento';
+  String get tituloComplemento =>
+      'Cadastre e defina as regras do seu complemento';
 
   @override
   String get tituloCategoria => 'Escolha uma opção de categoria.';
@@ -1964,7 +2060,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get produtos => 'Produtos';
 
   @override
-  String get descCategoriaProdutos => 'Produtos no geral ex: lanches, doces, marmitas, etc...';
+  String get descCategoriaProdutos =>
+      'Produtos no geral ex: lanches, doces, marmitas, etc...';
 
   @override
   String get descCategoriaPizza => 'Categoria exclusiva para pizzas';
@@ -1979,10 +2076,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get extras => 'Extras';
 
   @override
-  String get tooltipNomeComplemento => 'Este campo aparece para o cliente\nno cardapio';
+  String get tooltipNomeComplemento =>
+      'Este campo aparece para o cliente\nno cardapio';
 
   @override
-  String get tooltipIdentificador => 'Este campo aparece somente para você \npara ajudar a identificar o complemento';
+  String get tooltipIdentificador =>
+      'Este campo aparece somente para você \npara ajudar a identificar o complemento';
 
   @override
   String get identifier => 'Identificador';
@@ -2003,7 +2102,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get hintQuantidadeMaxima => 'Ex: 5';
 
   @override
-  String get validatorQuantidadeMaxima => 'Quantidade maxima deve ser maior que a quantidade minima.';
+  String get validatorQuantidadeMaxima =>
+      'Quantidade maxima deve ser maior que a quantidade minima.';
 
   @override
   String get tipoDoSeletor => 'Tipo do seletor';
@@ -2012,13 +2112,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get seletorUnico => 'Seletor unico';
 
   @override
-  String get descSeletorUnico => 'Permite selecionar apenas uma vez o mesmo item.';
+  String get descSeletorUnico =>
+      'Permite selecionar apenas uma vez o mesmo item.';
 
   @override
   String get seletorMultiplo => 'Seletor multiplo';
 
   @override
-  String get descSeletorMultiplo => 'Permite selecionar varias vezes o mesmo item.';
+  String get descSeletorMultiplo =>
+      'Permite selecionar varias vezes o mesmo item.';
 
   @override
   String get obrigatorio => 'Obrigatório';
@@ -2030,7 +2132,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get bordasEMassas => 'Bordas & Massas';
 
   @override
-  String get tituloBordasEMassas => 'Definas as opções de bordas e massa da suas pizzas';
+  String get tituloBordasEMassas =>
+      'Definas as opções de bordas e massa da suas pizzas';
 
   @override
   String get descSelecionarImage => 'Selecione uma nova imagem para o seu item';
@@ -2281,13 +2384,16 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get faturaDeMaisUmDia => 'Me de mais um dia';
 
   @override
-  String get useWhatsappAutomatizarSistema => 'Use o WhatsApp para automatizar seu sistema';
+  String get useWhatsappAutomatizarSistema =>
+      'Use o WhatsApp para automatizar seu sistema';
 
   @override
-  String get atualizeSeusClientesSobreOsStatusDosPedidos => 'Atualize seus clientes sobre os status dos pedidos, deixe seu WhatsApp no automático e não deixe seu cliente esperando.';
+  String get atualizeSeusClientesSobreOsStatusDosPedidos =>
+      'Atualize seus clientes sobre os status dos pedidos, deixe seu WhatsApp no automático e não deixe seu cliente esperando.';
 
   @override
-  String get abrirSeuWhatsappNoSeuCelularNaJanelaConversas => 'Abra seu WhatsApp no seu celular, na janela de conversas.';
+  String get abrirSeuWhatsappNoSeuCelularNaJanelaConversas =>
+      'Abra seu WhatsApp no seu celular, na janela de conversas.';
 
   @override
   String get toqueEm => 'Toque em';
@@ -2314,7 +2420,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get conectarDispositivo => 'Conectar dispositivo.';
 
   @override
-  String get aponteSeuCelularParaEstaTelaParaEscanear => 'Aponte seu celular para esta tela para escanear o QR code.';
+  String get aponteSeuCelularParaEstaTelaParaEscanear =>
+      'Aponte seu celular para esta tela para escanear o QR code.';
 
   @override
   String get conectado => 'Conectado';
@@ -2390,7 +2497,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get habilitarAgendamentos => 'Habilitar agendamentos';
 
   @override
-  String get habilitarAgendamentosAmanha => 'Habilitar agendamentos para amanhã';
+  String get habilitarAgendamentosAmanha =>
+      'Habilitar agendamentos para amanhã';
 
   @override
   String get vendasDoDia => 'Vendas do dia';
@@ -2456,10 +2564,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get salvo => 'Salvo';
 
   @override
-  String get opsModuloPermitidoApenasTermianlPrincipal => 'Ops! \nEste modulo so pode ser acessado pelo terminal principal';
+  String get opsModuloPermitidoApenasTermianlPrincipal =>
+      'Ops! \nEste modulo so pode ser acessado pelo terminal principal';
 
   @override
-  String get servidorWppIniciando => 'O Servidor do whatsapp está sendo inicializado... \nTente novamente daqui um minuto.\n se persistir reinicie o sistema e tente novamente.';
+  String get servidorWppIniciando =>
+      'O Servidor do whatsapp está sendo inicializado... \nTente novamente daqui um minuto.\n se persistir reinicie o sistema e tente novamente.';
 
   @override
   String get tentarNovamente => 'Tentar novamente';
@@ -2474,7 +2584,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get descDestro => 'Opera com a mão direita ou esquerda';
 
   @override
-  String get telefoneClienteAvulsoObrigatorio => 'Telefone do cliente avulso obrigatório';
+  String get telefoneClienteAvulsoObrigatorio =>
+      'Telefone do cliente avulso obrigatório';
 
   @override
   String get terminalPrincipal => 'Terminal Principal';
@@ -2494,13 +2605,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get iniciandoDownload => 'Iniciando download...';
 
   @override
-  String get downloadDriverImpressoraConcluido => 'Download concluído, iniciando driver...';
+  String get downloadDriverImpressoraConcluido =>
+      'Download concluído, iniciando driver...';
 
   @override
   String get idioma => 'Idioma';
 
   @override
-  String get copiadoParaAreaTransferencia => 'Copiado para area de transferência';
+  String get copiadoParaAreaTransferencia =>
+      'Copiado para area de transferência';
 
   @override
   String get editarHorarioFuncionamento => 'Editar horario de funcionamento';
@@ -2512,22 +2625,27 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get fechamento => 'Fechamento';
 
   @override
-  String get horarioAberturaDeveSerMenorQueHorarioFechamento => 'O horário de abertura deve ser menor que o de fechamento';
+  String get horarioAberturaDeveSerMenorQueHorarioFechamento =>
+      'O horário de abertura deve ser menor que o de fechamento';
 
   @override
-  String get horarioFechamentoDeveSerMaiorQueHorarioAbertura => 'O horário de fechamneto deve ser maior que o de abertura';
+  String get horarioFechamentoDeveSerMaiorQueHorarioAbertura =>
+      'O horário de fechamneto deve ser maior que o de abertura';
 
   @override
-  String get necessarioDefinirHorarios => 'Você precisa definir horario de abertura,horario de fechamento e dias da semana, antes de salvar.';
+  String get necessarioDefinirHorarios =>
+      'Você precisa definir horario de abertura,horario de fechamento e dias da semana, antes de salvar.';
 
   @override
-  String get descDefinirHorarios => 'Defina seus horários de funcionamento e dias da semana que se aplica a mesma regra.';
+  String get descDefinirHorarios =>
+      'Defina seus horários de funcionamento e dias da semana que se aplica a mesma regra.';
 
   @override
   String get horariosFuncionamento => 'Horários de funcionamento';
 
   @override
-  String get descHorariosFuncionamento => 'Defina seus horários de funcionamento aqui';
+  String get descHorariosFuncionamento =>
+      'Defina seus horários de funcionamento aqui';
 
   @override
   String get adicionarHorario => 'Adicionar horário';
@@ -2536,7 +2654,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get conectarStripe => 'Conecte-se ao Stripe';
 
   @override
-  String get descConectarStripe => 'Para receber pagamentos online com cartão de crédito e débito.';
+  String get descConectarStripe =>
+      'Para receber pagamentos online com cartão de crédito e débito.';
 
   @override
   String get quantidade => 'Quantidade';
@@ -2584,7 +2703,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get adicionarArea => 'Adicionar area';
 
   @override
-  String get descAreasEntrega => 'Defina suas áreas de entrega por bairro desenhando no mapa ou por km rodado.';
+  String get descAreasEntrega =>
+      'Defina suas áreas de entrega por bairro desenhando no mapa ou por km rodado.';
 
   @override
   String get solicitarParceria => 'Solicitar parceria';
@@ -2616,10 +2736,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get descDialogLogout => 'Tem certeza que deseja sair?';
 
   @override
-  String get descDialogEncerrarSistema => 'Tem certeza que deseja encerrar o sistema?';
+  String get descDialogEncerrarSistema =>
+      'Tem certeza que deseja encerrar o sistema?';
 
   @override
-  String get descDialogBackupCustomer => 'Deseja fazer backup dos seus clientes?';
+  String get descDialogBackupCustomer =>
+      'Deseja fazer backup dos seus clientes?';
 
   @override
   String get backupRealizado => 'Backup realizado com sucesso.';
@@ -2631,13 +2753,16 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get pedidoCancelado => 'Pedido cancelado';
 
   @override
-  String get mensagemAbrirEstabelecimento => 'Já está na hora de abrir o estabelecimento';
+  String get mensagemAbrirEstabelecimento =>
+      'Já está na hora de abrir o estabelecimento';
 
   @override
-  String get mensagemFecharEstabelecimento => 'Já está na hora de fechar o estabelecimento';
+  String get mensagemFecharEstabelecimento =>
+      'Já está na hora de fechar o estabelecimento';
 
   @override
-  String get infoPedidoForaPeriodoAgendamento => 'Pedido fora do periodo de agendamento, tente novamente mais próximo do horário.';
+  String get infoPedidoForaPeriodoAgendamento =>
+      'Pedido fora do periodo de agendamento, tente novamente mais próximo do horário.';
 
   @override
   String get selecionarEntregador => 'Selecionar entregador';
@@ -2660,7 +2785,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   }
 
   @override
-  String get voceNaoPossuiEntregadores => 'Você não possui entregadores disponíveis';
+  String get voceNaoPossuiEntregadores =>
+      'Você não possui entregadores disponíveis';
 
   @override
   String get mesas => 'Mesas';
@@ -2726,7 +2852,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get retirada_consumo => 'Retirada / Consumo';
 
   @override
-  String get infoSelecioneOuAdicioneEndereco => 'Selecione ou adicione um endereço para continuar';
+  String get infoSelecioneOuAdicioneEndereco =>
+      'Selecione ou adicione um endereço para continuar';
 
   @override
   String get item => 'Item';
@@ -2753,7 +2880,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get campoObrigatorio => 'Campo obrigatório.';
 
   @override
-  String get valorPagamentoMaiorQueConta => 'Valor do pagamento maior que a conta.';
+  String get valorPagamentoMaiorQueConta =>
+      'Valor do pagamento maior que a conta.';
 
   @override
   String get relatorioPedidos => 'Relatório de pedidos';
@@ -2872,10 +3000,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get inativo => 'Inativo';
 
   @override
-  String get erroIniciarWpp => 'Erro ao iniciar o whatsapp, tente reiniciar o sistema, se o problema persistir entre em contato com o suporte.';
+  String get erroIniciarWpp =>
+      'Erro ao iniciar o whatsapp, tente reiniciar o sistema, se o problema persistir entre em contato com o suporte.';
 
   @override
-  String get erroEnviarMensagem => 'Erro ao enviar mensagem, tente reiniciar o sistema, se o problema persistir entre em contato com o suporte.';
+  String get erroEnviarMensagem =>
+      'Erro ao enviar mensagem, tente reiniciar o sistema, se o problema persistir entre em contato com o suporte.';
 
   @override
   String get bomDia => 'Bom dia';
@@ -2890,7 +3020,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get raioEntrega => 'Raio de entrega';
 
   @override
-  String get infoselecioneAreaEntregaAntesAddPonto => 'Selecione uma área de entrega antes de adicionar um ponto';
+  String get infoselecioneAreaEntregaAntesAddPonto =>
+      'Selecione uma área de entrega antes de adicionar um ponto';
 
   @override
   String get layoutImpresssao => 'Layout de impressão';
@@ -2902,7 +3033,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get trafegoPago => 'Anúncios pagos';
 
   @override
-  String get trafegoPagoHandleErrorCode => 'Por favor adicione somente o codigo';
+  String get trafegoPagoHandleErrorCode =>
+      'Por favor adicione somente o codigo';
 
   @override
   String get preferenciasDoUsuario => 'Preferências do usuário';
@@ -2938,16 +3070,20 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get espelharHorizontalmente => 'Espelhar horizontalmente';
 
   @override
-  String get erroAoVerificarPagamento => 'Erro ao verificar o pagamento. Tente novamente.';
+  String get erroAoVerificarPagamento =>
+      'Erro ao verificar o pagamento. Tente novamente.';
 
   @override
-  String get erroAoGerarPagamento => 'Erro ao gerar o pagamento. Tente novamente.';
+  String get erroAoGerarPagamento =>
+      'Erro ao gerar o pagamento. Tente novamente.';
 
   @override
-  String get chatbotStatesDisableTitle => 'Habilite a integração com o WhatsApp para começar a usar o Chatbot';
+  String get chatbotStatesDisableTitle =>
+      'Habilite a integração com o WhatsApp para começar a usar o Chatbot';
 
   @override
-  String get chatbotStatesDisableSubtitle => 'Você precisa habilitar a integração com o WhatsApp para começar a usar o Chatbot';
+  String get chatbotStatesDisableSubtitle =>
+      'Você precisa habilitar a integração com o WhatsApp para começar a usar o Chatbot';
 
   @override
   String get chatbotStatesDisableAction => 'Habilitar';
@@ -2965,7 +3101,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get chatbotStatesConnectedTitle => 'Conectado';
 
   @override
-  String get chatbotStatesConnectedSubtitle => 'Personalize suas mensagens de status a baixo.';
+  String get chatbotStatesConnectedSubtitle =>
+      'Personalize suas mensagens de status a baixo.';
 
   @override
   String get chatbotStatesConnectedAction => 'Desconectar';
@@ -2974,7 +3111,8 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get chatbotStatesDisconnectedTitle => 'Desconectado';
 
   @override
-  String get chatbotStatesDisconnectedSubtitle => 'Você precisa escanear o QRCode para conectar o WhatsApp';
+  String get chatbotStatesDisconnectedSubtitle =>
+      'Você precisa escanear o QRCode para conectar o WhatsApp';
 
   @override
   String get chatbotStatesDisconnectedAction => 'Conectar';
