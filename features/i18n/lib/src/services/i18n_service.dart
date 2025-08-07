@@ -20,7 +20,13 @@ class AppI18n {
   static void _listenSlang() {
     LocaleSettings.getLocaleStream().listen((event) {
       _prefs?.setString('language', event.underscoreTag);
+      _locale.value = event.flutterLocale;
     });
+  }
+
+  static Future<void> changeLocale(String language) async {
+    LocaleSettings.setLocaleRaw(language);
+    userHasSetLanguage = true;
   }
 
   static Future<String> initialize() async {
@@ -36,6 +42,9 @@ class AppI18n {
     } else {
       userHasSetLanguage = true;
     }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // LocaleSettings.setLocaleRaw(language!);
+    });
     return language;
   }
 

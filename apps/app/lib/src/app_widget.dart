@@ -15,29 +15,32 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
-    return ArtApp.router(
-      routerConfig: Modular.routerConfig,
-      builder: (context, child) {
-        LocaleSettings.setLocale(AppLocale.ptBr);
-        return ModularLoader.builder(
-          context,
-          child,
-          // GestureDetector(
-          //   behavior: HitTestBehavior.translucent,
-          //   onTap: () {
-          //         FocusScope.of(context).unfocus();
-          //       },
-          //       child: child,
-          //     ),
-        );
-      },
-      theme: ArtThemeData(colorScheme: ArtOrangeColorScheme.light(), brightness: Brightness.light),
-      darkTheme: ArtThemeData(colorScheme: ArtYellowColorScheme.dark(), brightness: Brightness.dark),
-      themeMode: ThemeMode.system,
-      locale: TranslationProvider.of(context).flutterLocale,
-      supportedLocales: AppLocaleUtils.supportedLocales,
-      localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      title: 'PaipFood App',
-    );
+    return ListenableBuilder(
+        listenable: AppI18n.observer,
+        builder: (context, child) {
+          return ArtApp.router(
+            routerConfig: Modular.routerConfig,
+            builder: (context, child) {
+              return ModularLoader.builder(
+                context,
+                child,
+                // GestureDetector(
+                //   behavior: HitTestBehavior.translucent,
+                //   onTap: () {
+                //         FocusScope.of(context).unfocus();
+                //       },
+                //       child: child,
+                //     ),
+              );
+            },
+            theme: ArtThemeData(colorScheme: ArtOrangeColorScheme.light(), brightness: Brightness.light),
+            darkTheme: ArtThemeData(colorScheme: ArtYellowColorScheme.dark(), brightness: Brightness.dark),
+            themeMode: ThemeMode.system,
+            locale: TranslationProvider.of(context).flutterLocale,
+            supportedLocales: AppLocaleUtils.supportedLocales,
+            localizationsDelegates: GlobalMaterialLocalizations.delegates,
+            title: 'PaipFood App',
+          );
+        });
   }
 }

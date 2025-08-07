@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:address/address.dart';
-import 'package:app/i18n/gen/strings.g.dart';
 import 'package:app/src/core/utils/routes.dart';
 import 'package:app/src/modules/onboarding/onboarding_module.dart';
 import 'package:auth/auth.dart';
