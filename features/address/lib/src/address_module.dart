@@ -1,8 +1,5 @@
 import 'dart:async';
-import 'package:address/i18n/gen/strings.g.dart';
-import 'package:address/src/data/events/position_events.dart';
 import 'package:address/src/data/events/route_events.dart';
-import 'package:address/src/data/services/my_position_service.dart';
 import 'package:address/src/presentation/pages/auto_complete_page.dart';
 import 'package:address/src/presentation/pages/address_manually_page.dart';
 import 'package:address/src/presentation/pages/my_addresses_page.dart';
@@ -15,7 +12,6 @@ import 'package:address/src/utils/routes.dart';
 import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:i18n/i18n.dart';
 
 class AddressModule extends EventModule {
   @override
@@ -30,6 +26,7 @@ class AddressModule extends EventModule {
   List<ModularRoute> get routes => [
         ChildRoute(
           Routes.myAddressesRelative,
+          // redirect: (context, state) => UserMeRedirectService.call(context: context, state: state),
           name: Routes.myAddressesNamed,
           child: (context, args) => MyAddressesPage(),
         ),

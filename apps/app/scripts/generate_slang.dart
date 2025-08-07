@@ -5,7 +5,7 @@ import 'dart:io';
 
 class SlangGenerator {
   static const String _pubspecPath = 'pubspec.yaml';
-  static const String _outputPath = 'lib/slang_wrapper.dart';
+  static const String _outputPath = 'lib/src/slang_wrapper.dart';
 
   static Future<void> generateSlangWrapper() async {
     try {
@@ -96,6 +96,7 @@ class SlangGenerator {
     for (final dependency in dependencies) {
       buffer.writeln("import 'package:$dependency/i18n/gen/strings.g.dart' as $dependency;");
     }
+    buffer.writeln("import 'package:$projectName/i18n/gen/strings.g.dart';");
     buffer.writeln("import 'package:$projectName/src/app_widget.dart';");
     buffer.writeln("import 'package:flutter/material.dart';");
     buffer.writeln();
@@ -110,12 +111,14 @@ class SlangGenerator {
     buffer.writeln('  Widget build(BuildContext context) {');
     buffer.writeln('    return //');
 
-    // TranslationProviders aninhados
+    // TranslationProviders aninhados (incluindo o do próprio app)
     String nestedProviders = 'AppWidget()';
     for (int i = dependencies.length - 1; i >= 0; i--) {
       final dependency = dependencies[i];
       nestedProviders = '$dependency.TranslationProvider(child: $nestedProviders)';
     }
+    // Adicionar o TranslationProvider do próprio app
+    nestedProviders = 'TranslationProvider(child: $nestedProviders)';
 
     buffer.writeln('        $nestedProviders;');
     buffer.writeln('  }');

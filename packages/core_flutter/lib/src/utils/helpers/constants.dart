@@ -1,0 +1,5 @@
+class AppConstants {
+  static const String mapLightUrl = 'https://www.google.com/maps/vt/pb=!1m4!1m3!1i{z}!2i{x}!3i{y}!2m3!1e0!2sm!3i628362738!3m7!2spt-BR!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!1e0!23i4111425';
+  static const String mapDarkUrl =
+      'https://www.google.com/maps/vt/pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i667408741!3m17!2spt-BR!3sUS!5e18!12m4!1e68!2m2!1sset!2sRoadmap!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiMyNDJmM2Uscy5lOmwudC5zfHAuYzojMjQyZjNlLHMuZTpsLnQuZnxwLmM6Izc0Njg1NSxzLnQ6MTl8cy5lOmwudC5mfHAuYzojZDU5NTYzLHMudDoyfHMuZTpsLnQuZnxwLmM6I2Q1OTU2MyxzLnQ6NDB8cy5lOmd8cC5jOiMyNjNjM2Yscy50OjQwfHMuZTpsLnQuZnxwLmM6IzZiOWE3NixzLnQ6M3xzLmU6Z3xwLmM6IzM4NDE0ZSxzLnQ6M3xzLmU6Zy5zfHAuYzojMjEyYTM3LHMudDozfHMuZTpsLnQuZnxwLmM6IzljYTViMyxzLnQ6NDl8cy5lOmd8cC5jOiM3NDY4NTUscy50OjQ5fHMuZTpnLnN8cC5jOiMxZjI4MzUscy50OjQ5fHMuZTpsLnQuZnxwLmM6I2YzZDE5YyxzLnQ6NHxzLmU6Z3xwLmM6IzJmMzk0OCxzLnQ6NjZ8cy5lOmwudC5mfHAuYzojZDU5NTYzLHMudDo2fHMuZTpnfHAuYzojMTcyNjNjLHMudDo2fHMuZTpsLnQuZnxwLmM6IzUxNWM2ZCxzLnQ6NnxzLmU6bC50LnN8cC5jOiMxNzI2M2M!4e0';
+}

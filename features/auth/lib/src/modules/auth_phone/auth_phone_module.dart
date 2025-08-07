@@ -1,38 +1,40 @@
 import 'dart:async';
-import 'package:auth/src/core/auth_shared_module.dart';
+import 'package:auth/auth.dart';
+import 'package:auth/src/modules/auth_phone/auth_core_binds_module.dart';
+import 'package:auth/src/modules/auth_phone/domain/usecase/update_user_phone_usecase.dart';
 import 'package:auth/src/modules/auth_phone/presentation/pages/user_name_page.dart';
 import 'package:auth/src/modules/auth_phone/presentation/viewmodels/auth_phone_viewmodel.dart';
 import 'package:auth/src/modules/auth_phone/presentation/pages/phone_confirm_page.dart';
 import 'package:auth/src/modules/auth_phone/presentation/pages/phone_page.dart';
-import 'package:auth/src/modules/auth_phone/data/services/auth_phone_service.dart';
 import 'package:auth/src/modules/auth_phone/utils/routes.dart';
 import 'package:core_flutter/core_flutter.dart';
 
 class AuthPhoneModule extends Module {
   @override
   FutureOr<List<Module>> imports() async {
-    await SharedPreferences.getInstance().then((value) => value.clear());
-    return [AuthSharedModule()];
+    return [AuthCoreBindsModule()];
   }
 
   @override
-  FutureOr<List<Bind<Object>>> binds() => [
-        Bind.singleton((i) => AuthPhoneService(
-              saveRefreshTokenCachedUsecase: i.get(),
-              authApi: i.get(),
-              authMemory: i.get(),
-              encryptKey: Env.encryptKey,
-              deviceIdService: i.get(),
-            )),
-        Bind.singleton((i) => AuthPhoneViewmodel(
-              authPhoneService: i.get(),
-              authMemory: i.get(),
-              authApi: i.get(),
-              refreshTokenUsecase: i.get(),
-              cache: i.get(),
-              encryptKey: Env.encryptKey,
-            )),
-      ];
+  FutureOr<List<Bind<Object>>> binds() async {
+    return [
+      Bind.singleton((i) => UpdateUserPhoneUsecase(
+            authApi: i.get(),
+            encryptKey: Env.encryptKey,
+          )),
+      Bind.singleton((i) => SilentAuthentication(
+            authApi: i.get(),
+            cache: i.get(),
+            encryptKey: Env.encryptKey,
+            expiresIn: Duration(days: 365),
+          )),
+      Bind.singleton((i) => AuthPhoneViewmodel(
+            cache: i.get(),
+            silentAuthentication: i.get(),
+            updateUserPhoneUsecase: i.get(),
+          )),
+    ];
+  }
 
   @override
   List<ModularRoute> get routes {

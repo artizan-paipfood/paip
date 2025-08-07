@@ -25,6 +25,8 @@ dependencies:
     path: ../../packages/ui
   i18n:
     path: ../i18n
+  auth:
+    path: ../auth
   geocoding: ^4.0.0
   geolocator: ^14.0.2
   flutter_map: ^8.2.1

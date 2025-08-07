@@ -9,10 +9,24 @@ import 'package:ui/ui.dart';
 
 class AppModule extends EventModule {
   @override
+  FutureOr<List<Module>> imports() {
+    return [AuthPhoneModule()];
+  }
+
+  @override
   FutureOr<List<Bind<Object>>> binds() async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    final cache = CacheServiceEncrypted(sharedPreferences: sharedPreferences, encryptKey: Env.encryptKey);
     return [
+      Bind.singleton((i) => cache),
       Bind.singleton((i) => ClientDio(baseOptions: PaipBaseOptions.paipApi), key: PaipBindKey.paipApi),
-      Bind.singleton((i) => ClientDio(baseOptions: PaipBaseOptions.supabase)),
+      Bind.singleton((i) => AuthApi(client: i.get())),
+      Bind.singleton(
+        (i) => ClientDio(
+          baseOptions: PaipBaseOptions.supabase,
+          interceptors: [SupabaseAuthInterceptor(dio: Dio())],
+        ),
+      ),
     ];
   }
 
@@ -25,7 +39,7 @@ class AppModule extends EventModule {
 
   @override
   void listen() {
-    on<AuthLoggedInEvent>((event, context) {
+    on<LoginUserEvent>((event, context) {
       if (context != null) Go.of(context).goNeglect(Routes.myAddresses);
     });
   }

@@ -1,3 +1,5 @@
+import 'package:core/core.dart';
+
 extension ValidatorExtension on String? {
   bool vIsEmpty() {
     return this == null || this!.trim().isEmpty;
@@ -24,7 +26,8 @@ extension ValidatorExtension on String? {
   }
 
   bool vIsValidCEP() {
-    return RegExp(r'^[0-9]{8}$').hasMatch(this!);
+    final isValid = RegExp(r'^[0-9]{8}$').hasMatch(this?.onlyNumbers() ?? '');
+    return isValid;
   }
 
   bool vIsValidPostCode() {

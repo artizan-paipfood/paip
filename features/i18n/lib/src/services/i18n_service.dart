@@ -43,7 +43,7 @@ class AppI18n {
       userHasSetLanguage = true;
     }
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // LocaleSettings.setLocaleRaw(language!);
+      LocaleSettings.setLocaleRaw(language!);
     });
     return language;
   }

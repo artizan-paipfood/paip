@@ -71,7 +71,7 @@ class _MyPositonPageState extends State<MyPositonPage> {
                 ),
                 children: [
                   TileLayer(
-                    urlTemplate: Env.googleMapsLight,
+                    urlTemplate: AppConstants.mapLightUrl,
                   ),
                   MarkerLayer(markers: [
                     Marker(

@@ -3,49 +3,41 @@ import 'package:core_flutter/src/utils/platform/platform.dart';
 
 class Env {
   Env._();
-  static String apiBaseUrl = _loadString('API_BASE_URL');
+  static String apiBaseUrl = const String.fromEnvironment('API_BASE_URL');
 
-  static String secretKey = _loadString('SECRET_KEY');
+  static String secretKey = const String.fromEnvironment('SECRET_KEY');
 
-  static String encryptKey = _loadString('ENCRYPT_KEY');
+  static String encryptKey = const String.fromEnvironment('ENCRYPT_KEY');
 
-  static String stripePublishableKey = _loadString("STRIPE_PUBLISHABLE_KEY");
+  static String stripePublishableKey = const String.fromEnvironment("STRIPE_PUBLISHABLE_KEY");
 
-  static String stripePublishableKeyTest = _loadString("STRIPE_PUBLISHABLE_KEY_TEST");
+  static bool isDev = const bool.fromEnvironment('IS_DEV');
 
-  static bool isDev = _loadBool('IS_DEV');
+  static String supaApiKey = const String.fromEnvironment('SUPABASE_API_KEY');
 
-  static String supaApiKey = _loadString('SUPA_API_KEY');
+  static String supaBaseUrl = const String.fromEnvironment('SUPABASE_BASE_URL');
 
-  static String supaBaseUrl = _loadString('SUPA_BASE_URL');
+  static String geoapifyApiKey = const String.fromEnvironment('GEOAPIFY_API_KEY');
 
-  static String geoapifyApiKey = _loadString('GEOAPIFY_API_KEY');
+  static String mapboxApiKey = const String.fromEnvironment('MAPBOX_API_KEY');
 
-  static String googleMapsLight = _loadString('GOOGLE_MAPS_LIGHT');
+  static String googlemapsApiKey = const String.fromEnvironment('GOOGLEMAPS_API_KEY');
 
-  static String googleMapsDark = _loadString('GOOGLE_MAPS_DARK');
+  static String mercadoPagoClientId = const String.fromEnvironment('MERCADO_PAGO_CLIENT_ID');
 
-  static String mapboxApiKey = _loadString('MAPBOX_API_KEY');
+  static String mercadoPagoAcessToken = const String.fromEnvironment('MERCADO_ACCESS_TOKEN');
 
-  static String googlemapsApiKey = _loadString('GOOGLEMAPS_API_KEY');
+  static String mercadoPagoClientSecret = const String.fromEnvironment('MERCADO_PAGO_CLIENT_SECRET');
 
-  static String mercadoPagoClientId = _loadString('MERCADO_PAGO_CLIENT_ID');
+  static String smsBaseUrl = const String.fromEnvironment('SMS_BASE_URL');
 
-  static String mercadoPagoAcessToken = _loadString('MERCADO_ACCESS_TOKEN');
+  static String smsApiKey = const String.fromEnvironment('SMS_API_KEY');
 
-  static String mercadoPagoClientSecret = _loadString('MERCADO_PAGO_CLIENT_SECRET');
+  static String evolutionBaseUrl = const String.fromEnvironment('EVOLUTION_BASE_URL');
 
-  static String smsBaseUrl = _loadString('SMS_BASE_URL');
+  static String evolutionGlobalApiKey = const String.fromEnvironment('EVOLUTION_GLOBAL_API_KEY');
 
-  static String smsApiKey = _loadString('SMS_API_KEY');
-
-  static String awsAccessKeyId = _loadString('AWS_ACCESS_KEY_ID');
-
-  static String awsSecretAccessKey = _loadString('AWS_SECRET_ACCESS_KEY');
-
-  static String evolutionBaseUrl = _loadString('EVOLUTION_BASE_URL');
-
-  static String evolutionGlobalApiKey = _loadString('EVOLUTION_GLOBAL_API_KEY');
+  static String country = const String.fromEnvironment('COUNTRY');
 
   static String parseLocalhost(String url) {
     if (isAndroid) return url.replaceAll('localhost', '10.0.2.2');
@@ -58,9 +50,11 @@ class Env {
     }
   }
 
-  static String _loadString(String key) {
-    return String.fromEnvironment(key);
-  }
+  // static String const String.fromEnvironment(String key) {
+  //   final result = String.fromEnvironment(key);
+  //   if (result.isEmpty) throw Exception('Environment variable $key is not set');
+  //   return result;
+  // }
 
   static bool _loadBool(String key) {
     return bool.fromEnvironment(key);

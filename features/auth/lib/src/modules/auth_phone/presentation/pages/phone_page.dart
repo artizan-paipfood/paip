@@ -2,7 +2,6 @@ import 'package:auth/i18n/gen/strings.g.dart';
 import 'package:auth/src/core/domain/models/user_phone_model.dart';
 import 'package:auth/src/modules/auth_phone/presentation/viewmodels/auth_phone_viewmodel.dart';
 import 'package:auth/src/modules/auth_phone/utils/routes.dart';
-import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:i18n/i18n.dart';

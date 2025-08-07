@@ -17,6 +17,8 @@ dependencies:
     path: ../ui
   i18n:
     path: ../../features/i18n
+  auth:
+    path: ../../features/auth
   go_router_modular:
     #  ^4.0.0+8
     path: ../../../../go_router_modular

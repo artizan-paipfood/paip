@@ -8,14 +8,14 @@ abstract class IAuthApi {
   Future<AuthenticatedUser> loginByPhone({required PhoneNumber phoneNumber, required String encryptKey});
   Future<void> logout({required String accessToken});
   Future<AuthenticatedUser> refreshToken({required String refreshToken});
-  Future<UserEntity> updateUser({required UserEntity user, required String accessToken});
-  Future<void> updateEmail({required String email, required String accessToken});
+  Future<void> updateEmail({required String email});
   Future<void> forgotPassword({required String email});
   Future<void> updatePassword({required String password, required String accessToken});
   Future<void> updatePasswordPhone({required PhoneNumber phoneNumber, required String encryptKey, required String accessToken});
   Future<bool> userExistsByPhone({required PhoneNumber phoneNumber});
   Future<bool> userExistsByEmail({required String email});
-  Future<UserMe> me({required String userId, required String accessToken});
+  Future<UserMeModel> me({required String userId});
+  Future<void> updateMe({required UserMeModel me});
 }
 
 class AuthApi implements IAuthApi {
@@ -27,12 +27,6 @@ class AuthApi implements IAuthApi {
       '/auth/v1/recover',
       data: {'email': email},
     );
-  }
-
-  @override
-  Future<UserEntity> getUser({required String accessToken}) async {
-    final response = await client.get('/auth/v1/user', headers: {'Authorization': 'Bearer $accessToken'});
-    return UserEntity.fromMap(response.data);
   }
 
   @override
@@ -95,11 +89,11 @@ class AuthApi implements IAuthApi {
   }
 
   @override
-  Future<void> updateEmail({required String email, required String accessToken}) async {
+  Future<void> updateEmail({required String email}) async {
     await client.put(
       "/auth/v1/user",
       data: {"email": email},
-      headers: {"Authorization": "Bearer $accessToken"},
+      // headers: {"Authorization": "Bearer $accessToken"},
     );
   }
 
@@ -110,16 +104,6 @@ class AuthApi implements IAuthApi {
       data: {"password": password},
       headers: {"Authorization": "Bearer $accessToken"},
     );
-  }
-
-  @override
-  Future<UserEntity> updateUser({required UserEntity user, required String accessToken}) async {
-    final result = await client.put(
-      "/auth/v1/user",
-      data: user.toMap(),
-      headers: {"Authorization": "Bearer $accessToken"},
-    );
-    return UserEntity.fromMap(result.data);
   }
 
   @override
@@ -150,11 +134,18 @@ class AuthApi implements IAuthApi {
   }
 
   @override
-  Future<UserMe> me({required String userId, required String accessToken}) async {
-    final response = await client.get(
-      '/view_user_me?id=eq.$userId&select=*',
-      headers: {'Authorization': 'Bearer $accessToken'},
+  Future<UserMeModel> me({required String userId}) async {
+    final response = await client.get('/view_user_me?id=eq.$userId&select=*');
+    return UserMeModel.fromMap(response.data);
+  }
+
+  @override
+  Future<void> updateMe({required UserMeModel me}) async {
+    await client.put(
+      "/auth/v1/user",
+      data: {
+        "data": me.metadata.toMap(),
+      },
     );
-    return UserMe.fromMap(response.data);
   }
 }

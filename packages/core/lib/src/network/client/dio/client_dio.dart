@@ -7,11 +7,13 @@ import 'package:talker/talker.dart';
 class ClientDio implements IClient {
   late final Dio _dio;
   bool _enableLogs = false;
-  ClientDio({BaseOptions? baseOptions, Talker? talker, bool enableLogs = true}) {
+  ClientDio({BaseOptions? baseOptions, Talker? talker, List<Interceptor>? interceptors, bool enableLogs = true}) {
     _enableLogs = enableLogs;
 
     _dio = DioAdapter(baseOptions ?? _defaultOptions);
-
+    if (interceptors != null) {
+      _dio.interceptors.addAll(interceptors);
+    }
     if (_enableLogs) {
       _dio.interceptors.add(
         TalkerDioLogger(

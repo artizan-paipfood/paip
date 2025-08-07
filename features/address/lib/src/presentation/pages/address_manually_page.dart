@@ -72,7 +72,7 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
                               ),
                               children: [
                                 TileLayer(
-                                  urlTemplate: Env.googleMapsLight,
+                                  urlTemplate: AppConstants.mapLightUrl,
                                 ),
                                 MarkerLayer(markers: [
                                   Marker(
