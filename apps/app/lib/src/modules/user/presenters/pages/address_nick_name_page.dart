@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:app/l10n/l18n_extension.dart';
-
 import 'package:app/src/core/helpers/routes.dart';
 import 'package:app/src/core/notifiers/delivery_area_notifier.dart';
 import 'package:app/src/modules/user/presenters/viewmodels/user_store.dart';
-import 'package:app/src/modules/menu/presenters/view_models/menu_viewmodel.dart';
-import 'package:core/core.dart';
 import 'package:paipfood_package/paipfood_package.dart';
 
 class AddressNickNamePage extends StatefulWidget {

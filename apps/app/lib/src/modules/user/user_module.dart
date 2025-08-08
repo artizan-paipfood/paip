@@ -46,7 +46,14 @@ class UserModule extends Module {
         ChildRoute(Routes.phoneRelative, child: (context, state) => const PhonePage()),
         ChildRoute(Routes.userAddressesRelative, child: (context, state) => const ListAdressPage()),
         ChildRoute(Routes.phoneConfirmRelative, child: (context, state) => const PhoneConfirmPage()),
-        ChildRoute(Routes.searchAddressRelative, child: (context, state) => const SearchAddressPage()),
+        ChildRoute(
+          Routes.searchAddressRelative,
+          redirect: (context, state) {
+            if (LocaleNotifier.instance.locale == DbLocale.gb) return Routes.searchAddressManually;
+            return null;
+          },
+          child: (context, state) => const SearchAddressPage(),
+        ),
         ChildRoute(Routes.searchAddressManuallyRelative, child: (context, state) => const SearchAddressManuallyPage()),
         ChildRoute(Routes.addressNicknameRelative, child: (context, state) => const AddressNickNamePage()),
       ];

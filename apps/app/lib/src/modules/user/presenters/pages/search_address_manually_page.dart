@@ -1,3 +1,4 @@
+import 'package:app/src/core/notifiers/delivery_area_notifier.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app/l10n/l18n_extension.dart';
@@ -20,6 +21,10 @@ class _SearchAddressManuallyPageState extends State<SearchAddressManuallyPage> {
   final focusNodeNumber = FocusNode();
   late final streetEC = TextEditingController(text: userViewmodel.userDto.address?.street);
   late final neighborhoodEC = TextEditingController(text: userViewmodel.userDto.address?.neighborhood);
+  late final postalCodeEC = TextEditingController(text: userViewmodel.userDto.address?.zipCode);
+  late final _deliveryAreaNotifier = context.read<DeliveryAreaNotifier>();
+  String _number = '';
+  String _complement = '';
 
   @override
   void initState() {
@@ -33,29 +38,59 @@ class _SearchAddressManuallyPageState extends State<SearchAddressManuallyPage> {
     streetEC.dispose();
     neighborhoodEC.dispose();
     focusNodeNumber.dispose();
+    postalCodeEC.dispose();
     super.dispose();
   }
 
   Future<void> _onSubmit(BuildContext context) async {
-    if (formKey.currentState!.validate()) {
-      Go.of(context).pushNeglect(Routes.addressNickname);
-      // if (store.addressIsValid) {
-      //   Go.of(context).pushNamedNeglect(Routes.addressNickname.name);
-      //   return;
-      // }
-      // Loader.show(context);
-      // try {
-      //   await store.userAddressUsecase.getAddress(userVm: store.userDto, establishmentAddress: store.establishmentAdress);
-      //   Loader.hide();
-      //   if (context.mounted) {
-      //     Go.of(context).pushNamedNeglect(Routes.addressNickname.name);
-      //   }
-      // } catch (e) {
-      //   banner.showInfo("Por favor tente colocar o seu CEP, para que possamos encontrar seu endereço mais facilmente.",
-      //       title: "Endereço não encontrado");
-      //   Loader.hide();
-      // }
-    }
+    Command0.executeWithLoader(
+      context,
+      () async {
+        if (formKey.currentState!.validate()) {
+          final result = await userViewmodel.userAddressUsecase.searchByPostalCode(
+            userVm: userViewmodel.userDto,
+            value: postalCodeEC.text,
+          );
+
+          final address = AddressEntity(
+            id: uuid,
+            street: streetEC.text,
+            neighborhood: neighborhoodEC.text,
+            zipCode: postalCodeEC.text,
+            number: _number,
+            complement: _complement,
+            address: '${streetEC.text}, ${neighborhoodEC.text}, $_number, $_complement - ${postalCodeEC.text}',
+            lat: result.lat,
+            long: result.long,
+          );
+          userViewmodel.updateUserDto(userViewmodel.userDto.copyWith(address: address));
+          await _deliveryAreaNotifier.loadDeliveryTax(
+            address: address,
+            establishmentAddress: userViewmodel.establishmentAdress!,
+            deliveryMethod: _deliveryAreaNotifier.deliveryMethod!,
+          );
+          if (context.mounted) Go.of(context).pushNeglect(Routes.addressNickname);
+
+          // if (store.addressIsValid) {
+          //   Go.of(context).pushNamedNeglect(Routes.addressNickname.name);
+          //   return;
+          // }
+          // Loader.show(context);
+          // try {
+          //   await store.userAddressUsecase.getAddress(userVm: store.userDto, establishmentAddress: store.establishmentAdress);
+          //   Loader.hide();
+          //   if (context.mounted) {
+          //     Go.of(context).pushNamedNeglect(Routes.addressNickname.name);
+          //   }
+          // } catch (e) {
+          //   banner.showInfo("Por favor tente colocar o seu CEP, para que possamos encontrar seu endereço mais facilmente.",
+          //       title: "Endereço não encontrado");
+          //   Loader.hide();
+          // }
+        }
+      },
+      onError: (e, s) => banner.showError(context.i18n.erroBuscaCep),
+    );
   }
 
   @override
@@ -80,35 +115,39 @@ class _SearchAddressManuallyPageState extends State<SearchAddressManuallyPage> {
                   //   style: context.textTheme.bodyMedium?.muted(context),
                   // ),
                   PSize.i.sizedBoxH,
-                  SizedBox(
-                    width: 150,
-                    child: CwTextFormFild.underlinded(
-                      label: "${context.i18n.cep}*",
-                      autofocus: true,
-                      maskUtils: MaskUtils.cep(isRequired: true),
-                      style: context.textTheme.titleLarge,
-                      initialValue: userViewmodel.userDto.address?.zipCode,
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) async {
-                        if (value.length >= 9) {
-                          Command0.executeWithLoader(
-                            context,
-                            () async {
-                              final result = await userViewmodel.userAddressUsecase.searchByPostalCode(
-                                userVm: userViewmodel.userDto,
-                                value: value,
-                              );
-                              userViewmodel.updateUserDto(userViewmodel.userDto.copyWith(address: result));
-                              streetEC.text = userViewmodel.userDto.address!.street;
-                              neighborhoodEC.text = userViewmodel.userDto.address!.neighborhood;
-                              focusNodeNumber.requestFocus();
-                            },
-                            onError: (e, s) => banner.showError(context.i18n.erroBuscaCep),
-                          );
-                        }
-                      },
-                      onFieldSubmitted: (value) => _onSubmit(context),
-                    ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 150,
+                        child: CwTextFormFild.underlinded(
+                          label: "${context.i18n.cep}*",
+                          autofocus: true,
+                          maskUtils: isBr ? MaskUtils.cep(isRequired: true) : MaskUtils.cRequired(),
+                          style: context.textTheme.titleLarge,
+                          keyboardType: TextInputType.number,
+                          controller: postalCodeEC,
+                          // onChanged: (value) async {
+                          //   if (value.length >= 9) {
+                          //     Command0.executeWithLoader(
+                          //       context,
+                          //       () async {
+                          //         final result = await userViewmodel.userAddressUsecase.searchByPostalCode(
+                          //           userVm: userViewmodel.userDto,
+                          //           value: value,
+                          //         );
+                          //         userViewmodel.updateUserDto(userViewmodel.userDto.copyWith(address: result));
+                          //         streetEC.text = userViewmodel.userDto.address!.street;
+                          //         neighborhoodEC.text = userViewmodel.userDto.address!.neighborhood;
+                          //         focusNodeNumber.requestFocus();
+                          //       },
+                          //       onError: (e, s) => banner.showError(context.i18n.erroBuscaCep),
+                          //     );
+                          //   }
+                          // },
+                          onFieldSubmitted: (value) => _onSubmit(context),
+                        ),
+                      ),
+                    ],
                   ),
                   PSize.ii.sizedBoxH,
                   CwTextFormFild.underlinded(
@@ -119,9 +158,9 @@ class _SearchAddressManuallyPageState extends State<SearchAddressManuallyPage> {
                     maskUtils: MaskUtils.cRequired(),
                     autovalidateMode: AutovalidateMode.disabled,
                     keyboardType: TextInputType.text,
-                    onChanged: (value) {
-                      userViewmodel.updateUserDto(userViewmodel.userDto.copyWith(address: userViewmodel.userDto.address!.copyWith(street: value)));
-                    },
+                    // onChanged: (value) {
+
+                    // },
                     onFieldSubmitted: (value) => _onSubmit(context),
                   ),
                   PSize.ii.sizedBoxH,
@@ -137,7 +176,7 @@ class _SearchAddressManuallyPageState extends State<SearchAddressManuallyPage> {
                               focusNode: focusNodeNumber,
                               initialValue: userViewmodel.userDto.address?.number,
                               onChanged: (value) {
-                                userViewmodel.updateUserDto(userViewmodel.userDto.copyWith(address: userViewmodel.userDto.address!.copyWith(number: value)));
+                                _number = value;
                               },
                               maskUtils: MaskUtils.cRequired(),
                               autovalidateMode: AutovalidateMode.disabled,
@@ -150,9 +189,9 @@ class _SearchAddressManuallyPageState extends State<SearchAddressManuallyPage> {
                             style: context.textTheme.titleLarge,
                             controller: neighborhoodEC,
                             expanded: true,
-                            onChanged: (value) {
-                              userViewmodel.updateUserDto(userViewmodel.userDto.copyWith(address: userViewmodel.userDto.address!.copyWith(neighborhood: value)));
-                            },
+                            // onChanged: (value) {
+
+                            // },
                             maskUtils: MaskUtils.cRequired(),
                             autovalidateMode: AutovalidateMode.disabled,
                             onFieldSubmitted: (value) => _onSubmit(context),
@@ -165,7 +204,8 @@ class _SearchAddressManuallyPageState extends State<SearchAddressManuallyPage> {
                         style: context.textTheme.titleLarge,
                         initialValue: userViewmodel.userDto.address?.complement,
                         onChanged: (value) {
-                          userViewmodel.updateUserDto(userViewmodel.userDto.copyWith(address: userViewmodel.userDto.address!.copyWith(complement: value)));
+                          _complement = value;
+                          // userViewmodel.updateUserDto(userViewmodel.userDto.copyWith(address: userViewmodel.userDto.address!.copyWith(complement: value)));
                         },
                         onFieldSubmitted: (value) => _onSubmit(context),
                       ),

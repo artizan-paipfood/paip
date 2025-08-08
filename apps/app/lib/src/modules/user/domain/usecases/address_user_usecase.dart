@@ -1,6 +1,5 @@
 import 'package:app/src/modules/user/domain/usecases/user_usecase.dart';
 import 'package:app/src/modules/user/domain/dtos/user_dto.dart';
-import 'package:core/core.dart';
 import 'package:paipfood_package/paipfood_package.dart';
 
 class AddressUserUsecase {

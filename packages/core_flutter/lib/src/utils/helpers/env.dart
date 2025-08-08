@@ -14,9 +14,9 @@ class Env {
 
   static bool isDev = const bool.fromEnvironment('IS_DEV');
 
-  static String supaApiKey = const String.fromEnvironment('SUPA_API_KEY');
+  static String supaApiKey = const String.fromEnvironment('SUPABASE_API_KEY');
 
-  static String supaBaseUrl = const String.fromEnvironment('SUPA_BASE_URL');
+  static String supaBaseUrl = const String.fromEnvironment('SUPABASE_BASE_URL');
 
   static String geoapifyApiKey = const String.fromEnvironment('GEOAPIFY_API_KEY');
 
