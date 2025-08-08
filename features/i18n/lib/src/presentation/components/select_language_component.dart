@@ -1,7 +1,7 @@
 import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:i18n/i18n.dart';
-import 'package:i18n/i18n/gen/strings.g.dart';
+import 'package:i18n/src/.i18n/gen/strings.g.dart';
 
 class SelectLanguageComponent extends StatefulWidget {
   final bool preSelected;

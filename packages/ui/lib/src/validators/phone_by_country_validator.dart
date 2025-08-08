@@ -48,33 +48,29 @@ static MaskInputController phone({
 
 import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:ui/i18n/gen/strings.g.dart';
+import 'package:ui/src/.i18n/gen/strings.g.dart';
 
 class PhoneByCountryValidator extends FormController {
   final List<String> masks;
   final bool isRequired;
   final int minLenght;
-  PhoneByCountryValidator({
-    required this.masks,
-    required this.isRequired,
-    required this.minLenght,
-  });
+  PhoneByCountryValidator({required this.masks, required this.isRequired, required this.minLenght});
   @override
   List<String> get formaters => masks;
 
   @override
   String? Function(String? value)? get validator => (value) {
-        if (FormController.isEmpty(value) && isRequired) {
-          return t.campo_obrigatorio;
-        }
-        if (FormController.isEmpty(value) && isRequired == false) {
-          return null;
-        }
-        if ((value!.length > 1) && (value.length < minLenght)) {
-          return t.telefone_invalido;
-        }
-        return null;
-      };
+    if (FormController.isEmpty(value) && isRequired) {
+      return t.campo_obrigatorio;
+    }
+    if (FormController.isEmpty(value) && isRequired == false) {
+      return null;
+    }
+    if ((value!.length > 1) && (value.length < minLenght)) {
+      return t.telefone_invalido;
+    }
+    return null;
+  };
 
   @override
   RegExp get regexFilter => RegExp(r'[0-9]');

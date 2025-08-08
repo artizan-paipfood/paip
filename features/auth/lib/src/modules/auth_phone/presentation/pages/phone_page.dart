@@ -1,4 +1,4 @@
-import 'package:auth/i18n/gen/strings.g.dart';
+import 'package:auth/src/.i18n/gen/strings.g.dart';
 import 'package:auth/src/core/domain/models/user_phone_model.dart';
 import 'package:auth/src/modules/auth_phone/presentation/viewmodels/auth_phone_viewmodel.dart';
 import 'package:auth/src/modules/auth_phone/utils/routes.dart';

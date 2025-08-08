@@ -4,6 +4,7 @@ export 'src/modules/auth_phone/data/services/silent_authentication.dart';
 export 'src/core/data/services/singletons/auth_tokens_cache.dart';
 export 'src/core/data/services/singletons/user_me.dart';
 export 'src/core/data/services/user_me_redirect_service.dart';
+export 'src/.i18n/gen/strings.g.dart' show TranslationProvider;
 
 export 'src/core/domain/events/events.dart';
 export 'src/modules/auth_phone/auth_phone_module.dart';

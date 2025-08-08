@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:artizan_ui/artizan_ui.dart';
-import 'package:ui/i18n/gen/strings.g.dart';
+import 'package:ui/src/.i18n/gen/strings.g.dart';
 
 class EmailValidator extends FormController {
   final bool isRequired;
@@ -13,18 +13,18 @@ class EmailValidator extends FormController {
 
   @override
   String? Function(String? value)? get validator => (value) {
-        if (isRequired && FormController.isEmpty(value)) {
-          return t.campo_obrigatorio;
-        }
-        if (FormController.isEmpty(value) == false && _isValid(value!) == false) return t.email_invalido;
-        if (customValidator != null) {
-          final String? text = customValidator!(value!);
-          if (text != null) {
-            return text;
-          }
-        }
-        return null;
-      };
+    if (isRequired && FormController.isEmpty(value)) {
+      return t.campo_obrigatorio;
+    }
+    if (FormController.isEmpty(value) == false && _isValid(value!) == false) return t.email_invalido;
+    if (customValidator != null) {
+      final String? text = customValidator!(value!);
+      if (text != null) {
+        return text;
+      }
+    }
+    return null;
+  };
 
   bool _isValid(String email) {
     final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');

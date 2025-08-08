@@ -8,7 +8,7 @@ targets:
           input_directory: lib/i18n
           input_file_pattern: .i18n.json
           string_interpolation: braces
-          output_directory: lib/i18n/gen
+          output_directory: lib/src/i18n/gen
           namespaces: false
           locale_handling: true
           flutter_integration: true

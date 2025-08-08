@@ -1,4 +1,4 @@
-import 'package:address/i18n/gen/strings.g.dart';
+import 'package:address/src/.i18n/gen/strings.g.dart';
 import 'package:address/src/domain/models/address_manually_model.dart';
 import 'package:address/src/presentation/components/address_nickname_suggestion_button.dart';
 import 'package:address/src/presentation/viewmodels/address_manually_viewmodel.dart';

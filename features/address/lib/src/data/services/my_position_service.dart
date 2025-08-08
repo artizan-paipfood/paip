@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:address/i18n/gen/strings.g.dart';
+import 'package:address/src/.i18n/gen/strings.g.dart';
 import 'package:address/src/data/events/position_events.dart';
 import 'package:address/src/utils/exceptions/location_permission_exception.dart';
 import 'package:core/core.dart';
@@ -58,6 +58,7 @@ class MyPositionService {
   }
 
   static Future<AddressEntity?> getAddressByLatLng(double lat, double lng) async {
+    if (isWeb) return null;
     final places = await placemarkFromCoordinates(lat, lng);
     if (places.isNotEmpty) {
       final place = places.first;

@@ -1,4 +1,4 @@
-import 'package:address/i18n/gen/strings.g.dart';
+import 'package:address/src/.i18n/gen/strings.g.dart';
 import 'package:address/src/domain/models/address_manually_model.dart';
 import 'package:address/src/presentation/components/address_manually_form.dart';
 import 'package:address/src/presentation/viewmodels/address_manually_viewmodel.dart';
@@ -36,7 +36,10 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
   Future<void> _saveAddress() async {
     if (_formKey.currentState!.validate()) {
       FocusScope.of(context).unfocus();
-      await _viewModel.saveAddress();
+      await Command0.executeWithLoader(
+        context,
+        () async => await _viewModel.saveAddress(),
+      );
     }
   }
 

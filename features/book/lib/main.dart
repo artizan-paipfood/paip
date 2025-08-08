@@ -1,7 +1,6 @@
-import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:i18n/i18n.dart';
-import 'package:i18n/i18n/gen/strings.g.dart';
+import 'package:ui/ui.dart' hide TranslationProvider;
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'main.directories.g.dart';
@@ -23,7 +22,7 @@ class WidgetbookApp extends StatefulWidget {
 class _WidgetbookAppState extends State<WidgetbookApp> {
   @override
   Widget build(BuildContext context) {
-    return ArtApp.material(
+    return ArtApp(
       theme: ArtThemeData(colorScheme: const ArtPaipColorScheme.light(), brightness: Brightness.light),
       darkTheme: ArtThemeData(colorScheme: const ArtPaipColorScheme.dark(), brightness: Brightness.dark),
       builder: (context, child) => Widgetbook.cupertino(
@@ -68,7 +67,7 @@ class _WidgetbookAppState extends State<WidgetbookApp> {
               WidgetbookTheme(name: 'Zinc Light', data: ArtThemeData(colorScheme: const ArtZincColorScheme.light(), brightness: Brightness.light)),
               WidgetbookTheme(name: 'Zinc Dark', data: ArtThemeData(colorScheme: const ArtZincColorScheme.dark(), brightness: Brightness.dark)),
             ],
-            themeBuilder: (context, theme, child) => ArtApp.material(
+            themeBuilder: (context, theme, child) => ArtApp(
               theme: theme,
               darkTheme: theme,
               themeMode: theme.brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark,

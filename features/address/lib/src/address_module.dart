@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:address/src/data/events/route_events.dart';
+import 'package:address/src/domain/usecases/update_principal_user_address_usecase.dart';
 import 'package:address/src/presentation/pages/auto_complete_page.dart';
 import 'package:address/src/presentation/pages/address_manually_page.dart';
 import 'package:address/src/presentation/pages/my_addresses_page.dart';
@@ -20,7 +21,8 @@ class AddressModule extends EventModule {
         Bind.factory((i) => IpApi(client: ClientDio())),
         Bind.factory((i) => AuthApi(client: i.get())),
         Bind.factory((i) => AddressApi(client: i.get())),
-        Bind.singleton((i) => AddressManuallyViewmodel(addressApi: i.get())),
+        Bind.factory((i) => UpdateUserPrincipalAddressUsecase(authApi: i.get())),
+        Bind.singleton((i) => AddressManuallyViewmodel(addressApi: i.get(), updateUserPrincipalAddressUsecase: i.get())),
         Bind.singleton((i) => MyAddressesViewmodel(authApi: i.get(), addressApi: i.get())),
         Bind.singleton((i) => SearchAddressApi(client: i.get(key: PaipBindKey.paipApi))),
         Bind.singleton((i) => AutoCompleteViewmodel(searchAddressApi: i.get())),

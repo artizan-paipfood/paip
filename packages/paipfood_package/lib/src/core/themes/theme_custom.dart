@@ -6,17 +6,9 @@ class ThemeCustom {
     fontFamily: "Roboto",
     useMaterial3: true,
     scaffoldBackgroundColor: paipThemeLight.surface,
-    textSelectionTheme: TextSelectionThemeData(
-      cursorColor: paipThemeLight.primaryColor,
-      selectionColor: paipThemeLight.primaryColor.withOpacity(0.5),
-      selectionHandleColor: paipThemeLight.primaryColor,
-    ),
+    textSelectionTheme: TextSelectionThemeData(cursorColor: paipThemeLight.primaryColor, selectionColor: paipThemeLight.primaryColor.withOpacity(0.5), selectionHandleColor: paipThemeLight.primaryColor),
     appBarTheme: AppBarTheme(backgroundColor: paipThemeLight.primaryBG, surfaceTintColor: paipThemeLight.primaryBG),
-    dialogTheme: DialogTheme(
-      backgroundColor: paipThemeLight.primaryBG,
-      surfaceTintColor: paipThemeLight.primaryBG,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-    ),
+
     brightness: Brightness.light,
     extensions: [paipThemeLight],
     colorScheme: ColorScheme(
@@ -38,17 +30,9 @@ class ThemeCustom {
     scaffoldBackgroundColor: paipThemeDark.surface,
     // textTheme: text,
     brightness: Brightness.dark,
-    textSelectionTheme: TextSelectionThemeData(
-      cursorColor: paipThemeLight.primaryColor,
-      selectionColor: paipThemeLight.primaryColor.withOpacity(0.5),
-      selectionHandleColor: paipThemeLight.primaryColor,
-    ),
+    textSelectionTheme: TextSelectionThemeData(cursorColor: paipThemeLight.primaryColor, selectionColor: paipThemeLight.primaryColor.withOpacity(0.5), selectionHandleColor: paipThemeLight.primaryColor),
     appBarTheme: AppBarTheme(backgroundColor: paipThemeDark.primaryBG, surfaceTintColor: paipThemeDark.primaryBG),
-    dialogTheme: DialogTheme(
-      backgroundColor: paipThemeDark.primaryBG,
-      surfaceTintColor: paipThemeDark.primaryBG,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-    ),
+    dialogTheme: DialogTheme(backgroundColor: paipThemeDark.primaryBG, surfaceTintColor: paipThemeDark.primaryBG, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
     extensions: [paipThemeDark],
     colorScheme: ColorScheme(
       brightness: Brightness.dark,

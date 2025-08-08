@@ -30,5 +30,7 @@
   "insira_seu_endereco_no_campo_acima": "Enter your address above",
   "nenhum_endereco_encontrado": "No address found",
   "insira_o_cep_no_campo_acima": "Enter the ZIP/ Postcode above",
-  "insira_seu_cep": "Enter your ZIP/ Postcode"
+  "insira_seu_cep": "Enter your ZIP/ Postcode",
+  "excluir_endereco": "Delete address",
+  "excluir_endereco_descricao": "This action cannot be undone. This will permanently delete the address."
 }

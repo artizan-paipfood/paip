@@ -1,6 +1,6 @@
 import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:i18n/i18n/gen/strings.g.dart';
+import 'package:i18n/src/.i18n/gen/strings.g.dart';
 import 'package:i18n/src/domain/models/enums/languages.dart';
 
 class LanguageCountryCard extends StatefulWidget {

@@ -33,10 +33,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Login';
 
   @override
-  String get titleHome => 'Complete Management for Restaurants with WhatsApp Integration';
+  String get titleHome =>
+      'Complete Management for Restaurants with WhatsApp Integration';
 
   @override
-  String get subtitleHome => 'From table service to delivery, automate all operations of your restaurant with our complete platform.';
+  String get subtitleHome =>
+      'From table service to delivery, automate all operations of your restaurant with our complete platform.';
 
   @override
   String get comecarAUsar => 'Get started';
@@ -45,31 +47,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get facilidadeDeUso => 'Ease of Use';
 
   @override
-  String get descFacilidadeDeUso => 'Our app is so easy to use that anyone can place an order in just a few clicks. Simplicity and efficiency at your fingertips.';
+  String get descFacilidadeDeUso =>
+      'Our app is so easy to use that anyone can place an order in just a few clicks. Simplicity and efficiency at your fingertips.';
 
   @override
   String get sistemaDelivery => 'Delivery System';
 
   @override
-  String get descSistemaDelivery => 'Ensure a quick and efficient delivery operation. Track order status and provide quality service to your customers.';
+  String get descSistemaDelivery =>
+      'Ensure a quick and efficient delivery operation. Track order status and provide quality service to your customers.';
 
   @override
   String get automatizeSeuWhatsApp => 'Automate your WhatsApp';
 
   @override
-  String get descAutomatizeSeuWhatsApp => 'Respond to your customers quickly and automatically via WhatsApp. Make communication easier and increase customer satisfaction with immediate responses.';
+  String get descAutomatizeSeuWhatsApp =>
+      'Respond to your customers quickly and automatically via WhatsApp. Make communication easier and increase customer satisfaction with immediate responses.';
 
   @override
   String get imprimaSeusPedidos => 'Print your orders';
 
   @override
-  String get descImprimaSeusPedidos => 'Have all orders printed quickly and organized. Facilitate management and control of your business\'s orders.';
+  String get descImprimaSeusPedidos =>
+      'Have all orders printed quickly and organized. Facilitate management and control of your business\'s orders.';
 
   @override
   String get gerencieSeusEntregadores => 'Manage your delivery personnel';
 
   @override
-  String get descGerencieSeusEntregadores => 'Easily define delivery areas and efficiently manage your delivery personnel. Ensure that your orders reach customers on time.';
+  String get descGerencieSeusEntregadores =>
+      'Easily define delivery areas and efficiently manage your delivery personnel. Ensure that your orders reach customers on time.';
 
   @override
   String get porMes => '/Per month';
@@ -119,37 +126,43 @@ class AppLocalizationsEn extends AppLocalizations {
   String get featureTitleWhatsapp => 'WhatsApp Integration';
 
   @override
-  String get featureDescWhatsapp => 'Automatic order confirmations, updates, and communication with customers via WhatsApp';
+  String get featureDescWhatsapp =>
+      'Automatic order confirmations, updates, and communication with customers via WhatsApp';
 
   @override
   String get featureTitleImpressao => 'Smart Printing';
 
   @override
-  String get featureDescImpressao => 'Automatic printing of orders in the kitchen, bar, and service stations';
+  String get featureDescImpressao =>
+      'Automatic printing of orders in the kitchen, bar, and service stations';
 
   @override
   String get featureTitlePdv => 'POS System';
 
   @override
-  String get featureDescPdv => 'Modern point of sale with cash control and reports';
+  String get featureDescPdv =>
+      'Modern point of sale with cash control and reports';
 
   @override
   String get featureTitleMesa => 'Table Service';
 
   @override
-  String get featureDescMesa => 'Digital table management with QR code ordering and status tracking';
+  String get featureDescMesa =>
+      'Digital table management with QR code ordering and status tracking';
 
   @override
   String get featureTitleAppGarcom => 'Waiter App';
 
   @override
-  String get featureDescAppGarcom => 'Mobile app for staff to manage orders, tables, and requests';
+  String get featureDescAppGarcom =>
+      'Mobile app for staff to manage orders, tables, and requests';
 
   @override
   String get featureTitleEntregadores => 'Delivery Network';
 
   @override
-  String get featureDescEntregadores => 'Automated dispatch system and real-time availability of delivery personnel';
+  String get featureDescEntregadores =>
+      'Automated dispatch system and real-time availability of delivery personnel';
 
   @override
   String get planosTitle => 'Simple and Transparent Pricing';
@@ -161,16 +174,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get callTitleAssinar => 'Ready to Modernize your Restaurant?';
 
   @override
-  String get callDescAssinar => 'Start your 14-day free trial. No credit card required.';
+  String get callDescAssinar =>
+      'Start your 14-day free trial. No credit card required.';
 
   @override
   String get callButtonAssinar => 'Start Now';
 
   @override
-  String get vendaMuitoMaisComNossasSolucoesDigitais => 'Sell much more with \nour digital solutions';
+  String get vendaMuitoMaisComNossasSolucoesDigitais =>
+      'Sell much more with \nour digital solutions';
 
   @override
-  String get callTermosUso => 'By proceeding, I accept that PaipFood may contact me for commercial purposes and I agree with the ';
+  String get callTermosUso =>
+      'By proceeding, I accept that PaipFood may contact me for commercial purposes and I agree with the ';
 
   @override
   String get termosUso => 'Terms of Use';
@@ -209,7 +225,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get olaBoasVindasPaip => 'Hello, welcome to PaipFood';
 
   @override
-  String get vamosConfigurarSuaConta => 'Let\'s set up your account, it only takes a minute.';
+  String get vamosConfigurarSuaConta =>
+      'Let\'s set up your account, it only takes a minute.';
 
   @override
   String get prazer => 'Nice to meet you';
@@ -227,7 +244,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get estiloCulinario => 'Culinary Style';
 
   @override
-  String get conteUmPoucoSobreSeuEstabelecimento => 'Tell us a little about your establishment';
+  String get conteUmPoucoSobreSeuEstabelecimento =>
+      'Tell us a little about your establishment';
 
   @override
   String get qualEnderecoEstabelecimento => 'What is the address of the';
@@ -236,7 +254,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enderecoEstabelecimento => 'Establishment Address';
 
   @override
-  String get vamosLocalizarSeuEstabelecimento => 'Let\'s locate your establishment';
+  String get vamosLocalizarSeuEstabelecimento =>
+      'Let\'s locate your establishment';
 
   @override
   String get novaSenha => 'New Password';

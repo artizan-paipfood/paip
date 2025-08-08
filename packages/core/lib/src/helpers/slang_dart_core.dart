@@ -1,4 +1,4 @@
-import 'package:core/i18n/gen/strings.g.dart';
+import 'package:core/src/.i18n/gen/strings.g.dart';
 
 class SlangDartCore {
   SlangDartCore._();

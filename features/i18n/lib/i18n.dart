@@ -7,3 +7,4 @@ export 'src/presentation/components/language_country_card.dart';
 export 'src/presentation/components/phone_dial_code_selector.dart';
 export 'src/presentation/components/select_language_component.dart';
 export 'src/domain/models/countries.dart';
+export 'src/.i18n/gen/strings.g.dart' show TranslationProvider;

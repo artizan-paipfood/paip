@@ -69,7 +69,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get corPrimaria => 'Primary Color';
 
   @override
-  String get descCorPrimaria => 'Choose a color to be the primary color of your app.';
+  String get descCorPrimaria =>
+      'Choose a color to be the primary color of your app.';
 
   @override
   String get imagens => 'Images';
@@ -90,7 +91,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adicioneEnderecoEntrega => 'Add a delivery address';
 
   @override
-  String get selecioneEnderecoPadraoCliente => 'Select the customer\'s default delivery address';
+  String get selecioneEnderecoPadraoCliente =>
+      'Select the customer\'s default delivery address';
 
   @override
   String get enderecoCliente => 'Customer\'s address';
@@ -102,7 +104,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selecionarCliente => 'Select customer';
 
   @override
-  String get pesquiseClienteNomeTelefone => 'Search your customer by name or phone';
+  String get pesquiseClienteNomeTelefone =>
+      'Search your customer by name or phone';
 
   @override
   String get adicionarCliente => 'Add customer';
@@ -129,7 +132,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get informacoesPrincipais => 'Main Information';
 
   @override
-  String get descInformacoesPrincipais => 'Set a name, minimum order value, and contact information';
+  String get descInformacoesPrincipais =>
+      'Set a name, minimum order value, and contact information';
 
   @override
   String get nomeLoja => 'Store Name';
@@ -150,19 +154,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loja => 'Store';
 
   @override
-  String get descLoja => 'Store link and service modes (Delivery, Pickup, Table, Kiosk)';
+  String get descLoja =>
+      'Store link and service modes (Delivery, Pickup, Table, Kiosk)';
 
   @override
   String get linkLoja => 'Store link';
 
   @override
-  String get descLinkLoja => 'Copy your store\'s link and send it to your customers (Modifications are not allowed).';
+  String get descLinkLoja =>
+      'Copy your store\'s link and send it to your customers (Modifications are not allowed).';
 
   @override
   String get redesSociais => 'Social Media';
 
   @override
-  String get descredesSociais => 'Complete with the link to your business\'s social media accounts, if applicable';
+  String get descredesSociais =>
+      'Complete with the link to your business\'s social media accounts, if applicable';
 
   @override
   String get adicionar => 'Add';
@@ -210,7 +217,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bordas => 'Crusts';
 
   @override
-  String get descPageTamnhosQuantidadePizza => 'Set the sizes and number of flavors for your pizzas.';
+  String get descPageTamnhosQuantidadePizza =>
+      'Set the sizes and number of flavors for your pizzas.';
 
   @override
   String get tamanhos => 'Sizes';
@@ -339,13 +347,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saborMussarela => 'Mozzarella';
 
   @override
-  String get descMussarela => 'Homemade tomato sauce, mozzarella, catupiry, olives, and oregano.';
+  String get descMussarela =>
+      'Homemade tomato sauce, mozzarella, catupiry, olives, and oregano.';
 
   @override
   String get saborCalabresa => 'Calabrese';
 
   @override
-  String get descCalabresa => 'Homemade tomato sauce, calabrese, catupiry, onions, olives, and oregano.';
+  String get descCalabresa =>
+      'Homemade tomato sauce, calabrese, catupiry, onions, olives, and oregano.';
 
   @override
   String get pizzaGrandeDefault => 'Large Pizza - 8 slices';
@@ -387,7 +397,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get precoPromocionalDeveSerMenorQuePreco => 'The promotional price must be lower than the price';
+  String get precoPromocionalDeveSerMenorQuePreco =>
+      'The promotional price must be lower than the price';
 
   @override
   String get imagemExcluidaSucesso => 'Image deleted successfully!';
@@ -399,7 +410,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get uploadImagem => 'Select image';
 
   @override
-  String get descZoomImagem => 'Use your mouse scroll to zoom in/out of the image';
+  String get descZoomImagem =>
+      'Use your mouse scroll to zoom in/out of the image';
 
   @override
   String get imagemSalvaComSucesso => 'Image saved successfully!';
@@ -414,7 +426,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categorias => 'Categories';
 
   @override
-  String get addCategoria => 'To add a new category, simply click the button next to it';
+  String get addCategoria =>
+      'To add a new category, simply click the button next to it';
 
   @override
   String get descMenu => 'Manage your products';
@@ -438,7 +451,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get produtos => 'Products';
 
   @override
-  String get descCategoriaProdutos => 'General products, e.g.: snacks, sweets, meal boxes, etc...';
+  String get descCategoriaProdutos =>
+      'General products, e.g.: snacks, sweets, meal boxes, etc...';
 
   @override
   String get descCategoriaPizza => 'Exclusive category for pizzas';
@@ -453,10 +467,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get extras => 'Extras';
 
   @override
-  String get tooltipNomeComplemento => 'This field appears for the customer\non the menu';
+  String get tooltipNomeComplemento =>
+      'This field appears for the customer\non the menu';
 
   @override
-  String get tooltipIdentificador => 'This field appears only for you \nto help identify the extra';
+  String get tooltipIdentificador =>
+      'This field appears only for you \nto help identify the extra';
 
   @override
   String get identifier => 'Identifier';
@@ -477,7 +493,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hintQuantidadeMaxima => 'Ex: 5';
 
   @override
-  String get validatorQuantidadeMaxima => 'Maximum quantity must be greater than minimum quantity.';
+  String get validatorQuantidadeMaxima =>
+      'Maximum quantity must be greater than minimum quantity.';
 
   @override
   String get tipoDoSeletor => 'Selector type';
@@ -492,7 +509,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get seletorMultiplo => 'Multiple selector';
 
   @override
-  String get descSeletorMultiplo => 'Allows selecting the same item multiple times.';
+  String get descSeletorMultiplo =>
+      'Allows selecting the same item multiple times.';
 
   @override
   String get obrigatorio => 'Mandatory';
@@ -559,7 +577,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get descComplementLivreIlimitado => 'Choose as many options as you like';
+  String get descComplementLivreIlimitado =>
+      'Choose as many options as you like';
 
   @override
   String descComplementPizza(Object qty) {
@@ -764,7 +783,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get estabelecimentoNaoEstaAbertoNoMomento => 'The establishment is not open at the moment.';
+  String get estabelecimentoNaoEstaAbertoNoMomento =>
+      'The establishment is not open at the moment.';
 
   @override
   String get resumoPedido => 'Order summary';
@@ -782,16 +802,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gratuita => 'Free';
 
   @override
-  String get cliqueParaAdicionarEnderecoEntrega => 'Click to add a delivery address';
+  String get cliqueParaAdicionarEnderecoEntrega =>
+      'Click to add a delivery address';
 
   @override
   String get naoEPossivelRetirar => 'Pickup is not possible';
 
   @override
-  String get comoDesejaReceberSeuPedido => 'How do you want to receive your order?';
+  String get comoDesejaReceberSeuPedido =>
+      'How do you want to receive your order?';
 
   @override
-  String get desejaRemoverEsteItemDoCarrinho => 'Do you want to remove this item from the cart?';
+  String get desejaRemoverEsteItemDoCarrinho =>
+      'Do you want to remove this item from the cart?';
 
   @override
   String get removerItemDoCarrinho => 'Remove item from cart';
@@ -800,7 +823,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get escolherFormaPagamento => 'Choose payment method';
 
   @override
-  String get selecioneUmaOpcaoParaReceberSeuPedido => 'Select an option to receive your order: \'Delivery or Pickup\'.';
+  String get selecioneUmaOpcaoParaReceberSeuPedido =>
+      'Select an option to receive your order: \'Delivery or Pickup\'.';
 
   @override
   String get fechado => 'Closed';
@@ -830,7 +854,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get comoDesejaPagar => 'How do you want to pay?';
 
   @override
-  String get oEstabelecimentoSeEncontraFechadoNoMomento => 'The establishment is closed at the moment, please try again later.';
+  String get oEstabelecimentoSeEncontraFechadoNoMomento =>
+      'The establishment is closed at the moment, please try again later.';
 
   @override
   String get fazerUmNovoPedido => 'Place a new order';
@@ -839,7 +864,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get copiarChave => 'Copy key';
 
   @override
-  String get chavePixNaoCadastradaEntreContatoEstabelecimento => 'PIX key not registered. Contact the establishment.';
+  String get chavePixNaoCadastradaEntreContatoEstabelecimento =>
+      'PIX key not registered. Contact the establishment.';
 
   @override
   String get chaveCopiaComSucesso => 'Key copied successfully!';
@@ -871,13 +897,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enderecoParaFazerRetirada => 'Address for pickup';
 
   @override
-  String get pedidoCanceladoPeloEstabelecimento => 'Order canceled by the establishment.';
+  String get pedidoCanceladoPeloEstabelecimento =>
+      'Order canceled by the establishment.';
 
   @override
   String get tempoExpirado => 'Time expired';
 
   @override
-  String get naoSePreocupeExtornoSeuPagamento => 'Don\'t worry, your payment has been refunded.';
+  String get naoSePreocupeExtornoSeuPagamento =>
+      'Don\'t worry, your payment has been refunded.';
 
   @override
   String get aguarandoAprovacaoRestaurante => 'Waiting for restaurant approval';
@@ -908,7 +936,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deUmApelidoParaSeuEndereco => 'Give a nickname to your address';
 
   @override
-  String get apelidoEnderecoHint => 'E.g.: Home, Work, Mother-in-law\'s house...';
+  String get apelidoEnderecoHint =>
+      'E.g.: Home, Work, Mother-in-law\'s house...';
 
   @override
   String get qualESeuNome => 'What\'s your name?';
@@ -941,10 +970,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get digiteSeuEnderecoEntrega => 'Enter your delivery address.';
 
   @override
-  String get naoAbrevieSeuEnderecoParaEvitarErros => 'Do not abbreviate your address to avoid errors.';
+  String get naoAbrevieSeuEnderecoParaEvitarErros =>
+      'Do not abbreviate your address to avoid errors.';
 
   @override
-  String get erroBuscaEndereco => 'Please try entering your ZIP code, so we can find your address more easily.';
+  String get erroBuscaEndereco =>
+      'Please try entering your ZIP code, so we can find your address more easily.';
 
   @override
   String get erroBuscaEnderecoLabel => 'Error searching address';

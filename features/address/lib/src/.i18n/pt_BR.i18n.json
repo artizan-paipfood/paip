@@ -30,5 +30,7 @@
   "insira_seu_endereco_no_campo_acima": "Insira seu endereço no campo acima",
   "nenhum_endereco_encontrado": "Nenhum endereço encontrado",
   "insira_o_cep_no_campo_acima": "Insira o CEP no campo acima",
-  "insira_seu_cep": "Insira seu CEP"
+  "insira_seu_cep": "Insira seu CEP",
+  "excluir_endereco": "Excluir endereço",
+  "excluir_endereco_descricao": "Esta ação não pode ser desfeita. Isso irá excluir o endereço permanentemente."
 }

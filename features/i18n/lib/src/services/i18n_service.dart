@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:i18n/i18n/gen/strings.g.dart';
+import 'package:i18n/src/.i18n/gen/strings.g.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppI18n {

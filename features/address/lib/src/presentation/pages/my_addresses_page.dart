@@ -1,13 +1,13 @@
-import 'package:address/i18n/gen/strings.g.dart';
+import 'package:address/src/.i18n/gen/strings.g.dart';
 import 'package:address/src/data/events/route_events.dart';
+import 'package:address/src/presentation/components/confirm_delete_dialog.dart';
 import 'package:address/src/presentation/components/use_mylocation_button.dart';
-import 'package:address/src/presentation/pages/confirm_delete_dialog.dart';
 import 'package:address/src/presentation/viewmodels/my_addresses_viewmodel.dart';
+import 'package:auth/auth.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
 import '../components/my_adress_card.dart';
-import 'package:auth/auth.dart';
 
 class MyAddressesPage extends StatefulWidget {
   const MyAddressesPage({super.key});
@@ -104,7 +104,8 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
                       onDelete: (address) async {
                         await showConfirmDeleteDialog(
                           context,
-                          title: 'Excluir endereço',
+                          title: t.excluir_endereco,
+                          description: t.excluir_endereco_descricao,
                           onConfirm: () async {
                             await Command0.executeWithLoader(
                               context,

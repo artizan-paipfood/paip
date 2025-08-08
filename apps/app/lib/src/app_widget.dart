@@ -2,7 +2,7 @@ import 'package:auth/auth.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:app/i18n/gen/strings.g.dart';
+import 'package:app/src/.i18n/gen/strings.g.dart';
 import 'package:i18n/i18n.dart';
 import 'package:ui/ui.dart';
 
@@ -52,7 +52,7 @@ class _AppWidgetState extends State<AppWidget> {
             },
             theme: ArtThemeData(colorScheme: ArtOrangeColorScheme.light(), brightness: Brightness.light),
             darkTheme: ArtThemeData(colorScheme: ArtYellowColorScheme.dark(), brightness: Brightness.dark),
-            themeMode: ThemeMode.light,
+            // themeMode: ThemeMode.light,
             locale: AppI18n.locale,
             supportedLocales: AppLocaleUtils.supportedLocales,
             localizationsDelegates: GlobalMaterialLocalizations.delegates,

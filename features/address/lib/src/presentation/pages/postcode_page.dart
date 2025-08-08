@@ -1,4 +1,4 @@
-import 'package:address/i18n/gen/strings.g.dart';
+import 'package:address/src/.i18n/gen/strings.g.dart';
 import 'package:address/src/data/events/route_events.dart';
 import 'package:address/src/presentation/viewmodels/post_code_viewmodel.dart';
 import 'package:core/core.dart';

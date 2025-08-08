@@ -1,5 +1,5 @@
 import 'package:core/core.dart';
-import 'package:ui/i18n/gen/strings.g.dart';
+import 'package:ui/src/.i18n/gen/strings.g.dart';
 
 extension AppErrorExtension on AppError {
   String messageTranslated() {
