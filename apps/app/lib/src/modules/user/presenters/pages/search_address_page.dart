@@ -51,6 +51,13 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
       return;
     }
     if (_formKey.currentState!.validate()) {
+      if (isGb) {
+        final address = _userViewmodel.userDto.address;
+        _userViewmodel.updateUserDto(_userViewmodel.userDto.copyWith(
+            address: address!.copyWith(
+          street: address.street.contains(address.zipCode) ? address.street : '${address.street} - ${address.zipCode}',
+        )));
+      }
       Go.of(context).pushNeglect(Routes.addressNickname);
     }
   }
@@ -85,7 +92,7 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                         builder: (context, child) {
                           return Column(
                             children: [
-                              if (!_hasFocus) //
+                              if (!_hasFocus && _userViewmodel.userDto.address?.lat != null) //
                                 buildFormAddress(context),
                               if (_hasFocus)
                                 Expanded(
@@ -117,6 +124,7 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                                           _neighborhoodEC.text = neighborhood;
                                           _streetEC.text = address.street;
                                           _focusNodeNumber.requestFocus();
+                                          setState(() {});
                                         },
                                         onError: (e, s) {
                                           e.catchInternalError((e) {
