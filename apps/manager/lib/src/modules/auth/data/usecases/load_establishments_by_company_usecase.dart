@@ -8,7 +8,7 @@ import 'package:paipfood_package/paipfood_package.dart';
 class LoadEstablishmentsByCompanyUsecase {
   final DataSource dataSource;
   final EstablishmentRepository establishmentRepo;
-  final AddressRepository addressRepo;
+  final AddressApi addressRepo;
   final IDeliveryAreasPerMileRepository deliveryAreasPerMileRepo;
   final LayoutPrinterApi layoutPrinterApi;
   final EstablishmentUsecase establishmentUsecase;

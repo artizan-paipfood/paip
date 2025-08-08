@@ -8,3 +8,8 @@ class LoginUserEvent {
 class LogoutUserEvent {
   LogoutUserEvent();
 }
+
+class RequestSilentAuthentication {
+  final String redirectTo;
+  RequestSilentAuthentication({required this.redirectTo});
+}

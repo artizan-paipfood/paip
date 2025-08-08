@@ -5,6 +5,7 @@ import 'package:address/src/presentation/pages/address_manually_page.dart';
 import 'package:address/src/presentation/pages/my_addresses_page.dart';
 import 'package:address/src/presentation/pages/my_positon_page.dart';
 import 'package:address/src/presentation/pages/postcode_page.dart';
+import 'package:address/src/presentation/viewmodels/address_manually_viewmodel.dart';
 import 'package:address/src/presentation/viewmodels/auto_complete_viewmodel.dart';
 import 'package:address/src/presentation/viewmodels/my_addresses_viewmodel.dart';
 import 'package:address/src/presentation/viewmodels/post_code_viewmodel.dart';
@@ -17,7 +18,10 @@ class AddressModule extends EventModule {
   @override
   FutureOr<List<Bind<Object>>> binds() => [
         Bind.factory((i) => IpApi(client: ClientDio())),
-        Bind.singleton((i) => MyAddressesViewmodel()),
+        Bind.factory((i) => AuthApi(client: i.get())),
+        Bind.factory((i) => AddressApi(client: i.get())),
+        Bind.singleton((i) => AddressManuallyViewmodel(addressApi: i.get())),
+        Bind.singleton((i) => MyAddressesViewmodel(authApi: i.get(), addressApi: i.get())),
         Bind.singleton((i) => SearchAddressApi(client: i.get(key: PaipBindKey.paipApi))),
         Bind.singleton((i) => AutoCompleteViewmodel(searchAddressApi: i.get())),
         Bind.singleton((i) => PostCodeViewmodel(searchAddressApi: i.get())),

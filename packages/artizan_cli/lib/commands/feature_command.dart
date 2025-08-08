@@ -255,8 +255,7 @@ dependencies:
     path: ../../packages/core
   core_flutter:
     path: ../../packages/core_flutter
-  artizan_ui:
-    path: ../../../artizan_ui
+  
   ui:
     path: ../../packages/ui
   i18n:

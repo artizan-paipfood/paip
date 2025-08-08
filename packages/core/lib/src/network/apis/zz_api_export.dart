@@ -12,6 +12,7 @@ export 'update_queus_api.dart';
 export 'verification_code_api.dart';
 export 'views_api.dart';
 export 'ip_api.dart';
+export 'address_api.dart';
 
 Map<String, dynamic> headerUpsert() {
   return {

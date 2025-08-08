@@ -1,8 +1,13 @@
 import 'package:address/src/data/services/my_position_service.dart';
+import 'package:auth/auth.dart';
 import 'package:core/core.dart';
 import 'package:flutter/widgets.dart';
 
 class MyAddressesViewmodel {
+  final IAuthApi authApi;
+  final IAddressApi addressApi;
+  MyAddressesViewmodel({required this.authApi, required this.addressApi});
+
   final ValueNotifier<bool> _isLoading = ValueNotifier(true);
   ValueNotifier<bool> get loading => _isLoading;
 
@@ -27,5 +32,19 @@ class MyAddressesViewmodel {
     final myPosition = await MyPositionService.myPosition();
 
     _myCurrentAddress = await MyPositionService.getAddressByLatLng(myPosition.latitude, myPosition.longitude);
+  }
+
+  bool isSelected({required String addressId}) {
+    return UserMe.me?.data.selectedAddressId == addressId;
+  }
+
+  Future<void> selectAddress(AddressEntity address) async {
+    await authApi.updateMe(me: UserMe.me!.copyWith(metadata: UserMe.me!.metadata.copyWith(selectedAddressId: address.id)));
+    await UserMe.refresh(userId: UserMe.me!.id);
+  }
+
+  Future<void> deleteAddress(AddressEntity address) async {
+    await addressApi.deleteById(address.id);
+    await UserMe.refresh(userId: UserMe.me!.id);
   }
 }

@@ -25,7 +25,7 @@ class ConfigModule extends Module {
   @override
   FutureOr<List<Bind<Object>>> binds() => [
         Bind.factory((i) => LayoutPrinterUsecase(api: i.get())),
-        Bind.factory((i) => AddressRepository(http: i.get())),
+        Bind.factory((i) => AddressApi(client: i.get())),
         Bind.factory((i) => SaveInformationEstablishmentUsecase(addressRepo: i.get(), dataSource: i.get(), establishmentRepo: i.get())),
         Bind.factory((i) => UpdateEstablishmentUsecase(establishmentRepo: i.get(), dataSource: i.get())),
         Bind.factory((i) => OpeningHoursRepository(http: i.get())),

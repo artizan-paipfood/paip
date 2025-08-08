@@ -2,7 +2,7 @@ import 'package:core/core.dart';
 import 'package:paipfood_package/paipfood_package.dart';
 
 class InsertUserCompanyEstablishmentUsecase {
-  final IAddressRepository addressRepo;
+  final IAddressApi addressRepo;
   final IAuthRepository authRepo;
   final IEstablishmentRepository establishmentRepo;
   final ImportDeliveryAreasByCityUsecase importDeliveryAreasByCityUsecase;

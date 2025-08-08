@@ -28,10 +28,10 @@ class UserMe {
   static Future<void> login(String userId) async {
     final tokens = await AuthTokensCache.getTokens();
     if (tokens == null) throw Exception('No tokens found');
-    await refresh(userId);
+    await refresh(userId: userId);
   }
 
-  static Future<void> refresh(String userId) async {
+  static Future<void> refresh({required String userId}) async {
     final response = await _authApi.me(userId: userId);
     _me.value = response;
   }

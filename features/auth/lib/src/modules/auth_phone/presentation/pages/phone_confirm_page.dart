@@ -40,8 +40,11 @@ class _NameState extends State<AuthPhoneConfirmPage> {
   }
 
   Future<void> _onSubmit() async {
-    final authenticatedUser = await _viewmodel.loginOrSignUp(phoneNumber: _viewmodel.model.buildPhoneNumber(), fullName: _viewmodel.model.name);
-    ModularEvent.fire(LoginUserEvent(authenticatedUser: authenticatedUser));
+    await Command0.executeWithLoader(
+      context,
+      () async => await _viewmodel.loginOrSignUp(phoneNumber: _viewmodel.model.buildPhoneNumber(), fullName: _viewmodel.model.name),
+      onSuccess: (r) => ModularEvent.fire(LoginUserEvent(authenticatedUser: r)),
+    );
   }
 
   @override

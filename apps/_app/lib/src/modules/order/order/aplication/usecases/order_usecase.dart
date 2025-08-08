@@ -4,7 +4,7 @@ import 'package:paipfood_package/paipfood_package.dart';
 class OrderUsecase {
   final IOrderRepository orderRepo;
   final IEstablishmentRepository establishmentRepo;
-  final IAddressRepository addressRepo;
+  final IAddressApi addressRepo;
 
   OrderUsecase({
     required this.orderRepo,

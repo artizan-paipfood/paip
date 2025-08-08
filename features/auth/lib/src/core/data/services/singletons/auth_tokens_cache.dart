@@ -42,7 +42,7 @@ class AuthTokensCache {
   }
 
   static Future<Credentials?> getCredentials() async {
-    if (_credentials == null) return _credentials;
+    if (_credentials != null) return _credentials;
     final data = await _cacheService.get(box: 'credentials');
     if (data != null) {
       _credentials = Credentials.fromMap(data);

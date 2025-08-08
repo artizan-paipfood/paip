@@ -20,7 +20,7 @@ class AddressManuallyPage extends StatefulWidget {
 }
 
 class _AddressManuallyPageState extends State<AddressManuallyPage> {
-  final _viewModel = AddressManuallyViewmodel();
+  late final _viewModel = context.read<AddressManuallyViewmodel>();
   AddressManuallyModel get _addressManuallyModel => _viewModel.addressManuallyModel;
   AddressEntity get _address => _addressManuallyModel.address;
   final _formKey = GlobalKey<FormState>();
@@ -36,8 +36,7 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
   Future<void> _saveAddress() async {
     if (_formKey.currentState!.validate()) {
       FocusScope.of(context).unfocus();
-      await Command0.executeWithLoader(context, () async => await Future.delayed(2.seconds));
-      // await _viewModel.saveAddress();
+      await _viewModel.saveAddress();
     }
   }
 

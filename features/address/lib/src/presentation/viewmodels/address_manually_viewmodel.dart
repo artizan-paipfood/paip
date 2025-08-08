@@ -1,8 +1,13 @@
 import 'package:address/src/data/services/my_position_service.dart';
 import 'package:address/src/domain/models/address_manually_model.dart';
+import 'package:auth/auth.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 class AddressManuallyViewmodel extends ChangeNotifier {
+  final IAddressApi addressApi;
+  AddressManuallyViewmodel({required this.addressApi});
+
   final ValueNotifier<bool> _isLoading = ValueNotifier(true);
   ValueNotifier<bool> get loading => _isLoading;
   late AddressManuallyModel _addressManuallyModel;
@@ -34,5 +39,10 @@ class AddressManuallyViewmodel extends ChangeNotifier {
   void changeAddressWithoutComplement(bool value) {
     _addressManuallyModel = _addressManuallyModel.copyWith(addressWithoutComplement: value);
     notifyListeners();
+  }
+
+  Future<void> saveAddress() async {
+    await addressApi.upsert(address: _addressManuallyModel.address.copyWith(userId: UserMe.me!.id));
+    await UserMe.refresh(userId: UserMe.me!.id);
   }
 }

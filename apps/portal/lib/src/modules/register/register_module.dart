@@ -12,7 +12,7 @@ class RegisterModule extends Module {
   FutureOr<List<Bind<Object>>> binds() => [
         Bind.singleton((i) => RegisterStore()),
         Bind.factory((i) => SearchAddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
-        Bind.factory((i) => AddressRepository(http: i.get())),
+        Bind.factory((i) => AddressApi(client: i.get())),
         Bind.factory((i) => AuthRepository(http: i.get())),
         Bind.factory((i) => EstablishmentRepository(http: i.get())),
         Bind.factory((i) => DeliveryAreasRepository(http: i.get())),

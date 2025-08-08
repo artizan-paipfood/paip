@@ -7,6 +7,8 @@ class CacheServiceEncrypted implements ICacheService {
   final String encryptKey;
   CacheServiceEncrypted({required this.sharedPreferences, required this.encryptKey});
 
+  static const String _expiresAtKey = 'encrypt_cached_expires_at';
+
   @override
   Future<void> clear() async {
     await sharedPreferences.clear();
@@ -26,7 +28,7 @@ class CacheServiceEncrypted implements ICacheService {
   }
 
   Future<Map<String, dynamic>?> _parseData({required String box, required Map<String, dynamic> data}) async {
-    final DateTime? expiresAt = data['expiresAt'] != null ? DateTime.parse(data['expiresAt']) : null;
+    final DateTime? expiresAt = data[_expiresAtKey] != null ? DateTime.parse(data[_expiresAtKey]) : null;
     if (expiresAt != null) {
       final now = DateTime.now();
       final isExpired = now.isAfter(expiresAt);
@@ -47,7 +49,7 @@ class CacheServiceEncrypted implements ICacheService {
 
   @override
   Future<void> save({required String box, required Map<String, dynamic> data, DateTime? expiresAt}) async {
-    if (expiresAt != null) data['expiresAt'] = expiresAt.toIso8601String();
+    if (expiresAt != null) data[_expiresAtKey] = expiresAt.toIso8601String();
 
     final json = jsonEncode(data);
     final encryptedJson = _encrypt(json);

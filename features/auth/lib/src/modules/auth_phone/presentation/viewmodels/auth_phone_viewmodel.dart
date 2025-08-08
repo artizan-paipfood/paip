@@ -35,7 +35,7 @@ class AuthPhoneViewmodel {
 
   Future<AuthenticatedUser> loginOrSignUp({required PhoneNumber phoneNumber, required String fullName}) async {
     final authenticatedUser = await silentAuthentication.loginByPhone(phoneNumber: phoneNumber, fullname: fullName);
-    await UserMe.refresh(authenticatedUser.user.id);
+    await UserMe.refresh(userId: authenticatedUser.user.id);
     ModularEvent.fire(LoginUserEvent(authenticatedUser: authenticatedUser));
     return authenticatedUser;
   }

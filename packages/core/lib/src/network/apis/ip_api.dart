@@ -13,8 +13,8 @@ class IpApi implements IIpApi {
 
   @override
   Future<IpApiResponse> get() async {
-    final response = await client.get('https://ipapi.co/json/');
-    return IpApiResponse.fromJson(response.data);
+    final response = await client.get('http://ip-api.com/json/');
+    return IpApiResponse.fromMap(response.data);
   }
 }
 

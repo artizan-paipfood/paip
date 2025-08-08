@@ -17,8 +17,7 @@ dependencies:
 
   core:
     path: ../../packages/core
-  artizan_ui:
-    path: ../../../artizan_ui
+
   ui:
     path: ../../packages/ui
   i18n:

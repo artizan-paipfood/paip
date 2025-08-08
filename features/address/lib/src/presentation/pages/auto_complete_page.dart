@@ -3,7 +3,6 @@ import 'package:address/src/presentation/viewmodels/auto_complete_viewmodel.dart
 import 'package:address/src/utils/routes.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:i18n/i18n.dart';
 import 'package:ui/ui.dart';
 
 class AutoCompletePage extends StatefulWidget {

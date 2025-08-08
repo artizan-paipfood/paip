@@ -5,7 +5,7 @@ import 'package:paipfood_package/paipfood_package.dart';
 
 class AddressUserUsecase {
   final IAddressApi addressApi;
-  final AddressRepository addressRepo;
+  final AddressApi addressRepo;
   final AuthRepository authRepo;
 
   final UserUsecase userUsecase;

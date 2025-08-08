@@ -1,11 +1,13 @@
 import 'package:address/i18n/gen/strings.g.dart';
 import 'package:address/src/data/events/route_events.dart';
 import 'package:address/src/presentation/components/use_mylocation_button.dart';
+import 'package:address/src/presentation/pages/confirm_delete_dialog.dart';
 import 'package:address/src/presentation/viewmodels/my_addresses_viewmodel.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
 import '../components/my_adress_card.dart';
+import 'package:auth/auth.dart';
 
 class MyAddressesPage extends StatefulWidget {
   const MyAddressesPage({super.key});
@@ -47,7 +49,31 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
             case true:
               return const Center(child: PaipLoader());
             case false:
-              return _buildBody();
+              return Column(
+                children: [
+                  ColoredBox(
+                    color: context.artColorScheme.background,
+                    child: Padding(
+                      padding: PSize.spacer.paddingHorizontal + PSize.ii.paddingBottom,
+                      child: ArtTextFormField(
+                        placeholder: Text(t.buscar_endereco_placeholder),
+                        readOnly: true,
+                        enabled: _isNotLoading,
+                        onPressed: () => _onPressedSearch(),
+                        decoration: ArtDecoration(
+                          color: context.artColorScheme.muted,
+                        ),
+                        trailing: PaipIcon(
+                          PaipIcons.searchLinear,
+                          color: context.artColorScheme.ring,
+                          size: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(child: _buildBody()),
+                ],
+              );
           }
         },
       ),
@@ -58,26 +84,6 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ColoredBox(
-            color: context.artColorScheme.background,
-            child: Padding(
-              padding: PSize.spacer.paddingHorizontal + PSize.ii.paddingBottom,
-              child: ArtTextFormField(
-                placeholder: Text(t.buscar_endereco_placeholder),
-                readOnly: true,
-                enabled: _isNotLoading,
-                onPressed: () => _onPressedSearch(),
-                decoration: ArtDecoration(
-                  color: context.artColorScheme.muted,
-                ),
-                trailing: PaipIcon(
-                  PaipIcons.searchLinear,
-                  color: context.artColorScheme.ring,
-                  size: 18,
-                ),
-              ),
-            ),
-          ),
           if (_viewmodel.locationPermission && _viewmodel.myCurrentAddress != null)
             UseMylocationButton(
               address: _viewmodel.myCurrentAddress!,
@@ -86,11 +92,33 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
             ),
           Padding(
             padding: PSize.iii.paddingHorizontal + PSize.iii.paddingTop,
-            child: Column(
-              children: [
-                MyAdressCard(isSelected: true),
-              ],
-            ),
+            child: Column(children: [
+              if (UserMe.me != null)
+                ...UserMe.me!.addresses.map(
+                  (address) => Padding(
+                    padding: EdgeInsets.only(bottom: PSize.iii.value),
+                    child: MyAdressCard(
+                      isSelected: address.id == UserMe.me!.data.selectedAddressId,
+                      address: address,
+                      onTap: (address) {},
+                      onDelete: (address) async {
+                        await showConfirmDeleteDialog(
+                          context,
+                          title: 'Excluir endereço',
+                          onConfirm: () async {
+                            await Command0.executeWithLoader(
+                              context,
+                              () async => await _viewmodel.deleteAddress(address),
+                            );
+                          },
+                        );
+                      },
+                      onEdit: (address) {},
+                    ),
+                  ),
+                ),
+              PSize.v.sizedBoxH,
+            ]),
           ),
         ],
       ),

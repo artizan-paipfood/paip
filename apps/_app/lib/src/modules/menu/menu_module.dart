@@ -26,7 +26,7 @@ class MenuModule extends Module {
         Bind.singleton((i) => MercadoPagoRepository(http: ClientDio(baseOptions: HttpUtils.mercadoPago))),
         Bind.singleton((i) => GetMenuHttpUsecase(establishmentRepo: i.get())),
         Bind.singleton((i) => DeliveryAreasRepository(http: i.get())),
-        Bind.singleton((i) => AddressRepository(http: i.get())),
+        Bind.singleton((i) => AddressApi(client: i.get())),
         Bind.singleton((i) => OrderRepository(http: i.get())),
         Bind.singleton((i) => CustomFunctionsRepository(http: ClientDio(baseOptions: HttpUtils.customFunctionsBaseOptions))),
         Bind.singleton((i) => OpeningHoursRepository(http: i.get())),

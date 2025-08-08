@@ -23,8 +23,6 @@ dependencies:
     path: ../../packages/ui
   paipfood_package:
     path: ../../packages/paipfood_package
-  artizan_ui:
-    path: ../../../artizan_ui
   #Unit
   universal_html: ^2.2.4
   meta_seo: ^3.0.9

@@ -25,7 +25,7 @@ class UpdateUserPhoneUsecase {
       me: UserMe.me!.copyWith(metadata: UserMe.me!.metadata.copyWith(phoneNumber: phoneNumber)),
     );
 
-    await UserMe.refresh(updatedUser.id);
+    await UserMe.refresh(userId: updatedUser.id);
   }
 
   UserEntity _buildUserWithNewPhone({required AuthenticatedUser authenticatedUser, required PhoneNumber phoneNumber}) {

@@ -9,7 +9,7 @@ import 'package:auth/src/modules/auth_phone/presentation/pages/phone_page.dart';
 import 'package:auth/src/modules/auth_phone/utils/routes.dart';
 import 'package:core_flutter/core_flutter.dart';
 
-class AuthPhoneModule extends Module {
+class AuthPhoneModule extends EventModule {
   @override
   FutureOr<List<Module>> imports() async {
     return [AuthCoreBindsModule()];
@@ -55,5 +55,18 @@ class AuthPhoneModule extends Module {
         child: (context, state) => AuthPhoneConfirmPage(),
       ),
     ];
+  }
+
+  @override
+  void listen() {
+    on<RequestSilentAuthentication>(
+      (event, context) async {
+        ModularLoader.show();
+        final me = await Modular.get<SilentAuthentication>().auth();
+        ModularLoader.hide();
+        if (me != null) context?.go(event.redirectTo);
+      },
+      autoDispose: false,
+    );
   }
 }

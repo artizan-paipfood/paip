@@ -1,11 +1,24 @@
 import 'package:app/i18n/gen/strings.g.dart';
 import 'package:app/src/core/utils/images.dart';
 import 'package:app/src/core/utils/routes.dart';
+import 'package:auth/auth.dart';
+import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
 
-class OnboardingPage extends StatelessWidget {
+class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
+
+  @override
+  State<OnboardingPage> createState() => _OnboardingPageState();
+}
+
+class _OnboardingPageState extends State<OnboardingPage> {
+  @override
+  void initState() {
+    ModularEvent.fire(RequestSilentAuthentication(redirectTo: Routes.myAddresses));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

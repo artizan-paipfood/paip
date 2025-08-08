@@ -135,8 +135,12 @@ class AuthApi implements IAuthApi {
 
   @override
   Future<UserMeModel> me({required String userId}) async {
-    final response = await client.get('/view_user_me?id=eq.$userId&select=*');
-    return UserMeModel.fromMap(response.data);
+    final response = await client.get(
+      '/rest/v1/view_user_me?id=eq.$userId&select=*',
+      headers: {"Range": '0-0'},
+    );
+    final List list = response.data;
+    return UserMeModel.fromMap(list.first);
   }
 
   @override

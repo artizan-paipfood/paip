@@ -21,7 +21,7 @@ class UserModule extends Module {
         Bind.factory((i) => DeliveryAreasRepository(http: i.get())),
         Bind.factory((i) => SearchAddressApi(client: ClientDio(baseOptions: HttpUtils.api()))),
         Bind.factory((i) => AuthRepository(http: i.get())),
-        Bind.factory((i) => AddressRepository(http: i.get())),
+        Bind.factory((i) => AddressApi(client: i.get())),
         Bind.factory((i) => AddressUserUsecase(addressApi: i.get(), addressRepo: i.get(), authRepo: i.get(), userUsecase: i.get())),
         Bind.factory((i) => UserUsecase(authRepo: i.get(), refreshTokenMicroService: i.get())),
         Bind.factory((i) => PhoneRefreshTokenService(authRepository: i.get())),

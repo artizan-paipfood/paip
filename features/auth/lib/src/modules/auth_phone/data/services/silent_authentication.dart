@@ -12,19 +12,20 @@ class SilentAuthentication {
 
   AuthenticatedUser? _authenticatedUser;
 
-  Future<AuthenticatedUser?> auth() async {
+  Future<UserMeModel?> auth() async {
     try {
-      if (_authenticatedUser != null) return _authenticatedUser;
+      if (UserMe.me != null) return UserMe.me;
       final credentials = await AuthTokensCache.getCredentials();
       if (credentials == null) return null;
       _authenticatedUser = await _login(credentials: credentials);
+      await AuthTokensCache.saveTokens(AuthTokens(accessToken: _authenticatedUser!.accessToken, refreshToken: _authenticatedUser!.refreshToken, expiresAt: DateTime.now().add(expiresIn)));
       await _validateDispositiveAuthIdOnAuth(_authenticatedUser!);
+      await UserMe.refresh(userId: _authenticatedUser!.user.id);
+      return UserMe.me;
     } catch (e) {
       await _onError();
       return null;
     }
-
-    return _authenticatedUser;
   }
 
   Future<void> logout() async {
@@ -86,12 +87,11 @@ class SilentAuthentication {
     final tokens = AuthTokens(accessToken: auth.accessToken, refreshToken: auth.refreshToken, expiresAt: DateTime.now().add(expiresIn));
     await AuthTokensCache.saveTokens(tokens);
     DateTime expiresAt = DateTime.now().add(expiresIn);
-    final data = await cache.get(box: 'silent_authentication');
+    final data = await AuthTokensCache.getCredentials();
     if (data != null) {
-      final parsedData = Credentials.fromMap(data);
-      expiresAt = parsedData.expiresAt ?? expiresAt;
+      expiresAt = data.expiresAt ?? expiresAt;
     }
-    await cache.save(box: 'silent_authentication', data: credentials.toMap(), expiresAt: expiresAt);
+    await AuthTokensCache.saveCredentials(credentials.copyWith(expiresAt: expiresAt));
   }
 
   Future<AuthenticatedUser?> _login({required Credentials credentials}) async {

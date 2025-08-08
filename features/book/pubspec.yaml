@@ -15,8 +15,7 @@ dependencies:
     path: ../../packages/ui
   i18n:
     path: ../../features/i18n
-  artizan_ui:
-    path: ../../../artizan_ui
+
   #* FEATURES ............
 
   widgetbook: ^3.10.2

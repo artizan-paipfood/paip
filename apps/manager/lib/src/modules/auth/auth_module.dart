@@ -16,7 +16,7 @@ class AuthModule extends EventModule {
   @override
   FutureOr<List<Bind<Object>>> binds() => [
         Bind.factory((i) => MercadoPagoRepository(http: ClientDio(baseOptions: HttpUtils.mercadoPago, talker: Logs.client.talker))),
-        Bind.factory((i) => AddressRepository(http: i.get())),
+        Bind.factory((i) => AddressApi(client: i.get())),
         Bind.factory((i) => OpeningHoursRepository(http: i.get())),
         Bind.factory((i) => DriverRepository(http: i.get())),
         Bind.factory((i) => LoadDriverUsecase(driverRepo: i.get(), dataSource: i.get())),

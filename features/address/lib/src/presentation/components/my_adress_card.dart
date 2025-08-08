@@ -1,15 +1,36 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
 
 class MyAdressCard extends StatefulWidget {
   final bool isSelected;
-  const MyAdressCard({super.key, this.isSelected = false});
+  final AddressEntity address;
+  final Function(AddressEntity address) onTap;
+  final Function(AddressEntity address)? onDelete;
+  final Function(AddressEntity address)? onEdit;
+  const MyAdressCard({
+    required this.isSelected,
+    required this.address,
+    required this.onTap,
+    this.onDelete,
+    this.onEdit,
+    super.key,
+  });
 
   @override
   State<MyAdressCard> createState() => _MyAdressCardState();
 }
 
 class _MyAdressCardState extends State<MyAdressCard> {
+  AddressEntity get _address => widget.address;
+  final ArtPopoverController _popoverController = ArtPopoverController();
+
+  @override
+  void dispose() {
+    _popoverController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ArtCard(
@@ -27,11 +48,11 @@ class _MyAdressCardState extends State<MyAdressCard> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Casa', style: context.artTextTheme.h2.copyWith(fontSize: 16)),
+                      Text(_address.nickName, style: context.artTextTheme.h2.copyWith(fontSize: 16)),
                       SizedBox(height: 4),
-                      Text('R. Maria José Tramonte Borguetti, 540'),
-                      Text('Res. Torre, Poços de Caldas - MG', style: context.artTextTheme.muted),
-                      Text('Apartamento 11', style: context.artTextTheme.muted.copyWith(fontSize: 12)),
+                      Text(_address.mainText),
+                      Text(_address.secondaryText, style: context.artTextTheme.muted),
+                      Text(_address.complement, style: context.artTextTheme.muted.copyWith(fontSize: 12)),
                     ],
                   ),
                 ),
@@ -39,15 +60,45 @@ class _MyAdressCardState extends State<MyAdressCard> {
               ],
             ),
           ),
-          Positioned(
-            top: 6,
-            right: 6,
-            child: ArtIconButton.ghost(
-                icon: Icon(
-              Icons.more_vert,
-              color: context.artColorScheme.ring,
-            )),
-          ),
+          if (widget.onEdit != null || widget.onDelete != null)
+            Positioned(
+              top: 6,
+              right: 6,
+              child: ArtContextMenu(
+                controller: _popoverController,
+                items: [
+                  if (widget.onEdit != null)
+                    ArtContextMenuItem(
+                      leading: PaipIcon(
+                        PaipIcons.editBold,
+                        size: 18,
+                        color: context.artColorScheme.foreground,
+                      ),
+                      child: Text('Editar'),
+                      onPressed: () => widget.onEdit?.call(_address),
+                    ),
+                  if (widget.onDelete != null)
+                    ArtContextMenuItem(
+                      leading: PaipIcon(
+                        PaipIcons.deleteDuotone,
+                        size: 18,
+                        color: context.artColorScheme.destructive,
+                      ),
+                      child: Text('Excluir'),
+                      onPressed: () => widget.onDelete?.call(_address),
+                    ),
+                ],
+                child: ArtIconButton.ghost(
+                  onPressed: () {
+                    _popoverController.show();
+                  },
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: context.artColorScheme.ring,
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );

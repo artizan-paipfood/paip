@@ -1,3 +1,4 @@
+import 'package:app/i18n/gen/strings.g.dart';
 import 'package:app/src/app_module.dart';
 import 'package:app/src/core/data/services/config/initialize_web_service.dart';
 import 'package:app/src/slang_wrapper.dart';
@@ -10,9 +11,13 @@ import 'package:i18n/i18n.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Inicializa tradução
   await SlangDartCore.initalize();
+  final language = await AppI18n.initialize();
+  await LocaleSettings.setLocaleRaw(language);
+
+  // Demais serviços
   await InitializeWebService.initialize();
-  await AppI18n.initialize();
   await AuthSetup.setup(expiration: const Duration(days: 365));
 
   await Modular.configure(
@@ -22,6 +27,6 @@ Future<void> main() async {
     debugLogDiagnosticsGoRouter: true,
     debugLogEventBus: true,
   );
-  // await Modular.con
+
   runApp(SlangWrapperAppWidget());
 }

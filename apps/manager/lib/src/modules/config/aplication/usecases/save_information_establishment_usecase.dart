@@ -4,7 +4,7 @@ import 'package:paipfood_package/paipfood_package.dart';
 class SaveInformationEstablishmentUsecase {
   final DataSource dataSource;
   final EstablishmentRepository establishmentRepo;
-  final AddressRepository addressRepo;
+  final AddressApi addressRepo;
   SaveInformationEstablishmentUsecase({
     required this.dataSource,
     required this.establishmentRepo,
