@@ -8,6 +8,8 @@ packages:
 ignore:
   - "**/example"
   - "**/examples"
+  - "**/build"
+  - "**/build/**"
 
 dev_dependencies:
   melos: ^6.3.2
