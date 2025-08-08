@@ -272,7 +272,7 @@ class OrderModel {
 
   String _buildOrderNumber() {
     if (isLocal) {
-      return "${customer.name.substring(0, 1).toUpperCase()}${((orderNumber ?? 0) > 9) ? orderNumber.toString() : "0$orderNumber"}";
+      return "${customer.name}${((orderNumber ?? 0) > 9) ? orderNumber.toString() : "0$orderNumber"}";
     }
 
     return ((orderNumber ?? 0) > 9) ? orderNumber.toString() : "0$orderNumber";
