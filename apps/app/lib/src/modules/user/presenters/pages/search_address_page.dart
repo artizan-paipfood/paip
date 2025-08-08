@@ -115,6 +115,7 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                                           _numberEC.text = number;
                                           _zipCode.text = address.zipCode;
                                           _neighborhoodEC.text = neighborhood;
+                                          _streetEC.text = address.street;
                                           _focusNodeNumber.requestFocus();
                                         },
                                         onError: (e, s) {
@@ -127,8 +128,8 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
                                     },
                                   ),
                                 ),
-                              if (_searchEC.text.isEmpty || !(_userViewmodel.userDto.address?.isValid() ?? false) && !isGb) //
-                                buildButtonAddressManually(context),
+                              // if (_searchEC.text.isEmpty || !(_userViewmodel.userDto.address?.isValid() ?? false) && !isGb) //
+                              //   buildButtonAddressManually(context),
                             ],
                           );
                         }),
@@ -182,6 +183,20 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
         Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            if (isGb) ...[
+              PSize.ii.sizedBoxH,
+              CwTextFormFild.underlinded(
+                label: "Street*",
+                style: context.textTheme.titleLarge,
+                controller: _streetEC,
+                onChanged: (value) {
+                  _userViewmodel.updateUserDto(_userViewmodel.userDto.copyWith(address: _userViewmodel.userDto.address!.copyWith(street: value)));
+                },
+                maskUtils: MaskUtils.cRequired(),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                onFieldSubmitted: (value) => onSubmit(context),
+              ),
+            ],
             PSize.ii.sizedBoxH,
             Row(
               children: [
@@ -252,21 +267,21 @@ class _SearchAddressPageState extends State<SearchAddressPage> {
     );
   }
 
-  Widget buildButtonAddressManually(BuildContext context) {
-    return Padding(
-      padding: PSize.iii.paddingVertical,
-      child: Row(
-        children: [
-          Expanded(
-            child: CwOutlineButton(
-              label: context.i18n.inserirEnderecoManualmente.toUpperCase(),
-              onPressed: () {
-                Go.of(context).pushNeglect(Routes.searchAddressManually);
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget buildButtonAddressManually(BuildContext context) {
+  //   return Padding(
+  //     padding: PSize.iii.paddingVertical,
+  //     child: Row(
+  //       children: [
+  //         Expanded(
+  //           child: CwOutlineButton(
+  //             label: context.i18n.inserirEnderecoManualmente.toUpperCase(),
+  //             onPressed: () {
+  //               Go.of(context).pushNeglect(Routes.searchAddressManually);
+  //             },
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }
