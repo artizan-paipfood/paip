@@ -16,6 +16,7 @@ class SelectedAdressDropIndicator extends StatelessWidget {
       child: Padding(
         padding: PSize.i.paddingVertical + PSize.ii.paddingHorizontal,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           spacing: PSize.ii.value,
           children: [
             Flexible(
