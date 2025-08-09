@@ -19,8 +19,8 @@ class MyAddressesViewmodel {
 
   Future<void> initialize() async {
     _isLoading.value = true;
-    _locationPermission = await MyPositionService.verifyPermission();
-    if (_locationPermission == AppLocationPermission.enabled) await getMyPosition();
+
+    await getMyPosition();
     _isLoading.value = false;
   }
 
