@@ -6,28 +6,55 @@ import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:ui/ui.dart';
+
+enum AppLocationPermission {
+  enabled,
+  denied,
+  deniedForever,
+  disabled;
+
+  static AppLocationPermission fromGeolocatorPermission(LocationPermission permission) {
+    switch (permission) {
+      case LocationPermission.denied:
+        return AppLocationPermission.denied;
+      case LocationPermission.deniedForever:
+        return AppLocationPermission.deniedForever;
+      case LocationPermission.always:
+        return AppLocationPermission.enabled;
+      case LocationPermission.whileInUse:
+        return AppLocationPermission.enabled;
+      case LocationPermission.unableToDetermine:
+        return AppLocationPermission.disabled;
+    }
+  }
+}
+
+class AppPosition {
+  final double lat;
+  final double lng;
+  final String? countryCode;
+  AppPosition({required this.lat, required this.lng, this.countryCode});
+}
 
 class MyPositionService {
   MyPositionService._();
 
   static late final IIpApi ipApi;
 
-  static Position? _position;
+  static AppPosition? _position;
 
-  static Future<Position> myPosition() async {
-    if (_position != null) {
-      return _position!;
-    }
-    try {
-      await verifyPermission();
-    } on LocationPermissionException catch (_) {
+  static Future<AppPosition?> myPosition() async {
+    if (_position != null) return _position!;
+    final permission = await verifyPermission();
+    if (isWeb || permission != AppLocationPermission.enabled) {
       final ipApiResponse = await ipApi.get();
-      _position = Position(latitude: ipApiResponse.lat, longitude: ipApiResponse.lon, timestamp: DateTime.now(), accuracy: 10, altitude: 0, altitudeAccuracy: 0, heading: 0, headingAccuracy: 0, speed: 0, speedAccuracy: 0);
-      ModularEvent.fire(MyPositionEvent(lat: _position!.latitude, lng: _position!.longitude));
-      return _position!;
+      _position = AppPosition(lat: ipApiResponse.lat, lng: ipApiResponse.lon, countryCode: ipApiResponse.countryCode);
+      return _position;
     }
-    _position = await Geolocator.getCurrentPosition();
-    ModularEvent.fire(MyPositionEvent(lat: _position!.latitude, lng: _position!.longitude));
+
+    final geolocation = await Geolocator.getCurrentPosition();
+    _position = AppPosition(lat: geolocation.latitude, lng: geolocation.longitude);
     return _position!;
   }
 
@@ -37,24 +64,20 @@ class MyPositionService {
     return Geolocator.getPositionStream(locationSettings: settings);
   }
 
-  static Future<bool> verifyPermission() async {
-    final bool serviceEnable = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnable) {
-      return Future.error(LocationPermissionException(t.servicos_de_localizacao_desativados, LocationPermissionExceptionType.disabled));
-    }
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-    }
+  static Future<AppLocationPermission> verifyPermission() async {
+    try {
+      final bool serviceEnable = await Geolocator.isLocationServiceEnabled();
+      if (serviceEnable == false) return AppLocationPermission.disabled;
 
-    switch (permission) {
-      case LocationPermission.denied:
-        return Future.error(LocationPermissionException(t.permissao_de_localizacao_negada, LocationPermissionExceptionType.denied));
-      case LocationPermission.deniedForever:
-        return Future.error(LocationPermissionException(t.permissao_de_localizacao_negada_permanentemente, LocationPermissionExceptionType.deniedForever));
-      default:
+      LocationPermission permission = await Geolocator.checkPermission().timeout(2.seconds);
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+      }
+
+      return AppLocationPermission.fromGeolocatorPermission(permission);
+    } catch (e) {
+      return AppLocationPermission.denied;
     }
-    return true;
   }
 
   static Future<AddressEntity?> getAddressByLatLng(double lat, double lng) async {

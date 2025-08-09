@@ -1,3 +1,4 @@
+import 'package:address/address.dart';
 import 'package:address/src/.i18n/gen/strings.g.dart';
 import 'package:address/src/data/events/route_events.dart';
 import 'package:address/src/presentation/components/confirm_delete_dialog.dart';
@@ -84,7 +85,7 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          if (_viewmodel.locationPermission && _viewmodel.myCurrentAddress != null)
+          if (_viewmodel.locationPermission == AppLocationPermission.enabled && _viewmodel.myCurrentAddress != null)
             UseMylocationButton(
               address: _viewmodel.myCurrentAddress!,
               padding: PSize.spacer.paddingHorizontal + PSize.ii.paddingVertical,

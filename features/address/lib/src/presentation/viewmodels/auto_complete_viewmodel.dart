@@ -48,12 +48,13 @@ class AutoCompleteViewmodel extends ChangeNotifier {
       _isLoading.value = true;
       try {
         final position = await MyPositionService.myPosition();
+
         final response = await searchAddressApi.autocomplete(
           request: AutoCompleteRequest(
             query: query,
             locale: AppLocaleCode.br,
-            lat: position.latitude,
-            lon: position.longitude,
+            lat: position?.lat,
+            lon: position?.lng,
           ),
         );
         _addresses = response;
