@@ -1,0 +1,14 @@
+# melos_managed_dependency_overrides: address,auth,core,core_flutter,i18n,ui
+dependency_overrides:
+  address:
+    path: ../address
+  auth:
+    path: ../auth
+  core:
+    path: ../../packages/core
+  core_flutter:
+    path: ../../packages/core_flutter
+  i18n:
+    path: ../i18n
+  ui:
+    path: ../../packages/ui

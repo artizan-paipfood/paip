@@ -1,4 +1,4 @@
-import 'package:app/src/.i18n/gen/strings.g.dart';
+import 'package:app/src/_i18n/gen/strings.g.dart';
 import 'package:app/src/app_module.dart';
 import 'package:app/src/core/data/services/config/initialize_web_service.dart';
 import 'package:app/src/slang_wrapper.dart';

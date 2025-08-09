@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: core,paipfood_package,ui,core_flutter,auth
+# melos_managed_dependency_overrides: core,ui,core_flutter,auth
 dependency_overrides:
   auth:
     path: ../auth
@@ -6,7 +6,5 @@ dependency_overrides:
     path: ../../packages/core
   core_flutter:
     path: ../../packages/core_flutter
-  paipfood_package:
-    path: ../../packages/paipfood_package
   ui:
     path: ../../packages/ui

@@ -1,3 +1,5 @@
+import 'package:core/core.dart';
+
 abstract class RouteEvent {}
 
 class GoAutoCompleteEvent extends RouteEvent {}
@@ -18,4 +20,10 @@ class GoManuallyEvent extends RouteEvent {
   final double lng;
 
   GoManuallyEvent({required this.lat, required this.lng});
+}
+
+class GoEditAddressEvent extends RouteEvent {
+  final AddressEntity address;
+
+  GoEditAddressEvent({required this.address});
 }

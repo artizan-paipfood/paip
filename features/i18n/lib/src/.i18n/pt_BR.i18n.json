@@ -1,9 +1,0 @@
-{
-  "selecione_uma_linguagem": "Selecione uma linguagem",
-  "salvar": "Salvar",
-  "voltar": "Voltar",
-  "paip_language(context=PaipLanguage, param=language)": {
-    "en_US": "Inglês",
-    "pt_BR": "Português Brasil"
-  }
-}

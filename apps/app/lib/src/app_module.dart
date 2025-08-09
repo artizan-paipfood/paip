@@ -5,6 +5,7 @@ import 'package:app/src/modules/onboarding/onboarding_module.dart';
 import 'package:auth/auth.dart';
 import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
+import 'package:explore/explore.dart';
 import 'package:ui/ui.dart';
 
 class AppModule extends EventModule {
@@ -35,12 +36,16 @@ class AppModule extends EventModule {
         ModuleRoute(Routes.onboardingModule, module: OnboardingModule()),
         ModuleRoute(Routes.authModule, module: AuthPhoneModule()),
         ModuleRoute(Routes.addressModule, module: AddressModule()),
+        ModuleRoute(Routes.exploreModule, module: ExploreModule()),
       ];
 
   @override
   void listen() {
     on<LoginUserEvent>((event, context) {
       if (context != null) Go.of(context).goNeglect(Routes.myAddresses);
+    });
+    on<SelectAddressEvent>((event, context) {
+      if (context != null) Go.of(context).goNeglect(Routes.explore);
     });
   }
 }

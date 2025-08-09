@@ -1,0 +1,9 @@
+{
+  "selecione_uma_linguagem": "Select a language",
+  "salvar": "Save",
+  "voltar": "Back",
+  "paip_language(context=AppLanguage, param=language)": {
+    "en_US": "English",
+    "pt_BR": "Português Brazil"
+  }
+}

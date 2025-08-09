@@ -32,7 +32,7 @@ class SlangGenerator {
       // Extrair dependências com path que tenham lib/i18n
       final dependencies = _extractDependenciesWithI18n(pubspecContent);
       if (dependencies.isEmpty) {
-        print('⚠️ Nenhuma dependência com lib/src/.i18n encontrada');
+        print('⚠️ Nenhuma dependência com lib/src/_i18n encontrada');
         return;
       }
 
@@ -75,14 +75,14 @@ class SlangGenerator {
       print('🔍 Verificando: $packageName -> $path');
 
       // Verificar se existe lib/i18n no package
-      final i18nPath = '$path/lib/src/.i18n';
+      final i18nPath = '$path/lib/src/_i18n';
       final i18nDir = Directory(i18nPath);
 
       if (i18nDir.existsSync()) {
-        print('✅ Encontrado lib/i18n em: $packageName');
+        print('✅ Encontrado lib/src/_i18n em: $packageName');
         dependencies.add(packageName);
       } else {
-        print('❌ lib/i18n não encontrado em: $packageName');
+        print('❌ lib/src/_i18n não encontrado em: $packageName');
       }
     }
 
@@ -96,7 +96,7 @@ class SlangGenerator {
     for (final dependency in dependencies) {
       buffer.writeln("import 'package:$dependency/$dependency.dart' as $dependency;");
     }
-    buffer.writeln("import 'package:$projectName/src/.i18n/gen/strings.g.dart';");
+    buffer.writeln("import 'package:$projectName/src/_i18n/gen/strings.g.dart';");
     buffer.writeln("import 'package:$projectName/src/app_widget.dart';");
     buffer.writeln("import 'package:flutter/material.dart';");
     buffer.writeln();

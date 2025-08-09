@@ -1,4 +1,4 @@
-import 'package:address/src/.i18n/gen/strings.g.dart';
+import 'package:address/src/_i18n/gen/strings.g.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';

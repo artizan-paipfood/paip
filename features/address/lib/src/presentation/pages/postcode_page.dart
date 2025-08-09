@@ -1,5 +1,6 @@
-import 'package:address/src/.i18n/gen/strings.g.dart';
+import 'package:address/src/_i18n/gen/strings.g.dart';
 import 'package:address/src/data/events/route_events.dart';
+import 'package:address/src/domain/usecases/form_extensions.dart';
 import 'package:address/src/presentation/viewmodels/post_code_viewmodel.dart';
 import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
@@ -55,7 +56,7 @@ class _PostcodePageState extends State<PostcodePage> {
                 placeholder: Text(t.cep),
                 autofocus: true,
                 decoration: ArtDecoration(color: context.artColorScheme.muted),
-                formController: PaipAppLocale.locale.isBr ? CepValidator(isRequired: true) : PostCodeValidator(isRequired: true),
+                formController: AppLocale.locale.cepValidator(isRequired: true),
                 onChanged: (value) {
                   _postcode = value;
                 },

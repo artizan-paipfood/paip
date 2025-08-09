@@ -28,6 +28,8 @@ dependencies:
     path: ../../features/auth
   address:
     path: ../../features/address
+  explore:
+    path: ../../features/explore
 
   cupertino_icons: ^1.0.8
 

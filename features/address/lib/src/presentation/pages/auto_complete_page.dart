@@ -1,4 +1,4 @@
-import 'package:address/src/.i18n/gen/strings.g.dart';
+import 'package:address/src/_i18n/gen/strings.g.dart';
 import 'package:address/src/presentation/viewmodels/auto_complete_viewmodel.dart';
 import 'package:address/src/utils/routes.dart';
 import 'package:core_flutter/core_flutter.dart';

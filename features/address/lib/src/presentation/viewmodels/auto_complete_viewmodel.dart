@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 
 class AutoCompleteViewmodel extends ChangeNotifier {
   final SearchAddressApi searchAddressApi;
+  final MyPositionService myPositionService;
 
-  AutoCompleteViewmodel({required this.searchAddressApi});
+  AutoCompleteViewmodel({required this.searchAddressApi, required this.myPositionService});
 
   final Debounce _debounce = Debounce(milliseconds: 1000);
 
@@ -19,21 +20,16 @@ class AutoCompleteViewmodel extends ChangeNotifier {
   String _lastQuery = '';
 
   Future<AddressEntity> selectAddress(AddressModel address) async {
-    return await switch (address.isValid()) {
-      //
-      true => AddressEntity.fromAddressModel(address),
-      //
-      false => () async {
-          final result = await searchAddressApi.geocode(
-            request: GeocodeRequest(
-              query: address.formattedAddress,
-              locale: AppLocaleCode.br,
-              address: address,
-            ),
-          );
-          return AddressEntity.fromAddressModel(result);
-        }(),
-    };
+    if (address.isValid()) return AddressEntity.fromAddressModel(address);
+
+    final result = await searchAddressApi.geocode(
+      request: GeocodeRequest(
+        query: address.formattedAddress,
+        locale: AppLocaleCode.br,
+        address: address,
+      ),
+    );
+    return AddressEntity.fromAddressModel(result);
   }
 
   void autocomplete({required String query}) async {
@@ -47,14 +43,14 @@ class AutoCompleteViewmodel extends ChangeNotifier {
       _lastQuery = query;
       _isLoading.value = true;
       try {
-        final position = await MyPositionService.myPosition();
+        final position = await myPositionService.myCurrentPositionWhithAddress();
 
         final response = await searchAddressApi.autocomplete(
           request: AutoCompleteRequest(
             query: query,
             locale: AppLocaleCode.br,
             lat: position?.lat,
-            lon: position?.lng,
+            lon: position?.long,
           ),
         );
         _addresses = response;

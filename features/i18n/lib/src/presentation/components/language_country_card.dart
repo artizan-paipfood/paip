@@ -1,12 +1,12 @@
 import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:i18n/src/.i18n/gen/strings.g.dart';
+import 'package:i18n/src/_i18n/gen/strings.g.dart';
 import 'package:i18n/src/domain/models/enums/languages.dart';
 
 class LanguageCountryCard extends StatefulWidget {
-  final PaipLanguage language;
+  final AppLanguage language;
   final bool isSelected;
-  final Function(PaipLanguage language) onTap;
+  final Function(AppLanguage language) onTap;
   const LanguageCountryCard({
     required this.language,
     required this.onTap,

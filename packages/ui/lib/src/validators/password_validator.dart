@@ -1,5 +1,5 @@
 import 'package:artizan_ui/artizan_ui.dart';
-import 'package:ui/src/.i18n/gen/strings.g.dart';
+import 'package:ui/src/_i18n/gen/strings.g.dart';
 
 class PasswordValidator extends FormController {
   final String? Function(String value)? customValidator;

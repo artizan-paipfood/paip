@@ -1,6 +1,11 @@
 import 'package:core/core.dart';
 
-class SaveAddressEvent {
+class SelectAddressEvent {
   final AddressEntity address;
-  SaveAddressEvent({required this.address});
+  SelectAddressEvent({required this.address});
+}
+
+class MyPositionAddressEvent {
+  final AddressEntity address;
+  MyPositionAddressEvent({required this.address});
 }

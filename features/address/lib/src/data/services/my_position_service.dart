@@ -1,8 +1,9 @@
 import 'dart:async';
+import 'package:address/src/data/events/address_events.dart';
 import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:address/src/data/services/geolocator_conditional.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:ui/ui.dart';
 
 enum AppLocationPermission {
@@ -35,35 +36,37 @@ class AppPosition {
 }
 
 class MyPositionService {
-  MyPositionService._();
+  final IIpApi ipApi;
+  MyPositionService({required this.ipApi});
 
-  static late final IIpApi ipApi;
+  final _geolocatorPlatform = GeolocatorPlatform.instance;
 
-  static final _geolocatorPlatform = GeolocatorPlatform.instance;
+  AddressEntity? _address;
 
-  static AppPosition? _position;
-
-  static Future<AppPosition?> myPosition() async {
-    if (_position != null) return _position!;
-    final permission = await verifyPermission();
-    if (permission != AppLocationPermission.enabled) {
-      final ipApiResponse = await ipApi.get();
-      _position = AppPosition(lat: ipApiResponse.lat, lng: ipApiResponse.lon, countryCode: ipApiResponse.countryCode);
-      return _position;
+  Future<AddressEntity?> myCurrentPositionWhithAddress() async {
+    try {
+      if (_address != null) return _address!;
+      final permission = await hasLocationPermission();
+      if (permission != AppLocationPermission.enabled) {
+        _address = await getAddressByIp();
+        ModularEvent.fire(MyPositionAddressEvent(address: _address!));
+        return _address!;
+      }
+      final myPosition = await _geolocatorPlatform.getCurrentPosition();
+      _address = await getAddressByLatLng(myPosition.latitude, myPosition.longitude);
+      ModularEvent.fire(MyPositionAddressEvent(address: _address!));
+      return _address!;
+    } catch (e) {
+      return null;
     }
-
-    final geolocation = await _geolocatorPlatform.getCurrentPosition();
-    _position = AppPosition(lat: geolocation.latitude, lng: geolocation.longitude);
-    return _position!;
   }
 
-  static Future<Stream<Position>> myPositionStream({int distanceFilter = 50}) async {
-    await verifyPermission();
+  Future<Stream<Position>> myPositionStream({int distanceFilter = 50}) async {
     final settings = LocationSettings(accuracy: LocationAccuracy.high, distanceFilter: distanceFilter);
     return _geolocatorPlatform.getPositionStream(locationSettings: settings);
   }
 
-  static Future<AppLocationPermission> verifyPermission() async {
+  Future<AppLocationPermission> hasLocationPermission() async {
     try {
       final bool serviceEnable = await _geolocatorPlatform.isLocationServiceEnabled();
       if (serviceEnable == false) {
@@ -71,16 +74,14 @@ class MyPositionService {
         if (permission == LocationPermission.denied) return AppLocationPermission.denied;
         if (permission == LocationPermission.deniedForever) return AppLocationPermission.deniedForever;
       }
-
       final permission = await _geolocatorPlatform.checkPermission().timeout(2.seconds);
-
       return AppLocationPermission.fromGeolocatorPermission(permission);
     } catch (e) {
       return AppLocationPermission.denied;
     }
   }
 
-  static Future<AddressEntity?> getAddressByLatLng(double lat, double lng) async {
+  Future<AddressEntity?> getAddressByLatLng(double lat, double lng) async {
     if (isWeb) return null;
     final places = await placemarkFromCoordinates(lat, lng);
     if (places.isNotEmpty) {
@@ -98,10 +99,26 @@ class MyPositionService {
         lat: lat,
         long: lng,
         countryCode: place.isoCountryCode ?? '',
-        mainText: '${place.name ?? ''}|${place.subLocality ?? ''}'.split('|').where((e) => e.trim().isNotEmpty).toList().join(' - '),
-        secondaryText: '${place.postalCode ?? ''}|${place.subAdministrativeArea ?? ''}'.split('|').where((e) => e.trim().isNotEmpty).toList().join(' - '),
       );
     }
     return null;
+  }
+
+  Future<AddressEntity> getAddressByIp() async {
+    final ipApiResponse = await ipApi.get();
+    return AddressEntity(
+      id: Uuid().v4(),
+      country: ipApiResponse.countryCode,
+      state: ipApiResponse.countryCode,
+      city: ipApiResponse.countryCode,
+      neighborhood: ipApiResponse.countryCode,
+      street: ipApiResponse.countryCode,
+      number: ipApiResponse.countryCode,
+      address: ipApiResponse.countryCode,
+      zipCode: ipApiResponse.countryCode,
+      lat: ipApiResponse.lat,
+      long: ipApiResponse.lon,
+      countryCode: ipApiResponse.countryCode,
+    );
   }
 }

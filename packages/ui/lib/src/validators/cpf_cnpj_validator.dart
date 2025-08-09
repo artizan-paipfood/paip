@@ -1,5 +1,5 @@
 import 'package:ui/ui.dart';
-import 'package:ui/src/.i18n/gen/strings.g.dart';
+import 'package:ui/src/_i18n/gen/strings.g.dart';
 
 class CpfCnpjValidator extends FormController {
   @override

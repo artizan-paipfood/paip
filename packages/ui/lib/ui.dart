@@ -23,4 +23,4 @@ export 'package:ui/src/icons/icon.dart';
 export 'package:ui/src/components/z_export.dart';
 export 'package:artizan_ui/artizan_ui.dart';
 export 'package:intl/intl.dart';
-export 'src/.i18n/gen/strings.g.dart' show TranslationProvider;
+export 'src/_i18n/gen/strings.g.dart' show TranslationProvider;

@@ -1,8 +1,10 @@
-import 'package:address/src/.i18n/gen/strings.g.dart';
+import 'package:address/src/_i18n/gen/strings.g.dart';
 import 'package:address/src/domain/models/address_manually_model.dart';
+import 'package:address/src/domain/usecases/form_extensions.dart';
 import 'package:address/src/presentation/components/address_nickname_suggestion_button.dart';
 import 'package:address/src/presentation/viewmodels/address_manually_viewmodel.dart';
 import 'package:core/core.dart';
+import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
 
@@ -71,6 +73,7 @@ class _AddressManuallyFormState extends State<AddressManuallyForm> {
           label: Text(t.cep),
           initialValue: _address.zipCode,
           autovalidateMode: _validateMode,
+          formController: AppLocale.locale.cepValidator(isRequired: true),
           onChanged: (value) => widget.onChanged(_model.copyWith(address: _address.copyWith(zipCode: value))),
         ),
         ArtTextFormField(

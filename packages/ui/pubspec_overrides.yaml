@@ -1,9 +1,7 @@
-# melos_managed_dependency_overrides: core,paipfood_package,core_flutter,i18n,auth
+# melos_managed_dependency_overrides: core,core_flutter,i18n,auth
 dependency_overrides:
   core:
     path: ../core
-  paipfood_package:
-    path: ../paipfood_package
   go_router_modular:
     git:
       url: https://github.com/eduardohr-muniz/go_router_modular.git

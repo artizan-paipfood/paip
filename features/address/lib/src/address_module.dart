@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:address/address.dart';
+import 'package:address/src/data/events/address_events.dart';
 import 'package:address/src/data/events/route_events.dart';
 import 'package:address/src/domain/usecases/update_principal_user_address_usecase.dart';
 import 'package:address/src/presentation/pages/auto_complete_page.dart';
@@ -11,6 +13,7 @@ import 'package:address/src/presentation/viewmodels/auto_complete_viewmodel.dart
 import 'package:address/src/presentation/viewmodels/my_addresses_viewmodel.dart';
 import 'package:address/src/presentation/viewmodels/post_code_viewmodel.dart';
 import 'package:address/src/utils/routes.dart';
+import 'package:auth/auth.dart';
 import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
@@ -19,20 +22,21 @@ class AddressModule extends EventModule {
   @override
   FutureOr<List<Bind<Object>>> binds() => [
         Bind.factory((i) => IpApi(client: ClientDio())),
+        Bind.singleton((i) => MyPositionService(ipApi: i.get())),
         Bind.factory((i) => AuthApi(client: i.get())),
         Bind.factory((i) => AddressApi(client: i.get())),
         Bind.factory((i) => UpdateUserPrincipalAddressUsecase(authApi: i.get())),
-        Bind.singleton((i) => AddressManuallyViewmodel(addressApi: i.get(), updateUserPrincipalAddressUsecase: i.get())),
-        Bind.singleton((i) => MyAddressesViewmodel(authApi: i.get(), addressApi: i.get())),
+        Bind.singleton((i) => AddressManuallyViewmodel(addressApi: i.get(), updateUserPrincipalAddressUsecase: i.get(), myPositionService: i.get())),
+        Bind.singleton((i) => MyAddressesViewmodel(authApi: i.get(), addressApi: i.get(), myPositionService: i.get())),
         Bind.singleton((i) => SearchAddressApi(client: i.get(key: PaipBindKey.paipApi))),
-        Bind.singleton((i) => AutoCompleteViewmodel(searchAddressApi: i.get())),
+        Bind.singleton((i) => AutoCompleteViewmodel(searchAddressApi: i.get(), myPositionService: i.get())),
         Bind.singleton((i) => PostCodeViewmodel(searchAddressApi: i.get())),
       ];
   @override
   List<ModularRoute> get routes => [
         ChildRoute(
           Routes.myAddressesRelative,
-          // redirect: (context, state) => UserMeRedirectService.call(context: context, state: state),
+          redirect: (context, state) => UserMeRedirectService.call(context: context, state: state),
           name: Routes.myAddressesNamed,
           child: (context, args) => MyAddressesPage(),
         ),
@@ -42,6 +46,7 @@ class AddressModule extends EventModule {
           redirect: (context, state) => _redirectLatLongNullable(context, state),
           child: (context, state) {
             final pathParams = state.uri.queryParameters;
+
             return MyPositonPage(lat: double.parse(pathParams['lat']!), lng: double.parse(pathParams['lng']!));
           },
         ),
@@ -56,7 +61,8 @@ class AddressModule extends EventModule {
           redirect: (context, state) => _redirectLatLongNullable(context, state),
           child: (context, state) {
             final pathParams = state.uri.queryParameters;
-            return AddressManuallyPage(lat: double.parse(pathParams['lat']!), lng: double.parse(pathParams['lng']!));
+            final address = pathParams['address'] != null ? AddressEntity.fromJson(pathParams['address'] as String) : null;
+            return AddressManuallyPage(lat: double.parse(pathParams['lat']!), lng: double.parse(pathParams['lng']!), address: address);
           },
         ),
         ChildRoute(
@@ -109,6 +115,31 @@ class AddressModule extends EventModule {
           'lng': event.lng.toString(),
         },
       );
+    });
+
+    on<GoEditAddressEvent>((event, context) {
+      if (context == null) return;
+      context.pushNamed(
+        Routes.manuallyNamed,
+        queryParameters: {
+          'address': event.address.toJson().toString(),
+          'lat': event.address.lat.toString(),
+          'lng': event.address.long.toString(),
+        },
+      );
+    });
+
+    on<MyPositionAddressEvent>((event, context) => AppLocale.setAppLocaleRaw(event.address.countryCode));
+
+    on<SelectAddressEvent>((event, context) async {
+      try {
+        ModularLoader.show();
+        final updateUserPrincipalAddressUsecase = Modular.get<UpdateUserPrincipalAddressUsecase>();
+        await updateUserPrincipalAddressUsecase(event.address.id);
+        await UserMe.refresh(userId: UserMe.me!.id);
+      } finally {
+        ModularLoader.hide();
+      }
     });
   }
 }

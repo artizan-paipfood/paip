@@ -18,4 +18,8 @@ class Routes {
   static const String myAddresses = addressModule;
   static const String addressAutoComplete = '$addressModule/auto-complete';
   static const String addressManually = '$addressModule/manually';
+
+  // EXPLORE
+  static const String exploreModule = '/explore';
+  static const String explore = '/explore';
 }

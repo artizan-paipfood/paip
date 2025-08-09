@@ -21,8 +21,7 @@ class AddressEntity {
   final String? userId;
   final String? establishmentId;
   final bool isDeleted;
-  final String mainText;
-  final String secondaryText;
+
   final String countryCode;
 
   static const String table = 'address';
@@ -46,8 +45,6 @@ class AddressEntity {
     this.nickName = "",
     this.establishmentId,
     this.isDeleted = false,
-    this.mainText = "",
-    this.secondaryText = "",
     this.countryCode = "",
   }) : street = _cleanStreetName(street);
 
@@ -72,8 +69,6 @@ class AddressEntity {
     String? userId,
     String? establishmentId,
     bool? isDeleted,
-    String? mainText,
-    String? secondaryText,
     String? countryCode,
   }) {
     return AddressEntity(
@@ -95,8 +90,6 @@ class AddressEntity {
       userId: userId ?? this.userId,
       establishmentId: establishmentId ?? this.establishmentId,
       isDeleted: isDeleted ?? this.isDeleted,
-      mainText: mainText ?? this.mainText,
-      secondaryText: secondaryText ?? this.secondaryText,
       countryCode: countryCode ?? this.countryCode,
     );
   }
@@ -121,8 +114,6 @@ class AddressEntity {
       'user_id': userId,
       'establishment_id': establishmentId,
       'is_deleted': isDeleted,
-      'main_text': mainText,
-      'secondary_text': secondaryText,
       'country_code': countryCode.toUpperCase(),
     };
   }
@@ -165,11 +156,12 @@ class AddressEntity {
       userId: map['user_id'],
       establishmentId: map['establishment_id'],
       isDeleted: map['is_deleted'] ?? false,
-      mainText: map['main_text'] ?? '',
-      secondaryText: map['secondary_text'] ?? '',
       countryCode: map['country_code'] ?? '',
     );
   }
+
+  String get mainText => '${number.isNotEmpty ? '$number, ' : ''}$street|$complement'.split('|').where((e) => e.trim().isNotEmpty).toList().join(' - ');
+  String get secondaryText => '$zipCode|$neighborhood|$city|$countryCode'.split('|').where((e) => e.trim().isNotEmpty).toList().join(' - ');
 
   String toJson() => json.encode(toMap());
 

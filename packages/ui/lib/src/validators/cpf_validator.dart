@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:artizan_ui/artizan_ui.dart';
-import 'package:ui/src/.i18n/gen/strings.g.dart';
+import 'package:ui/src/_i18n/gen/strings.g.dart';
 
 class CpfValidator extends FormController {
   final bool isRequired;

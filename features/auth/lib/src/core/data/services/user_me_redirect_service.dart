@@ -6,8 +6,12 @@ import 'package:flutter/cupertino.dart';
 class UserMeRedirectService {
   UserMeRedirectService._();
 
-  static Future<String?> call({required BuildContext context, required GoRouterState state}) async {
+  static Future<String?> call({required BuildContext context, required GoRouterState state, String? redirectTo}) async {
     if (UserMe.isLoggedIn()) return null;
+    if (redirectTo != null) {
+      final redirect = await AppRedirectTo.get(state);
+      if (redirect != null) return redirect;
+    }
     return state.namedLocation(Routes.userNameNamed);
   }
 }

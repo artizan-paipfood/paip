@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core_flutter/core_flutter.dart';
 
 class PostCodeViewmodel {
   final ISearchAddressApi searchAddressApi;
@@ -12,7 +13,7 @@ class PostCodeViewmodel {
       request: PostcodeGeocodeRequest(
         postalCode: postcode,
         provider: AutoCompleteProvider.radar,
-        locale: AppLocaleCode.br,
+        locale: AppLocale.locale,
       ),
     );
     _address = AddressEntity.fromAddressModel(result);

@@ -2,7 +2,7 @@ import 'package:auth/auth.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:app/src/.i18n/gen/strings.g.dart';
+import 'package:app/src/_i18n/gen/strings.g.dart';
 import 'package:i18n/i18n.dart';
 import 'package:ui/ui.dart';
 
@@ -25,14 +25,14 @@ class _AppWidgetState extends State<AppWidget> {
     if (_isInitialized) return;
     _isInitialized = true;
     final language = await AppI18n.initialize();
-    LocaleSettings.setLocale(AppLocale.enUs);
+    LocaleSettings.setLocale(SlangAppLocale.enUs);
     Future.microtask(() async => await LocaleSettings.setLocaleRaw(language));
   }
 
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
-        listenable: Listenable.merge([AppI18n.observer, UserMe.observer]),
+        listenable: Listenable.merge([AppI18n.observer, UserMe.observer, AppLocale.observer]),
         builder: (context, _) {
           return ArtApp.router(
             routerConfig: Modular.routerConfig,

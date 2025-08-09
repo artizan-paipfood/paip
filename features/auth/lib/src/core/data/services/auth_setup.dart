@@ -11,6 +11,7 @@ class AuthSetup {
     final cache = CacheServiceEncrypted(sharedPreferences: sharedPreferences, encryptKey: Env.encryptKey);
     final client = ClientDio(baseOptions: PaipBaseOptions.supabase, interceptors: [SupabaseAuthInterceptor(dio: Dio())]);
     await AuthTokensCache.initialize(cacheService: cache, expiration: expiration);
+    AppRedirectTo.initialize(cacheService: cache, expiresAt: const Duration(minutes: 30));
     UserMe.initialize(AuthApi(client: client));
     DeviceId.initialize(cache);
   }

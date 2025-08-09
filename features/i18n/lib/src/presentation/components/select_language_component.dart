@@ -1,11 +1,11 @@
-import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:i18n/i18n.dart';
-import 'package:i18n/src/.i18n/gen/strings.g.dart';
+import 'package:i18n/src/_i18n/gen/strings.g.dart';
+import 'package:ui/ui.dart';
 
 class SelectLanguageComponent extends StatefulWidget {
   final bool preSelected;
-  final void Function(PaipLanguage language) onSaveLanguage;
+  final void Function(AppLanguage language) onSaveLanguage;
   const SelectLanguageComponent({
     this.preSelected = false,
     super.key,
@@ -17,12 +17,12 @@ class SelectLanguageComponent extends StatefulWidget {
 }
 
 class _SelectLanguageComponentState extends State<SelectLanguageComponent> {
-  PaipLanguage? _selectedLanguage;
+  AppLanguage? _selectedLanguage;
 
   @override
   void initState() {
     super.initState();
-    if (widget.preSelected) _selectedLanguage = PaipLanguage.values.firstWhere((element) => element.languageCode == AppI18n.locale.toString());
+    if (widget.preSelected) _selectedLanguage = AppLanguage.values.firstWhere((element) => element.languageCode == AppI18n.locale.toString());
   }
 
   @override
@@ -36,7 +36,7 @@ class _SelectLanguageComponentState extends State<SelectLanguageComponent> {
             const ArtDivider.horizontal(),
             Expanded(
               child: Column(
-                  children: PaipLanguage.values
+                  children: AppLanguage.values
                       .map(
                         (e) => Padding(
                           padding: const EdgeInsets.only(bottom: 12),

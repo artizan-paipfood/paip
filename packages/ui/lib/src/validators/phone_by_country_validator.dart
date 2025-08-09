@@ -48,7 +48,7 @@ static MaskInputController phone({
 
 import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:ui/src/.i18n/gen/strings.g.dart';
+import 'package:ui/src/_i18n/gen/strings.g.dart';
 
 class PhoneByCountryValidator extends FormController {
   final List<String> masks;

@@ -15,8 +15,6 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  paipfood_package:
-    path: ../paipfood_package
   talker_flutter: ^4.9.1
   # export
   flutter_breakpoints: ^1.0.0

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:ui/src/.i18n/gen/strings.g.dart';
+import 'package:ui/src/_i18n/gen/strings.g.dart';
 import 'package:ui/src/validators/validator_extension.dart';
 import 'package:ui/ui.dart';
 

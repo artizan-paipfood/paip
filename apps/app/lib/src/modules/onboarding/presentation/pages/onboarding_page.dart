@@ -1,4 +1,4 @@
-import 'package:app/src/.i18n/gen/strings.g.dart';
+import 'package:app/src/_i18n/gen/strings.g.dart';
 import 'package:app/src/core/utils/images.dart';
 import 'package:app/src/core/utils/routes.dart';
 import 'package:auth/auth.dart';

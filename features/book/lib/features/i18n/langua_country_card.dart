@@ -7,7 +7,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 @UseCase(name: 'Language Country Card', type: LanguageCountryCard, path: 'i18n')
 Widget primaryButton(BuildContext context) {
   final isSelected = context.knobs.boolean(label: 'Is Selected', initialValue: false);
-  final language = context.knobs.list(label: 'Language', options: PaipLanguage.values);
+  final language = context.knobs.list(label: 'Language', options: AppLanguage.values);
   return Scaffold(
       body: Padding(
     padding: const EdgeInsets.all(20),

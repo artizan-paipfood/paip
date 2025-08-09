@@ -1,4 +1,4 @@
-import 'package:address/src/.i18n/gen/strings.g.dart';
+import 'package:address/src/_i18n/gen/strings.g.dart';
 import 'package:address/src/domain/models/address_manually_model.dart';
 import 'package:address/src/presentation/components/address_manually_form.dart';
 import 'package:address/src/presentation/viewmodels/address_manually_viewmodel.dart';
@@ -12,8 +12,8 @@ import 'package:ui/ui.dart';
 class AddressManuallyPage extends StatefulWidget {
   final double lat;
   final double lng;
-  final EdgeInsetsGeometry? padding;
-  const AddressManuallyPage({required this.lat, required this.lng, this.padding, super.key});
+  final AddressEntity? address;
+  const AddressManuallyPage({required this.lat, required this.lng, this.address, super.key});
 
   @override
   State<AddressManuallyPage> createState() => _AddressManuallyPageState();
@@ -25,12 +25,12 @@ class _AddressManuallyPageState extends State<AddressManuallyPage> {
   AddressEntity get _address => _addressManuallyModel.address;
   final _formKey = GlobalKey<FormState>();
 
-  EdgeInsetsGeometry get _effectivePadding => widget.padding ?? PSize.spacer.paddingAll;
+  EdgeInsetsGeometry get _effectivePadding => PSize.spacer.paddingAll;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _viewModel.initialize(widget.lat, widget.lng));
+    WidgetsBinding.instance.addPostFrameCallback((_) => _viewModel.initialize(lat: widget.lat, lng: widget.lng, address: widget.address));
   }
 
   Future<void> _saveAddress() async {

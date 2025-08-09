@@ -1,6 +1,6 @@
 import 'package:artizan_ui/artizan_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:ui/src/.i18n/gen/strings.g.dart';
+import 'package:ui/src/_i18n/gen/strings.g.dart';
 
 class CnpjValidator extends FormController {
   final bool isRequired;

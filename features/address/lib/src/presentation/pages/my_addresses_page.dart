@@ -1,5 +1,5 @@
 import 'package:address/address.dart';
-import 'package:address/src/.i18n/gen/strings.g.dart';
+import 'package:address/src/_i18n/gen/strings.g.dart';
 import 'package:address/src/data/events/route_events.dart';
 import 'package:address/src/presentation/components/confirm_delete_dialog.dart';
 import 'package:address/src/presentation/components/use_mylocation_button.dart';
@@ -23,8 +23,8 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
   void _onPressedSearch() => ModularEvent.fire(GoAutoCompleteEvent());
 
   void _onUseMyLocation() => ModularEvent.fire(GoMyPositionEvent(
-        lat: _viewmodel.myCurrentAddress!.lat!,
-        lng: _viewmodel.myCurrentAddress!.long!,
+        lat: _viewmodel.myPositionAddress!.lat!,
+        lng: _viewmodel.myPositionAddress!.long!,
       ));
 
   bool get _isLoading => _viewmodel.loading.value;
@@ -85,9 +85,9 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          if (_viewmodel.locationPermission == AppLocationPermission.enabled && _viewmodel.myCurrentAddress != null)
+          if (_viewmodel.myPositionAddress != null)
             UseMylocationButton(
-              address: _viewmodel.myCurrentAddress!,
+              address: _viewmodel.myPositionAddress!,
               padding: PSize.spacer.paddingHorizontal + PSize.ii.paddingVertical,
               onTap: () => _onUseMyLocation(),
             ),
@@ -95,30 +95,32 @@ class _MyAddressesPageState extends State<MyAddressesPage> {
             padding: PSize.iii.paddingHorizontal + PSize.iii.paddingTop,
             child: Column(children: [
               if (UserMe.me != null)
-                ...UserMe.me!.addresses.map(
-                  (address) => Padding(
-                    padding: EdgeInsets.only(bottom: PSize.iii.value),
-                    child: MyAdressCard(
-                      isSelected: address.id == UserMe.me!.data.selectedAddressId,
-                      address: address,
-                      onTap: (address) {},
-                      onDelete: (address) async {
-                        await showConfirmDeleteDialog(
-                          context,
-                          title: t.excluir_endereco,
-                          description: t.excluir_endereco_descricao,
-                          onConfirm: () async {
-                            await Command0.executeWithLoader(
+                ..._viewmodel.myAddresses().map(
+                      (address) => Padding(
+                        padding: EdgeInsets.only(bottom: PSize.iii.value),
+                        child: MyAdressCard(
+                          isSelected: address.id == UserMe.me!.data.selectedAddressId,
+                          address: address,
+                          onTap: (address) {
+                            _viewmodel.selectAddress(address);
+                          },
+                          onDelete: (address) async {
+                            await showConfirmDeleteDialog(
                               context,
-                              () async => await _viewmodel.deleteAddress(address),
+                              title: t.excluir_endereco,
+                              description: t.excluir_endereco_descricao,
+                              onConfirm: () async {
+                                await Command0.executeWithLoader(
+                                  context,
+                                  () async => await _viewmodel.deleteAddress(address),
+                                );
+                              },
                             );
                           },
-                        );
-                      },
-                      onEdit: (address) {},
+                          onEdit: (address) => ModularEvent.fire(GoEditAddressEvent(address: address)),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
               PSize.v.sizedBoxH,
             ]),
           ),
