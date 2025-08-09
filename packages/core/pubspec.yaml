@@ -23,6 +23,7 @@ dependencies:
   sentry: ^9.1.0
   aes256: ^1.1.0
   slang: ^4.8.1
+  collection: ^1.18.0
 
 dev_dependencies:
   lints: ^5.0.0

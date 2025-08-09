@@ -92,10 +92,15 @@ class AddressModule extends EventModule {
       if (context == null) return;
       context.pushNamed(Routes.postcodeNamed);
     });
-    on<GoMyAddressesEvent>((event, context) {
-      if (context == null) return;
-      context.pushNamed(Routes.myAddressesNamed);
-    });
+    on<GoMyAddressesEvent>(
+      (event, context) {
+        if (context == null) return;
+        if (event.go) context.goNamed(Routes.myAddressesNamed);
+        if (!event.go) context.pushNamed(Routes.myAddressesNamed);
+      },
+      autoDispose: false,
+      broadcast: false,
+    );
     on<GoMyPositionEvent>((event, context) {
       if (context == null) return;
       context.pushNamed(

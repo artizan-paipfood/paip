@@ -6,7 +6,10 @@ class GoAutoCompleteEvent extends RouteEvent {}
 
 class GoPostcodeEvent extends RouteEvent {}
 
-class GoMyAddressesEvent extends RouteEvent {}
+class GoMyAddressesEvent {
+  final bool go;
+  GoMyAddressesEvent({required this.go});
+}
 
 class GoMyPositionEvent extends RouteEvent {
   final double lat;

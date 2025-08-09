@@ -28,3 +28,4 @@ export 'package:uuid/uuid.dart';
 export 'package:result_dart/result_dart.dart';
 export 'package:aes256/aes256.dart';
 export 'src/helpers/z_export.dart';
+export 'package:collection/collection.dart';
