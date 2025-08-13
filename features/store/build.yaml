@@ -1,0 +1,18 @@
+targets:
+  $default:
+    builders:
+      slang_build_runner:
+        options:
+          base_locale: en_US
+          fallback_strategy: base_locale
+          input_directory: lib/src/_i18n
+          input_file_pattern: .i18n.json
+          string_interpolation: braces
+          output_directory: lib/src/_i18n/gen
+          namespaces: false
+          locale_handling: true
+          flutter_integration: true
+          generate_enum: false
+          StoreLanguage:
+            default_parameter: language
+            generate_enum: false
