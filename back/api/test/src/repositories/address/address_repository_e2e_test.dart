@@ -1,7 +1,7 @@
 import 'package:api/apis/adress/geoapify_api.dart';
 import 'package:api/constants/base_url.dart';
-import 'package:api/services/process_env.dart';
-import 'package:api/repositories/address/delivery_repository.dart';
+import 'package:api/infra/services/process_env.dart';
+import 'package:api/infra/repositories/address/delivery_repository.dart';
 import 'package:core/core.dart';
 import 'package:test/test.dart';
 

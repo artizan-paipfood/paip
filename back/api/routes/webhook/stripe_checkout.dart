@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:dart_frog/dart_frog.dart';
 import 'package:core/core.dart' hide Response;
-import 'package:api/services/_back_injectors.dart';
-import 'package:api/usecases/stripe_charge_usecase.dart';
-import 'package:api/usecases/update_queus_usecase.dart';
-import 'package:api/webhooks/stripe_checkout_webhook.dart';
+import 'package:api/infra/services/back_injector.dart';
+import 'package:api/domain/usecases/stripe_charge_usecase.dart';
+import 'package:api/domain/usecases/update_queus_usecase.dart';
+import 'package:api/domain/dtos/stripe_checkout_webhook.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   final data = await context.request.json() as Map<String, dynamic>;

@@ -1,5 +1,5 @@
-import 'package:api/dtos/cep_awesomeapi.dart';
-import 'package:api/services/process_env.dart';
+import 'package:api/domain/dtos/cep_awesomeapi.dart';
+import 'package:api/infra/services/process_env.dart';
 import 'package:core/core.dart';
 
 class CepAwesomeApi {

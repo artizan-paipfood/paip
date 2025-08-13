@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
-import 'package:api/services/_back_injectors.dart';
-import 'package:api/usecases/distance_delivery_usecase.dart';
+import 'package:api/infra/services/back_injector.dart';
+import 'package:api/domain/usecases/distance_delivery_usecase.dart';
 import 'package:core/core.dart';
 
 Future<Response> onRequest(RequestContext context) async {

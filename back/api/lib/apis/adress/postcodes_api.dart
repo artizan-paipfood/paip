@@ -1,4 +1,4 @@
-import 'package:api/dtos/postcode.dart';
+import 'package:api/domain/dtos/postcode.dart';
 import 'package:core/core.dart';
 
 class PostCodesApi {

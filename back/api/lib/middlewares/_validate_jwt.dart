@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:api/infra/services/jwt_service.dart';
 import 'package:dart_frog/dart_frog.dart';
-import 'package:api/services/authenticator.dart';
 
 Middleware validateJwt() {
   return (handler) {
@@ -12,9 +12,9 @@ Middleware validateJwt() {
         return Response(statusCode: HttpStatus.unauthorized, body: 'Missing or malformed token');
       }
 
-      final token = Authenticator.tokenParse(authorizationHeader);
+      final token = JwtService.tokenParse(authorizationHeader);
 
-      if (!Authenticator.validateToken(token)) {
+      if (!JwtService.validateToken(token)) {
         return Response(statusCode: HttpStatus.unauthorized, body: 'Unauthorized');
       }
 

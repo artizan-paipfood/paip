@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
-import 'package:api/services/_back_injectors.dart';
-import 'package:api/repositories/address/search_address/search_address_repository.dart';
+import 'package:api/infra/services/back_injector.dart';
+import 'package:api/infra/repositories/address/search_address_repository.dart';
 import 'package:core/core.dart';
 
 Future<Response> onRequest(RequestContext context) async {

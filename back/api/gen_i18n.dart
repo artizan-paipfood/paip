@@ -5,7 +5,7 @@ import 'dart:convert';
 void main() {
   const inputDir = 'public/l10n';
   const inputFile = 'public/l10n/app_en.arb';
-  const outputFile = 'lib/l10n/i18n.dart';
+  const outputFile = 'lib/core/l10n/i18n.dart';
 
   final file = File(inputFile);
   if (!file.existsSync()) {

@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
-import 'package:core/core.dart';
-import 'package:api/services/whatsapp_verification_code.dart';
-import 'package:api/services/_back_jwt.dart';
+import 'package:core/core.dart' hide JwtService;
+import 'package:api/infra/services/whatsapp_verification_code.dart';
+import 'package:api/infra/services/jwt_service.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   final data = await context.request.json() as Map<String, dynamic>;
@@ -23,7 +23,7 @@ Future<Response> _onPost(RequestContext context, VerificationCodeRequest body) a
   final service = WhatsappVerificationCode.instance;
   final number = body.phone.onlyNumbers();
   final code = await service.sendCode(locale: body.locale, phone: number);
-  return BackJwt.generateJwtResponse(map: {'code': code});
+  return JwtService.generateJwtResponse(map: {'code': code});
 }
 
 class VerificationCodeRequest {

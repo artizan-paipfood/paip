@@ -1,7 +1,7 @@
 import 'package:api/constants/base_url.dart';
-import 'package:api/repositories/address/responses/google_autocomplete_response.dart';
-import 'package:api/services/process_env.dart';
-import 'package:api/services/utils.dart';
+import 'package:api/infra/repositories/address/mappers/google_autocomplete_response.dart';
+import 'package:api/infra/services/process_env.dart';
+import 'package:api/infra/services/utils.dart';
 import 'package:core/core.dart';
 
 class GooglePlacesApi {

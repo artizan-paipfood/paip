@@ -1,8 +1,8 @@
 import 'package:api/constants/base_url.dart';
-import 'package:api/dtos/distance_dto.dart';
+import 'package:api/domain/dtos/distance_dto.dart';
 
-import 'package:api/services/process_env.dart';
-import 'package:api/services/utils.dart';
+import 'package:api/infra/services/process_env.dart';
+import 'package:api/infra/services/utils.dart';
 import 'package:core/core.dart';
 
 class GeoApifyApi {

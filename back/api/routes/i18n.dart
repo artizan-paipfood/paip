@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:core/core.dart';
-import 'package:api/l10n/i18n.dart';
+import 'package:api/core/l10n/i18n.dart';
 
-import 'package:api/extensions/db_locale_extension.dart';
+import 'package:api/core/extensions/db_locale_extension.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   try {

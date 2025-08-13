@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
-import 'package:api/services/_back_injectors.dart';
-import 'package:api/repositories/stripe/i_stripe_repository.dart';
+import 'package:api/infra/services/back_injector.dart';
+import 'package:api/infra/repositories/stripe/i_stripe_repository.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   try {

@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:api/services/_back_initializer.dart';
+import 'package:api/infra/services/back_initializer.dart';
 import 'package:core/core.dart';
 import 'package:dart_frog/dart_frog.dart';
 

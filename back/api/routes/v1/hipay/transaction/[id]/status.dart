@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:core/core.dart' hide Response;
 import 'package:hipay/hipay.dart';
-import 'package:api/extensions/amount_extension.dart';
-import 'package:api/services/_back_injectors.dart';
+import 'package:api/core/extensions/num_extension.dart';
+import 'package:api/infra/services/back_injector.dart';
 
 Future<Response> onRequest(RequestContext context, String id) async {
   try {
