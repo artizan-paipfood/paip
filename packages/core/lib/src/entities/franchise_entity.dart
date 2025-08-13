@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class FranchiseEntity {
   final String id;
@@ -38,26 +39,30 @@ class FranchiseEntity {
   factory FranchiseEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return FranchiseEntity(
-      id: map['id'] ?? '',
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(
-              map['created_at'],
-            )
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(
-              map['updated_at'],
-            )
-          : null,
-      profitPercent: map['profitPercent']?.toDouble() ?? 0.0,
-      userId: map['userId'] ?? '',
-      locale: AppLocaleCode.fromMap(
-        map['locale'],
-      ),
-      displayName: map['displayName'] ?? '',
-      paymentProviderId: map['payment_provider_id'],
-    );
+    try {
+      return FranchiseEntity(
+        id: map['id'] ?? '',
+        createdAt: map['created_at'] != null
+            ? DateTime.parse(
+                map['created_at'],
+              )
+            : null,
+        updatedAt: map['updated_at'] != null
+            ? DateTime.parse(
+                map['updated_at'],
+              )
+            : null,
+        profitPercent: map['profitPercent']?.toDouble() ?? 0.0,
+        userId: map['userId'] ?? '',
+        locale: AppLocaleCode.fromMap(
+          map['locale'],
+        ),
+        displayName: map['displayName'] ?? '',
+        paymentProviderId: map['payment_provider_id'],
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'FranchiseEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

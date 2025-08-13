@@ -52,7 +52,7 @@ class _AppWidgetState extends State<AppWidget> {
             },
             theme: ArtThemeData(colorScheme: ArtOrangeColorScheme.light(), brightness: Brightness.light),
             darkTheme: ArtThemeData(colorScheme: ArtYellowColorScheme.dark(), brightness: Brightness.dark),
-            // themeMode: ThemeMode.light,
+            themeMode: ThemeMode.light,
             locale: AppI18n.locale,
             supportedLocales: AppLocaleUtils.supportedLocales,
             localizationsDelegates: GlobalMaterialLocalizations.delegates,

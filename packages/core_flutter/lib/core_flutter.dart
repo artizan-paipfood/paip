@@ -7,3 +7,4 @@ export 'src/services/interceptors/z_export.dart';
 //dependencias
 export 'package:go_router_modular/go_router_modular.dart';
 export 'package:shared_preferences/shared_preferences.dart';
+export 'package:cached_network_image/cached_network_image.dart';

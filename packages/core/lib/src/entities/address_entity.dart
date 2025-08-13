@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class AddressEntity {
   final String id;
@@ -129,35 +130,39 @@ class AddressEntity {
   factory AddressEntity.fromMap(
     Map map,
   ) {
-    return AddressEntity(
-      id: map['id'] ?? '',
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(
-              map['created_at'],
-            )
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(
-              map['updated_at'],
-            )
-          : null,
-      street: map['street'] ?? '',
-      number: map['number'] ?? '',
-      neighborhood: map['neighborhood'] ?? '',
-      complement: map['complement'] ?? '',
-      zipCode: map['zip_code'] ?? '',
-      state: map['state'] ?? '',
-      lat: map['lat']?.toDouble(),
-      long: map['long']?.toDouble(),
-      address: map['address'] ?? '',
-      city: map['city'] ?? '',
-      country: map['country'] ?? '',
-      nickName: map['nick_name'] ?? '',
-      userId: map['user_id'],
-      establishmentId: map['establishment_id'],
-      isDeleted: map['is_deleted'] ?? false,
-      countryCode: map['country_code'] ?? '',
-    );
+    try {
+      return AddressEntity(
+        id: map['id'] ?? '',
+        createdAt: map['created_at'] != null
+            ? DateTime.parse(
+                map['created_at'],
+              )
+            : null,
+        updatedAt: map['updated_at'] != null
+            ? DateTime.parse(
+                map['updated_at'],
+              )
+            : null,
+        street: map['street'] ?? '',
+        number: map['number'] ?? '',
+        neighborhood: map['neighborhood'] ?? '',
+        complement: map['complement'] ?? '',
+        zipCode: map['zip_code'] ?? '',
+        state: map['state'] ?? '',
+        lat: map['lat']?.toDouble(),
+        long: map['long']?.toDouble(),
+        address: map['address'] ?? '',
+        city: map['city'] ?? '',
+        country: map['country'] ?? '',
+        nickName: map['nick_name'] ?? '',
+        userId: map['user_id'],
+        establishmentId: map['establishment_id'],
+        isDeleted: map['is_deleted'] ?? false,
+        countryCode: map['country_code'] ?? '',
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'AddressEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String get mainText => '${number.isNotEmpty ? '$number, ' : ''}$street|$complement'.split('|').where((e) => e.trim().isNotEmpty).toList().join(' - ');

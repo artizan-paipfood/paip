@@ -9,7 +9,7 @@ export 'package:dio/dio.dart' hide Response;
 export 'package:event_bus/event_bus.dart';
 export 'package:talker_dio_logger/talker_dio_logger.dart';
 export 'src/core_base.dart';
-export 'src/dto/z_dtos_export.dart';
+export 'src/mappers/z_dtos_export.dart';
 export 'src/entities/zz_entities_export.dart';
 export 'src/enums/zz_enums_export.dart';
 export 'src/exceptions/z_errors_export.dart';

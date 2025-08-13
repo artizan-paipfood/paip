@@ -14,3 +14,7 @@ export './order_type.dart';
 export './culinary_style.dart';
 export './changelog_project.dart';
 export './autocomplete_provider.dart';
+export './size_type.dart';
+export './category_type.dart';
+export './complement_type.dart';
+export './item_type.dart';

@@ -4,6 +4,9 @@ import 'package:core/src/enums/payment_provider.dart';
 import 'package:core/src/enums/split_destination_type.dart';
 import 'package:core/src/extensions/date.dart';
 
+import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
+
 class ChargeSplitEntity {
   final String chargeId;
   final SplitDestinationType splitDestinationType;
@@ -68,31 +71,35 @@ class ChargeSplitEntity {
   factory ChargeSplitEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return ChargeSplitEntity(
-      chargeId: map['charge_id'] ?? '',
-      splitDestinationType: SplitDestinationType.fromMap(
-        map['split_destination_type'],
-      ),
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(
-              map['created_at'],
-            )
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(
-              map['updated_at'],
-            )
-          : null,
-      amount: map['amount']?.toDouble() ?? 0.0,
-      paymentProvider: PaymentProvider.fromMap(
-        map['payment_provider'],
-      ),
-      destinationId: map['destination_id'] ?? '',
-      status: ChargeStatus.fromMap(
-        map['status'],
-      ),
-      transactionId: map['transaction_id'],
-    );
+    try {
+      return ChargeSplitEntity(
+        chargeId: map['charge_id'] ?? '',
+        splitDestinationType: SplitDestinationType.fromMap(
+          map['split_destination_type'],
+        ),
+        createdAt: map['created_at'] != null
+            ? DateTime.parse(
+                map['created_at'],
+              )
+            : null,
+        updatedAt: map['updated_at'] != null
+            ? DateTime.parse(
+                map['updated_at'],
+              )
+            : null,
+        amount: map['amount']?.toDouble() ?? 0.0,
+        paymentProvider: PaymentProvider.fromMap(
+          map['payment_provider'],
+        ),
+        destinationId: map['destination_id'] ?? '',
+        status: ChargeStatus.fromMap(
+          map['status'],
+        ),
+        transactionId: map['transaction_id'],
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'ChargeSplitEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class DeliveryAreaPerMileEntity {
   final String id;
@@ -74,19 +75,23 @@ class DeliveryAreaPerMileEntity {
   }
 
   factory DeliveryAreaPerMileEntity.fromMap(Map<String, dynamic> map) {
-    return DeliveryAreaPerMileEntity(
-      id: map['id'],
-      establishmentId: map['establishment_id'] ?? '',
-      createdAt: map['created_at'] != null ? DateTime.parse(map['created_at']) : null,
-      updatedAt: map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
-      minDistance: map['min_distance']?.toDouble() ?? 0.0,
-      minPrice: map['min_price']?.toDouble() ?? 0.0,
-      pricePerMile: map['price_per_mile']?.toDouble() ?? 0.0,
-      floorBase: map['floor_base']?.toDouble() ?? 0.50,
-      radius: map['radius']?.toDouble() ?? 0.0,
-      price: map['price']?.toDouble() ?? 0.0,
-      isDeleted: map['is_deleted'] ?? false,
-    );
+    try {
+      return DeliveryAreaPerMileEntity(
+        id: map['id'],
+        establishmentId: map['establishment_id'] ?? '',
+        createdAt: map['created_at'] != null ? DateTime.parse(map['created_at']) : null,
+        updatedAt: map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
+        minDistance: map['min_distance']?.toDouble() ?? 0.0,
+        minPrice: map['min_price']?.toDouble() ?? 0.0,
+        pricePerMile: map['price_per_mile']?.toDouble() ?? 0.0,
+        floorBase: map['floor_base']?.toDouble() ?? 0.50,
+        radius: map['radius']?.toDouble() ?? 0.0,
+        price: map['price']?.toDouble() ?? 0.0,
+        isDeleted: map['is_deleted'] ?? false,
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'DeliveryAreaPerMileEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());

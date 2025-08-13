@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:core/src/extensions/date.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class PrinterLayoutEntity {
   final String id;
@@ -56,30 +57,34 @@ class PrinterLayoutEntity {
   factory PrinterLayoutEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return PrinterLayoutEntity(
-      id: map['id'] ?? '',
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(
-              map['created_at'],
-            )
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(
-              map['updated_at'],
-            )
-          : null,
-      establishmentId: map['establishment_id'] ?? '',
-      name: map['name'] ?? '',
-      fontFamily: map['font_family'] ?? '',
-      sections: List<Map<String, dynamic>>.from(
-        map['sections']?.map(
-          (
-            x,
-          ) =>
+    try {
+      return PrinterLayoutEntity(
+        id: map['id'] ?? '',
+        createdAt: map['created_at'] != null
+            ? DateTime.parse(
+                map['created_at'],
+              )
+            : null,
+        updatedAt: map['updated_at'] != null
+            ? DateTime.parse(
+                map['updated_at'],
+              )
+            : null,
+        establishmentId: map['establishment_id'] ?? '',
+        name: map['name'] ?? '',
+        fontFamily: map['font_family'] ?? '',
+        sections: List<Map<String, dynamic>>.from(
+          map['sections']?.map(
+            (
               x,
+            ) =>
+                x,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'PrinterLayoutEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

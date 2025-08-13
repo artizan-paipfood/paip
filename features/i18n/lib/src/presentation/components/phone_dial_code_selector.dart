@@ -204,7 +204,7 @@ class _PhoneDialCodeSelectorState extends State<PhoneDialCodeSelector> {
           selectedTileColor: _selectedColor.withValues(alpha: .1),
           leading: Image.asset(
             'assets/flags/${country.locale.toUpperCase()}.png',
-            package: 'paipfood_package',
+            package: 'i18n',
             width: 32,
             height: 24,
             fit: BoxFit.cover,

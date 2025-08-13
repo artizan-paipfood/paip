@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class EstablishmentPreferencesEntity {
   final String establishmentId;
@@ -65,17 +66,21 @@ class EstablishmentPreferencesEntity {
   }
 
   factory EstablishmentPreferencesEntity.fromMap(Map<String, dynamic> map) {
-    return EstablishmentPreferencesEntity(
-      establishmentId: map['establishment_id'] ?? '',
-      updatedAt: map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
-      resetOrderNumberReference: map['reset_order_number_reference']?.toInt() ?? 0,
-      resetOrderNumberAt: map['reset_order_number_at'] != null ? DateTime.parse(map['reset_order_number_at']) : null,
-      resetOrderNumberPeriod: ResetOrderNumberPeriod.fromMap(map['reset_order_number_period']),
-      automaticAcceptOrders: map['automatic_accept_orders'] ?? false,
-      enableSchedule: map['enable_schedule'] ?? false,
-      enableScheduleTomorrow: map['enable_schedule_tomorrow'] ?? false,
-      enableWhatsapp: map['enable_whatsapp'] ?? true,
-    );
+    try {
+      return EstablishmentPreferencesEntity(
+        establishmentId: map['establishment_id'] ?? '',
+        updatedAt: map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
+        resetOrderNumberReference: map['reset_order_number_reference']?.toInt() ?? 0,
+        resetOrderNumberAt: map['reset_order_number_at'] != null ? DateTime.parse(map['reset_order_number_at']) : null,
+        resetOrderNumberPeriod: ResetOrderNumberPeriod.fromMap(map['reset_order_number_period']),
+        automaticAcceptOrders: map['automatic_accept_orders'] ?? false,
+        enableSchedule: map['enable_schedule'] ?? false,
+        enableScheduleTomorrow: map['enable_schedule_tomorrow'] ?? false,
+        enableWhatsapp: map['enable_whatsapp'] ?? true,
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'EstablishmentPreferencesEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());

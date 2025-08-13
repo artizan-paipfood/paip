@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 import 'package:core/src/extensions/date.dart';
 
 class DeliveryAreaEntity {
@@ -67,25 +69,29 @@ class DeliveryAreaEntity {
   factory DeliveryAreaEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return DeliveryAreaEntity(
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(
-              map['created_at'],
-            )
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(
-              map['updated_at'],
-            )
-          : null,
-      color: map['color'] ?? '',
-      label: map['label'] ?? '',
-      price: map['price']?.toDouble() ?? 0.0,
-      isDeleted: map['is_deleted'] ?? false,
-      id: map['id'] ?? '',
-      establishmentId: map['establishment_id'] ?? '',
-      city: map['city'],
-    );
+    try {
+      return DeliveryAreaEntity(
+        createdAt: map['created_at'] != null
+            ? DateTime.parse(
+                map['created_at'],
+              )
+            : null,
+        updatedAt: map['updated_at'] != null
+            ? DateTime.parse(
+                map['updated_at'],
+              )
+            : null,
+        color: map['color'] ?? '',
+        label: map['label'] ?? '',
+        price: map['price']?.toDouble() ?? 0.0,
+        isDeleted: map['is_deleted'] ?? false,
+        id: map['id'] ?? '',
+        establishmentId: map['establishment_id'] ?? '',
+        city: map['city'],
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'DeliveryAreaEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

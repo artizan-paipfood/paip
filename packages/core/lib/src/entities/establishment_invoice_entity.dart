@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'package:core/src/enums/payment_type.dart';
 import 'package:core/src/extensions/date.dart';
 
+import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
+
 class EstablishmentInvoiceEntity {
   final String id;
   final String establishmentId;
@@ -48,19 +51,23 @@ class EstablishmentInvoiceEntity {
   factory EstablishmentInvoiceEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return EstablishmentInvoiceEntity(
-      id: map['id'] ?? '',
-      establishmentId: map['establishment_id'] ?? '',
-      establishmentPlanId: map['establishment_plan_id'] ?? '',
-      createdAt: DateTime.parse(map['created_at']),
-      dueDate: DateTime.parse(map['due_date']),
-      amount: map['amount']?.toDouble() ?? 0.0,
-      renegotiationDate: map['renegotiation_date'] != null ? DateTime.parse(map['renegotiation_date']) : null,
-      paymentDate: map['payment_date'] != null ? DateTime.parse(map['payment_date']) : null,
-      paymentType: map['payment_type'] != null ? PaymentType.fromMap(map['payment_type']) : null,
-      transactionId: map['transaction_id'],
-      updatedAt: map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
-    );
+    try {
+      return EstablishmentInvoiceEntity(
+        id: map['id'] ?? '',
+        establishmentId: map['establishment_id'] ?? '',
+        establishmentPlanId: map['establishment_plan_id'] ?? '',
+        createdAt: DateTime.parse(map['created_at']),
+        dueDate: DateTime.parse(map['due_date']),
+        amount: map['amount']?.toDouble() ?? 0.0,
+        renegotiationDate: map['renegotiation_date'] != null ? DateTime.parse(map['renegotiation_date']) : null,
+        paymentDate: map['payment_date'] != null ? DateTime.parse(map['payment_date']) : null,
+        paymentType: map['payment_type'] != null ? PaymentType.fromMap(map['payment_type']) : null,
+        transactionId: map['transaction_id'],
+        updatedAt: map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'EstablishmentInvoiceEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());

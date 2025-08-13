@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:core/src/exceptions/serialization_exception.dart';
+
 class EstablishmentPlanEntity {
   final String id;
   DateTime? createdAt;
@@ -65,18 +67,22 @@ class EstablishmentPlanEntity {
   }
 
   factory EstablishmentPlanEntity.fromMap(Map<String, dynamic> map) {
-    return EstablishmentPlanEntity(
-      id: map['id'],
-      createdAt: DateTime.parse(map['created_at']),
-      fixedPrice: map['fixedPrice']?.toDouble(),
-      discount: map['discount']?.toDouble(),
-      promotionalPrice: map['promotional_price']?.toDouble(),
-      promotionalPriceValidUntil: map['promotional_price_valid_until'] != null ? DateTime.parse(map['promotional_price_valid_until']) : null,
-      establishmentId: map['establishment_id'] ?? '',
-      planId: map['plan_id'] ?? '',
-      billingDay: map['billing_day']?.toInt() ?? 0,
-      price: map['price']?.toDouble() ?? 0.0,
-    );
+    try {
+      return EstablishmentPlanEntity(
+        id: map['id'],
+        createdAt: DateTime.parse(map['created_at']),
+        fixedPrice: map['fixedPrice']?.toDouble(),
+        discount: map['discount']?.toDouble(),
+        promotionalPrice: map['promotional_price']?.toDouble(),
+        promotionalPriceValidUntil: map['promotional_price_valid_until'] != null ? DateTime.parse(map['promotional_price_valid_until']) : null,
+        establishmentId: map['establishment_id'] ?? '',
+        planId: map['plan_id'] ?? '',
+        billingDay: map['billing_day']?.toInt() ?? 0,
+        price: map['price']?.toDouble() ?? 0.0,
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'EstablishmentPlanEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());

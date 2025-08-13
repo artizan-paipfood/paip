@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class UserEntity {
   final String id;
@@ -33,18 +34,22 @@ class UserEntity {
   }
 
   factory UserEntity.fromMap(Map<String, dynamic> map) {
-    return UserEntity(
-      id: map['id'] ?? '',
-      email: map['email'] ?? '',
-      emailConfirmedAt: map['email_confirmed_at'] != null ? DateTime.parse(map['email_confirmed_at']) : null,
-      phone: map['phone'],
-      confirmedAt: map['confirmed_at'] != null ? DateTime.parse(map['confirmed_at']) : null,
-      recoverySentAt: map['recovery_sent_at'] != null ? DateTime.parse(map['recovery_sent_at']) : null,
-      lastSignInAt: map['last_sign_in_at'] != null ? DateTime.parse(map['last_sign_in_at']) : null,
-      createdAt: DateTime.parse(map['created_at']),
-      updatedAt: DateTime.parse(map['updated_at']),
-      userMetadata: UserMetadata.fromMap(map['user_metadata']),
-    );
+    try {
+      return UserEntity(
+        id: map['id'] ?? '',
+        email: map['email'] ?? '',
+        emailConfirmedAt: map['email_confirmed_at'] != null ? DateTime.parse(map['email_confirmed_at']) : null,
+        phone: map['phone'],
+        confirmedAt: map['confirmed_at'] != null ? DateTime.parse(map['confirmed_at']) : null,
+        recoverySentAt: map['recovery_sent_at'] != null ? DateTime.parse(map['recovery_sent_at']) : null,
+        lastSignInAt: map['last_sign_in_at'] != null ? DateTime.parse(map['last_sign_in_at']) : null,
+        createdAt: DateTime.parse(map['created_at']),
+        updatedAt: DateTime.parse(map['updated_at']),
+        userMetadata: UserMetadata.fromMap(map['user_metadata']),
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'UserEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());
@@ -103,21 +108,25 @@ class UserMetadata {
   }
 
   factory UserMetadata.fromMap(Map<String, dynamic> map) {
-    return UserMetadata(
-      sub: map['sub'],
-      fullName: map['full_name'] ?? '',
-      email: map['email'],
-      emailVerified: map['email_verified'],
-      phone: map['phone'],
-      phoneVerified: map['phone_verified'],
-      document: map['document'],
-      documentType: map['document_type'],
-      birthDate: map['birth_date'] != null ? DateTime.parse(map['birth_date']) : null,
-      gender: map['gender'],
-      phoneNumber: map['phone_number'] != null ? PhoneNumber.fromMap(map['phone_number']) : null,
-      dispositiveAuthId: map['dispositive_auth_id'],
-      selectedAddressId: map['selected_address_id'],
-    );
+    try {
+      return UserMetadata(
+        sub: map['sub'] ?? '',
+        fullName: map['full_name'] ?? '',
+        email: map['email'],
+        emailVerified: map['email_verified'],
+        phone: map['phone'],
+        phoneVerified: map['phone_verified'],
+        document: map['document'],
+        documentType: map['document_type'],
+        birthDate: map['birth_date'] != null ? DateTime.parse(map['birth_date']) : null,
+        gender: map['gender'],
+        phoneNumber: map['phone_number'] != null ? PhoneNumber.fromMap(map['phone_number']) : null,
+        dispositiveAuthId: map['dispositive_auth_id'],
+        selectedAddressId: map['selected_address_id'],
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'UserMetadata', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());
@@ -173,10 +182,14 @@ class PhoneNumber {
   }
 
   factory PhoneNumber.fromMap(Map<String, dynamic> map) {
-    return PhoneNumber(
-      dialCode: map['dial_code'] ?? '',
-      number: map['number'] ?? '',
-    );
+    try {
+      return PhoneNumber(
+        dialCode: map['dial_code'] ?? '',
+        number: map['number'] ?? '',
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'PhoneNumber', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());
@@ -225,14 +238,18 @@ class AuthenticatedUser {
   });
 
   factory AuthenticatedUser.fromMap(Map<String, dynamic> map) {
-    return AuthenticatedUser(
-      accessToken: map['access_token'],
-      tokenType: map['token_type'],
-      expiresIn: map['expires_in'],
-      expiresAt: map['expires_at'],
-      refreshToken: map['refresh_token'],
-      user: UserEntity.fromMap(map['user']),
-    );
+    try {
+      return AuthenticatedUser(
+        accessToken: map['access_token'],
+        tokenType: map['token_type'],
+        expiresIn: map['expires_in'],
+        expiresAt: map['expires_at'],
+        refreshToken: map['refresh_token'],
+        user: UserEntity.fromMap(map['user']),
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'AuthenticatedUser', stackTrace: StackTrace.current);
+    }
   }
 
   factory AuthenticatedUser.fromJson(String source) => AuthenticatedUser.fromMap(json.decode(source));

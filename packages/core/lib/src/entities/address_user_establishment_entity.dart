@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:core/src/exceptions/serialization_exception.dart';
+
 class AddressUserEstablishmentEntity {
   final String userAddressId;
   final String establishmentAddressId;
@@ -24,12 +26,16 @@ class AddressUserEstablishmentEntity {
   }
 
   factory AddressUserEstablishmentEntity.fromMap(Map<String, dynamic> map) {
-    return AddressUserEstablishmentEntity(
-      userAddressId: map['user_address_id'],
-      establishmentAddressId: map['establishment_address_id'],
-      distance: map['distance']?.toDouble(),
-      straightDistance: map['straight_distance']?.toDouble(),
-    );
+    try {
+      return AddressUserEstablishmentEntity(
+        userAddressId: map['user_address_id'],
+        establishmentAddressId: map['establishment_address_id'],
+        distance: map['distance']?.toDouble(),
+        straightDistance: map['straight_distance']?.toDouble(),
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'AddressUserEstablishmentEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());

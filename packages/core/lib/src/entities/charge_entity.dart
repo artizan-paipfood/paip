@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class ChargeEntity {
   final String id;
@@ -81,37 +82,41 @@ class ChargeEntity {
   factory ChargeEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return ChargeEntity(
-      id: map['id'] ?? '',
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(
-              map['created_at'],
-            ).toLocal()
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(
-              map['updated_at'],
-            ).toLocal()
-          : null,
-      establishmentId: map['establishment_id'],
-      orderId: map['order_id'],
-      amount: map['amount']?.toDouble() ?? 0.0,
-      status: ChargeStatus.fromMap(
-        map['status'],
-      ),
-      paymentProvider: PaymentProvider.fromMap(
-        map['payment_provider'],
-      ),
-      paymentId: map['payment_id'] ?? '',
-      metadata: Map<String, dynamic>.from(
-        map['metadata'],
-      ),
-      netAmount: map['net_amount']?.toDouble(),
-      driverFee: map['driver_fee']?.toDouble(),
-      locale: AppLocaleCode.fromMap(
-        map['locale'],
-      ),
-    );
+    try {
+      return ChargeEntity(
+        id: map['id'] ?? '',
+        createdAt: map['created_at'] != null
+            ? DateTime.parse(
+                map['created_at'],
+              ).toLocal()
+            : null,
+        updatedAt: map['updated_at'] != null
+            ? DateTime.parse(
+                map['updated_at'],
+              ).toLocal()
+            : null,
+        establishmentId: map['establishment_id'],
+        orderId: map['order_id'],
+        amount: map['amount']?.toDouble() ?? 0.0,
+        status: ChargeStatus.fromMap(
+          map['status'],
+        ),
+        paymentProvider: PaymentProvider.fromMap(
+          map['payment_provider'],
+        ),
+        paymentId: map['payment_id'] ?? '',
+        metadata: Map<String, dynamic>.from(
+          map['metadata'],
+        ),
+        netAmount: map['net_amount']?.toDouble(),
+        driverFee: map['driver_fee']?.toDouble(),
+        locale: AppLocaleCode.fromMap(
+          map['locale'],
+        ),
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'ChargeEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

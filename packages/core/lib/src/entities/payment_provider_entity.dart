@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:core/src/extensions/date.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class PaymentProviderEntity {
   final String id;
@@ -22,14 +23,18 @@ class PaymentProviderEntity {
   factory PaymentProviderEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return PaymentProviderEntity(
-      id: map['id'] ?? '',
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(
-              map['created_at'],
-            )
-          : null,
-    );
+    try {
+      return PaymentProviderEntity(
+        id: map['id'] ?? '',
+        createdAt: map['created_at'] != null
+            ? DateTime.parse(
+                map['created_at'],
+              )
+            : null,
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'PaymentProviderEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

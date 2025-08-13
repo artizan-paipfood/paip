@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core/src/views/establishment_menu_view.dart';
 
 class ViewsApi {
   final IClient client;
@@ -42,5 +43,15 @@ class ViewsApi {
     );
     final List list = response.data;
     return list.first;
+  }
+
+  Future<EstablishmentMenuView> getEstablishmentMenuView({
+    required String establishmentId,
+  }) async {
+    final response = await client.get(
+      '/rest/v1/view_establishment_menu?establishment_id=eq.$establishmentId&select=*&limit=1',
+    );
+    final List list = response.data;
+    return EstablishmentMenuView.fromMap(list.first);
   }
 }

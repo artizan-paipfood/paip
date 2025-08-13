@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:uuid/uuid.dart';
 
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class EstablishmentEntity {
   final String id;
@@ -216,47 +217,51 @@ class EstablishmentEntity {
   }
 
   factory EstablishmentEntity.fromMap(Map<String, dynamic> map) {
-    return EstablishmentEntity(
-      createdAt: map['created_at'] != null ? DateTime.parse(map['created_at']) : null,
-      fantasyName: map['fantasy_name'],
-      corporateName: map['corporate_name'],
-      description: map['description'],
-      personalDocument: map['personal_document'],
-      businessDocument: map['business_document'],
-      isOpen: map['is_open'],
-      isBlocked: map['is_blocked'],
-      pendingRate: map['pending_rate']?.toDouble(),
-      isHigherPricePizza: map['is_higher_price_pizza'],
-      logo: map['logo'],
-      minimunOrder: map['minimun_order']?.toDouble(),
-      dueDate: map['due_date']?.toInt(),
-      updatedAt: map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
-      banner: map['banner'],
-      companySlug: map['company_slug'] ?? '',
-      orderTypes: (map['order_types'] as List<dynamic>?)?.map((e) => OrderType.values.firstWhere((v) => v.name == e)).toList() ?? [],
-      culinaryStyle: map['culinary_style'] != null ? CulinaryStyle.values.firstWhere((v) => v.name == map['culinary_style']) : null,
-      phone: map['phone'],
-      phoneCountryCode: map['phone_country_code'],
-      email: map['email'] ?? '',
-      id: map['id'] ?? const Uuid().v4(),
-      totalOrders: map['total_orders']?.toInt() ?? 0,
-      currentOrderNumber: map['current_order_number']?.toInt() ?? 0,
-      currentLocalOrderNumber: map['current_local_order_number']?.toInt() ?? 1000,
-      paymentTypes: (map['payment_types'] as List<dynamic>?)?.map((e) => PaymentType.values.firstWhere((v) => v.name == e)).toList() ?? [],
-      timeDelivery: map['time_delivery'] ?? '40|60',
-      timeTakeway: map['time_takeway'] ?? '20|30',
-      city: map['city'] ?? '',
-      automaticAcceptOrders: map['automatic_accept_orders'],
-      imageCacheId: map['image_cache_id'] ?? '',
-      enableSchedule: map['enable_schedule'] ?? false,
-      enableScheduleTomorrow: map['enable_schedule_tomorrow'] ?? false,
-      deliveryRadius: map['delivery_radius']?.toInt(),
-      deliveryMethod: map['delivery_method'] ?? 'polygon',
-      facebookPixel: map['facebook_pixel'],
-      locale: map['locale'] != null ? AppLocaleCode.fromMap(map['locale']) : null,
-      paymentProviderId: map['payment_provider_id'],
-      maxDistance: map['max_distance']?.toDouble(),
-    );
+    try {
+      return EstablishmentEntity(
+        createdAt: map['created_at'] != null ? DateTime.parse(map['created_at']) : null,
+        fantasyName: map['fantasy_name'],
+        corporateName: map['corporate_name'],
+        description: map['description'],
+        personalDocument: map['personal_document'],
+        businessDocument: map['business_document'],
+        isOpen: map['is_open'],
+        isBlocked: map['is_blocked'],
+        pendingRate: map['pending_rate']?.toDouble(),
+        isHigherPricePizza: map['is_higher_price_pizza'],
+        logo: map['logo'],
+        minimunOrder: map['minimun_order']?.toDouble(),
+        dueDate: map['due_date']?.toInt(),
+        updatedAt: map['updated_at'] != null ? DateTime.parse(map['updated_at']) : null,
+        banner: map['banner'],
+        companySlug: map['company_slug'] ?? '',
+        orderTypes: (map['order_types'] as List<dynamic>?)?.map((e) => OrderType.values.firstWhere((v) => v.name == e)).toList() ?? [],
+        culinaryStyle: map['culinary_style'] != null ? CulinaryStyle.values.firstWhere((v) => v.name == map['culinary_style']) : null,
+        phone: map['phone'],
+        phoneCountryCode: map['phone_country_code'],
+        email: map['email'] ?? '',
+        id: map['id'] ?? const Uuid().v4(),
+        totalOrders: map['total_orders']?.toInt() ?? 0,
+        currentOrderNumber: map['current_order_number']?.toInt() ?? 0,
+        currentLocalOrderNumber: map['current_local_order_number']?.toInt() ?? 1000,
+        paymentTypes: (map['payment_types'] as List<dynamic>?)?.map((e) => PaymentType.values.firstWhere((v) => v.name == e)).toList() ?? [],
+        timeDelivery: map['time_delivery'] ?? '40|60',
+        timeTakeway: map['time_takeway'] ?? '20|30',
+        city: map['city'] ?? '',
+        automaticAcceptOrders: map['automatic_accept_orders'],
+        imageCacheId: map['image_cache_id'] ?? '',
+        enableSchedule: map['enable_schedule'] ?? false,
+        enableScheduleTomorrow: map['enable_schedule_tomorrow'] ?? false,
+        deliveryRadius: map['delivery_radius']?.toInt(),
+        deliveryMethod: map['delivery_method'] ?? 'polygon',
+        facebookPixel: map['facebook_pixel'],
+        locale: map['locale'] != null ? AppLocaleCode.fromMap(map['locale']) : null,
+        paymentProviderId: map['payment_provider_id'],
+        maxDistance: map['max_distance']?.toDouble(),
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'EstablishmentEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());

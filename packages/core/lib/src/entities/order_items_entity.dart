@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class OrderItemsEntity {
   final String id;
@@ -81,29 +82,33 @@ class OrderItemsEntity {
   factory OrderItemsEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return OrderItemsEntity(
-      id: map['id'] ?? '',
-      description: map['description'] ?? '',
-      index: map['index']?.toInt() ?? 0,
-      qty: map['qty']?.toDouble() ?? 0.0,
-      unityMeasure: UnityMeasure.fromMap(
-        map['unity_measure'],
-      ),
-      sizeId: map['size_id'],
-      productId: map['product_id'] ?? '',
-      observation: map['observation'],
-      amount: map['amount']?.toDouble() ?? 0.0,
-      complementItens: List<ComplementItensMetadata>.from(
-        map['complement_itens']?.map(
-          (
-            x,
-          ) =>
-              ComplementItensMetadata.fromMap(
-            x,
+    try {
+      return OrderItemsEntity(
+        id: map['id'] ?? '',
+        description: map['description'] ?? '',
+        index: map['index']?.toInt() ?? 0,
+        qty: map['qty']?.toDouble() ?? 0.0,
+        unityMeasure: UnityMeasure.fromMap(
+          map['unity_measure'],
+        ),
+        sizeId: map['size_id'],
+        productId: map['product_id'] ?? '',
+        observation: map['observation'],
+        amount: map['amount']?.toDouble() ?? 0.0,
+        complementItens: List<ComplementItensMetadata>.from(
+          map['complement_itens']?.map(
+            (
+              x,
+            ) =>
+                ComplementItensMetadata.fromMap(
+              x,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'OrderItemsEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

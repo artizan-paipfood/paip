@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class PaymentProviderHipayEntity {
   final DateTime? createdAt;
@@ -50,30 +51,34 @@ class PaymentProviderHipayEntity {
   factory PaymentProviderHipayEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return PaymentProviderHipayEntity(
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(
-              map['created_at'],
-            )
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(
-              map['updated_at'],
-            )
-          : null,
-      recipientId: map['recipient_id'] ?? '',
-      status: PaymentProviderAccountStatus.fromMap(
-        map['status'],
-      ),
-      bankAgency: map['bank_agency'] ?? '',
-      bankAgencyVerificationDigit: map['bank_agency_verification_digit'] ?? '',
-      bankCode: map['bank_code'] ?? '',
-      bankAccount: map['bank_account'] ?? '',
-      bankAccountVerificationDigit: map['bank_account_verification_digit'] ?? '',
-      paymentProviderId: map['payment_provider_id'] ?? '',
-      feePercent: map['fee_percent']?.toDouble() ?? 0.0,
-      fee: map['fee']?.toDouble() ?? 0.0,
-    );
+    try {
+      return PaymentProviderHipayEntity(
+        createdAt: map['created_at'] != null
+            ? DateTime.parse(
+                map['created_at'],
+              )
+            : null,
+        updatedAt: map['updated_at'] != null
+            ? DateTime.parse(
+                map['updated_at'],
+              )
+            : null,
+        recipientId: map['recipient_id'] ?? '',
+        status: PaymentProviderAccountStatus.fromMap(
+          map['status'],
+        ),
+        bankAgency: map['bank_agency'] ?? '',
+        bankAgencyVerificationDigit: map['bank_agency_verification_digit'] ?? '',
+        bankCode: map['bank_code'] ?? '',
+        bankAccount: map['bank_account'] ?? '',
+        bankAccountVerificationDigit: map['bank_account_verification_digit'] ?? '',
+        paymentProviderId: map['payment_provider_id'] ?? '',
+        feePercent: map['fee_percent']?.toDouble() ?? 0.0,
+        fee: map['fee']?.toDouble() ?? 0.0,
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'PaymentProviderHipayEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

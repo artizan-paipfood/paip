@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:core/src/exceptions/serialization_exception.dart';
+
 class UpdateQueusEntity {
   final String establishmentId;
   final DateTime createdAt;
@@ -47,14 +49,18 @@ class UpdateQueusEntity {
   }
 
   factory UpdateQueusEntity.fromMap(Map<String, dynamic> map) {
-    return UpdateQueusEntity(
-      establishmentId: map['establishment_id'] ?? '',
-      createdAt: DateTime.parse(map['created_at']),
-      updatedAt: DateTime.parse(map['updated_at']),
-      table: map['table'] ?? '',
-      operation: map['operation'] ?? '',
-      data: Map<String, dynamic>.from(map['data']),
-    );
+    try {
+      return UpdateQueusEntity(
+        establishmentId: map['establishment_id'] ?? '',
+        createdAt: DateTime.parse(map['created_at']),
+        updatedAt: DateTime.parse(map['updated_at']),
+        table: map['table'] ?? '',
+        operation: map['operation'] ?? '',
+        data: Map<String, dynamic>.from(map['data']),
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'UpdateQueusEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(toMap());

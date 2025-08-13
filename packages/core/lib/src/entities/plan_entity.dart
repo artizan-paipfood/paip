@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class PlanEntity {
   final String id;
@@ -66,23 +67,27 @@ class PlanEntity {
   factory PlanEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return PlanEntity(
-      id: map['id'] ?? '',
-      createdAt: DateTime.parse(
-        map['createdAt'],
-      ),
-      price: map['price']?.toDouble() ?? 0.0,
-      promotionalPrice: map['promotional_price']?.toDouble(),
-      discountValue: map['discount_value']?.toDouble(),
-      promotionDurationInDays: map['promotion_duration_in_days']?.toInt(),
-      enable: map['enable'] ?? false,
-      plan: Plan.values.byName(
-        map['plan'],
-      ),
-      locale: AppLocaleCode.values.byName(
-        map['locale'],
-      ),
-    );
+    try {
+      return PlanEntity(
+        id: map['id'] ?? '',
+        createdAt: DateTime.parse(
+          map['createdAt'],
+        ),
+        price: map['price']?.toDouble() ?? 0.0,
+        promotionalPrice: map['promotional_price']?.toDouble(),
+        discountValue: map['discount_value']?.toDouble(),
+        promotionDurationInDays: map['promotion_duration_in_days']?.toInt(),
+        enable: map['enable'] ?? false,
+        plan: Plan.values.byName(
+          map['plan'],
+        ),
+        locale: AppLocaleCode.values.byName(
+          map['locale'],
+        ),
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'PlanEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

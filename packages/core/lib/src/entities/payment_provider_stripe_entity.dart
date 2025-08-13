@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:core/core.dart';
+import 'package:core/src/exceptions/serialization_exception.dart';
 
 class PaymentProviderStripeEntity {
   final String paymentProviderId;
@@ -47,24 +48,28 @@ class PaymentProviderStripeEntity {
   factory PaymentProviderStripeEntity.fromMap(
     Map<String, dynamic> map,
   ) {
-    return PaymentProviderStripeEntity(
-      paymentProviderId: map['payment_provider_id'],
-      createdAt: map['created_at'] != null
-          ? DateTime.parse(
-              map['created_at'],
-            )
-          : null,
-      updatedAt: map['updated_at'] != null
-          ? DateTime.parse(
-              map['updated_at'],
-            )
-          : null,
-      accountId: map['account_id'],
-      fixedFee: map['fixed_fee']?.toDouble(),
-      status: PaymentProviderAccountStatus.fromMap(
-        map['status'],
-      ),
-    );
+    try {
+      return PaymentProviderStripeEntity(
+        paymentProviderId: map['payment_provider_id'],
+        createdAt: map['created_at'] != null
+            ? DateTime.parse(
+                map['created_at'],
+              )
+            : null,
+        updatedAt: map['updated_at'] != null
+            ? DateTime.parse(
+                map['updated_at'],
+              )
+            : null,
+        accountId: map['account_id'],
+        fixedFee: map['fixed_fee']?.toDouble(),
+        status: PaymentProviderAccountStatus.fromMap(
+          map['status'],
+        ),
+      );
+    } catch (e) {
+      throw SerializationException(map: map, runTimeType: 'PaymentProviderStripeEntity', stackTrace: StackTrace.current);
+    }
   }
 
   String toJson() => json.encode(

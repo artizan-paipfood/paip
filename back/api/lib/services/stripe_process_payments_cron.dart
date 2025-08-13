@@ -36,7 +36,8 @@ class StripeProcessPaymentsCron {
     final viewsApi = injector.get<ViewsApi>();
     // '0,30 1-3 * * *'
     // '*/1 * * * *'
-    cron.schedule(Schedule.parse('0,30 1-3 * * *'), () async {
+    // cron.schedule(Schedule.parse('0,30 1-3 * * *'), () async {
+    cron.schedule(Schedule.parse('*/1 * * * *'), () async {
       // Simulando uma lista de pagamentos a serem processados
       log(_chargesIds.join('\n'));
       final response = await chargesApi.getChargesByStatus(status: ChargeStatus.paid);

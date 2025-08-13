@@ -13,11 +13,17 @@ class CloudFlareR2Constants {
   static String get endpoint => 'https://$accountId.r2.cloudflarestorage.com';
 }
 
+abstract interface class IBucketRepository {
+  Future<void> upsertImage({required String fileName, required Uint8List imageBytes});
+  Future<void> upsertImageCustom({required String fileName, required Uint8List imageBytes, required int maxSize});
+  Future<void> upsertFile({required String fileName, required Uint8List fileBytes});
+  Future<void> deletefile(String fileName);
+  Future<String> downloadFile({required String path, Function(int, int)? onReceiveProgress});
+}
+
 class AwsClient implements IBucketRepository {
   IClient http;
-  AwsClient({
-    required this.http,
-  });
+  AwsClient({required this.http});
 
   S3 buildApiS3() {
     return S3(
@@ -32,14 +38,26 @@ class AwsClient implements IBucketRepository {
   @override
   Future<void> upsertImage({required String fileName, required Uint8List imageBytes}) async {
     final api = buildApiS3();
-    await api.putObject(bucket: 'images', key: fileName, body: compressImageRegular(image: imageBytes));
-    await api.putObject(bucket: 'images', key: "thumb-$fileName", body: compressImageThumb(image: imageBytes));
+    await api.putObject(
+      bucket: 'images',
+      key: fileName,
+      body: compressImageRegular(image: imageBytes),
+    );
+    await api.putObject(
+      bucket: 'images',
+      key: "thumb-$fileName",
+      body: compressImageThumb(image: imageBytes),
+    );
   }
 
   @override
   Future<void> upsertImageCustom({required String fileName, required Uint8List imageBytes, required int maxSize}) async {
     final api = buildApiS3();
-    await api.putObject(bucket: 'images', key: fileName, body: compressImage(image: imageBytes, maxSize: maxSize));
+    await api.putObject(
+      bucket: 'images',
+      key: fileName,
+      body: compressImage(image: imageBytes, maxSize: maxSize),
+    );
   }
 
   @override
@@ -56,10 +74,7 @@ class AwsClient implements IBucketRepository {
 
   @override
   Future<String> downloadFile({required String path, Function(int, int)? onReceiveProgress}) async {
-    final req = await http.get(
-      "https://pub-5108cc6c653d4a298a244cd51036bd2e.r2.dev/$path",
-      onReceiveProgress: onReceiveProgress,
-    );
+    final req = await http.get("https://pub-5108cc6c653d4a298a244cd51036bd2e.r2.dev/$path", onReceiveProgress: onReceiveProgress);
     return req.data;
   }
 
