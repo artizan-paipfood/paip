@@ -1,0 +1,40 @@
+name: cart
+description: "Feature cart do projeto PaipFood."
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  core:
+    path: ../../packages/core
+  core_flutter:
+    path: ../../packages/core_flutter
+  
+  ui:
+    path: ../../packages/ui
+  i18n:
+    path: ../i18n
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  slang_build_runner: ^4.7.0
+  build_runner: ^2.5.2
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/

@@ -4,6 +4,7 @@ import 'package:core_flutter/core_flutter.dart';
 import 'package:explore/src/presentation/components/card_establishment_explore.dart';
 import 'package:explore/src/presentation/viewmodels/explore_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:store/store.dart';
 import 'package:ui/ui.dart';
 
 class ExplorePage extends StatefulWidget {
@@ -69,7 +70,9 @@ class _ExplorePageState extends State<ExplorePage> {
                     itemBuilder: (context, index) {
                       final establishment = _viewmodel.establishments[index];
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          ModularEvent.fire(GoStore(establishmentId: establishment.establishmentId));
+                        },
                         overlayColor: WidgetStateProperty.all(context.artColorScheme.primary.withValues(alpha: 0.1)),
                         child: Padding(
                           padding: PSize.iii.paddingHorizontal + PSize.ii.paddingVertical,

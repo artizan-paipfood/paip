@@ -66,7 +66,6 @@ class AuthPhoneModule extends EventModule {
         ModularLoader.hide();
         if (me != null) context?.go(event.redirectTo);
       },
-      autoDispose: false,
     );
   }
 }

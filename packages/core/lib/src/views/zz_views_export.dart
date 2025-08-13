@@ -3,3 +3,4 @@ export './order_split_with_payment_provider_view.dart';
 export './payment_provider_view.dart';
 export './establishment_gest_view.dart';
 export 'user_me_model.dart';
+export 'establishment_menu_view.dart';

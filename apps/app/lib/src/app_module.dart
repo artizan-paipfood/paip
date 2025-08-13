@@ -6,6 +6,7 @@ import 'package:auth/auth.dart';
 import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:explore/explore.dart';
+import 'package:store/store.dart';
 import 'package:ui/ui.dart';
 
 class AppModule extends EventModule {
@@ -37,6 +38,7 @@ class AppModule extends EventModule {
         ModuleRoute(Routes.authModule, module: AuthPhoneModule()),
         ModuleRoute(Routes.addressModule, module: AddressModule()),
         ModuleRoute(Routes.exploreModule, module: ExploreModule()),
+        ModuleRoute(Routes.storeModule, module: StoreModule()),
       ];
 
   @override

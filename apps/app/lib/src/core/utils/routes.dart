@@ -22,4 +22,8 @@ class Routes {
   // EXPLORE
   static const String exploreModule = '/explore';
   static const String explore = '/explore';
+
+  //STORE
+  static const String storeModule = '/store';
+  static String store(String establishmentId) => '/store/$establishmentId';
 }

@@ -28,6 +28,8 @@ dependencies:
     path: ../auth
   address:
     path: ../address
+  store:
+    path: ../store
 
 dev_dependencies:
   flutter_test:

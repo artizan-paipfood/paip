@@ -8,8 +8,8 @@ class OpeningHoursEntity {
   final DateTime openningDate; // TODO: TA ESCRITO ERRADO
   final DateTime closingDate;
   final String establishmentId;
-  final double openingEnumValue;
-  final double closingEnumValue;
+  final HoursEnum openingEnumValue;
+  final HoursEnum closingEnumValue;
   OpeningHoursEntity({
     required this.id,
     required this.weekDayId,
@@ -26,8 +26,8 @@ class OpeningHoursEntity {
     DateTime? openningDate,
     DateTime? closingDate,
     String? establishmentId,
-    double? openingEnumValue,
-    double? closingEnumValue,
+    HoursEnum? openingEnumValue,
+    HoursEnum? closingEnumValue,
   }) {
     return OpeningHoursEntity(
       id: id ?? this.id,
@@ -60,8 +60,8 @@ class OpeningHoursEntity {
       openningDate: DateTime.parse(map['openning_date']),
       closingDate: DateTime.parse(map['closing_date']),
       establishmentId: map['establishment_id'] ?? '',
-      openingEnumValue: map['opening_enum_value']?.toDouble() ?? 0.0,
-      closingEnumValue: map['closing_enum_value']?.toDouble() ?? 0.0,
+      openingEnumValue: HoursEnum.values.firstWhere((e) => e.value == map['opening_enum_value']),
+      closingEnumValue: HoursEnum.values.firstWhere((e) => e.value == map['closing_enum_value']),
     );
   }
 

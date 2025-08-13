@@ -289,10 +289,10 @@ flutter:
         options:
           base_locale: en_US
           fallback_strategy: base_locale
-          input_directory: lib/i18n
+          input_directory: lib/src/_i18n
           input_file_pattern: .i18n.json
           string_interpolation: braces
-          output_directory: lib/src/i18n/gen
+          output_directory: lib/src/_i18n/gen
           namespaces: false
           locale_handling: true
           flutter_integration: true
@@ -360,6 +360,7 @@ linter:
 
   void _createModuleFile(Directory featureDir, String featureName) {
     final moduleContent = '''
+
 import 'dart:async';
 import 'package:core_flutter/core_flutter.dart';
 
@@ -383,7 +384,6 @@ class ${_toPascalCase(featureName)}Module extends Module {
     final directories = [
       // Data layer
       path.join(srcDir.path, 'data', 'repositories'),
-      path.join(srcDir.path, 'data', 'memory'),
       path.join(srcDir.path, 'data', 'services'),
       path.join(srcDir.path, 'data', 'events'),
 

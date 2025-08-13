@@ -30,6 +30,12 @@ dependencies:
     path: ../../features/address
   explore:
     path: ../../features/explore
+  store:
+    path: ../../features/store
+  cart:
+    path: ../../features/cart
+  checkout:
+    path: ../../features/checkout
 
   cupertino_icons: ^1.0.8
 

@@ -5,8 +5,9 @@ import 'package:core_flutter/core_flutter.dart';
 import 'package:explore/src/presentation/pages/explore_page.dart';
 import 'package:explore/src/presentation/viewmodels/explore_viewmodel.dart';
 import 'package:explore/src/utils/routes.dart';
+import 'package:store/store.dart';
 
-class ExploreModule extends Module {
+class ExploreModule extends EventModule {
   @override
   FutureOr<List<Bind<Object>>> binds() => [
         Bind.factory((i) => EstablishmentApi(client: i.get())),
@@ -22,4 +23,11 @@ class ExploreModule extends Module {
           child: (context, args) => const ExplorePage(),
         ),
       ];
+
+  @override
+  void listen() {
+    on<GoStore>((event, context) {
+      if (context != null) context.pushNamed('store', pathParameters: {'establishment_id': event.establishmentId});
+    });
+  }
 }

@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:uuid/uuid.dart';
-
 import 'package:core/core.dart';
 import 'package:core/src/exceptions/serialization_exception.dart';
 
@@ -14,7 +11,7 @@ class EstablishmentEntity {
   final String? description;
   final String? personalDocument;
   final String? businessDocument;
-  final bool? isOpen;
+  final bool isOpen;
   final bool? isBlocked;
   final double? pendingRate;
   final bool? isHigherPricePizza;
@@ -56,7 +53,7 @@ class EstablishmentEntity {
     this.description,
     this.personalDocument,
     this.businessDocument,
-    this.isOpen,
+    this.isOpen = false,
     this.isBlocked,
     this.pendingRate,
     this.isHigherPricePizza,
@@ -272,10 +269,13 @@ class EstablishmentEntity {
   // custom methods
   //*******************************************************
 
-  String? get logoPath => logo == null ? null : "$id-logo.png";
-  String? get bannerPath => banner == null ? null : "$id-banner.png";
+  String? get logoPath => logo == null ? null : "${AppCoreConstants.baseUrlAws}/$id-logo.png";
+  String? get bannerPath => banner == null ? null : "${AppCoreConstants.baseUrlAws}/$id-banner.png";
   String get buildLogoPath => "$id-logo.png";
   String get buildBannerPath => "$id-banner.png";
   String get cacheKeyLogo => "${imageCacheId}logo.png";
   String get cacheKeybanner => "${imageCacheId}banner.png";
+
+  List<String> get getTimesDelivery => timeDelivery.split("|");
+  List<String> get getTimesTakeway => timeTakeway.split("|");
 }

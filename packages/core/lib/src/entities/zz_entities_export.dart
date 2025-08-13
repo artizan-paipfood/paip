@@ -23,3 +23,4 @@ export './complement_entity.dart';
 export './item_entity.dart';
 export './size_entity.dart';
 export './opening_hours_entity.dart';
+export './establishment_entity.dart';

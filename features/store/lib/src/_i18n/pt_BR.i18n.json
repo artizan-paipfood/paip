@@ -1,3 +1,6 @@
 {
-  "welcome": "Bem-vindo à feature Store"
+  "tempo_abreviado": "{initialTime} - {endTime} min",
+  "aberto": "Aberto",
+  "fechado": "Fechado",
+  "fecha_ate": "Fecha em {minutos} minutos"
 }

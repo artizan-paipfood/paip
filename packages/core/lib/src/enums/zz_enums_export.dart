@@ -18,3 +18,4 @@ export './size_type.dart';
 export './category_type.dart';
 export './complement_type.dart';
 export './item_type.dart';
+export './hour_enum.dart';

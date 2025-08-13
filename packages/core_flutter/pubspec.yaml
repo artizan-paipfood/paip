@@ -24,6 +24,8 @@ dependencies:
     path: ../../../../go_router_modular
   shared_preferences: ^2.5.3
   cached_network_image: ^3.4.1
+  aws_client: ^0.7.0
+  image: ^4.1.7
 
 dev_dependencies:
   flutter_test:
