@@ -1,7 +1,9 @@
+import 'dart:math';
+
 import 'package:address/address.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:store/src/presentation/components/categories_sliver.dart';
+import 'package:store/src/presentation/components/category_sliver.dart';
 import 'package:store/src/presentation/components/establishment_header_data.dart';
 import 'package:store/src/presentation/components/header.dart';
 import 'package:store/src/presentation/components/safe_area_header_delegate.dart';
@@ -91,17 +93,41 @@ class _StorePageState extends State<StorePage> {
         SliverPersistentHeader(
           pinned: true,
           delegate: SafeAreaHeaderDelegate(
-            height: topSafeArea,
+            height: topSafeArea + 69,
             child: Material(
               color: context.artColorScheme.background,
               child: ValueListenableBuilder<bool>(
                   valueListenable: _showSafeArea,
                   builder: (context, showSafeArea, child) {
-                    return Visibility.maintain(
-                      visible: !showSafeArea,
-                      child: Padding(
-                        padding: PSize.iii.paddingHorizontal + PSize.i.paddingBottom,
-                        child: CardLocation(address: _viewmodel.establishmentAddress!),
+                    return Padding(
+                      padding: PSize.iii.paddingHorizontal + PSize.i.paddingBottom,
+                      child: Column(
+                        children: [
+                          Visibility.maintain(
+                            visible: !showSafeArea,
+                            child: CardLocation(
+                              address: _viewmodel.establishmentAddress!,
+                              height: topSafeArea,
+                            ),
+                          ),
+                          PSize.iii.sizedBoxH,
+                          ArtTextFormField(
+                            placeholder: Text('Nome do produto'),
+                            // readOnly: true,
+                            // enabled: false,
+
+                            // onPressed: () => _onPressedSearch(),
+                            decoration: ArtDecoration(
+                              color: context.artColorScheme.muted,
+                            ),
+                            trailing: PaipIcon(
+                              PaipIcons.searchLinear,
+                              color: context.artColorScheme.ring,
+                              size: 18,
+                            ),
+                          ),
+                          PSize.iii.sizedBoxH,
+                        ],
                       ),
                     );
                   }),
@@ -118,6 +144,9 @@ class _StorePageState extends State<StorePage> {
             key: index == 0 ? _firstStickyHeaderKey : null,
             category: category,
             products: _viewmodel.productsByCategory(category.id),
+            onProductTap: (product) {
+              // context.pushNamed(Routes.product, arguments: product);
+            },
           );
         }),
       ],

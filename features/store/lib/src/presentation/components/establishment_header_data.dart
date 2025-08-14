@@ -30,9 +30,10 @@ class _EstablishmentHeaderDataState extends State<EstablishmentHeaderData> {
             Expanded(child: Text(widget.establishment.fantasyName ?? '--')),
             PSize.i.sizedBoxW,
             ArtBadge.secondary(
-              backgroundColor: Colors.green.withValues(alpha: 0.2),
+              backgroundColor: Colors.green,
+              foregroundColor: Colors.white,
               child: Text(
-                'Aberto'.toUpperCase(),
+                t.aberto.toUpperCase(),
               ),
             ),
           ],
@@ -52,13 +53,13 @@ class _EstablishmentHeaderDataState extends State<EstablishmentHeaderData> {
     );
   }
 
-  Widget _builRichText(BuildContext context, {required String label, required String content}) {
-    return RichText(
-      text: TextSpan(
-        text: label,
-        style: muted,
-        children: [const WidgetSpan(child: Padding(padding: EdgeInsets.symmetric(horizontal: 6, vertical: 5), child: Icon(Icons.circle, size: 5))), TextSpan(text: content, style: context.artTextTheme.muted)],
-      ),
-    );
-  }
+  // Widget _builRichText(BuildContext context, {required String label, required String content}) {
+  //   return RichText(
+  //     text: TextSpan(
+  //       text: label,
+  //       style: muted,
+  //       children: [const WidgetSpan(child: Padding(padding: EdgeInsets.symmetric(horizontal: 6, vertical: 5), child: Icon(Icons.circle, size: 5))), TextSpan(text: content, style: context.artTextTheme.muted)],
+  //     ),
+  //   );
+  // }
 }
