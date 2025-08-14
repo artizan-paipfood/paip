@@ -45,13 +45,11 @@ class _StorePageState extends State<StorePage> {
   }
 
   void _onScroll() {
-    final position = _firstStickyHeaderKey.currentContext?.findRenderObject() as RenderBox?;
-    if (position != null) {
-      final double headerPosition = position.localToGlobal(Offset.zero).dy;
-      final bool shouldShowSafeArea = headerPosition <= topSafeArea;
-      if (shouldShowSafeArea != _showSafeArea.value) {
-        _showSafeArea.value = shouldShowSafeArea;
-      }
+    final offset = _scrollController.offset;
+    final bool shouldShowSafeArea = offset > 200; // Threshold simples baseado no scroll
+
+    if (shouldShowSafeArea != _showSafeArea.value) {
+      _showSafeArea.value = shouldShowSafeArea;
     }
   }
 
