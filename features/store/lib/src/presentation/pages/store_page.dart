@@ -1,13 +1,14 @@
-import 'dart:math';
-
 import 'package:address/address.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:store/src/_i18n/gen/strings.g.dart';
+import 'package:store/src/data/events/select_product.dart';
 import 'package:store/src/presentation/components/category_sliver.dart';
 import 'package:store/src/presentation/components/establishment_header_data.dart';
 import 'package:store/src/presentation/components/header.dart';
 import 'package:store/src/presentation/components/safe_area_header_delegate.dart';
 import 'package:store/src/presentation/viewmodels/store_viewmodel.dart';
+import 'package:store/store.dart';
 import 'package:ui/ui.dart';
 
 class StorePage extends StatefulWidget {
@@ -112,15 +113,17 @@ class _StorePageState extends State<StorePage> {
                           ),
                           PSize.iii.sizedBoxH,
                           ArtTextFormField(
-                            placeholder: Text('Nome do produto'),
-                            // readOnly: true,
+                            placeholder: Text(t.pesquisar_produto),
+                            readOnly: true,
+                            onPressed: () => ModularEvent.fire(GoStoreSearch(establishmentId: widget.establishmentId)),
                             // enabled: false,
-
+                            // onChanged: (value) => _viewmodel.searchProducts(value),
                             // onPressed: () => _onPressedSearch(),
                             decoration: ArtDecoration(
                               color: context.artColorScheme.muted,
                             ),
-                            trailing: PaipIcon(
+                            // trailing: ,
+                            leading: PaipIcon(
                               PaipIcons.searchLinear,
                               color: context.artColorScheme.ring,
                               size: 18,
@@ -134,21 +137,21 @@ class _StorePageState extends State<StorePage> {
             ),
           ),
         ),
-
-        // Lista de categorias
-        ..._viewmodel.categories.asMap().entries.map((entry) {
-          final category = entry.value;
-          final index = _viewmodel.categories.indexOf(category);
-
-          return CategorySliver(
-            key: index == 0 ? _firstStickyHeaderKey : null,
-            category: category,
-            products: _viewmodel.productsByCategory(category.id),
-            onProductTap: (product) {
-              // context.pushNamed(Routes.product, arguments: product);
-            },
-          );
-        }),
+        ..._viewmodel.categories.asMap().entries.map(
+          (entry) {
+            final category = entry.value;
+            final index = _viewmodel.categories.indexOf(category);
+            return CategorySliver(
+              key: index == 0 ? _firstStickyHeaderKey : null,
+              category: category,
+              products: _viewmodel.productsByCategory(category.id),
+              onProductTap: (product) => ModularEvent.fire(SelectProduct(establishmentId: widget.establishmentId, productId: product.id)),
+            );
+          },
+        ),
+        SliverToBoxAdapter(
+          child: PSize.vi.sizedBoxH,
+        ),
       ],
     );
   }

@@ -18,9 +18,21 @@ class StoreViewmodel {
   EstablishmentEntity? get establishment => _store?.data.establishment;
   AddressEntity? get establishmentAddress => _store?.data.address;
 
+  final ValueNotifier<List<ProductEntity>> _productsFiltered = ValueNotifier([]);
+
+  ValueNotifier<List<ProductEntity>> get productsFiltered => _productsFiltered;
+
   OpeningHoursEntity? get openingHoursToday => _store?.data.openingHours.firstWhereOrNull((e) => e.weekDayId == DateTime.now().weekday);
 
-  List<CategoryEntity> get categories => _store?.data.menu.categories.values.sorted((a, b) => a.index?.compareTo(b.index ?? 0) ?? 0).toList() ?? [];
+  List<CategoryEntity> get categories => _store?.data.menu.categories.values.where((e) => _categoryHasProducts(e.id)).sorted((a, b) => a.index?.compareTo(b.index ?? 0) ?? 0).toList() ?? [];
+
+  bool _categoryHasProducts(String categoryId) => _store?.data.menu.products.values.any((e) => e.visible && e.categoryId == categoryId) ?? false;
+
+  void searchProducts(String query) {
+    if (query.isEmpty) _productsFiltered.value = [];
+    final products = _store?.data.menu.products.values.where((p) => '${p.name} ${p.description ?? ''}'.contains(query)).toList() ?? [];
+    _productsFiltered.value = products;
+  }
 
   Future<void> initialize(String establishmentId) async {
     if (isInitialized) return;

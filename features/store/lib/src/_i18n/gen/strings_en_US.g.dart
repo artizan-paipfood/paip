@@ -54,6 +54,15 @@ class Translations implements BaseTranslations<SlangAppLocale, Translations> {
 
 	/// en-US: 'From {price}'
 	String a_partir_de({required Object price}) => 'From ${price}';
+
+	/// en-US: 'Search product'
+	String get pesquisar_produto => 'Search product';
+
+	/// en-US: 'Product name or description'
+	String get pesquisar_produto_placeholder => 'Product name or description';
+
+	/// en-US: 'No product found.'
+	String get nenhum_produto_encontrado => 'No product found.';
 }
 
 /// Flat map(s) containing all translations.
@@ -66,6 +75,9 @@ extension on Translations {
 			case 'fechado': return 'Closed';
 			case 'fecha_ate': return ({required Object minutes}) => 'Closed in ${minutes} minutes';
 			case 'a_partir_de': return ({required Object price}) => 'From ${price}';
+			case 'pesquisar_produto': return 'Search product';
+			case 'pesquisar_produto_placeholder': return 'Product name or description';
+			case 'nenhum_produto_encontrado': return 'No product found.';
 			default: return null;
 		}
 	}

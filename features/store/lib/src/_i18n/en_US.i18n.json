@@ -3,5 +3,8 @@
   "aberto": "Open",
   "fechado": "Closed",
   "fecha_ate": "Closed in {minutes} minutes",
-  "a_partir_de": "From {price}"
+  "a_partir_de": "From {price}",
+  "pesquisar_produto": "Search product",
+  "pesquisar_produto_placeholder": "Product name or description",
+  "nenhum_produto_encontrado": "No product found."
 }

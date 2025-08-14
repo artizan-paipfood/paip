@@ -1,9 +1,13 @@
-# melos_managed_dependency_overrides: address,auth,core,core_flutter,i18n,ui,explore
+# melos_managed_dependency_overrides: address,auth,core,core_flutter,i18n,ui,explore,cart,checkout,store
 dependency_overrides:
   address:
     path: ../../features/address
   auth:
     path: ../../features/auth
+  cart:
+    path: ../../features/cart
+  checkout:
+    path: ../../features/checkout
   core:
     path: ../../packages/core
   core_flutter:
@@ -12,5 +16,7 @@ dependency_overrides:
     path: ../../features/explore
   i18n:
     path: ../../features/i18n
+  store:
+    path: ../../features/store
   ui:
     path: ../../packages/ui

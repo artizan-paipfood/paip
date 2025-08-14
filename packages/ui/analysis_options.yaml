@@ -1,4 +1,48 @@
 include: package:flutter_lints/flutter.yaml
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+formatter:
+  page_width: 120
+  trailing_commas: preserve
+
+analyzer:
+  exclude:
+    - build/**
+    - assets/**
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  language:
+    strict-inference: false
+    strict-raw-types: false
+
+  errors:
+    deprecated_member_use: ignore
+    missing_required_param: error
+    missing_return: error
+
+linter:
+  rules:
+    avoid_print: true
+    always_use_package_imports: false
+    prefer_single_quotes: false
+    avoid_empty_else: true
+    empty_statements: true
+    unnecessary_statements: true
+    always_declare_return_types: true
+    always_put_required_named_parameters_first: true
+    constant_identifier_names: true
+    prefer_interpolation_to_compose_strings: true
+    unnecessary_parenthesis: true
+    unawaited_futures: true
+    use_key_in_widget_constructors: true
+    curly_braces_in_flow_control_structures: true
+    avoid_redundant_argument_values: true
+    avoid_unnecessary_containers: true
+    sized_box_for_whitespace: true
+    use_colored_box: true
+    use_decorated_box: true
+    cascade_invocations: true
+    prefer_adjacent_string_concatenation: true
+    prefer_final_locals: true
+    unnecessary_lambdas: false
+    avoid_relative_lib_imports: true
+    implementation_imports: true

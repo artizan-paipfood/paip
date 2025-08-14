@@ -16,7 +16,7 @@ class Header extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 50),
           child: AspectRatio(
             aspectRatio: 3 / 1,
-            child: CachedNetworkImage(
+            child: PaipCachedNetworkImage(
               imageUrl: establishment.bannerPath!,
               fit: BoxFit.cover,
             ),
@@ -33,19 +33,9 @@ class Header extends StatelessWidget {
                   maxWidth: 100,
                   maxHeight: 100,
                 ),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(1000),
-                    border: Border.all(color: context.artColorScheme.border, width: 2),
-                  ),
-                  child: Material(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(1000),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: CachedNetworkImage(
-                      imageUrl: establishment.logoPath!,
-                    ),
-                  ),
+                child: PaipCachedNetworkImage(
+                  imageUrl: establishment.logoPath!,
+                  borderRadius: BorderRadius.circular(1000),
                 ),
               ),
               PSize.iii.sizedBoxW,

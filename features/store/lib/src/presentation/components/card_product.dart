@@ -47,7 +47,7 @@ class CardProduct extends StatelessWidget {
                   child: SizedBox(
                     width: 60,
                     height: 60,
-                    child: CachedNetworkImage(
+                    child: PaipCachedNetworkImage(
                       imageUrl: product.imageThumbPath ?? '',
                       cacheKey: product.imageThumbPath ?? '' 'abstract',
                       fit: BoxFit.cover,

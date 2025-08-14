@@ -43,6 +43,9 @@ class TranslationsPtBr extends Translations {
 	@override String get fechado => 'Fechado';
 	@override String fecha_ate({required Object minutes}) => 'Fecha em ${minutes} minutos';
 	@override String a_partir_de({required Object price}) => 'A partir de ${price}';
+	@override String get pesquisar_produto => 'Pesquisar produto';
+	@override String get pesquisar_produto_placeholder => 'Nome do produto ou descrição';
+	@override String get nenhum_produto_encontrado => 'Nenhum produto encontrado.';
 }
 
 /// Flat map(s) containing all translations.
@@ -55,6 +58,9 @@ extension on TranslationsPtBr {
 			case 'fechado': return 'Fechado';
 			case 'fecha_ate': return ({required Object minutes}) => 'Fecha em ${minutes} minutos';
 			case 'a_partir_de': return ({required Object price}) => 'A partir de ${price}';
+			case 'pesquisar_produto': return 'Pesquisar produto';
+			case 'pesquisar_produto_placeholder': return 'Nome do produto ou descrição';
+			case 'nenhum_produto_encontrado': return 'Nenhum produto encontrado.';
 			default: return null;
 		}
 	}

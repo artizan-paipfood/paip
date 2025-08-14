@@ -3,5 +3,8 @@
   "aberto": "Aberto",
   "fechado": "Fechado",
   "fecha_ate": "Fecha em {minutes} minutos",
-  "a_partir_de": "A partir de {price}"
+  "a_partir_de": "A partir de {price}",
+  "pesquisar_produto": "Pesquisar produto",
+  "pesquisar_produto_placeholder": "Nome do produto ou descrição",
+  "nenhum_produto_encontrado": "Nenhum produto encontrado."
 }
