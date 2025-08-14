@@ -135,4 +135,8 @@ class ProductEntity {
   String toJson() => json.encode(toMap());
 
   factory ProductEntity.fromJson(String source) => ProductEntity.fromMap(json.decode(source));
+
+  String? get imageThumbPath => image != null ? '${AppCoreConstants.bucketBaseUrl}/thumb-$image' : null;
+
+  // String get imagePathThumb => "thumb-${establishmentId}_$id.png";
 }

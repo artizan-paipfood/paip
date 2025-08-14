@@ -42,6 +42,18 @@ class Translations implements BaseTranslations<SlangAppLocale, Translations> {
 
 	/// en-US: '{initialTime} - {endTime} min'
 	String tempo_abreviado({required Object initialTime, required Object endTime}) => '${initialTime} - ${endTime} min';
+
+	/// en-US: 'Open'
+	String get aberto => 'Open';
+
+	/// en-US: 'Closed'
+	String get fechado => 'Closed';
+
+	/// en-US: 'Closed in {minutes} minutes'
+	String fecha_ate({required Object minutes}) => 'Closed in ${minutes} minutes';
+
+	/// en-US: 'From {price}'
+	String a_partir_de({required Object price}) => 'From ${price}';
 }
 
 /// Flat map(s) containing all translations.
@@ -50,6 +62,10 @@ extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'tempo_abreviado': return ({required Object initialTime, required Object endTime}) => '${initialTime} - ${endTime} min';
+			case 'aberto': return 'Open';
+			case 'fechado': return 'Closed';
+			case 'fecha_ate': return ({required Object minutes}) => 'Closed in ${minutes} minutes';
+			case 'a_partir_de': return ({required Object price}) => 'From ${price}';
 			default: return null;
 		}
 	}

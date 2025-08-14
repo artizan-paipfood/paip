@@ -2,5 +2,6 @@
   "tempo_abreviado": "{initialTime} - {endTime} min",
   "aberto": "Aberto",
   "fechado": "Fechado",
-  "fecha_ate": "Fecha em {minutos} minutos"
+  "fecha_ate": "Fecha em {minutes} minutos",
+  "a_partir_de": "A partir de {price}"
 }

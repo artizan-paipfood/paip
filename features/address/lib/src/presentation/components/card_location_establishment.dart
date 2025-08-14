@@ -7,8 +7,10 @@ import 'package:ui/ui.dart';
 
 class CardLocation extends StatelessWidget {
   final AddressEntity address;
+  final double? height;
   CardLocation({
     required this.address,
+    this.height,
     super.key,
   }) {
     if (address.lat == null || address.long == null) {
@@ -23,7 +25,7 @@ class CardLocation extends StatelessWidget {
         borderRadius: PSize.i.borderRadiusAll,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: SizedBox(
-          height: 80,
+          height: height ?? 80,
           child: FlutterMap(
               options: MapOptions(
                 // enableScrollWheel: false,

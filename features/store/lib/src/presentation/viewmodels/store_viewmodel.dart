@@ -30,4 +30,6 @@ class StoreViewmodel {
     _store = StoreModel(data: view);
     _isLoading.value = false;
   }
+
+  List<ProductEntity> productsByCategory(String categoryId) => _store?.data.menu.products.values.where((e) => e.categoryId == categoryId).toList().sorted((a, b) => a.index?.compareTo(b.index ?? 0) ?? 0) ?? [];
 }

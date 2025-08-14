@@ -39,6 +39,10 @@ class TranslationsPtBr extends Translations {
 
 	// Translations
 	@override String tempo_abreviado({required Object initialTime, required Object endTime}) => '${initialTime} - ${endTime} min';
+	@override String get aberto => 'Aberto';
+	@override String get fechado => 'Fechado';
+	@override String fecha_ate({required Object minutes}) => 'Fecha em ${minutes} minutos';
+	@override String a_partir_de({required Object price}) => 'A partir de ${price}';
 }
 
 /// Flat map(s) containing all translations.
@@ -47,6 +51,10 @@ extension on TranslationsPtBr {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'tempo_abreviado': return ({required Object initialTime, required Object endTime}) => '${initialTime} - ${endTime} min';
+			case 'aberto': return 'Aberto';
+			case 'fechado': return 'Fechado';
+			case 'fecha_ate': return ({required Object minutes}) => 'Fecha em ${minutes} minutos';
+			case 'a_partir_de': return ({required Object price}) => 'A partir de ${price}';
 			default: return null;
 		}
 	}

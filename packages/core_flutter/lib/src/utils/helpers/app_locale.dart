@@ -24,3 +24,7 @@ class AppLocale {
     _appLocale.value = AppLocaleCode.fromCountryCode(countryCode);
   }
 }
+
+extension AppLocaleString on double {
+  String toCurrency() => '${AppLocale.currencySymbol} ${toStringAsFixed(2)}';
+}

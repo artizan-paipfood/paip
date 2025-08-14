@@ -14,22 +14,22 @@ class ClientDio implements IClient {
     if (interceptors != null) {
       _dio.interceptors.addAll(interceptors);
     }
-    if (_enableLogs) {
-      _dio.interceptors.add(
-        TalkerDioLogger(
-          talker: talker ?? Talker(),
-          settings: TalkerDioLoggerSettings(
-            enabled: true,
-            printRequestHeaders: true,
-            printRequestData: true,
-            printResponseData: true,
-            printResponseMessage: true,
-            printResponseRedirects: true,
-            printErrorHeaders: true,
-          ),
-        ),
-      );
-    }
+    // if (_enableLogs) {
+    //   _dio.interceptors.add(
+    //     TalkerDioLogger(
+    //       talker: talker ?? Talker(),
+    //       settings: TalkerDioLoggerSettings(
+    //         enabled: true,
+    //         printRequestHeaders: true,
+    //         printRequestData: true,
+    //         printResponseData: true,
+    //         printResponseMessage: true,
+    //         printResponseRedirects: true,
+    //         printErrorHeaders: true,
+    //       ),
+    //     ),
+    //   );
+    // }
   }
 
   final _defaultOptions = BaseOptions();
