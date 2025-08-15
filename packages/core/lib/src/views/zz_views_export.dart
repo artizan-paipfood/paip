@@ -4,3 +4,4 @@ export './payment_provider_view.dart';
 export './establishment_gest_view.dart';
 export 'user_me_model.dart';
 export 'establishment_menu_view.dart';
+export 'product_view.dart';

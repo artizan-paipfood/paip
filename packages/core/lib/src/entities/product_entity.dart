@@ -138,5 +138,7 @@ class ProductEntity {
 
   String? get imageThumbPath => image != null ? '${AppCoreConstants.bucketBaseUrl}/thumb-$image' : null;
 
+  double get finalPrice => promotionalPrice ?? price ?? 0;
+
   // String get imagePathThumb => "thumb-${establishmentId}_$id.png";
 }

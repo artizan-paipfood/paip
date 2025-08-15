@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:core/core.dart';
-import 'package:core/src/entities/establishment_entity.dart';
 
 class EstablishmentGestView {
   final EstablishmentEntity establishment;

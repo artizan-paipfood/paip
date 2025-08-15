@@ -135,4 +135,6 @@ class ItemEntity {
   String toJson() => json.encode(toMap());
 
   factory ItemEntity.fromJson(String source) => ItemEntity.fromMap(json.decode(source));
+
+  double get finalPrice => promotionalPrice ?? price ?? 0;
 }

@@ -98,4 +98,6 @@ class SizeEntity {
   String toJson() => json.encode(toMap());
 
   factory SizeEntity.fromJson(String source) => SizeEntity.fromMap(json.decode(source));
+
+  double get finalPrice => promotionalPrice ?? price ?? 0;
 }

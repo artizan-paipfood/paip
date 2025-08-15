@@ -103,4 +103,6 @@ class ComplementEntity {
   String toJson() => json.encode(toMap());
 
   factory ComplementEntity.fromJson(String source) => ComplementEntity.fromMap(json.decode(source));
+
+  bool get isRequired => qtyMin > 0;
 }
