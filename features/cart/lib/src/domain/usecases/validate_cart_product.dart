@@ -21,7 +21,7 @@ class ValidateCartProduct {
 
     for (final complement in cartProduct.complements.values) {
       if (!cartProduct.isComplementValid(complement)) {
-        final currentQuantity = cartProduct.getTotalQuantityForComplement(complement);
+        final currentQuantity = cartProduct.getTotalQuantityForComplement(complement.id);
 
         if (complement.isRequired && currentQuantity == 0) {
           errors.add('${complement.name} is required');

@@ -26,4 +26,8 @@ class Routes {
   //STORE
   static const String storeModule = '/store';
   static String store(String establishmentId) => '/store/$establishmentId';
+
+  // CART
+  static const String cartModule = '/cart';
+  static String cartProduct(String productId) => '/cart/$productId';
 }

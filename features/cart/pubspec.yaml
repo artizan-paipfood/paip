@@ -19,12 +19,13 @@ dependencies:
     path: ../../packages/core
   core_flutter:
     path: ../../packages/core_flutter
-  
+
   ui:
     path: ../../packages/ui
   i18n:
     path: ../i18n
-
+  sliver_tools: ^0.2.12
+  flutter_sticky_header: ^0.8.0
 
 dev_dependencies:
   flutter_test:

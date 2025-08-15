@@ -79,7 +79,7 @@ class CartProduct {
   /// Gets items for a specific complement
   List<ItemEntity> getItemsForComplement(ComplementEntity complement) {
     if (itemsMap[complement.id] == null) return [];
-    return itemsMap[complement.id]!.values.map((cartItem) => cartItem.item).toList();
+    return itemsMap[complement.id]!.values.map((cartItem) => items[cartItem.itemId]!).toList();
   }
 
   /// Gets cart items for a specific complement
@@ -94,8 +94,8 @@ class CartProduct {
   }
 
   /// Gets total quantity of items for a complement
-  int getTotalQuantityForComplement(ComplementEntity complement) {
-    final items = itemsMap[complement.id]?.values.toList() ?? [];
+  int getTotalQuantityForComplement(String complementId) {
+    final items = itemsMap[complementId]?.values.toList() ?? [];
     return items.fold(0, (sum, cartItem) => sum + cartItem.quantity);
   }
 
@@ -106,7 +106,7 @@ class CartProduct {
       maxAllowed = pizzaFlavorsQuantity!.quantity.toDouble();
     }
 
-    final currentQuantity = getTotalQuantityForComplement(complement);
+    final currentQuantity = getTotalQuantityForComplement(complement.id);
     return currentQuantity < (maxAllowed == 0 ? 999 : maxAllowed);
   }
 
@@ -131,12 +131,12 @@ class CartProduct {
   bool isComplementValid(ComplementEntity complement) {
     if (complement.complementType == ComplementType.pizza && pizzaFlavorsQuantity != null) {
       // For pizza, check if we have the required total quantity of flavors
-      final totalQuantity = getTotalQuantityForComplement(complement);
+      final totalQuantity = getTotalQuantityForComplement(complement.id);
       return totalQuantity >= pizzaFlavorsQuantity!.quantity;
     }
 
     if (complement.qtyMin < 1) return true;
-    return getTotalQuantityForComplement(complement) >= complement.qtyMax;
+    return getTotalQuantityForComplement(complement.id) >= complement.qtyMax;
   }
 
   SizeEntity? _getSizeByProductId(String productId) {

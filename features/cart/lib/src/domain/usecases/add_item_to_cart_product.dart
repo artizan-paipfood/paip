@@ -39,7 +39,7 @@ class AddItemToCartProduct {
     final existingItems = newItemsMap[complement.id]!;
     print('  Existing items in complement: ${existingItems.length}');
     for (final entry in existingItems.entries) {
-      print('    - ${entry.value.item.name}: ${entry.value.quantity}x');
+      print('    - ${entry.value.itemName}: ${entry.value.quantity}x');
     }
 
     // Handle non-multiple complements (replace existing item)

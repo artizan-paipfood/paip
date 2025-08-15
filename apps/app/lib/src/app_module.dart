@@ -3,6 +3,7 @@ import 'package:address/address.dart';
 import 'package:app/src/core/utils/routes.dart';
 import 'package:app/src/modules/onboarding/onboarding_module.dart';
 import 'package:auth/auth.dart';
+import 'package:cart/cart.dart';
 import 'package:core/core.dart';
 import 'package:core_flutter/core_flutter.dart';
 import 'package:explore/explore.dart';
@@ -39,6 +40,7 @@ class AppModule extends EventModule {
         ModuleRoute(Routes.addressModule, module: AddressModule()),
         ModuleRoute(Routes.exploreModule, module: ExploreModule()),
         ModuleRoute(Routes.storeModule, module: StoreModule()),
+        ModuleRoute(Routes.cartModule, module: CartModule()),
       ];
 
   @override
@@ -48,6 +50,10 @@ class AppModule extends EventModule {
     });
     on<SelectAddressEvent>((event, context) {
       if (context != null) Go.of(context).goNeglect(Routes.explore);
+    });
+
+    on<SelectProduct>((event, context) {
+      if (context != null) context.push(Routes.cartProduct(event.productId));
     });
   }
 }

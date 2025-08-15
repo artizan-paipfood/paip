@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:store/src/_i18n/gen/strings.g.dart';
 import 'package:ui/ui.dart';
 
-class Price extends StatefulWidget {
+class PriceLabel extends StatefulWidget {
   final double price;
   final double? promotionalPrice;
   final double? priceFrom;
-  const Price({
+  const PriceLabel({
     required this.price,
     super.key,
     this.promotionalPrice,
@@ -15,10 +15,10 @@ class Price extends StatefulWidget {
   });
 
   @override
-  State<Price> createState() => _PriceState();
+  State<PriceLabel> createState() => _PriceLabelState();
 }
 
-class _PriceState extends State<Price> {
+class _PriceLabelState extends State<PriceLabel> {
   TextStyle? get _relativeTextStyle => context.textTheme.labelMedium?.copyWith(color: context.artColorScheme.foreground, fontWeight: FontWeight.w600);
   @override
   Widget build(BuildContext context) {

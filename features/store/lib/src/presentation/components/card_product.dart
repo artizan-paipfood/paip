@@ -36,7 +36,7 @@ class CardProduct extends StatelessWidget {
                       Text(product.name, style: context.textTheme.labelMedium?.copyWith(color: context.artColorScheme.foreground)),
                       Text(product.description ?? '', style: context.textTheme.labelMedium?.copyWith(color: context.artColorScheme.mutedForeground)),
                       PSize.ii.sizedBoxH,
-                      Price(price: product.price ?? 0, promotionalPrice: product.promotionalPrice, priceFrom: product.priceFrom),
+                      PriceLabel(price: product.price ?? 0, promotionalPrice: product.promotionalPrice, priceFrom: product.priceFrom),
                     ],
                   ),
                 ),

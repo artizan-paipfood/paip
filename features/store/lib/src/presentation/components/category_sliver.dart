@@ -1,9 +1,7 @@
 import 'package:core/core.dart';
-import 'package:core_flutter/core_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:store/src/presentation/components/card_product.dart';
-import 'package:store/src/presentation/components/price.dart';
 import 'package:ui/ui.dart';
 
 class CategorySliver extends StatelessWidget {

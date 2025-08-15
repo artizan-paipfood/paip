@@ -5,7 +5,7 @@ import 'package:cart/src/domain/usecases/validate_cart_product.dart';
 import 'package:core/core.dart';
 import 'package:flutter/cupertino.dart';
 
-class CartProductViewmodel {
+class CartProductViewmodel extends ChangeNotifier {
   final ViewsApi viewsApi;
   final AddItemToCartProduct addItemToCartProduct;
   final RemoveItemFromCartProduct removeItemFromCartProduct;
@@ -19,6 +19,8 @@ class CartProductViewmodel {
 
   CartProduct? _cartProduct;
 
+  ProductEntity? get product => _cartProduct?.product;
+
   Future<void> initialize(String productId) async {
     _isLoading.value = true;
     final view = await viewsApi.getProductView(productId: productId);
@@ -31,13 +33,15 @@ class CartProductViewmodel {
   void addItemToCart(String complementId, String itemId) {
     final item = _cartProduct!.items[itemId]!;
     final complement = _cartProduct!.complements[complementId]!;
-    addItemToCartProduct.execute(cartProduct: _cartProduct!, item: item, complement: complement);
+    _cartProduct = addItemToCartProduct.execute(cartProduct: _cartProduct!, item: item, complement: complement);
+    notifyListeners();
   }
 
   void removeItemFromCart(String complementId, String itemId) {
     final item = _cartProduct!.items[itemId]!;
     final complement = _cartProduct!.complements[complementId]!;
-    removeItemFromCartProduct.execute(cartProduct: _cartProduct!, item: item, complement: complement);
+    _cartProduct = removeItemFromCartProduct.execute(cartProduct: _cartProduct!, item: item, complement: complement);
+    notifyListeners();
   }
 
   bool validateCart() {
@@ -46,5 +50,13 @@ class CartProductViewmodel {
 
   List<String> getValidationErrors() {
     return validateCartProduct.getValidationErrors(_cartProduct!);
+  }
+
+  List<ItemEntity> getItemsByComplement(String complementId) {
+    return _cartProduct!.items.values.where((item) => item.complementId == complementId).toList();
+  }
+
+  int getComplementQtySelected(String complementId) {
+    return _cartProduct!.getTotalQuantityForComplement(complementId);
   }
 }
